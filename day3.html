@@ -544,7 +544,7 @@
 <!-- Hero -->
 <div class="hero">
   <h1>🇮🇹 Day3 自驾行程</h1>
-  <div class="subtitle">罗马 → 奥尔恰山谷 → 皮恩扎 → 丝柏路 → 比萨 → 佛罗伦萨</div>
+  <div class="subtitle">罗马 → 天空之城 → 奥尔恰山谷 → 皮恩扎 → 丝柏路 → 比萨 → 佛罗伦萨</div>
   <div class="date-badge">📅 2026年4月28日 周二</div>
 </div>
 
@@ -573,11 +573,11 @@
 
 <!-- Stats -->
 <div class="stats-bar">
-  <div class="stat-item"><div class="num">~470</div><div class="label">总里程 km</div></div>
-  <div class="stat-item"><div class="num">~6.5h</div><div class="label">总驾车时长</div></div>
-  <div class="stat-item"><div class="num">7</div><div class="label">景点/站点</div></div>
+  <div class="stat-item"><div class="num">~550</div><div class="label">总里程 km</div></div>
+  <div class="stat-item"><div class="num">~7.5h</div><div class="label">总驾车时长</div></div>
+  <div class="stat-item"><div class="num">8</div><div class="label">景点/站点</div></div>
   <div class="stat-item"><div class="num">10:30</div><div class="label">出发时间</div></div>
-  <div class="stat-item"><div class="num">~22:45</div><div class="label">预计到达</div></div>
+  <div class="stat-item"><div class="num">~23:15</div><div class="label">预计到达</div></div>
 </div>
 
 <div class="container">
@@ -696,12 +696,14 @@
 
     <!-- ================================================================ -->
     <!-- ROUTE LINES (geographic positions)                                -->
-    <!-- Roma(660,920) → ValDOrcia(500,570) → Pienza(560,530) →           -->
-    <!-- Pisa(220,220) → Firenze(480,140)                                 -->
+    <!-- Roma(660,920) → Civita(420,720) → ValDOrcia(500,570) →            -->
+    <!-- Pienza(560,530) → Pisa(220,220) → Firenze(480,140)               -->
     <!-- ================================================================ -->
 
-    <!-- Main road: Roma → Val d'Orcia (A1 highway south to north) -->
-    <path d="M665,900 C650,840 620,780 590,720 C560,660 540,620 510,580" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+    <!-- Main road: Roma → Civita di Bagnoregio (A1 north, Orvieto exit) -->
+    <path d="M665,900 C630,850 580,800 530,760 C490,730 450,720 420,720" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+    <!-- Main road: Civita → Val d'Orcia (back to A1 south, then east) -->
+    <path d="M420,720 C450,700 470,670 490,640 C500,620 505,600 510,580" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
     <!-- Val d'Orcia area roads (between cypress spots & Pienza) -->
     <path d="M510,580 C520,565 535,550 555,535" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
     <path d="M555,535 C570,520 590,510 610,500" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
@@ -714,8 +716,11 @@
 
     <!-- ===== DISTANCE PILLS ===== -->
     <g font-size="11" font-weight="600">
-      <rect x="555" y="738" width="140" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
-      <text x="625" y="756" fill="white" text-anchor="middle" font-size="11">🚗 190km · 2h20min</text>
+      <rect x="510" y="810" width="135" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+      <text x="577" y="828" fill="white" text-anchor="middle" font-size="11">🚗 125km · 1h30min</text>
+
+      <rect x="380" y="650" width="135" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+      <text x="447" y="668" fill="white" text-anchor="middle" font-size="11">🚗 80km · 1h30min</text>
 
       <rect x="440" y="552" width="85" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
       <text x="482" y="567" fill="white" text-anchor="middle" font-size="10">7km · 12m</text>
@@ -753,6 +758,21 @@
       <path d="M-13,-20 A6,8 0 0,1 -1,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
       <path d="M2,-20 A6,8 0 0,1 14,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
       <path d="M17,-20 A6,8 0 0,1 29,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+    </g>
+
+    <!-- ★ CIVITA: Cliff-top castle silhouette -->
+    <g transform="translate(350,710)" opacity="0.22">
+      <!-- Cliff/mesa -->
+      <path d="M-30,15 L-35,5 L-30,-5 L30,-5 L35,5 L30,15 Z" fill="#b0956a" opacity="0.6"/>
+      <!-- Buildings on cliff -->
+      <rect x="-18" y="-22" width="8" height="17" rx="1" fill="#c4a070"/>
+      <rect x="-8" y="-28" width="10" height="23" rx="1" fill="#b89060"/>
+      <rect x="5" y="-20" width="8" height="15" rx="1" fill="#c4a070"/>
+      <!-- Tower -->
+      <rect x="-2" y="-36" width="5" height="12" rx="1" fill="#a08050"/>
+      <polygon points="-3,-36 0.5,-42 4,-36" fill="#8b7040"/>
+      <!-- Bridge -->
+      <line x1="35" y1="5" x2="65" y2="12" stroke="#a0906a" stroke-width="2" opacity="0.5"/>
     </g>
 
     <!-- ★ VAL D'ORCIA: Cypress avenue illustration -->
@@ -832,60 +852,72 @@
     </a>
     <text x="620" y="900" font-size="24" opacity="0.4" transform="rotate(-15,620,900)">🚗</text>
 
-    <!-- ② 双排丝柏大道 (Val d'Orcia area, center) -->
+    <!-- ② 天空之城 Civita di Bagnoregio (between Roma and Val d'Orcia) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Civita+di+Bagnoregio" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="200" y="690" width="310" height="78" rx="14" fill="white" stroke="#8d6e63" stroke-width="2.5"/>
+        <circle cx="238" cy="730" r="24" fill="#8d6e63" filter="url(#glow)"/>
+        <text x="238" y="737" text-anchor="middle" fill="white" font-size="17" font-weight="800">2</text>
+        <text x="274" y="713" font-size="15" font-weight="700" fill="#333">🏰 天空之城</text>
+        <text x="274" y="733" font-size="12" fill="#888">12:00-13:15 · ⭐必打卡 · €5</text>
+        <text x="274" y="753" font-size="10" fill="#666">Civita di Bagnoregio · 悬崖千年古城</text>
+      </g>
+    </a>
+
+    <!-- ③ 双排丝柏大道 (Val d'Orcia area, center) -->
     <a href="https://www.google.com/maps/search/?api=1&query=43.0218,11.6369" target="_blank">
       <g filter="url(#cardShadow)" cursor="pointer">
         <rect x="255" y="560" width="250" height="72" rx="14" fill="white" stroke="#66bb6a" stroke-width="2.5"/>
         <circle cx="290" cy="596" r="22" fill="#66bb6a"/>
-        <text x="290" y="603" text-anchor="middle" fill="white" font-size="16" font-weight="800">2</text>
+        <text x="290" y="603" text-anchor="middle" fill="white" font-size="16" font-weight="800">3</text>
         <text x="322" y="585" font-size="14" font-weight="700" fill="#333">🌲 双排丝柏大道</text>
         <text x="322" y="605" font-size="11" fill="#888">12:50 · 📸15min · 免费路边停</text>
         <text x="322" y="622" font-size="10" fill="#666">经典明信片画面 · 长焦最佳</text>
       </g>
     </a>
 
-    <!-- ③ 小耳朵教堂 【备选】-->
+    <!-- ④ 小耳朵教堂 【备选】-->
     <a href="https://www.google.com/maps/search/?api=1&query=43.0708,11.6344" target="_blank">
       <g filter="url(#cardShadow)" cursor="pointer">
         <rect x="600" y="520" width="290" height="68" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
         <circle cx="635" cy="554" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
-        <text x="635" y="561" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">3</text>
+        <text x="635" y="561" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">4</text>
         <text x="668" y="543" font-size="13" font-weight="700" fill="#e65100">⛪【备选】小耳朵教堂</text>
         <text x="668" y="563" font-size="11" fill="#888">13:20 · 📸15min</text>
         <text x="668" y="579" font-size="10" fill="#666">金色麦田中孤独的小教堂</text>
       </g>
     </a>
 
-    <!-- ④ 皮恩扎 Pienza -->
+    <!-- ⑤ 皮恩扎 Pienza -->
     <a href="https://www.google.com/maps/search/?api=1&query=Pienza+Italy" target="_blank">
       <g filter="url(#cardShadow)" cursor="pointer">
         <rect x="620" y="430" width="290" height="78" rx="14" fill="white" stroke="#ff9800" stroke-width="2.5"/>
         <circle cx="655" cy="470" r="24" fill="#ff9800"/>
-        <text x="655" y="477" text-anchor="middle" fill="white" font-size="17" font-weight="800">4</text>
+        <text x="655" y="477" text-anchor="middle" fill="white" font-size="17" font-weight="800">5</text>
         <text x="690" y="453" font-size="15" font-weight="700" fill="#333">🏘️ 皮恩扎 Pienza</text>
         <text x="690" y="473" font-size="12" fill="#888">13:45-15:15 · 🍝 午餐+逛镇</text>
         <text x="690" y="493" font-size="10" fill="#666">"理想城市" · 佩科里诺奶酪 🧀</text>
       </g>
     </a>
 
-    <!-- ⑤ 圆形丝柏林 【备选】-->
+    <!-- ⑥ 圆形丝柏林 【备选】-->
     <a href="https://www.google.com/maps/search/?api=1&query=43.0627,11.5589" target="_blank">
       <g filter="url(#cardShadow)" cursor="pointer">
         <rect x="230" y="435" width="260" height="65" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
         <circle cx="265" cy="467" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
-        <text x="265" y="474" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">5</text>
+        <text x="265" y="474" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">6</text>
         <text x="298" y="458" font-size="13" font-weight="700" fill="#e65100">🌲【备选】圆形丝柏林</text>
         <text x="298" y="478" font-size="11" fill="#888">15:25 · 📸10min · 俯瞰奥尔恰谷</text>
         <text x="298" y="494" font-size="10" fill="#666">上帝在大地上画的圆</text>
       </g>
     </a>
 
-    <!-- ⑥ S型丝柏路 【备选】-->
+    <!-- ⑦ S型丝柏路 【备选】-->
     <a href="https://www.google.com/maps/search/?api=1&query=43.2008,11.5904" target="_blank">
       <g filter="url(#cardShadow)" cursor="pointer">
         <rect x="160" y="342" width="260" height="65" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
         <circle cx="195" cy="374" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
-        <text x="195" y="381" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">6</text>
+        <text x="195" y="381" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">7</text>
         <text x="228" y="365" font-size="13" font-weight="700" fill="#e65100">🌲【备选】S型丝柏路</text>
         <text x="228" y="385" font-size="11" fill="#888">15:55 · 📸15min</text>
         <text x="228" y="401" font-size="10" fill="#666">蜿蜒S曲线 · 极具视觉冲击</text>
@@ -894,32 +926,33 @@
     <!-- S-curve decoration -->
     <path d="M430,365 C445,355 440,345 455,355 C470,365 465,355 480,345" stroke="#c4a97d" stroke-width="2" fill="none" opacity="0.25"/>
 
-    <!-- ⑦ 比萨斜塔 -->
+    <!-- ⑧ 比萨斜塔 -->
     <a href="https://www.google.com/maps/search/?api=1&query=Leaning+Tower+of+Pisa" target="_blank">
       <g filter="url(#cardShadow)" cursor="pointer">
         <rect x="170" y="210" width="280" height="78" rx="14" fill="white" stroke="#42a5f5" stroke-width="2.5"/>
         <circle cx="208" cy="250" r="24" fill="#42a5f5" filter="url(#glow)"/>
-        <text x="208" y="257" text-anchor="middle" fill="white" font-size="17" font-weight="800">7</text>
+        <text x="208" y="257" text-anchor="middle" fill="white" font-size="17" font-weight="800">8</text>
         <text x="244" y="233" font-size="15" font-weight="700" fill="#333">🏛️ 比萨斜塔</text>
         <text x="244" y="253" font-size="12" fill="#888">18:15-19:45 · ⭐必打卡</text>
         <text x="244" y="273" font-size="10" fill="#666">奇迹广场 · Via Galluppi停车 · ⚠️ZTL</text>
       </g>
     </a>
 
-    <!-- ⑧ 佛罗伦萨 Firenze -->
+    <!-- ⑨ 佛罗伦萨 Firenze -->
     <a href="https://www.google.com/maps/search/?api=1&query=Florence+Santa+Maria+Novella" target="_blank">
       <g filter="url(#cardShadow)" cursor="pointer">
         <rect x="480" y="120" width="310" height="78" rx="14" fill="white" stroke="#7e57c2" stroke-width="2.5"/>
         <circle cx="518" cy="160" r="24" fill="#7e57c2" filter="url(#glow)"/>
-        <text x="518" y="167" text-anchor="middle" fill="white" font-size="17" font-weight="800">8</text>
+        <text x="518" y="167" text-anchor="middle" fill="white" font-size="17" font-weight="800">9</text>
         <text x="554" y="143" font-size="15" font-weight="700" fill="#333">🏨 佛罗伦萨 Firenze</text>
-        <text x="554" y="163" font-size="12" fill="#888">~21:45 到达 · 入住酒店</text>
+        <text x="554" y="163" font-size="12" fill="#888">~23:00 到达 · 入住酒店</text>
         <text x="554" y="183" font-size="10" fill="#666">San Lorenzo 停车场 ~€25/24h · ⚠️ZTL</text>
       </g>
     </a>
 
     <!-- ===== PIN DOTS connecting cards to geographic positions ===== -->
     <circle cx="665" cy="920" r="6" fill="#ef5350" opacity="0.6"/>
+    <circle cx="420" cy="720" r="6" fill="#8d6e63" opacity="0.6"/>
     <circle cx="510" cy="580" r="5" fill="#66bb6a" opacity="0.6"/>
     <circle cx="555" cy="535" r="5" fill="#ff9800" opacity="0.5"/>
     <circle cx="610" cy="500" r="5" fill="#ff9800" opacity="0.6"/>
@@ -954,7 +987,8 @@
     <g transform="translate(20,1020)">
       <rect width="920" height="68" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow)"/>
       <circle cx="30" cy="22" r="10" fill="#ef5350"/><text x="50" y="26" font-size="11" fill="#555">出发/到达</text>
-      <circle cx="155" cy="22" r="10" fill="#66bb6a"/><text x="175" y="26" font-size="11" fill="#555">自然景观</text>
+      <circle cx="155" cy="22" r="10" fill="#8d6e63"/><text x="175" y="26" font-size="11" fill="#555">古城遗迹</text>
+      <circle cx="275" cy="22" r="10" fill="#66bb6a"/><text x="295" y="26" font-size="11" fill="#555">自然景观</text>
       <circle cx="275" cy="22" r="10" fill="#ff9800"/><text x="295" y="26" font-size="11" fill="#555">小镇美食</text>
       <circle cx="395" cy="22" r="10" fill="#42a5f5"/><text x="415" y="26" font-size="11" fill="#555">地标建筑</text>
       <circle cx="505" cy="22" r="10" fill="#7e57c2"/><text x="525" y="26" font-size="11" fill="#555">住宿</text>
@@ -963,7 +997,7 @@
       <rect x="700" y="15" width="40" height="16" rx="8" fill="rgba(239,83,80,0.8)"/>
       <text x="720" y="27" text-anchor="middle" font-size="9" fill="white" font-weight="600">ZTL</text>
       <text x="748" y="26" font-size="11" fill="#555">限行区</text>
-      <text x="30" y="52" font-size="11" fill="#888">总里程 ~470km · 驾车 ~6.5h · 绿虚线=核心高速 · 橙虚线=托斯卡纳乡间路 · 点击卡片可跳转 Google Maps</text>
+      <text x="30" y="52" font-size="11" fill="#888">总里程 ~550km · 驾车 ~7.5h · 绿虚线=核心高速 · 橙虚线=托斯卡纳乡间路 · 点击卡片可跳转 Google Maps</text>
     </g>
   </svg>
   </div>
@@ -1014,26 +1048,95 @@
   </div>
 </div>
 
-<!-- Drive: Roma → Val d'Orcia -->
+<!-- Drive: Roma → Civita di Bagnoregio -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar">
     <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">10:30</span>
-    <span class="tl-type-badge badge-drive">🚗 驾车 2h20min</span>
+    <span class="tl-type-badge badge-drive">🚗 驾车 1h30min</span>
   </div>
   <div class="drive-card">
     <span class="drive-icon">🛣️</span>
     <div>
-      <div class="drive-title" contenteditable="false">罗马 → 奥尔恰山谷</div>
-      <div class="drive-detail" contenteditable="false">190km · A1/E35 高速向北 → Chiusi-Chianciano Terme 出口下</div>
+      <div class="drive-title" contenteditable="false">罗马 → 天空之城</div>
+      <div class="drive-detail" contenteditable="false">125km · A1/E35 高速北上 → Orvieto 出口 → 沿路标前往 Bagnoregio</div>
     </div>
-    <span class="drive-cost">💰 过路费 €12-15</span>
+    <span class="drive-cost">💰 过路费 €8-10</span>
   </div>
 </div>
 
-<!-- STOP 2: 双排丝柏大道 -->
+<!-- STOP 2: 天空之城 -->
+<div class="tl-item" data-spot="civita-bagnoregio">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">12:00 - 13:15</span>
+    <span class="tl-type-badge badge-must">⭐ 必打卡 1h15min</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🏰 天空之城</div>
+    <div class="tl-spot-subname" contenteditable="false">Civita di Bagnoregio · 白露里治奥</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">宫崎骏《天空之城》原型 · 悬崖上的千年古城</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Civita+di+Bagnoregio" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">一座建在凝灰岩悬崖上的千年古城，仅靠一条300米长的步行桥与外界相连，被称为"垂死的城市"</p>
+    <p contenteditable="false"><strong>🚶 游览路线（1h15min）：</strong></p>
+    <p contenteditable="false">• 停好车后步行至售票口，购票（€5/人）过桥进城</p>
+    <p contenteditable="false">• 桥长约300m、有一定坡度，来回约15min</p>
+    <p contenteditable="false">• 古城很小，绕一圈约30-40min，重点看圣多纳托教堂和主广场</p>
+    <p contenteditable="false">• 城墙边远眺周围山谷，非常出片</p>
+    <p contenteditable="false">📷 <strong>停车场就能拍到经典全景照</strong>——悬崖上的孤城+长桥</p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">⭐ Parcheggio Alberto Ricci</div>
+        <div class="pm-detail">距售票口最近 · €2/h</div>
+        <div class="pm-detail">旁边有公厕，可直接拍天空之城全貌</div>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">🎫 门票</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 门票 €5/人，售票处购买</p>
+        <p>• 穿舒适的鞋！桥上坡度较陡</p>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 控制在1h15min内，后面行程紧凑</p>
+        <p>• 古城内有小餐厅但不建议在此午餐（皮恩扎更值得）</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: Civita → Val d'Orcia -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">13:15</span>
+    <span class="tl-type-badge badge-drive">🚗 驾车 1h30min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">天空之城 → 奥尔恰山谷</div>
+      <div class="drive-detail" contenteditable="false">~80km · 返回 A1 南下 → Chiusi-Chianciano Terme 出口 → 乡间公路</div>
+    </div>
+    <span class="drive-cost">💰 过路费 €5-8</span>
+  </div>
+</div>
+
+<!-- STOP 3: 双排丝柏大道 -->
 <div class="tl-item" data-spot="cypress-avenue">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">12:50</span>
+    <span class="tl-time-tag">14:45</span>
     <span class="tl-type-badge badge-photo">📸 拍照 15min</span>
   </div>
   <div class="tl-left">
@@ -1084,7 +1187,7 @@
 <!-- Drive: 双排丝柏 → 小耳朵 -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar">
-    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">13:05</span>
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">15:00</span>
     <span class="tl-type-badge badge-drive">🚗 12min</span>
   </div>
   <div class="drive-card">
@@ -1096,10 +1199,10 @@
   </div>
 </div>
 
-<!-- STOP 3: 小耳朵教堂 (备选) -->
+<!-- STOP 4: 小耳朵教堂 (备选) -->
 <div class="tl-item" data-spot="chapel-vitaleta" style="border-left:4px solid #ff9800;">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">13:20</span>
+    <span class="tl-time-tag">15:15</span>
     <span class="tl-type-badge badge-photo">📸 拍照 15min</span>
     <span class="tl-type-badge" style="background:#fff3e0;color:#e65100;border:1px dashed #ff9800;font-size:11px;font-weight:700;">【备选】小红书推荐</span>
   </div>
@@ -1148,7 +1251,7 @@
 <!-- Drive: 小耳朵 → 皮恩扎 -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar">
-    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">13:35</span>
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">15:30</span>
     <span class="tl-type-badge badge-drive">🚗 12min</span>
   </div>
   <div class="drive-card">
@@ -1160,10 +1263,10 @@
   </div>
 </div>
 
-<!-- STOP 4: 皮恩扎 -->
+<!-- STOP 5: 皮恩扎 -->
 <div class="tl-item" data-spot="pienza">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">13:45 - 15:15</span>
+    <span class="tl-time-tag">15:45 - 17:15</span>
     <span class="tl-type-badge badge-food">🍝 午餐+逛镇 1.5h</span>
   </div>
   <div class="tl-left">
@@ -1222,7 +1325,7 @@
 <!-- Drive: 皮恩扎 → 圆形丝柏 -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar">
-    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">15:15</span>
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">17:15</span>
     <span class="tl-type-badge badge-drive">🚗 7min</span>
   </div>
   <div class="drive-card">
@@ -1234,10 +1337,10 @@
   </div>
 </div>
 
-<!-- STOP 5: 圆形丝柏 (备选) -->
+<!-- STOP 6: 圆形丝柏 (备选) -->
 <div class="tl-item" data-spot="round-cypress" style="border-left:4px solid #ff9800;">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">15:25</span>
+    <span class="tl-time-tag">17:25</span>
     <span class="tl-type-badge badge-photo">📸 10min</span>
     <span class="tl-type-badge" style="background:#fff3e0;color:#e65100;border:1px dashed #ff9800;font-size:11px;font-weight:700;">【备选】小红书推荐</span>
   </div>
@@ -1278,7 +1381,7 @@
 <!-- Drive: 圆形丝柏 → S型丝柏 -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar">
-    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">15:35</span>
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">17:35</span>
     <span class="tl-type-badge badge-drive">🚗 20min</span>
   </div>
   <div class="drive-card">
@@ -1290,10 +1393,10 @@
   </div>
 </div>
 
-<!-- STOP 6: S型丝柏路 (备选) -->
+<!-- STOP 7: S型丝柏路 (备选) -->
 <div class="tl-item" data-spot="s-curve-cypress" style="border-left:4px solid #ff9800;">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">15:55</span>
+    <span class="tl-time-tag">17:55</span>
     <span class="tl-type-badge badge-photo">📸 15min</span>
     <span class="tl-type-badge" style="background:#fff3e0;color:#e65100;border:1px dashed #ff9800;font-size:11px;font-weight:700;">【备选】小红书推荐</span>
   </div>
@@ -1345,7 +1448,7 @@
 <!-- Drive: S型丝柏 → 比萨 -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar">
-    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">16:15</span>
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">18:15</span>
     <span class="tl-type-badge badge-drive">🚗 驾车 约2h</span>
   </div>
   <div class="drive-card">
@@ -1359,11 +1462,11 @@
   </div>
 </div>
 
-<!-- STOP 7: 比萨斜塔 -->
+<!-- STOP 8: 比萨斜塔 -->
 <div class="tl-item" data-spot="pisa">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">18:15 - 19:45</span>
-    <span class="tl-type-badge badge-must">⭐ 必打卡 1.5h</span>
+    <span class="tl-time-tag">20:15 - 21:15</span>
+    <span class="tl-type-badge badge-must">⭐ 必打卡 1h</span>
   </div>
   <div class="tl-left">
     <div class="tl-spot-name" contenteditable="false">🏛️ 比萨斜塔</div>
@@ -1376,12 +1479,12 @@
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">趁日落前的金色光线拍照，斜塔+大教堂+洗礼堂在夕阳下超美</p>
-    <p contenteditable="false"><strong>🚶 游览建议（1.5h）：</strong></p>
+    <p contenteditable="false">4月底日落约 19:55，到达时已入夜，<strong>可以欣赏斜塔夜景灯光</strong></p>
+    <p contenteditable="false"><strong>🚶 游览建议（1h）：</strong></p>
     <p contenteditable="false">• 停好车步行5分钟到奇迹广场</p>
     <p contenteditable="false">• 拍经典"扶塔"照 → 绕斜塔一圈 → 看大教堂外观</p>
-    <p contenteditable="false">• 如果没提前买登塔票，外观拍照足够了</p>
-    <p contenteditable="false">📍 4月底日落约 19:55，<strong>18:30-19:30 是黄金拍摄时间</strong></p>
+    <p contenteditable="false">• 夜景也很美，灯光下的斜塔别有风味</p>
+    <p contenteditable="false">📍 因到达较晚，控制在1h内，抓紧赶往佛罗伦萨</p>
     <div class="xhs-links">
       <div class="xhs-links-title">📕 小红书参考</div>
       <div class="xhs-link-item">
@@ -1424,8 +1527,8 @@
 <!-- STOP: 比萨晚餐 -->
 <div class="tl-item" data-spot="pisa-dinner">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">19:45 - 20:30</span>
-    <span class="tl-type-badge badge-food">🍕 晚餐 45min</span>
+    <span class="tl-time-tag">21:15 - 21:45</span>
+    <span class="tl-type-badge badge-food">🍕 晚餐 30min</span>
   </div>
   <div class="tl-left">
     <div class="tl-spot-name" contenteditable="false">🍽️ 比萨晚餐</div>
@@ -1441,7 +1544,7 @@
     <div class="tl-right-section">
       <div class="tl-right-label">💡 建议</div>
       <div class="tip-mini" contenteditable="false">
-        <p>• 控制在45min内，后面还有1h15min车程</p>
+        <p>• 时间紧凑，建议买个 Panino 边走边吃或快速用餐30min</p>
       </div>
     </div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
@@ -1451,7 +1554,7 @@
 <!-- Drive: 比萨 → 佛罗伦萨 -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar">
-    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">20:30</span>
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">21:45</span>
     <span class="tl-type-badge badge-drive">🚗 驾车 1h15min</span>
   </div>
   <div class="drive-card">
@@ -1459,16 +1562,16 @@
     <div>
       <div class="drive-title" contenteditable="false">比萨 → 佛罗伦萨</div>
       <div class="drive-detail" contenteditable="false">85km · FI-PI-LI 快速路（免费）或 A11 高速</div>
-      <div class="drive-detail" contenteditable="false">⚠️ 晚上开车注意意大利乡间没路灯</div>
+      <div class="drive-detail" contenteditable="false">⚠️ 晚上开车注意意大利乡间没路灯，今天最后一程加油💪</div>
     </div>
     <span class="drive-cost">FI-PI-LI 免费</span>
   </div>
 </div>
 
-<!-- STOP 8: 佛罗伦萨 -->
+<!-- STOP 9: 佛罗伦萨 -->
 <div class="tl-item" data-spot="firenze">
   <div class="tl-time-bar">
-    <span class="tl-time-tag">~21:45</span>
+    <span class="tl-time-tag">~23:00</span>
     <span class="tl-type-badge badge-stay">🏨 入住</span>
   </div>
   <div class="tl-left">
@@ -1478,7 +1581,7 @@
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">如果 Day4/Day5 在佛罗伦萨全程步行，可以今晚就还车（火车站/机场还车点）</p>
+    <p contenteditable="false">今天行程充实，到达时间较晚，直接入住休息</p>
     <p contenteditable="false">如果 Day6 才开往威尼斯，需要找酒店附近停车场过夜</p>
     <div class="xhs-links">
       <div class="xhs-links-title">📕 小红书参考</div>
@@ -1523,13 +1626,14 @@
       <tr><th>时间</th><th>景点</th><th>停车场</th><th>费用</th><th>备注</th></tr>
     </thead>
     <tbody>
-      <tr><td>12:50</td><td>双排丝柏大道</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">短停10min，行李藏好</td></tr>
-      <tr><td>13:20</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>小耳朵教堂</td><td><span class="p-name">公路旁停车位</span></td><td>免费</td><td contenteditable="false">3-4个车位，先到先得</td></tr>
-      <tr><td>13:45</td><td>皮恩扎</td><td><span class="p-name">Parcheggio Pienza ⭐</span></td><td>~€6/4h</td><td contenteditable="false">收费安全，步行3min进镇</td></tr>
-      <tr><td>15:25</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>圆形丝柏</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">拍个全景就走</td></tr>
-      <tr><td>15:55</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>S型丝柏路</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">部分区域已围栏</td></tr>
-      <tr><td>18:15</td><td>比萨斜塔</td><td><span class="p-name">Via Galluppi ⭐</span></td><td>收费</td><td contenteditable="false">离斜塔最近，可存行李</td></tr>
-      <tr><td>21:45</td><td>佛罗伦萨</td><td><span class="p-name">San Lorenzo</span></td><td>~€25/24h</td><td contenteditable="false">地下停车，步行5min到酒店</td></tr>
+      <tr><td>12:00</td><td>天空之城</td><td><span class="p-name">Parcheggio Alberto Ricci ⭐</span></td><td>€2/h</td><td contenteditable="false">离售票口最近，可拍全景</td></tr>
+      <tr><td>14:45</td><td>双排丝柏大道</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">短停10min，行李藏好</td></tr>
+      <tr><td>15:15</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>小耳朵教堂</td><td><span class="p-name">公路旁停车位</span></td><td>免费</td><td contenteditable="false">3-4个车位，先到先得</td></tr>
+      <tr><td>15:45</td><td>皮恩扎</td><td><span class="p-name">Parcheggio Pienza ⭐</span></td><td>~€6/4h</td><td contenteditable="false">收费安全，步行3min进镇</td></tr>
+      <tr><td>17:25</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>圆形丝柏</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">拍个全景就走</td></tr>
+      <tr><td>17:55</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>S型丝柏路</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">部分区域已围栏</td></tr>
+      <tr><td>20:15</td><td>比萨斜塔</td><td><span class="p-name">Via Galluppi ⭐</span></td><td>收费</td><td contenteditable="false">离斜塔最近，可存行李</td></tr>
+      <tr><td>23:00</td><td>佛罗伦萨</td><td><span class="p-name">San Lorenzo</span></td><td>~€25/24h</td><td contenteditable="false">地下停车，步行5min到酒店</td></tr>
     </tbody>
   </table>
 </div>
@@ -1571,7 +1675,7 @@
   <p>• 腾讯文档「勇闯意大利」行程表 · 4人出行原始规划</p>
   <p>• 小红书多位博主实测分享（详见各景点参考链接）</p>
   <p>• Rome2rio / Google Maps 驾车距离与时间数据</p>
-  <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月10日 · v2 · 支持在线编辑与批注</p>
+  <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月13日 · v3 · 新增天空之城 · 支持在线编辑与批注</p>
 </div>
 
 </div>
