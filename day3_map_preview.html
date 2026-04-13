@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day3 地图预览 - 增加周边地点</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f0e8;
+    margin: 0;
+    padding: 20px;
+  }
+  h2 { text-align: center; color: #2d6a4f; margin-bottom: 8px; }
+  p.desc { text-align: center; font-size: 13px; color: #888; margin-bottom: 16px; }
+  .map-wrap {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    max-width: 980px;
+    margin: 0 auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+</style>
+</head>
+<body>
+<h2>🗺️ Day3 行程路线图（预览 - 增加周边地点）</h2>
+<p class="desc">灰色标签 = 周边参考城市（不属于行程）· 绿色胶囊 = 高速公路编号 · 点击景点可跳转 Google Maps</p>
+
+<div class="map-wrap">
+<div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<svg viewBox="0 0 960 1100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <defs>
+    <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f7f3eb;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#ede5d5;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4e8f0;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#b8d4e3;stop-opacity:0.4"/>
+    </linearGradient>
+    <linearGradient id="hillGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c8d8a8;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#e0d8c0;stop-opacity:0.15"/>
+    </linearGradient>
+    <linearGradient id="hillGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4c898;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#e8dcc8;stop-opacity:0.1"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.12)"/>
+    </filter>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.1)"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="960" height="1100" rx="16" fill="url(#mapBg)"/>
+
+  <!-- Tyrrhenian Sea (left side) -->
+  <path d="M0,0 L0,1100 L160,1100 C120,1000 80,900 100,800 C130,680 90,580 110,480 C140,380 100,280 120,180 C140,100 130,50 140,0 Z" fill="url(#seaGrad)"/>
+  <text x="45" y="550" font-size="14" fill="#8bb0c4" letter-spacing="8" font-weight="600" opacity="0.5" transform="rotate(-90,45,550)">T Y R R H E N I A N   S E A</text>
+  <!-- Sea waves -->
+  <g opacity="0.15" stroke="#7ba8c0" stroke-width="1.5" fill="none">
+    <path d="M30,300 Q45,295 60,300 Q75,305 90,300"/>
+    <path d="M20,500 Q35,495 50,500 Q65,505 80,500"/>
+    <path d="M40,700 Q55,695 70,700 Q85,705 100,700"/>
+    <path d="M25,900 Q40,895 55,900 Q70,905 85,900"/>
+  </g>
+
+  <!-- ===== SIMPLIFIED ITALY COASTLINE ===== -->
+  <path d="M140,0 C150,80 160,160 155,240 C148,340 165,420 150,500 C140,560 155,620 145,700 C138,760 150,820 140,880 C135,940 145,1000 160,1100" stroke="#c4a97d" stroke-width="2" fill="none" opacity="0.3" stroke-dasharray="8,4"/>
+
+  <!-- ===== GEOGRAPHIC REGIONS ===== -->
+  <path d="M160,120 Q280,80 400,100 Q520,75 640,95 Q760,70 880,90 L960,95 L960,350 Q800,320 640,340 Q480,310 320,335 Q240,320 160,340 Z" fill="url(#hillGrad1)"/>
+  <path d="M160,480 Q300,440 450,460 Q600,435 750,455 Q860,440 960,450 L960,680 Q800,650 640,670 Q480,645 320,665 Q240,655 160,670 Z" fill="url(#hillGrad2)"/>
+
+  <!-- Scattered Tuscan cypress trees (decorative) -->
+  <g opacity="0.18" fill="#5a8a5e">
+    <ellipse cx="320" cy="490" rx="4" ry="14"/><ellipse cx="335" cy="492" rx="3" ry="11"/>
+    <ellipse cx="520" cy="475" rx="4" ry="15"/><ellipse cx="535" cy="478" rx="3" ry="12"/>
+    <ellipse cx="700" cy="488" rx="3" ry="12"/>
+    <ellipse cx="420" cy="520" rx="3" ry="10"/><ellipse cx="433" cy="522" rx="3" ry="12"/>
+    <ellipse cx="280" cy="200" rx="3" ry="10"/><ellipse cx="293" cy="198" rx="3" ry="11"/>
+    <ellipse cx="500" cy="180" rx="3" ry="12"/>
+    <ellipse cx="680" cy="195" rx="3" ry="10"/><ellipse cx="693" cy="192" rx="3" ry="12"/>
+    <ellipse cx="600" cy="550" rx="25" ry="3" fill="#d4c898" opacity="1"/>
+    <ellipse cx="380" cy="580" rx="30" ry="3" fill="#d4c898" opacity="1"/>
+    <ellipse cx="750" cy="540" rx="20" ry="2.5" fill="#d4c898" opacity="1"/>
+  </g>
+
+  <!-- Sunflower hints in Val d'Orcia -->
+  <g opacity="0.2">
+    <circle cx="480" cy="560" r="4" fill="#f0c040"/><circle cx="490" cy="555" r="3" fill="#f0c040"/>
+    <circle cx="680" cy="530" r="3.5" fill="#f0c040"/><circle cx="690" cy="535" r="3" fill="#f0c040"/>
+  </g>
+
+  <!-- Region labels -->
+  <text x="200" y="55" font-size="20" fill="#c4a97d" letter-spacing="6" font-weight="700" opacity="0.3">D A Y  3  ·  R O M A  →  F I R E N Z E</text>
+  <text x="620" y="870" font-size="15" fill="#c4a97d" letter-spacing="8" font-weight="600" opacity="0.25">L A Z I O</text>
+  <text x="350" y="410" font-size="18" fill="#8a9a6a" letter-spacing="10" font-weight="700" opacity="0.2">T O S C A N A</text>
+  <text x="780" y="650" font-size="12" fill="#c4a97d" letter-spacing="5" font-weight="600" opacity="0.2">U M B R I A</text>
+
+  <!-- Arno River (near Florence) -->
+  <path d="M160,160 Q250,175 350,165 Q450,155 550,170 Q650,160 720,175" stroke="#8bb0c4" stroke-width="2" fill="none" opacity="0.35" stroke-linecap="round"/>
+  <text x="380" y="158" font-size="9" fill="#8bb0c4" opacity="0.5" font-style="italic">Arno</text>
+
+  <!-- Tiber River hint (near Rome) -->
+  <path d="M580,700 Q600,750 610,800 Q625,860 640,920 Q650,960 660,1000" stroke="#8bb0c4" stroke-width="2" fill="none" opacity="0.25" stroke-linecap="round"/>
+
+  <!-- ===== COMPASS ===== -->
+  <g transform="translate(900,75)" opacity="0.5">
+    <circle cx="0" cy="0" r="28" fill="rgba(255,255,255,0.6)" stroke="#c4a97d" stroke-width="1.5"/>
+    <text x="0" y="-12" text-anchor="middle" font-size="14" font-weight="800" fill="#8a7550">N</text>
+    <text x="0" y="22" text-anchor="middle" font-size="10" fill="#b0a080">S</text>
+    <text x="14" y="5" text-anchor="middle" font-size="10" fill="#b0a080">E</text>
+    <text x="-14" y="5" text-anchor="middle" font-size="10" fill="#b0a080">W</text>
+    <line x1="0" y1="-7" x2="0" y2="10" stroke="#8a7550" stroke-width="1.5"/>
+    <polygon points="0,-7 -3,1 3,1" fill="#8a7550"/>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- ★★★ NEW: NEARBY REFERENCE CITIES (gray labels for orientation) ★★★ -->
+  <!-- ================================================================ -->
+  <g opacity="0.55">
+    <!-- Bologna 博洛尼亚 (north, above Florence) -->
+    <circle cx="500" cy="28" r="3.5" fill="#a0a0a0"/>
+    <text x="514" y="26" font-size="11" fill="#999" font-weight="500">Bologna</text>
+    <text x="514" y="39" font-size="9" fill="#b0b0b0">博洛尼亚</text>
+
+    <!-- Prato 普拉托 (near Florence, northwest) -->
+    <circle cx="380" cy="108" r="3" fill="#a0a0a0"/>
+    <text x="360" y="123" font-size="10" fill="#999" font-weight="500">Prato</text>
+    <text x="360" y="134" font-size="8" fill="#b0b0b0">普拉托</text>
+
+    <!-- Empoli 恩波利 (west of Florence) -->
+    <circle cx="290" cy="175" r="3" fill="#a0a0a0"/>
+    <text x="255" y="190" font-size="10" fill="#999" font-weight="500">Empoli</text>
+    <text x="255" y="201" font-size="8" fill="#b0b0b0">恩波利</text>
+
+    <!-- Arezzo 阿雷佐 (east of Firenze) -->
+    <circle cx="730" cy="280" r="3.5" fill="#a0a0a0"/>
+    <text x="744" y="278" font-size="11" fill="#999" font-weight="500">Arezzo</text>
+    <text x="744" y="291" font-size="9" fill="#b0b0b0">阿雷佐</text>
+
+    <!-- Siena 锡耶纳 (south of Florence) -->
+    <circle cx="430" cy="340" r="3.5" fill="#a0a0a0"/>
+    <text x="444" y="338" font-size="11" fill="#999" font-weight="500">Siena</text>
+    <text x="444" y="351" font-size="9" fill="#b0b0b0">锡耶纳</text>
+
+    <!-- Grosseto 格罗塞托 (coast, south of Siena) -->
+    <circle cx="195" cy="545" r="3.5" fill="#a0a0a0"/>
+    <text x="170" y="563" font-size="10" fill="#999" font-weight="500">Grosseto</text>
+    <text x="170" y="575" font-size="8" fill="#b0b0b0">格罗塞托</text>
+
+    <!-- Perugia 佩鲁贾 (Umbria capital) -->
+    <circle cx="775" cy="455" r="3.5" fill="#a0a0a0"/>
+    <text x="789" y="453" font-size="11" fill="#999" font-weight="500">Perugia</text>
+    <text x="789" y="466" font-size="9" fill="#b0b0b0">佩鲁贾</text>
+
+    <!-- Spoleto 斯波莱托 -->
+    <circle cx="830" cy="545" r="3" fill="#a0a0a0"/>
+    <text x="844" y="543" font-size="10" fill="#999" font-weight="500">Spoleto</text>
+    <text x="844" y="555" font-size="8" fill="#b0b0b0">斯波莱托</text>
+
+    <!-- Orvieto 奥尔维耶托 (near Civita) -->
+    <circle cx="620" cy="660" r="3.5" fill="#a0a0a0"/>
+    <text x="634" y="658" font-size="11" fill="#999" font-weight="500">Orvieto</text>
+    <text x="634" y="671" font-size="9" fill="#b0b0b0">奥尔维耶托</text>
+
+    <!-- Terni 特尔尼 -->
+    <circle cx="810" cy="640" r="3" fill="#a0a0a0"/>
+    <text x="824" y="638" font-size="10" fill="#999" font-weight="500">Terni</text>
+    <text x="824" y="650" font-size="8" fill="#b0b0b0">特尔尼</text>
+
+    <!-- Viterbo 维泰博 -->
+    <circle cx="555" cy="775" r="3" fill="#a0a0a0"/>
+    <text x="569" y="773" font-size="10" fill="#999" font-weight="500">Viterbo</text>
+    <text x="569" y="785" font-size="8" fill="#b0b0b0">维泰博</text>
+
+    <!-- Civitavecchia 奇维塔韦基亚 (coast) -->
+    <circle cx="340" cy="860" r="3" fill="#a0a0a0"/>
+    <text x="264" y="857" font-size="10" fill="#999" font-weight="500">Civitavecchia</text>
+    <text x="264" y="869" font-size="8" fill="#b0b0b0">奇维塔韦基亚</text>
+
+    <!-- Rieti 列蒂 -->
+    <circle cx="820" cy="760" r="3" fill="#a0a0a0"/>
+    <text x="834" y="758" font-size="10" fill="#999" font-weight="500">Rieti</text>
+    <text x="834" y="770" font-size="8" fill="#b0b0b0">列蒂</text>
+
+    <!-- Gubbio 古比奥 -->
+    <circle cx="780" cy="370" r="3" fill="#a0a0a0"/>
+    <text x="794" y="368" font-size="10" fill="#999" font-weight="500">Gubbio</text>
+    <text x="794" y="380" font-size="8" fill="#b0b0b0">古比奥</text>
+
+    <!-- Montepulciano 蒙特普齐亚诺 (near Pienza) -->
+    <circle cx="660" cy="510" r="3" fill="#a0a0a0"/>
+    <text x="674" y="515" font-size="9" fill="#999" font-weight="500">Montepulciano</text>
+    <text x="674" y="526" font-size="8" fill="#b0b0b0">蒙特普齐亚诺</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- ★★★ NEW: HIGHWAY / ROAD MARKERS ★★★                              -->
+  <!-- ================================================================ -->
+  <g font-size="9" font-weight="700">
+    <!-- E45 (Perugia corridor, north-south) -->
+    <g transform="translate(780,510)">
+      <rect x="-18" y="-9" width="36" height="16" rx="3" fill="rgba(80,130,80,0.5)" stroke="rgba(80,130,80,0.3)" stroke-width="0.5"/>
+      <text x="0" y="3" text-anchor="middle" fill="white" font-size="9">E45</text>
+    </g>
+
+    <!-- E78 (Arezzo - Siena, east-west) -->
+    <g transform="translate(590,310)">
+      <rect x="-18" y="-9" width="36" height="16" rx="3" fill="rgba(80,130,80,0.5)" stroke="rgba(80,130,80,0.3)" stroke-width="0.5"/>
+      <text x="0" y="3" text-anchor="middle" fill="white" font-size="9">E78</text>
+    </g>
+
+    <!-- E80 / A12 (coast near Civitavecchia - Roma) -->
+    <g transform="translate(420,920)">
+      <rect x="-18" y="-9" width="36" height="16" rx="3" fill="rgba(80,130,80,0.5)" stroke="rgba(80,130,80,0.3)" stroke-width="0.5"/>
+      <text x="0" y="3" text-anchor="middle" fill="white" font-size="9">E80</text>
+    </g>
+
+    <!-- A11 (Firenze - Pisa corridor) -->
+    <g transform="translate(350,135)">
+      <rect x="-18" y="-9" width="36" height="16" rx="3" fill="rgba(80,130,80,0.5)" stroke="rgba(80,130,80,0.3)" stroke-width="0.5"/>
+      <text x="0" y="3" text-anchor="middle" fill="white" font-size="9">A11</text>
+    </g>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- ROUTE LINES (geographic positions) — same as current             -->
+  <!-- ================================================================ -->
+
+  <!-- Main road: Roma → Civita di Bagnoregio -->
+  <path d="M665,900 C630,850 580,800 530,760 C490,730 450,720 420,720" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+  <!-- Main road: Civita → Val d'Orcia -->
+  <path d="M420,720 C450,700 470,670 490,640 C500,620 505,600 510,580" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+  <!-- Val d'Orcia area roads -->
+  <path d="M510,580 C520,565 535,550 555,535" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+  <path d="M555,535 C570,520 590,510 610,500" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+  <path d="M610,500 C580,480 540,465 500,455" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+  <path d="M500,455 C440,430 380,400 340,370" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+  <!-- Main road: S-curve area → Pisa -->
+  <path d="M340,370 C300,330 260,290 235,250" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+  <!-- Main road: Pisa → Firenze -->
+  <path d="M235,230 C300,195 380,170 480,150" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+
+  <!-- ===== DISTANCE PILLS ===== -->
+  <g font-size="11" font-weight="600">
+    <rect x="510" y="810" width="135" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+    <text x="577" y="828" fill="white" text-anchor="middle" font-size="11">🚗 125km · 1h30min</text>
+
+    <rect x="380" y="650" width="135" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+    <text x="447" y="668" fill="white" text-anchor="middle" font-size="11">🚗 80km · 1h30min</text>
+
+    <rect x="440" y="552" width="85" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+    <text x="482" y="567" fill="white" text-anchor="middle" font-size="10">7km · 12m</text>
+
+    <rect x="580" y="515" width="85" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+    <text x="622" y="530" fill="white" text-anchor="middle" font-size="10">7km · 12m</text>
+
+    <rect x="540" y="470" width="80" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+    <text x="580" y="485" fill="white" text-anchor="middle" font-size="10">3km · 7m</text>
+
+    <rect x="380" y="400" width="95" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+    <text x="427" y="415" fill="white" text-anchor="middle" font-size="10">14km · 20m</text>
+
+    <rect x="225" y="300" width="130" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+    <text x="290" y="318" fill="white" text-anchor="middle" font-size="11">🚗 200km · 2h</text>
+
+    <rect x="310" y="175" width="135" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+    <text x="377" y="193" fill="white" text-anchor="middle" font-size="11">🚗 85km · 1h15min</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- LANDMARK BUILDINGS (hand-drawn style)                             -->
+  <!-- ================================================================ -->
+
+  <!-- ★ ROMA: Colosseum -->
+  <g transform="translate(720,860)" opacity="0.2">
+    <ellipse cx="0" cy="0" rx="40" ry="25" fill="none" stroke="#8b4513" stroke-width="2"/>
+    <path d="M-35,-10 A8,12 0 0,1 -20,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+    <path d="M-18,-10 A8,12 0 0,1 -3,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+    <path d="M0,-10 A8,12 0 0,1 15,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+    <path d="M17,-10 A8,12 0 0,1 32,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+    <path d="M-28,-20 A6,8 0 0,1 -16,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+    <path d="M-13,-20 A6,8 0 0,1 -1,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+    <path d="M2,-20 A6,8 0 0,1 14,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+    <path d="M17,-20 A6,8 0 0,1 29,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+  </g>
+
+  <!-- ★ CIVITA: Cliff-top castle -->
+  <g transform="translate(350,710)" opacity="0.22">
+    <path d="M-30,15 L-35,5 L-30,-5 L30,-5 L35,5 L30,15 Z" fill="#b0956a" opacity="0.6"/>
+    <rect x="-18" y="-22" width="8" height="17" rx="1" fill="#c4a070"/>
+    <rect x="-8" y="-28" width="10" height="23" rx="1" fill="#b89060"/>
+    <rect x="5" y="-20" width="8" height="15" rx="1" fill="#c4a070"/>
+    <rect x="-2" y="-36" width="5" height="12" rx="1" fill="#a08050"/>
+    <polygon points="-3,-36 0.5,-42 4,-36" fill="#8b7040"/>
+    <line x1="35" y1="5" x2="65" y2="12" stroke="#a0906a" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- ★ VAL D'ORCIA: Cypress avenue -->
+  <g transform="translate(440,595)" opacity="0.3">
+    <line x1="0" y1="0" x2="0" y2="-35" stroke="#8b7355" stroke-width="1.5"/>
+    <ellipse cx="-10" cy="-8" rx="4" ry="14" fill="#5a8a5e"/>
+    <ellipse cx="10" cy="-8" rx="4" ry="14" fill="#5a8a5e"/>
+    <ellipse cx="-10" cy="-26" rx="3.5" ry="12" fill="#5a8a5e"/>
+    <ellipse cx="10" cy="-26" rx="3.5" ry="12" fill="#5a8a5e"/>
+    <ellipse cx="-10" cy="-44" rx="3" ry="10" fill="#5a8a5e"/>
+    <ellipse cx="10" cy="-44" rx="3" ry="10" fill="#5a8a5e"/>
+    <rect x="-6" y="-58" width="12" height="8" rx="1" fill="#c4a070"/>
+    <polygon points="-8,-58 0,-64 8,-58" fill="#a0785a"/>
+  </g>
+
+  <!-- ★ PIENZA: Medieval town -->
+  <g transform="translate(650,490)" opacity="0.22">
+    <ellipse cx="0" cy="10" rx="35" ry="8" fill="#b0a070"/>
+    <rect x="-20" y="-15" width="10" height="20" rx="1" fill="#c4a070"/>
+    <rect x="-8" y="-20" width="12" height="25" rx="1" fill="#b89060"/>
+    <rect x="6" y="-12" width="10" height="17" rx="1" fill="#c4a070"/>
+    <rect x="-2" y="-30" width="6" height="15" rx="1" fill="#a08050"/>
+    <polygon points="-3,-30 1,-36 5,-30" fill="#8b7040"/>
+  </g>
+
+  <!-- ★ PISA: Leaning Tower -->
+  <g transform="translate(185,195)" opacity="0.25">
+    <g transform="rotate(-5.5)">
+      <rect x="-8" y="-55" width="16" height="55" rx="2" fill="#a0a0a0"/>
+      <rect x="-10" y="-55" width="20" height="5" rx="1" fill="#909090"/>
+      <rect x="-10" y="-44" width="20" height="4" rx="1" fill="#909090"/>
+      <rect x="-10" y="-34" width="20" height="4" rx="1" fill="#909090"/>
+      <rect x="-10" y="-24" width="20" height="4" rx="1" fill="#909090"/>
+      <rect x="-10" y="-14" width="20" height="4" rx="1" fill="#909090"/>
+      <circle cx="0" cy="-60" r="7" fill="none" stroke="#909090" stroke-width="1.5"/>
+    </g>
+    <rect x="18" y="-20" width="25" height="18" rx="1" fill="#b0b0a0"/>
+    <path d="M18,-20 L30.5,-30 L43,-20" fill="#a0a090"/>
+  </g>
+
+  <!-- ★ FIRENZE: Duomo -->
+  <g transform="translate(530,100)" opacity="0.22">
+    <rect x="-25" y="-10" width="50" height="25" rx="2" fill="#c8a878"/>
+    <path d="M-18,-10 Q0,-45 18,-10" fill="#d4654a" opacity="0.6"/>
+    <path d="M-18,-10 Q0,-45 18,-10" fill="none" stroke="#b85040" stroke-width="1.5"/>
+    <rect x="-3" y="-46" width="6" height="8" rx="1" fill="#c0a060"/>
+    <circle cx="0" cy="-49" r="3" fill="none" stroke="#c0a060" stroke-width="1"/>
+    <rect x="24" y="-35" width="8" height="45" rx="1" fill="#c8b888"/>
+    <polygon points="22,-35 28,-42 34,-35" fill="#b0a070"/>
+  </g>
+
+  <!-- ===== STOP CARDS (行程景点) ===== -->
+
+  <!-- ① 罗马 Roma -->
+  <a href="https://www.google.com/maps/search/?api=1&query=Roma+Termini+Station" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="580" y="910" width="310" height="78" rx="14" fill="white" stroke="#ef5350" stroke-width="2.5"/>
+      <circle cx="618" cy="950" r="24" fill="#ef5350" filter="url(#glow)"/>
+      <text x="618" y="957" text-anchor="middle" fill="white" font-size="17" font-weight="800">1</text>
+      <text x="654" y="933" font-size="16" font-weight="700" fill="#333">🏁 罗马 Roma</text>
+      <text x="654" y="953" font-size="12" fill="#888">10:30 出发 · Termini 取车</text>
+      <text x="654" y="973" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
+    </g>
+  </a>
+  <text x="620" y="900" font-size="24" opacity="0.4" transform="rotate(-15,620,900)">🚗</text>
+
+  <!-- ② 天空之城 -->
+  <a href="https://www.google.com/maps/search/?api=1&query=Civita+di+Bagnoregio" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="200" y="690" width="310" height="78" rx="14" fill="white" stroke="#8d6e63" stroke-width="2.5"/>
+      <circle cx="238" cy="730" r="24" fill="#8d6e63" filter="url(#glow)"/>
+      <text x="238" y="737" text-anchor="middle" fill="white" font-size="17" font-weight="800">2</text>
+      <text x="274" y="713" font-size="15" font-weight="700" fill="#333">🏰 天空之城</text>
+      <text x="274" y="733" font-size="12" fill="#888">12:00-13:15 · ⭐必打卡 · €5</text>
+      <text x="274" y="753" font-size="10" fill="#666">Civita di Bagnoregio · 悬崖千年古城</text>
+    </g>
+  </a>
+
+  <!-- ③ 双排丝柏大道 -->
+  <a href="https://www.google.com/maps/search/?api=1&query=43.0218,11.6369" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="255" y="560" width="250" height="72" rx="14" fill="white" stroke="#66bb6a" stroke-width="2.5"/>
+      <circle cx="290" cy="596" r="22" fill="#66bb6a"/>
+      <text x="290" y="603" text-anchor="middle" fill="white" font-size="16" font-weight="800">3</text>
+      <text x="322" y="585" font-size="14" font-weight="700" fill="#333">🌲 双排丝柏大道</text>
+      <text x="322" y="605" font-size="11" fill="#888">14:45 · 📸15min · 免费路边停</text>
+      <text x="322" y="622" font-size="10" fill="#666">经典明信片画面 · 长焦最佳</text>
+    </g>
+  </a>
+
+  <!-- ④ 小耳朵教堂【备选】-->
+  <a href="https://www.google.com/maps/search/?api=1&query=43.0708,11.6344" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="600" y="520" width="290" height="68" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
+      <circle cx="635" cy="554" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
+      <text x="635" y="561" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">4</text>
+      <text x="668" y="543" font-size="13" font-weight="700" fill="#e65100">⛪【备选】小耳朵教堂</text>
+      <text x="668" y="563" font-size="11" fill="#888">15:15 · 📸15min</text>
+      <text x="668" y="579" font-size="10" fill="#666">金色麦田中孤独的小教堂</text>
+    </g>
+  </a>
+
+  <!-- ⑤ 皮恩扎 Pienza -->
+  <a href="https://www.google.com/maps/search/?api=1&query=Pienza+Italy" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="620" y="430" width="290" height="78" rx="14" fill="white" stroke="#ff9800" stroke-width="2.5"/>
+      <circle cx="655" cy="470" r="24" fill="#ff9800"/>
+      <text x="655" y="477" text-anchor="middle" fill="white" font-size="17" font-weight="800">5</text>
+      <text x="690" y="453" font-size="15" font-weight="700" fill="#333">🏘️ 皮恩扎 Pienza</text>
+      <text x="690" y="473" font-size="12" fill="#888">15:45-17:15 · 🍝 午餐+逛镇</text>
+      <text x="690" y="493" font-size="10" fill="#666">"理想城市" · 佩科里诺奶酪 🧀</text>
+    </g>
+  </a>
+
+  <!-- ⑥ 圆形丝柏林【备选】-->
+  <a href="https://www.google.com/maps/search/?api=1&query=43.0627,11.5589" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="230" y="435" width="260" height="65" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
+      <circle cx="265" cy="467" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
+      <text x="265" y="474" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">6</text>
+      <text x="298" y="458" font-size="13" font-weight="700" fill="#e65100">🌲【备选】圆形丝柏林</text>
+      <text x="298" y="478" font-size="11" fill="#888">17:25 · 📸10min · 俯瞰奥尔恰谷</text>
+      <text x="298" y="494" font-size="10" fill="#666">上帝在大地上画的圆</text>
+    </g>
+  </a>
+
+  <!-- ⑦ S型丝柏路【备选】-->
+  <a href="https://www.google.com/maps/search/?api=1&query=43.2008,11.5904" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="160" y="342" width="260" height="65" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
+      <circle cx="195" cy="374" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
+      <text x="195" y="381" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">7</text>
+      <text x="228" y="365" font-size="13" font-weight="700" fill="#e65100">🌲【备选】S型丝柏路</text>
+      <text x="228" y="385" font-size="11" fill="#888">17:55 · 📸15min</text>
+      <text x="228" y="401" font-size="10" fill="#666">蜿蜒S曲线 · 极具视觉冲击</text>
+    </g>
+  </a>
+  <path d="M430,365 C445,355 440,345 455,355 C470,365 465,355 480,345" stroke="#c4a97d" stroke-width="2" fill="none" opacity="0.25"/>
+
+  <!-- ⑧ 比萨斜塔 -->
+  <a href="https://www.google.com/maps/search/?api=1&query=Leaning+Tower+of+Pisa" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="170" y="210" width="280" height="78" rx="14" fill="white" stroke="#42a5f5" stroke-width="2.5"/>
+      <circle cx="208" cy="250" r="24" fill="#42a5f5" filter="url(#glow)"/>
+      <text x="208" y="257" text-anchor="middle" fill="white" font-size="17" font-weight="800">8</text>
+      <text x="244" y="233" font-size="15" font-weight="700" fill="#333">🏛️ 比萨斜塔</text>
+      <text x="244" y="253" font-size="12" fill="#888">20:15-21:15 · ⭐必打卡</text>
+      <text x="244" y="273" font-size="10" fill="#666">奇迹广场 · Via Galluppi停车 · ⚠️ZTL</text>
+    </g>
+  </a>
+
+  <!-- ⑨ 佛罗伦萨 Firenze -->
+  <a href="https://www.google.com/maps/search/?api=1&query=Florence+Santa+Maria+Novella" target="_blank">
+    <g filter="url(#cardShadow)" cursor="pointer">
+      <rect x="480" y="120" width="310" height="78" rx="14" fill="white" stroke="#7e57c2" stroke-width="2.5"/>
+      <circle cx="518" cy="160" r="24" fill="#7e57c2" filter="url(#glow)"/>
+      <text x="518" y="167" text-anchor="middle" fill="white" font-size="17" font-weight="800">9</text>
+      <text x="554" y="143" font-size="15" font-weight="700" fill="#333">🏨 佛罗伦萨 Firenze</text>
+      <text x="554" y="163" font-size="12" fill="#888">~23:00 到达 · 入住酒店</text>
+      <text x="554" y="183" font-size="10" fill="#666">San Lorenzo 停车场 ~€25/24h · ⚠️ZTL</text>
+    </g>
+  </a>
+
+  <!-- ===== PIN DOTS ===== -->
+  <circle cx="665" cy="920" r="6" fill="#ef5350" opacity="0.6"/>
+  <circle cx="420" cy="720" r="6" fill="#8d6e63" opacity="0.6"/>
+  <circle cx="510" cy="580" r="5" fill="#66bb6a" opacity="0.6"/>
+  <circle cx="555" cy="535" r="5" fill="#ff9800" opacity="0.5"/>
+  <circle cx="610" cy="500" r="5" fill="#ff9800" opacity="0.6"/>
+  <circle cx="500" cy="455" r="5" fill="#ff9800" opacity="0.5"/>
+  <circle cx="340" cy="370" r="5" fill="#ff9800" opacity="0.5"/>
+  <circle cx="220" cy="240" r="6" fill="#42a5f5" opacity="0.6"/>
+  <circle cx="490" cy="150" r="6" fill="#7e57c2" opacity="0.6"/>
+
+  <!-- ===== MINI INFO BADGES ===== -->
+  <!-- A1 highway label -->
+  <g transform="translate(600,800)">
+    <rect x="-25" y="-10" width="50" height="18" rx="9" fill="rgba(45,106,79,0.7)"/>
+    <text x="0" y="3" text-anchor="middle" font-size="10" fill="white" font-weight="600">A1/E35</text>
+  </g>
+  <!-- FI-PI-LI label -->
+  <g transform="translate(340,210)">
+    <rect x="-30" y="-10" width="60" height="18" rx="9" fill="rgba(45,106,79,0.7)"/>
+    <text x="0" y="3" text-anchor="middle" font-size="10" fill="white" font-weight="600">FI-PI-LI</text>
+  </g>
+  <!-- ZTL warning near Pisa -->
+  <g transform="translate(175,290)">
+    <rect x="-22" y="-10" width="44" height="18" rx="9" fill="rgba(239,83,80,0.8)"/>
+    <text x="0" y="3" text-anchor="middle" font-size="9" fill="white" font-weight="700">⚠️ ZTL</text>
+  </g>
+  <!-- ZTL warning near Florence -->
+  <g transform="translate(485,200)">
+    <rect x="-22" y="-10" width="44" height="18" rx="9" fill="rgba(239,83,80,0.8)"/>
+    <text x="0" y="3" text-anchor="middle" font-size="9" fill="white" font-weight="700">⚠️ ZTL</text>
+  </g>
+
+  <!-- ===== LEGEND ===== -->
+  <g transform="translate(20,1020)">
+    <rect width="920" height="68" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow)"/>
+    <circle cx="30" cy="22" r="10" fill="#ef5350"/><text x="50" y="26" font-size="11" fill="#555">出发/到达</text>
+    <circle cx="155" cy="22" r="10" fill="#8d6e63"/><text x="175" y="26" font-size="11" fill="#555">古城遗迹</text>
+    <circle cx="275" cy="22" r="10" fill="#66bb6a"/><text x="295" y="26" font-size="11" fill="#555">自然景观</text>
+    <circle cx="390" cy="22" r="10" fill="#ff9800"/><text x="410" y="26" font-size="11" fill="#555">午餐/小镇</text>
+    <circle cx="520" cy="22" r="10" fill="#42a5f5"/><text x="540" y="26" font-size="11" fill="#555">世界遗产</text>
+    <circle cx="640" cy="22" r="10" fill="#7e57c2"/><text x="660" y="26" font-size="11" fill="#555">住宿终点</text>
+    <!-- NEW: Reference city legend -->
+    <circle cx="775" cy="22" r="6" fill="none" stroke="#a0a0a0" stroke-width="2" stroke-dasharray="3,2"/>
+    <text x="790" y="26" font-size="11" fill="#999">周边参考城市</text>
+    <text x="30" y="52" font-size="11" fill="#888">总里程 ~550km · 驾车 ~7.5h · 绿虚线=核心高速 · 橙虚线=托斯卡纳乡间路 · 灰色标签=非行程周边城市（辅助定位）</text>
+  </g>
+
+</svg>
+</div>
+</div>
+
+</body>
+</html>
