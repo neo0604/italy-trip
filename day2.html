@@ -47,7 +47,7 @@
     margin-top: 10px;
   }
   .toolbar {
-    position: sticky; top: 0; z-index: 100; background: white;
+    position: sticky; top: 0; z-index: 90; background: white;
     border-bottom: 1px solid var(--border); padding: 8px 16px;
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -178,6 +178,54 @@
     .annotation-marker { display: none; }
     body { background: white; }
   }
+
+  /* Day Tab 切换栏 */
+  .day-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid #e0d8c8;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+  .day-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    padding: 8px 6px 6px;
+    text-decoration: none;
+    color: #888;
+    font-size: 12px;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+  .day-tab:hover { color: #333; background: #f9f7f2; }
+  .day-tab.active {
+    color: #2d6a4f;
+    font-weight: 700;
+    border-bottom-color: #2d6a4f;
+    background: #f0f7f2;
+  }
+  .day-tab .tab-day { font-size: 13px; font-weight: 700; }
+  .day-tab .tab-city { font-size: 10px; margin-top: 1px; opacity: 0.75; }
+  .day-tab-home {
+    min-width: 44px;
+    padding: 8px 10px 6px;
+    font-size: 16px;
+  }
+
 </style>
 </head>
 <body>
@@ -190,6 +238,19 @@
 </div>
 
 <!-- Toolbar -->
+<div class="day-tabs" id="dayTabs">
+  <a class="day-tab day-tab-home" href="index.html" title="首页">🏠</a>
+  <a class="day-tab" href="day1.html"><span class="tab-day">D1</span><span class="tab-city">罗马</span></a>
+  <a class="day-tab active" href="day2.html"><span class="tab-day">D2</span><span class="tab-city">梵蒂冈</span></a>
+  <a class="day-tab" href="day3.html"><span class="tab-day">D3</span><span class="tab-city">比萨</span></a>
+  <a class="day-tab" href="day4.html"><span class="tab-day">D4</span><span class="tab-city">五渔村</span></a>
+  <a class="day-tab" href="day5.html"><span class="tab-day">D5</span><span class="tab-city">佛罗伦萨</span></a>
+  <a class="day-tab" href="day6.html"><span class="tab-day">D6</span><span class="tab-city">威尼斯</span></a>
+  <a class="day-tab" href="day7.html"><span class="tab-day">D7</span><span class="tab-city">多洛米蒂</span></a>
+  <a class="day-tab" href="day8.html"><span class="tab-day">D8</span><span class="tab-city">多洛米蒂</span></a>
+  <a class="day-tab" href="day9.html"><span class="tab-day">D9</span><span class="tab-city">科莫湖</span></a>
+  <a class="day-tab" href="day10.html"><span class="tab-day">D10</span><span class="tab-city">米兰</span></a>
+</div>
 <div class="toolbar" id="toolbar">
   <button class="toolbar-btn" id="btn-edit" onclick="toggleEdit()">✏️ 编辑模式</button>
   <button class="toolbar-btn btn-note" id="btn-annotate" onclick="toggleAnnotate()">📝 批注模式</button>
@@ -1027,5 +1088,6 @@ window.addEventListener('load', () => {
 });
 </script>
 
+<script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector(".day-tab.active");if(t){t.scrollIntoView({inline:"center",block:"nearest"})}});</script>
 </body>
 </html>
