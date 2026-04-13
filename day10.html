@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Day10 行程详细规划 | 米兰→深圳·回程日</title>
+<style>
+  :root{--green:#2d6a4f;--green-light:#e8f5e9;--orange:#ff9800;--red:#ef5350;--blue:#42a5f5;--purple:#7e57c2;--bg:#f5f0e8;--card:#fff;--text:#2c2c2c;--text-secondary:#666;--border:#e0d8c8;--note-bg:#fffde7;--note-border:#ffe082;--theme:#b71c1c;--theme-light:#ffebee;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-text-size-adjust:100%;}
+  .hero{background:linear-gradient(135deg,#b71c1c 0%,#c62828 20%,#e53935 50%,#ef5350 80%,#ef9a9a 100%);color:white;padding:40px 20px 30px;text-align:center;}
+  .hero h1{font-size:26px;margin-bottom:6px;}.hero .subtitle{font-size:13px;opacity:0.85;}.hero .date-badge{display:inline-block;background:rgba(255,255,255,0.2);padding:4px 16px;border-radius:20px;font-size:13px;margin-top:10px;}
+  .toolbar{position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+  .toolbar-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;border:1px solid #ddd;background:white;font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap;color:var(--text);}
+  .toolbar-btn:hover{background:#f0f0f0;}.toolbar-btn.active{background:#c62828;color:white;border-color:#c62828;}
+  .toolbar-btn.btn-note{border-color:var(--note-border);background:var(--note-bg);}.toolbar-btn.btn-note:hover{background:#fff8e1;}
+  .toolbar-sep{width:1px;height:20px;background:#ddd;}.toolbar-hint{font-size:11px;color:#999;margin-left:auto;}
+  .stats-bar{display:flex;justify-content:center;gap:20px;padding:14px 16px;background:white;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+  .stat-item{text-align:center;min-width:70px;}.stat-item .num{font-size:20px;font-weight:700;color:#c62828;}.stat-item .label{font-size:11px;color:#888;margin-top:2px;}
+  .container{max-width:1100px;margin:0 auto;padding:20px 16px;}
+  .section-title{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+  .tl-item{display:grid;grid-template-columns:260px 1fr 260px;gap:0;margin-bottom:12px;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);background:var(--card);}
+  .tl-item.item-drive{grid-template-columns:1fr;background:#fff5f5;}
+  .tl-time-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(90deg,#ffebee 0%,white 100%);border-bottom:1px solid #eee;}
+  .tl-time-tag{font-size:13px;font-weight:700;color:#c62828;background:white;padding:2px 12px;border-radius:10px;border:1px solid #ef9a9a;white-space:nowrap;}
+  .tl-type-badge{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;}
+  .badge-food{background:#fce4ec;color:#c62828;}.badge-flight{background:#e3f2fd;color:#1565c0;}.badge-shop{background:#fff3e0;color:#e65100;}.badge-must{background:var(--red);color:white;}.badge-walk{background:#e0f2f1;color:#00695c;}.badge-transit{background:#f3e5f5;color:#6a1b9a;}.badge-checklist{background:#fff8e1;color:#f57f17;}
+  .tl-left{padding:14px 16px;border-right:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px;background:#fef5f5;}
+  .tl-spot-name{font-size:16px;font-weight:700;color:var(--text);line-height:1.3;}.tl-spot-subname{font-size:12px;color:var(--text-secondary);}
+  .tl-spot-addr{font-size:12px;color:#888;display:flex;align-items:flex-start;gap:4px;}.tl-spot-addr .addr-icon{flex-shrink:0;}
+  .gmap-link{display:inline-flex;align-items:center;gap:4px;background:#ffebee;color:#c62828;padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #ef9a9a;transition:all .2s;}.gmap-link:hover{background:#c62828;color:white;}
+  .tl-mid{padding:14px 16px;border-right:1px solid #f0f0f0;}.tl-mid p{font-size:13px;color:#555;margin-bottom:6px;}.tl-mid p:last-child{margin-bottom:0;}
+  .tl-right{padding:14px 16px;background:#fdfcfa;}.tl-right-section{margin-bottom:10px;}.tl-right-section:last-child{margin-bottom:0;}
+  .tl-right-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;margin-bottom:4px;letter-spacing:.5px;}
+  .tip-mini{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:8px 10px;font-size:12px;color:#555;}
+  .drive-card{padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}.drive-card .drive-icon{font-size:18px;}.drive-card .drive-title{font-weight:600;font-size:14px;}.drive-card .drive-detail{font-size:12px;color:var(--text-secondary);}
+  [contenteditable="true"]{outline:none;border-radius:4px;transition:background .2s;}.edit-mode [contenteditable="true"]:hover{background:rgba(198,40,40,0.06);}.edit-mode [contenteditable="true"]:focus{background:rgba(198,40,40,0.1);box-shadow:inset 0 0 0 1px rgba(198,40,40,0.3);}
+  .user-note{background:var(--note-bg);border:1px solid var(--note-border);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:12px;position:relative;}.user-note::before{content:'📝 我的批注';display:block;font-size:10px;font-weight:700;color:#f57f17;margin-bottom:4px;}.user-note .note-delete{position:absolute;top:6px;right:8px;cursor:pointer;font-size:12px;color:#ccc;}.user-note .note-delete:hover{color:var(--red);}
+  .add-note-btn{display:none;margin-top:6px;padding:4px 10px;border-radius:6px;border:1px dashed var(--note-border);background:transparent;color:#f57f17;font-size:11px;cursor:pointer;transition:all .2s;}.add-note-btn:hover{background:var(--note-bg);}.annotate-mode .add-note-btn{display:inline-block;}
+  .tips-section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+  .tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}.tip-card{border-radius:10px;padding:12px;font-size:13px;}.tip-card h4{font-size:14px;margin-bottom:6px;}.tip-card.tip-danger{background:#fce4ec;}.tip-card.tip-warn{background:#fff8e1;}.tip-card.tip-info{background:#e3f2fd;}.tip-card.tip-ok{background:var(--green-light);}
+  .checklist{background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+  .checklist-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:14px;}.checklist-item:last-child{border-bottom:none;}
+  .checklist-item input[type="checkbox"]{width:18px;height:18px;accent-color:#c62828;cursor:pointer;}
+  .checklist-item label{cursor:pointer;flex:1;}
+  .checklist-item .cl-note{font-size:11px;color:#999;}
+  .trip-summary{background:linear-gradient(135deg,#fce4ec,#fff3e0);border-radius:14px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center;}
+  .trip-summary h2{font-size:22px;margin-bottom:12px;}.trip-summary .summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px;}.trip-summary .sg-item{text-align:center;}.trip-summary .sg-num{font-size:24px;font-weight:800;color:#c62828;}.trip-summary .sg-label{font-size:11px;color:#888;margin-top:4px;}
+  .sources{background:var(--card);border-radius:14px;padding:16px 20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04);font-size:12px;color:#888;}.sources h3{font-size:14px;color:#555;margin-bottom:8px;}.sources p{margin-bottom:4px;}
+  .footer{text-align:center;padding:20px;color:#bbb;font-size:12px;}
+  @media(max-width:768px){.tl-item{grid-template-columns:1fr!important;}.tl-left,.tl-mid,.tl-right{border-right:none!important;border-bottom:1px solid #f0f0f0;}.tl-right{border-bottom:none;}.tip-grid{grid-template-columns:1fr;}.hero h1{font-size:22px;}.stats-bar{gap:12px;}.toolbar-hint{display:none;}.container{padding:12px 10px;}.drive-card{flex-direction:column;align-items:flex-start;}.trip-summary .summary-grid{grid-template-columns:repeat(3,1fr);}}
+  @media print{.toolbar{display:none;}.add-note-btn{display:none;}body{background:white;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>✈️ Day10 Arrivederci Italia!·米兰→深圳</h1>
+  <div class="subtitle">退房 → 机场购物 → 退税 → 飞回深圳 · 10天意大利之旅完美收官</div>
+  <div class="date-badge">📅 2026年5月5日 周二</div>
+</div>
+
+<div class="toolbar" id="toolbar">
+  <button class="toolbar-btn" id="btn-edit" onclick="toggleEdit()">✏️ 编辑模式</button>
+  <button class="toolbar-btn btn-note" id="btn-annotate" onclick="toggleAnnotate()">📝 批注模式</button>
+  <div class="toolbar-sep"></div>
+  <button class="toolbar-btn" onclick="exportNotes()">💾 导出批注</button>
+  <button class="toolbar-btn" onclick="saveLocal()">📥 保存到本地</button>
+  <span class="toolbar-hint" id="toolbar-hint">点击「编辑模式」可直接修改内容，「批注模式」可添加备注</span>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">~08:00</div><div class="label">退房</div></div>
+  <div class="stat-item"><div class="num">~11h</div><div class="label">飞行时长</div></div>
+  <div class="stat-item"><div class="num">MXP→SZX</div><div class="label">航线</div></div>
+  <div class="stat-item"><div class="num">Day 10</div><div class="label">最后一天</div></div>
+  <div class="stat-item"><div class="num">🏠</div><div class="label">回家！</div></div>
+</div>
+
+<div class="container">
+
+<h2 class="section-title">⏱️ 回程时间线</h2>
+
+<!-- Morning -->
+<div class="tl-item" data-spot="checkout">
+  <div class="tl-time-bar"><span class="tl-time-tag">08:00 - 09:00</span><span class="tl-type-badge badge-checklist">📋 退房</span></div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🏨 酒店退房</div>
+    <div class="tl-spot-subname" contenteditable="false">最后检查一遍行李和证件</div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false"><strong>📋 退房 Checklist：</strong></p>
+    <p contenteditable="false">• 检查房间：抽屉、衣柜、保险箱、充电器插头</p>
+    <p contenteditable="false">• 护照、机票（电子票）、酒店确认单</p>
+    <p contenteditable="false">• 退税单据整理好（按商店分开）</p>
+    <p contenteditable="false">• 行李称重：注意航司行李限额（一般 23kg×2）</p>
+    <p contenteditable="false">• 如有购买的酒/橄榄油等液体，放托运行李</p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section"><div class="tl-right-label">💡 提示</div><div class="tip-mini" contenteditable="false"><p>• 提前一晚打包好大件</p><p>• 退税单据放手提包里</p><p>• 预留时间比你想的多</p></div></div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Transit to airport -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar"><span class="tl-time-tag">09:00 - 10:30</span><span class="tl-type-badge badge-transit">🚅 机场大巴/火车</span></div>
+  <div class="drive-card">
+    <span class="drive-icon">🚅</span>
+    <div><div class="drive-title" contenteditable="false">米兰市区 → 马尔彭萨机场 MXP</div><div class="drive-detail" contenteditable="false">Malpensa Express 火车 从 Milano Centrale 出发 · 约 50min · €13/人 · 或 Malpensa Shuttle 大巴 €10/人 · 约 1h</div></div>
+    <a class="gmap-link" href="https://www.google.com/maps/dir/Milano+Centrale/Malpensa+Airport" target="_blank" style="margin-left:auto;">📍 导航</a>
+  </div>
+</div>
+
+<!-- Airport -->
+<div class="tl-item" data-spot="airport">
+  <div class="tl-time-bar"><span class="tl-time-tag">~10:30 - 13:00</span><span class="tl-type-badge badge-flight">✈️ 机场</span><span class="tl-type-badge badge-shop">🛍️ 退税+免税店</span></div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">✈️ 马尔彭萨机场 MXP</div>
+    <div class="tl-spot-subname" contenteditable="false">Milano Malpensa Airport · Terminal 1</div>
+    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Terminal 1, Malpensa Airport</span></div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Milano+Malpensa+Airport" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false"><strong>⏰ 建议到达时间：起飞前 3 小时</strong></p>
+    <p contenteditable="false"><strong>📋 机场流程：</strong></p>
+    <p contenteditable="false">1️⃣ <strong>办值机</strong> — 柜台或自助机，托运行李</p>
+    <p contenteditable="false">2️⃣ <strong>退税</strong> — 值机后、过安检前，到海关柜台盖章</p>
+    <p contenteditable="false">&nbsp;&nbsp;&nbsp;&nbsp;• 出示退税单 + 护照 + 购买商品（可能抽查）</p>
+    <p contenteditable="false">&nbsp;&nbsp;&nbsp;&nbsp;• 盖章后到 Global Blue / Planet 柜台拿退款</p>
+    <p contenteditable="false">&nbsp;&nbsp;&nbsp;&nbsp;• 可选：退到信用卡（7-15天）或现金退款</p>
+    <p contenteditable="false">3️⃣ <strong>过安检 + 出境</strong></p>
+    <p contenteditable="false">4️⃣ <strong>免税店购物</strong> — T1 免税区有大牌</p>
+    <p contenteditable="false">&nbsp;&nbsp;&nbsp;&nbsp;• 推荐：意大利巧克力、Limoncello 柠檬酒</p>
+    <p contenteditable="false">&nbsp;&nbsp;&nbsp;&nbsp;• Bvlgari、Gucci 有时比市区便宜</p>
+    <p contenteditable="false">5️⃣ <strong>登机</strong></p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section"><div class="tl-right-label">⚠️ 退税关键</div><div class="tip-mini" contenteditable="false"><p>• <strong>先退税再托运！</strong></p><p>• 海关可能要看商品</p><p>• 单据不要弄丢</p><p>• 退税柜台可能排队30min+</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">💶 退税比例</div><div class="tip-mini" contenteditable="false"><p>• 意大利增值税22%</p><p>• 实际退回约11-14%</p><p>• 单笔满€154.95才能退</p></div></div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Flight -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar"><span class="tl-time-tag">~13:30</span><span class="tl-type-badge badge-flight">✈️ 起飞</span></div>
+  <div class="drive-card"><span class="drive-icon">✈️</span><div><div class="drive-title" contenteditable="false">米兰 MXP → 深圳 SZX</div><div class="drive-detail" contenteditable="false">飞行约 11 小时 · 到达深圳为次日（北京时间） · 记得调时差（意大利→中国 +6h）</div></div></div>
+</div>
+
+<!-- Arrival -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar"><span class="tl-time-tag">次日 ~07:00</span><span class="tl-type-badge badge-flight">🛬 降落</span></div>
+  <div class="drive-card"><span class="drive-icon">🏠</span><div><div class="drive-title" contenteditable="false">抵达深圳宝安机场</div><div class="drive-detail" contenteditable="false">入境 + 取行李 + 回家！意大利 10 天之旅圆满结束 🎉</div></div></div>
+</div>
+
+<!-- Checklist section -->
+<div class="checklist">
+  <h2 class="section-title">✅ 出发前 Checklist</h2>
+  <div class="checklist-item"><input type="checkbox" id="cl1"><label for="cl1"><strong>护照</strong> — 确认有效期>6个月</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl2"><label for="cl2"><strong>机票</strong> — 电子行程单/App</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl3"><label for="cl3"><strong>退税单据</strong> — 按商店分好，放手提包</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl4"><label for="cl4"><strong>行李称重</strong> — 不超限额</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl5"><label for="cl5"><strong>充电宝 + 转换插头</strong> — 放手提行李</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl6"><label for="cl6"><strong>液体物品</strong> — 酒/橄榄油等放托运</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl7"><label for="cl7"><strong>手提行李液体</strong> — 每件≤100ml，总共≤1L</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl8"><label for="cl8"><strong>酒店退房</strong> — 检查房间各角落</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl9"><label for="cl9"><strong>信用卡对账</strong> — 确认所有消费正确</label></div>
+  <div class="checklist-item"><input type="checkbox" id="cl10"><label for="cl10"><strong>照片备份</strong> — 传到云端以防万一</label></div>
+</div>
+
+<!-- Trip Summary -->
+<div class="trip-summary">
+  <h2>🇮🇹 10天意大利之旅·全程回顾</h2>
+  <p style="color:#666;font-size:14px;">从罗马的万神殿到多洛米蒂的三峰山，从威尼斯的贡多拉到科莫湖的日落</p>
+  <div class="summary-grid">
+    <div class="sg-item"><div class="sg-num">10</div><div class="sg-label">天</div></div>
+    <div class="sg-item"><div class="sg-num">6</div><div class="sg-label">座城市</div></div>
+    <div class="sg-item"><div class="sg-num">~1500</div><div class="sg-label">公里自驾</div></div>
+    <div class="sg-item"><div class="sg-num">30+</div><div class="sg-label">景点打卡</div></div>
+    <div class="sg-item"><div class="sg-num">∞</div><div class="sg-label">回忆</div></div>
+  </div>
+  <p style="margin-top:16px;font-size:13px;color:#888;">罗马 → 梵蒂冈 → 托斯卡纳 → 比萨 → 佛罗伦萨 → 威尼斯 → 多洛米蒂 → 科莫湖 → 米兰</p>
+</div>
+
+<div class="tips-section">
+  <h2 class="section-title">💡 Day10 实用贴士</h2>
+  <div class="tip-grid">
+    <div class="tip-card tip-danger"><h4>⚠️ 退税必读</h4><p contenteditable="false">退税是<strong>值机后、安检前</strong>！先拿到登机牌和托运标签，再去海关盖章。有些商品海关会要求出示，别提前托运掉。</p></div>
+    <div class="tip-card tip-warn"><h4>💰 现金退税 vs 信用卡</h4><p contenteditable="false">现金退税当场拿钱但手续费高（约3-5€/笔）。信用卡退税无手续费但等7-15个工作日。金额大推荐信用卡。</p></div>
+    <div class="tip-card tip-info"><h4>🚅 去机场</h4><p contenteditable="false">Malpensa Express 从 Milano Centrale 出发，每30min一班，€13。<strong>提前在 trenitalia.it 买票</strong>可便宜一些。</p></div>
+    <div class="tip-card tip-ok"><h4>⏰ 时间规划</h4><p contenteditable="false">国际航班建议<strong>提前3小时到机场</strong>。退税 + 安检 + 免税店至少需要2小时。宁可早不可晚。</p></div>
+    <div class="tip-card tip-warn"><h4>🔌 飞行装备</h4><p contenteditable="false">充电宝、耳机、颈枕、眼罩放手提。飞机上可看照片回顾行程！下载好电影/音乐应对11小时飞行。</p></div>
+    <div class="tip-card tip-info"><h4>🕐 时差</h4><p contenteditable="false">意大利比中国慢6小时（夏令时）。到达深圳后可能有时差反应，第一天别安排太多。</p></div>
+  </div>
+</div>
+
+<div class="sources">
+  <h3>📚 信息来源</h3>
+  <p>• 腾讯文档「勇闯意大利」行程表</p>
+  <p>• 马尔彭萨机场官网 milanomalpensa-airport.com</p>
+  <p>• Global Blue 退税指南 globalblue.com</p>
+  <p>• Malpensa Express 时刻表 malpensaexpress.it</p>
+  <p style="margin-top:8px;color:#aaa;">整理于 2026年4月13日 · 支持在线编辑与批注</p>
+</div>
+</div>
+
+<div class="footer">
+  <p style="font-size:16px;margin-bottom:8px;">🇮🇹 Arrivederci, Italia! Ci vediamo la prossima volta!</p>
+  <p>再见，意大利！我们下次再见！</p>
+  <p style="margin-top:8px;">Made with ❤️ for Neo's Italy Trip 2026</p>
+</div>
+
+<script>
+let editMode=false,annotateMode=false;
+function toggleEdit(){editMode=!editMode;const b=document.getElementById('btn-edit'),h=document.getElementById('toolbar-hint');b.classList.toggle('active',editMode);document.body.classList.toggle('edit-mode',editMode);document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=editMode?'true':'false';});h.textContent=editMode?'✏️ 编辑模式已开启 — 点击任意文字即可修改':'点击「编辑模式」可直接修改内容，「批注模式」可添加备注';}
+function toggleAnnotate(){annotateMode=!annotateMode;const b=document.getElementById('btn-annotate');b.classList.toggle('active',annotateMode);document.body.classList.toggle('annotate-mode',annotateMode);const h=document.getElementById('toolbar-hint');if(annotateMode)h.textContent='📝 批注模式已开启 — 点击「+ 添加批注」按钮';else if(!editMode)h.textContent='点击「编辑模式」可直接修改内容，「批注模式」可添加备注';}
+function addNote(btn){const n=document.createElement('div');n.className='user-note';n.innerHTML='<span class="note-delete" onclick="removeNote(this)">✕</span><div contenteditable="true" style="outline:none;min-height:20px;">在此输入批注...</div>';btn.parentNode.insertBefore(n,btn);const e=n.querySelector('[contenteditable]');e.focus();const r=document.createRange();r.selectNodeContents(e);window.getSelection().removeAllRanges();window.getSelection().addRange(r);}
+function removeNote(el){el.closest('.user-note').remove();}
+function exportNotes(){const notes=document.querySelectorAll('.user-note');if(!notes.length){alert('暂无批注内容');return;}let t='# Day10 行程批注\n导出时间: '+new Date().toLocaleString('zh-CN')+'\n\n';notes.forEach((n,i)=>{const s=n.closest('.tl-item'),name=s?(s.querySelector('.tl-spot-name')?.textContent||'交通段'):'未知位置',c=n.querySelector('[contenteditable]')?.textContent||'';t+=`## 批注 ${i+1} — ${name}\n${c}\n\n`;});const b=new Blob([t],{type:'text/markdown;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='Day10_批注_'+new Date().toISOString().slice(0,10)+'.md';a.click();URL.revokeObjectURL(u);}
+function saveLocal(){const h=document.documentElement.outerHTML,b=new Blob([h],{type:'text/html;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='Day10_行程规划_'+new Date().toISOString().slice(0,10)+'.html';a.click();URL.revokeObjectURL(u);}
+function showSaveToast(){let t=document.getElementById('auto-save-toast');if(!t){t=document.createElement('div');t.id='auto-save-toast';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(198,40,40,0.92);color:#fff;padding:6px 18px;border-radius:20px;font-size:12px;z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(4px);';document.body.appendChild(t);}t.textContent='✓ 已自动保存';t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';clearTimeout(t._hideTimer);t._hideTimer=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},1500);}
+let autoSaveTimer=null;document.addEventListener('input',()=>{clearTimeout(autoSaveTimer);autoSaveTimer=setTimeout(()=>{try{localStorage.setItem('day10_draft',document.querySelector('.container').innerHTML);showSaveToast();}catch(e){}},1000);});
+window.addEventListener('load',()=>{const d=localStorage.getItem('day10_draft');if(d)document.querySelector('.container').innerHTML=d;});
+</script>
+</body>
+</html>

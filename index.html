@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🇮🇹 意大利自驾之旅</title>
+<title>🇮🇹 意大利自驾之旅 · 10天深度环游</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -30,8 +30,24 @@
     color: rgba(255,255,255,0.5);
     text-align: center;
     font-size: 13px;
-    margin-bottom: 36px;
+    margin-bottom: 12px;
     letter-spacing: 4px;
+  }
+  .route-tag {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+  .route-tag span {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.45);
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
   }
   .card {
     display: block;
@@ -39,8 +55,8 @@
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 16px;
-    padding: 24px 28px;
-    margin-bottom: 16px;
+    padding: 22px 28px;
+    margin-bottom: 12px;
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
@@ -58,28 +74,42 @@
     width: 4px; height: 100%;
     border-radius: 4px 0 0 4px;
   }
-  .card.day1::before { background: linear-gradient(180deg, #ff6b6b, #ee5a24); }
-  .card.day2::before { background: linear-gradient(180deg, #ffd93d, #ff9800); }
-  .card.day3::before { background: linear-gradient(180deg, #6bcb77, #2d6a4f); }
+  .card.day1::before  { background: linear-gradient(180deg, #ff6b6b, #ee5a24); }
+  .card.day2::before  { background: linear-gradient(180deg, #ffd93d, #ff9800); }
+  .card.day3::before  { background: linear-gradient(180deg, #6bcb77, #2d6a4f); }
+  .card.day4::before  { background: linear-gradient(180deg, #74b9ff, #0984e3); }
+  .card.day5::before  { background: linear-gradient(180deg, #a29bfe, #6c5ce7); }
+  .card.day6::before  { background: linear-gradient(180deg, #fd79a8, #e84393); }
+  .card.day7::before  { background: linear-gradient(180deg, #55efc4, #00b894); }
+  .card.day8::before  { background: linear-gradient(180deg, #fdcb6e, #e17055); }
+  .card.day9::before  { background: linear-gradient(180deg, #81ecec, #00cec9); }
+  .card.day10::before { background: linear-gradient(180deg, #dfe6e9, #b2bec3); }
   .day-label {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
-  .card.day1 .day-label { color: #ff6b6b; }
-  .card.day2 .day-label { color: #ffd93d; }
-  .card.day3 .day-label { color: #6bcb77; }
+  .card.day1  .day-label { color: #ff6b6b; }
+  .card.day2  .day-label { color: #ffd93d; }
+  .card.day3  .day-label { color: #6bcb77; }
+  .card.day4  .day-label { color: #74b9ff; }
+  .card.day5  .day-label { color: #a29bfe; }
+  .card.day6  .day-label { color: #fd79a8; }
+  .card.day7  .day-label { color: #55efc4; }
+  .card.day8  .day-label { color: #fdcb6e; }
+  .card.day9  .day-label { color: #81ecec; }
+  .card.day10 .day-label { color: #dfe6e9; }
   .card-title {
     color: #fff;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .card-desc {
     color: rgba(255,255,255,0.5);
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.6;
   }
   .arrow {
@@ -99,7 +129,7 @@
     text-align: center;
     color: rgba(255,255,255,0.2);
     font-size: 11px;
-    margin-top: 30px;
+    margin-top: 24px;
     letter-spacing: 1px;
   }
 </style>
@@ -107,7 +137,10 @@
 <body>
 <div class="container">
   <h1>🇮🇹 意大利自驾之旅</h1>
-  <p class="subtitle">R O M A  ·  P I S A</p>
+  <p class="subtitle">10 DAYS ROAD TRIP</p>
+  <div class="route-tag">
+    <span>罗马</span><span>比萨</span><span>佛罗伦萨</span><span>五渔村</span><span>威尼斯</span><span>多洛米蒂</span><span>科莫湖</span><span>米兰</span>
+  </div>
 
   <a class="card day1" href="day1.html">
     <div class="day-label">Day 1</div>
@@ -119,7 +152,7 @@
   <a class="card day2" href="day2.html">
     <div class="day-label">Day 2</div>
     <div class="card-title">梵蒂冈 + 罗马老城</div>
-    <div class="card-desc">圣彼得大教堂 → 梵蒂冈花园 → 博物馆 → 万神殿 → 纳沃纳广场</div>
+    <div class="card-desc">圣彼得大教堂 → 梵蒂冈博物馆 → 万神殿 → 纳沃纳广场</div>
     <span class="arrow">→</span>
   </a>
 
@@ -127,6 +160,55 @@
     <div class="day-label">Day 3</div>
     <div class="card-title">罗马 → 比萨</div>
     <div class="card-desc">自驾前往比萨 → 奇迹广场 → 比萨斜塔 → 托斯卡纳风光</div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card day4" href="day4.html">
+    <div class="day-label">Day 4</div>
+    <div class="card-title">比萨 → 五渔村</div>
+    <div class="card-desc">彩色悬崖小镇 → 爱之小径 → 地中海落日 → 海鲜大餐</div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card day5" href="day5.html">
+    <div class="day-label">Day 5</div>
+    <div class="card-title">五渔村 → 佛罗伦萨</div>
+    <div class="card-desc">文艺复兴之都 → 圣母百花大教堂 → 乌菲兹美术馆 → 老桥</div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card day6" href="day6.html">
+    <div class="day-label">Day 6</div>
+    <div class="card-title">佛罗伦萨 → 威尼斯</div>
+    <div class="card-desc">水城漫步 → 圣马可广场 → 贡多拉 → 里亚托桥 → 彩色岛</div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card day7" href="day7.html">
+    <div class="day-label">Day 7</div>
+    <div class="card-title">威尼斯 → 多洛米蒂</div>
+    <div class="card-desc">自驾进入阿尔卑斯 → 科尔蒂纳 → 三峰山 → 山间木屋</div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card day8" href="day8.html">
+    <div class="day-label">Day 8</div>
+    <div class="card-title">多洛米蒂深度游</div>
+    <div class="card-desc">富内斯山谷 → Seceda → 加尔代纳山口 → 塞拉山口</div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card day9" href="day9.html">
+    <div class="day-label">Day 9</div>
+    <div class="card-title">多洛米蒂 → 科莫湖 → 米兰</div>
+    <div class="card-desc">湖畔小镇贝拉焦 → 科莫湖游船 → 米兰大教堂 → 最后的晚餐</div>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="card day10" href="day10.html">
+    <div class="day-label">Day 10</div>
+    <div class="card-title">米兰 → 回程</div>
+    <div class="card-desc">埃马努埃莱二世长廊 → 退税攻略 → 马尔彭萨机场 → 深圳</div>
     <span class="arrow">→</span>
   </a>
 
