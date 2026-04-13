@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Day3 行程详细规划 | 罗马→托斯卡纳→比萨→佛罗伦萨</title>
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #e8f5e9;
+    --orange: #ff9800;
+    --red: #ef5350;
+    --blue: #42a5f5;
+    --purple: #7e57c2;
+    --bg: #f5f0e8;
+    --card: #ffffff;
+    --text: #2c2c2c;
+    --text-secondary: #666;
+    --border: #e0d8c8;
+    --note-bg: #fffde7;
+    --note-border: #ffe082;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ===== Header ===== */
+  .hero {
+    background: linear-gradient(135deg, #1a472a 0%, #2d6a4f 40%, #40916c 100%);
+    color: white;
+    padding: 40px 20px 30px;
+    text-align: center;
+    position: relative;
+  }
+  .hero h1 { font-size: 26px; margin-bottom: 6px; }
+  .hero .subtitle { font-size: 13px; opacity: 0.85; }
+  .hero .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  /* ===== Toolbar ===== */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    color: var(--text);
+  }
+  .toolbar-btn:hover { background: #f0f0f0; }
+  .toolbar-btn.active { background: var(--green); color: white; border-color: var(--green); }
+  .toolbar-btn.btn-note { border-color: var(--note-border); background: var(--note-bg); }
+  .toolbar-btn.btn-note:hover { background: #fff8e1; }
+  .toolbar-sep { width: 1px; height: 20px; background: #ddd; }
+  .toolbar-hint { font-size: 11px; color: #999; margin-left: auto; }
+
+  /* ===== Stats Bar ===== */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 14px 16px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; min-width: 70px; }
+  .stat-item .num { font-size: 20px; font-weight: 700; color: var(--green); }
+  .stat-item .label { font-size: 11px; color: #888; margin-top: 2px; }
+
+  /* ===== Container ===== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
+
+  /* ===== Section Title ===== */
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ===== Timeline Item (3-column) ===== */
+  .tl-item {
+    display: grid;
+    grid-template-columns: 260px 1fr 260px;
+    gap: 0;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background: var(--card);
+    position: relative;
+  }
+  .tl-item.item-drive {
+    grid-template-columns: 1fr;
+    background: #f8faf8;
+  }
+
+  /* Time badge across top */
+  .tl-time-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(90deg, var(--green-light) 0%, white 100%);
+    border-bottom: 1px solid #eee;
+  }
+  .tl-time-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green);
+    background: white;
+    padding: 2px 12px;
+    border-radius: 10px;
+    border: 1px solid #c8e6c9;
+    white-space: nowrap;
+  }
+  .tl-type-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  .badge-photo { background: #fff3e0; color: #e65100; }
+  .badge-food { background: #fce4ec; color: #c62828; }
+  .badge-drive { background: #e8f5e9; color: #2e7d32; }
+  .badge-must { background: var(--red); color: white; }
+  .badge-stay { background: #ede7f6; color: #4a148c; }
+  .badge-start { background: #e3f2fd; color: #1565c0; }
+
+  /* Left column: Location */
+  .tl-left {
+    padding: 14px 16px;
+    border-right: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fafaf8;
+  }
+  .tl-spot-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .tl-spot-subname {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .tl-spot-addr {
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .tl-spot-addr .addr-icon { flex-shrink: 0; }
+  .gps-tag {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-family: 'SF Mono', 'Courier New', monospace;
+    font-size: 11px;
+    color: #666;
+  }
+  .gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--green-light);
+    color: #2e7d32;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    transition: all 0.2s;
+  }
+  .gmap-link:hover { background: #2e7d32; color: white; }
+
+  /* Middle column: Description */
+  .tl-mid {
+    padding: 14px 16px;
+    border-right: 1px solid #f0f0f0;
+  }
+  .tl-mid p { font-size: 13px; color: #555; margin-bottom: 6px; }
+  .tl-mid p:last-child { margin-bottom: 0; }
+
+  /* XHS links */
+  .xhs-links {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed #eee;
+  }
+  .xhs-links-title {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .xhs-link-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .xhs-link-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .xhs-link-item a:hover { text-decoration: underline; }
+  .xhs-link-item .xhs-stats { font-size: 10px; color: #999; white-space: nowrap; }
+
+  /* Right column: Notes & Parking */
+  .tl-right {
+    padding: 14px 16px;
+    background: #fdfcf9;
+  }
+  .tl-right-section {
+    margin-bottom: 10px;
+  }
+  .tl-right-section:last-child { margin-bottom: 0; }
+  .tl-right-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .parking-mini {
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  .parking-mini .pm-name { font-weight: 600; color: #1565c0; }
+  .parking-mini .pm-detail { color: #555; font-size: 11px; margin-top: 2px; }
+  .tip-mini {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #555;
+  }
+
+  /* Drive card (single column) */
+  .drive-card {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .drive-card .drive-icon { font-size: 18px; }
+  .drive-card .drive-title { font-weight: 600; font-size: 14px; }
+  .drive-card .drive-detail { font-size: 12px; color: var(--text-secondary); }
+  .drive-card .drive-cost {
+    margin-left: auto;
+    font-size: 11px;
+    color: #888;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  /* ===== Editable Styles ===== */
+  [contenteditable="true"] {
+    outline: none;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .edit-mode [contenteditable="true"]:hover {
+    background: rgba(45,106,79,0.06);
+  }
+  .edit-mode [contenteditable="true"]:focus {
+    background: rgba(45,106,79,0.1);
+    box-shadow: inset 0 0 0 1px rgba(45,106,79,0.3);
+  }
+
+  /* ===== Annotation ===== */
+  .annotation-marker {
+    display: none;
+  }
+  .annotate-mode .annotation-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: var(--orange);
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 4px;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  .user-note {
+    background: var(--note-bg);
+    border: 1px solid var(--note-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-top: 6px;
+    font-size: 12px;
+    position: relative;
+  }
+  .user-note::before {
+    content: '📝 我的批注';
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #f57f17;
+    margin-bottom: 4px;
+  }
+  .user-note .note-delete {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #ccc;
+  }
+  .user-note .note-delete:hover { color: var(--red); }
+
+  .add-note-btn {
+    display: none;
+    margin-top: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px dashed var(--note-border);
+    background: transparent;
+    color: #f57f17;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .add-note-btn:hover { background: var(--note-bg); }
+  .annotate-mode .add-note-btn { display: inline-block; }
+
+  /* ===== Parking Summary Table ===== */
+  .parking-summary {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .parking-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 12px;
+    min-width: 550px;
+  }
+  .parking-table thead th {
+    background: var(--green);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .parking-table thead th:first-child { border-radius: 8px 0 0 0; }
+  .parking-table thead th:last-child { border-radius: 0 8px 0 0; }
+  .parking-table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  .parking-table tbody tr:hover { background: #f5f9f5; }
+  .p-name { font-weight: 600; color: var(--green); }
+
+  /* ===== Tips ===== */
+  .tips-section {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .tip-card {
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 13px;
+  }
+  .tip-card h4 { font-size: 14px; margin-bottom: 6px; }
+  .tip-card.tip-danger { background: #fce4ec; }
+  .tip-card.tip-warn { background: #fff8e1; }
+  .tip-card.tip-info { background: #e3f2fd; }
+  .tip-card.tip-ok { background: var(--green-light); }
+
+  /* ===== Sources ===== */
+  .sources {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    font-size: 12px;
+    color: #888;
+  }
+  .sources h3 { font-size: 14px; color: #555; margin-bottom: 8px; }
+  .sources p { margin-bottom: 4px; }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: #bbb;
+    font-size: 12px;
+  }
+
+  /* ===== Responsive: Mobile ===== */
+  @media (max-width: 768px) {
+    .tl-item {
+      grid-template-columns: 1fr !important;
+    }
+    .tl-left, .tl-mid, .tl-right {
+      border-right: none !important;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .tl-right { border-bottom: none; }
+    .tip-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 22px; }
+    .stats-bar { gap: 12px; }
+    .toolbar-hint { display: none; }
+    .container { padding: 12px 10px; }
+    .drive-card { flex-direction: column; align-items: flex-start; }
+    .drive-card .drive-cost { margin-left: 0; }
+  }
+
+  /* ===== Print ===== */
+  @media print {
+    .toolbar { display: none; }
+    .add-note-btn { display: none; }
+    .annotation-marker { display: none; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🇮🇹 Day3 自驾行程</h1>
+  <div class="subtitle">罗马 → 奥尔恰山谷 → 皮恩扎 → 丝柏路 → 比萨 → 佛罗伦萨</div>
+  <div class="date-badge">📅 2026年4月28日 周二</div>
+</div>
+
+<!-- Toolbar -->
+<div class="toolbar" id="toolbar">
+  <button class="toolbar-btn" id="btn-edit" onclick="toggleEdit()">✏️ 编辑模式</button>
+  <button class="toolbar-btn btn-note" id="btn-annotate" onclick="toggleAnnotate()">📝 批注模式</button>
+  <div class="toolbar-sep"></div>
+  <button class="toolbar-btn" onclick="exportNotes()">💾 导出批注</button>
+  <button class="toolbar-btn" onclick="saveLocal()">📥 保存到本地</button>
+  <span class="toolbar-hint" id="toolbar-hint">点击「编辑模式」可直接修改内容，「批注模式」可添加备注</span>
+</div>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">~470</div><div class="label">总里程 km</div></div>
+  <div class="stat-item"><div class="num">~6.5h</div><div class="label">总驾车时长</div></div>
+  <div class="stat-item"><div class="num">7</div><div class="label">景点/站点</div></div>
+  <div class="stat-item"><div class="num">10:30</div><div class="label">出发时间</div></div>
+  <div class="stat-item"><div class="num">~22:45</div><div class="label">预计到达</div></div>
+</div>
+
+<div class="container">
+
+<!-- ===== Geographic Illustrated Route Map ===== -->
+<div class="map-section" style="background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+  <h2 class="section-title">🗺️ Day3 行程路线图</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:12px;">📐 基于真实地理位置 · 手绘风地标建筑 · 点击景点可跳转 Google Maps 导航 · 虚线框 = 备选景点</p>
+
+  <div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+  <svg viewBox="0 0 960 1100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+    <defs>
+      <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#f7f3eb;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#ede5d5;stop-opacity:1"/>
+      </linearGradient>
+      <linearGradient id="seaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#d4e8f0;stop-opacity:0.5"/>
+        <stop offset="100%" style="stop-color:#b8d4e3;stop-opacity:0.4"/>
+      </linearGradient>
+      <linearGradient id="hillGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8d8a8;stop-opacity:0.35"/>
+        <stop offset="100%" style="stop-color:#e0d8c0;stop-opacity:0.15"/>
+      </linearGradient>
+      <linearGradient id="hillGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#d4c898;stop-opacity:0.25"/>
+        <stop offset="100%" style="stop-color:#e8dcc8;stop-opacity:0.1"/>
+      </linearGradient>
+      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.12)"/>
+      </filter>
+      <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="120%">
+        <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.1)"/>
+      </filter>
+      <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="2" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- ===== BACKGROUND ===== -->
+    <rect width="960" height="1100" rx="16" fill="url(#mapBg)"/>
+
+    <!-- Tyrrhenian Sea (left side) -->
+    <path d="M0,0 L0,1100 L160,1100 C120,1000 80,900 100,800 C130,680 90,580 110,480 C140,380 100,280 120,180 C140,100 130,50 140,0 Z" fill="url(#seaGrad)"/>
+    <text x="45" y="550" font-size="14" fill="#8bb0c4" letter-spacing="8" font-weight="600" opacity="0.5" transform="rotate(-90,45,550)">T Y R R H E N I A N   S E A</text>
+    <!-- Sea waves -->
+    <g opacity="0.15" stroke="#7ba8c0" stroke-width="1.5" fill="none">
+      <path d="M30,300 Q45,295 60,300 Q75,305 90,300"/>
+      <path d="M20,500 Q35,495 50,500 Q65,505 80,500"/>
+      <path d="M40,700 Q55,695 70,700 Q85,705 100,700"/>
+      <path d="M25,900 Q40,895 55,900 Q70,905 85,900"/>
+    </g>
+
+    <!-- ===== SIMPLIFIED ITALY COASTLINE (Central Italy outline hint) ===== -->
+    <path d="M140,0 C150,80 160,160 155,240 C148,340 165,420 150,500 C140,560 155,620 145,700 C138,760 150,820 140,880 C135,940 145,1000 160,1100" stroke="#c4a97d" stroke-width="2" fill="none" opacity="0.3" stroke-dasharray="8,4"/>
+
+    <!-- ===== GEOGRAPHIC REGIONS ===== -->
+    <!-- Tuscany hills (upper half) -->
+    <path d="M160,120 Q280,80 400,100 Q520,75 640,95 Q760,70 880,90 L960,95 L960,350 Q800,320 640,340 Q480,310 320,335 Q240,320 160,340 Z" fill="url(#hillGrad1)"/>
+    <!-- Val d'Orcia rolling hills (middle) -->
+    <path d="M160,480 Q300,440 450,460 Q600,435 750,455 Q860,440 960,450 L960,680 Q800,650 640,670 Q480,645 320,665 Q240,655 160,670 Z" fill="url(#hillGrad2)"/>
+
+    <!-- Scattered Tuscan cypress trees (decorative) -->
+    <g opacity="0.18" fill="#5a8a5e">
+      <!-- Near Val d'Orcia -->
+      <ellipse cx="320" cy="490" rx="4" ry="14"/><ellipse cx="335" cy="492" rx="3" ry="11"/>
+      <ellipse cx="520" cy="475" rx="4" ry="15"/><ellipse cx="535" cy="478" rx="3" ry="12"/>
+      <ellipse cx="700" cy="488" rx="3" ry="12"/>
+      <ellipse cx="420" cy="520" rx="3" ry="10"/><ellipse cx="433" cy="522" rx="3" ry="12"/>
+      <!-- Near Tuscany upper -->
+      <ellipse cx="280" cy="200" rx="3" ry="10"/><ellipse cx="293" cy="198" rx="3" ry="11"/>
+      <ellipse cx="500" cy="180" rx="3" ry="12"/>
+      <ellipse cx="680" cy="195" rx="3" ry="10"/><ellipse cx="693" cy="192" rx="3" ry="12"/>
+      <!-- Scattered wheat fields hint -->
+      <ellipse cx="600" cy="550" rx="25" ry="3" fill="#d4c898" opacity="1"/>
+      <ellipse cx="380" cy="580" rx="30" ry="3" fill="#d4c898" opacity="1"/>
+      <ellipse cx="750" cy="540" rx="20" ry="2.5" fill="#d4c898" opacity="1"/>
+    </g>
+
+    <!-- Sunflower hints in Val d'Orcia -->
+    <g opacity="0.2">
+      <circle cx="480" cy="560" r="4" fill="#f0c040"/><circle cx="490" cy="555" r="3" fill="#f0c040"/>
+      <circle cx="680" cy="530" r="3.5" fill="#f0c040"/><circle cx="690" cy="535" r="3" fill="#f0c040"/>
+    </g>
+
+    <!-- Region labels -->
+    <text x="200" y="55" font-size="20" fill="#c4a97d" letter-spacing="6" font-weight="700" opacity="0.3">D A Y  3  ·  R O M A  →  F I R E N Z E</text>
+
+    <!-- LAZIO label -->
+    <text x="620" y="870" font-size="15" fill="#c4a97d" letter-spacing="8" font-weight="600" opacity="0.25">L A Z I O</text>
+
+    <!-- TOSCANA label -->
+    <text x="350" y="410" font-size="18" fill="#8a9a6a" letter-spacing="10" font-weight="700" opacity="0.2">T O S C A N A</text>
+
+    <!-- UMBRIA label (east side) -->
+    <text x="780" y="650" font-size="12" fill="#c4a97d" letter-spacing="5" font-weight="600" opacity="0.2">U M B R I A</text>
+
+    <!-- Arno River (near Florence) -->
+    <path d="M160,160 Q250,175 350,165 Q450,155 550,170 Q650,160 720,175" stroke="#8bb0c4" stroke-width="2" fill="none" opacity="0.35" stroke-linecap="round"/>
+    <text x="380" y="158" font-size="9" fill="#8bb0c4" opacity="0.5" font-style="italic">Arno</text>
+
+    <!-- Tiber River hint (near Rome) -->
+    <path d="M580,700 Q600,750 610,800 Q625,860 640,920 Q650,960 660,1000" stroke="#8bb0c4" stroke-width="2" fill="none" opacity="0.25" stroke-linecap="round"/>
+
+    <!-- ===== COMPASS ===== -->
+    <g transform="translate(900,75)" opacity="0.5">
+      <circle cx="0" cy="0" r="28" fill="rgba(255,255,255,0.6)" stroke="#c4a97d" stroke-width="1.5"/>
+      <text x="0" y="-12" text-anchor="middle" font-size="14" font-weight="800" fill="#8a7550">N</text>
+      <text x="0" y="22" text-anchor="middle" font-size="10" fill="#b0a080">S</text>
+      <text x="14" y="5" text-anchor="middle" font-size="10" fill="#b0a080">E</text>
+      <text x="-14" y="5" text-anchor="middle" font-size="10" fill="#b0a080">W</text>
+      <line x1="0" y1="-7" x2="0" y2="10" stroke="#8a7550" stroke-width="1.5"/>
+      <polygon points="0,-7 -3,1 3,1" fill="#8a7550"/>
+    </g>
+
+    <!-- ================================================================ -->
+    <!-- ROUTE LINES (geographic positions)                                -->
+    <!-- Roma(660,920) → ValDOrcia(500,570) → Pienza(560,530) →           -->
+    <!-- Pisa(220,220) → Firenze(480,140)                                 -->
+    <!-- ================================================================ -->
+
+    <!-- Main road: Roma → Val d'Orcia (A1 highway south to north) -->
+    <path d="M665,900 C650,840 620,780 590,720 C560,660 540,620 510,580" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+    <!-- Val d'Orcia area roads (between cypress spots & Pienza) -->
+    <path d="M510,580 C520,565 535,550 555,535" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+    <path d="M555,535 C570,520 590,510 610,500" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+    <path d="M610,500 C580,480 540,465 500,455" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+    <path d="M500,455 C440,430 380,400 340,370" stroke="#ff9800" stroke-width="3.5" fill="none" stroke-dasharray="7,5" opacity="0.45" stroke-linecap="round"/>
+    <!-- Main road: S-curve area → Pisa (long drive west) -->
+    <path d="M340,370 C300,330 260,290 235,250" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+    <!-- Main road: Pisa → Firenze -->
+    <path d="M235,230 C300,195 380,170 480,150" stroke="#2d6a4f" stroke-width="5" fill="none" stroke-dasharray="16,8" opacity="0.5" stroke-linecap="round"/>
+
+    <!-- ===== DISTANCE PILLS ===== -->
+    <g font-size="11" font-weight="600">
+      <rect x="555" y="738" width="140" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+      <text x="625" y="756" fill="white" text-anchor="middle" font-size="11">🚗 190km · 2h20min</text>
+
+      <rect x="440" y="552" width="85" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+      <text x="482" y="567" fill="white" text-anchor="middle" font-size="10">7km · 12m</text>
+
+      <rect x="580" y="515" width="85" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+      <text x="622" y="530" fill="white" text-anchor="middle" font-size="10">7km · 12m</text>
+
+      <rect x="540" y="470" width="80" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+      <text x="580" y="485" fill="white" text-anchor="middle" font-size="10">3km · 7m</text>
+
+      <rect x="380" y="400" width="95" height="22" rx="11" fill="#ff9800" opacity="0.78"/>
+      <text x="427" y="415" fill="white" text-anchor="middle" font-size="10">14km · 20m</text>
+
+      <rect x="225" y="300" width="130" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+      <text x="290" y="318" fill="white" text-anchor="middle" font-size="11">🚗 200km · 2h</text>
+
+      <rect x="310" y="175" width="135" height="26" rx="13" fill="#2d6a4f" opacity="0.88" filter="url(#shadow)"/>
+      <text x="377" y="193" fill="white" text-anchor="middle" font-size="11">🚗 85km · 1h15min</text>
+    </g>
+
+    <!-- ================================================================ -->
+    <!-- LANDMARK BUILDINGS (hand-drawn style)                             -->
+    <!-- ================================================================ -->
+
+    <!-- ★ ROMA: Colosseum silhouette near Roma pin -->
+    <g transform="translate(720,860)" opacity="0.2">
+      <!-- Colosseum arches -->
+      <ellipse cx="0" cy="0" rx="40" ry="25" fill="none" stroke="#8b4513" stroke-width="2"/>
+      <path d="M-35,-10 A8,12 0 0,1 -20,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+      <path d="M-18,-10 A8,12 0 0,1 -3,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+      <path d="M0,-10 A8,12 0 0,1 15,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+      <path d="M17,-10 A8,12 0 0,1 32,-10" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+      <!-- upper tier arches -->
+      <path d="M-28,-20 A6,8 0 0,1 -16,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+      <path d="M-13,-20 A6,8 0 0,1 -1,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+      <path d="M2,-20 A6,8 0 0,1 14,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+      <path d="M17,-20 A6,8 0 0,1 29,-20" fill="none" stroke="#8b4513" stroke-width="1"/>
+    </g>
+
+    <!-- ★ VAL D'ORCIA: Cypress avenue illustration -->
+    <g transform="translate(440,595)" opacity="0.3">
+      <!-- Two rows of cypress trees along a path -->
+      <line x1="0" y1="0" x2="0" y2="-35" stroke="#8b7355" stroke-width="1.5"/>
+      <ellipse cx="-10" cy="-8" rx="4" ry="14" fill="#5a8a5e"/>
+      <ellipse cx="10" cy="-8" rx="4" ry="14" fill="#5a8a5e"/>
+      <ellipse cx="-10" cy="-26" rx="3.5" ry="12" fill="#5a8a5e"/>
+      <ellipse cx="10" cy="-26" rx="3.5" ry="12" fill="#5a8a5e"/>
+      <ellipse cx="-10" cy="-44" rx="3" ry="10" fill="#5a8a5e"/>
+      <ellipse cx="10" cy="-44" rx="3" ry="10" fill="#5a8a5e"/>
+      <!-- Farmhouse at end -->
+      <rect x="-6" y="-58" width="12" height="8" rx="1" fill="#c4a070"/>
+      <polygon points="-8,-58 0,-64 8,-58" fill="#a0785a"/>
+    </g>
+
+    <!-- ★ PIENZA: Medieval town on hilltop -->
+    <g transform="translate(650,490)" opacity="0.22">
+      <!-- Hill -->
+      <ellipse cx="0" cy="10" rx="35" ry="8" fill="#b0a070"/>
+      <!-- Buildings on hill -->
+      <rect x="-20" y="-15" width="10" height="20" rx="1" fill="#c4a070"/>
+      <rect x="-8" y="-20" width="12" height="25" rx="1" fill="#b89060"/>
+      <rect x="6" y="-12" width="10" height="17" rx="1" fill="#c4a070"/>
+      <!-- Tower/bell tower -->
+      <rect x="-2" y="-30" width="6" height="15" rx="1" fill="#a08050"/>
+      <polygon points="-3,-30 1,-36 5,-30" fill="#8b7040"/>
+    </g>
+
+    <!-- ★ PISA: Leaning Tower -->
+    <g transform="translate(185,195)" opacity="0.25">
+      <g transform="rotate(-5.5)">
+        <!-- Tower body -->
+        <rect x="-8" y="-55" width="16" height="55" rx="2" fill="#a0a0a0"/>
+        <!-- Tier lines -->
+        <rect x="-10" y="-55" width="20" height="5" rx="1" fill="#909090"/>
+        <rect x="-10" y="-44" width="20" height="4" rx="1" fill="#909090"/>
+        <rect x="-10" y="-34" width="20" height="4" rx="1" fill="#909090"/>
+        <rect x="-10" y="-24" width="20" height="4" rx="1" fill="#909090"/>
+        <rect x="-10" y="-14" width="20" height="4" rx="1" fill="#909090"/>
+        <!-- Top dome -->
+        <circle cx="0" cy="-60" r="7" fill="none" stroke="#909090" stroke-width="1.5"/>
+      </g>
+      <!-- Cathedral beside it -->
+      <rect x="18" y="-20" width="25" height="18" rx="1" fill="#b0b0a0"/>
+      <path d="M18,-20 L30.5,-30 L43,-20" fill="#a0a090"/>
+    </g>
+
+    <!-- ★ FIRENZE: Duomo (Santa Maria del Fiore) -->
+    <g transform="translate(530,100)" opacity="0.22">
+      <!-- Cathedral body -->
+      <rect x="-25" y="-10" width="50" height="25" rx="2" fill="#c8a878"/>
+      <!-- The famous dome -->
+      <path d="M-18,-10 Q0,-45 18,-10" fill="#d4654a" opacity="0.6"/>
+      <path d="M-18,-10 Q0,-45 18,-10" fill="none" stroke="#b85040" stroke-width="1.5"/>
+      <!-- Lantern on top -->
+      <rect x="-3" y="-46" width="6" height="8" rx="1" fill="#c0a060"/>
+      <circle cx="0" cy="-49" r="3" fill="none" stroke="#c0a060" stroke-width="1"/>
+      <!-- Campanile (bell tower) -->
+      <rect x="24" y="-35" width="8" height="45" rx="1" fill="#c8b888"/>
+      <polygon points="22,-35 28,-42 34,-35" fill="#b0a070"/>
+    </g>
+
+    <!-- ===== STOP CARDS (geographic positions) ===== -->
+
+    <!-- ① 罗马 Roma (bottom-right, southeastern position) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Roma+Termini+Station" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="580" y="910" width="310" height="78" rx="14" fill="white" stroke="#ef5350" stroke-width="2.5"/>
+        <circle cx="618" cy="950" r="24" fill="#ef5350" filter="url(#glow)"/>
+        <text x="618" y="957" text-anchor="middle" fill="white" font-size="17" font-weight="800">1</text>
+        <text x="654" y="933" font-size="16" font-weight="700" fill="#333">🏁 罗马 Roma</text>
+        <text x="654" y="953" font-size="12" fill="#888">10:30 出发 · Termini 取车</text>
+        <text x="654" y="973" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
+      </g>
+    </a>
+    <text x="620" y="900" font-size="24" opacity="0.4" transform="rotate(-15,620,900)">🚗</text>
+
+    <!-- ② 双排丝柏大道 (Val d'Orcia area, center) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=43.0218,11.6369" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="255" y="560" width="250" height="72" rx="14" fill="white" stroke="#66bb6a" stroke-width="2.5"/>
+        <circle cx="290" cy="596" r="22" fill="#66bb6a"/>
+        <text x="290" y="603" text-anchor="middle" fill="white" font-size="16" font-weight="800">2</text>
+        <text x="322" y="585" font-size="14" font-weight="700" fill="#333">🌲 双排丝柏大道</text>
+        <text x="322" y="605" font-size="11" fill="#888">12:50 · 📸15min · 免费路边停</text>
+        <text x="322" y="622" font-size="10" fill="#666">经典明信片画面 · 长焦最佳</text>
+      </g>
+    </a>
+
+    <!-- ③ 小耳朵教堂 【备选】-->
+    <a href="https://www.google.com/maps/search/?api=1&query=43.0708,11.6344" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="600" y="520" width="290" height="68" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
+        <circle cx="635" cy="554" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="635" y="561" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">3</text>
+        <text x="668" y="543" font-size="13" font-weight="700" fill="#e65100">⛪【备选】小耳朵教堂</text>
+        <text x="668" y="563" font-size="11" fill="#888">13:20 · 📸15min</text>
+        <text x="668" y="579" font-size="10" fill="#666">金色麦田中孤独的小教堂</text>
+      </g>
+    </a>
+
+    <!-- ④ 皮恩扎 Pienza -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Pienza+Italy" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="620" y="430" width="290" height="78" rx="14" fill="white" stroke="#ff9800" stroke-width="2.5"/>
+        <circle cx="655" cy="470" r="24" fill="#ff9800"/>
+        <text x="655" y="477" text-anchor="middle" fill="white" font-size="17" font-weight="800">4</text>
+        <text x="690" y="453" font-size="15" font-weight="700" fill="#333">🏘️ 皮恩扎 Pienza</text>
+        <text x="690" y="473" font-size="12" fill="#888">13:45-15:15 · 🍝 午餐+逛镇</text>
+        <text x="690" y="493" font-size="10" fill="#666">"理想城市" · 佩科里诺奶酪 🧀</text>
+      </g>
+    </a>
+
+    <!-- ⑤ 圆形丝柏林 【备选】-->
+    <a href="https://www.google.com/maps/search/?api=1&query=43.0627,11.5589" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="230" y="435" width="260" height="65" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
+        <circle cx="265" cy="467" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="265" y="474" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">5</text>
+        <text x="298" y="458" font-size="13" font-weight="700" fill="#e65100">🌲【备选】圆形丝柏林</text>
+        <text x="298" y="478" font-size="11" fill="#888">15:25 · 📸10min · 俯瞰奥尔恰谷</text>
+        <text x="298" y="494" font-size="10" fill="#666">上帝在大地上画的圆</text>
+      </g>
+    </a>
+
+    <!-- ⑥ S型丝柏路 【备选】-->
+    <a href="https://www.google.com/maps/search/?api=1&query=43.2008,11.5904" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="160" y="342" width="260" height="65" rx="14" fill="#fffbf0" stroke="#ff9800" stroke-width="2" stroke-dasharray="6,3"/>
+        <circle cx="195" cy="374" r="20" fill="white" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="195" y="381" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="800">6</text>
+        <text x="228" y="365" font-size="13" font-weight="700" fill="#e65100">🌲【备选】S型丝柏路</text>
+        <text x="228" y="385" font-size="11" fill="#888">15:55 · 📸15min</text>
+        <text x="228" y="401" font-size="10" fill="#666">蜿蜒S曲线 · 极具视觉冲击</text>
+      </g>
+    </a>
+    <!-- S-curve decoration -->
+    <path d="M430,365 C445,355 440,345 455,355 C470,365 465,355 480,345" stroke="#c4a97d" stroke-width="2" fill="none" opacity="0.25"/>
+
+    <!-- ⑦ 比萨斜塔 -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Leaning+Tower+of+Pisa" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="170" y="210" width="280" height="78" rx="14" fill="white" stroke="#42a5f5" stroke-width="2.5"/>
+        <circle cx="208" cy="250" r="24" fill="#42a5f5" filter="url(#glow)"/>
+        <text x="208" y="257" text-anchor="middle" fill="white" font-size="17" font-weight="800">7</text>
+        <text x="244" y="233" font-size="15" font-weight="700" fill="#333">🏛️ 比萨斜塔</text>
+        <text x="244" y="253" font-size="12" fill="#888">18:15-19:45 · ⭐必打卡</text>
+        <text x="244" y="273" font-size="10" fill="#666">奇迹广场 · Via Galluppi停车 · ⚠️ZTL</text>
+      </g>
+    </a>
+
+    <!-- ⑧ 佛罗伦萨 Firenze -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Florence+Santa+Maria+Novella" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="480" y="120" width="310" height="78" rx="14" fill="white" stroke="#7e57c2" stroke-width="2.5"/>
+        <circle cx="518" cy="160" r="24" fill="#7e57c2" filter="url(#glow)"/>
+        <text x="518" y="167" text-anchor="middle" fill="white" font-size="17" font-weight="800">8</text>
+        <text x="554" y="143" font-size="15" font-weight="700" fill="#333">🏨 佛罗伦萨 Firenze</text>
+        <text x="554" y="163" font-size="12" fill="#888">~21:45 到达 · 入住酒店</text>
+        <text x="554" y="183" font-size="10" fill="#666">San Lorenzo 停车场 ~€25/24h · ⚠️ZTL</text>
+      </g>
+    </a>
+
+    <!-- ===== PIN DOTS connecting cards to geographic positions ===== -->
+    <circle cx="665" cy="920" r="6" fill="#ef5350" opacity="0.6"/>
+    <circle cx="510" cy="580" r="5" fill="#66bb6a" opacity="0.6"/>
+    <circle cx="555" cy="535" r="5" fill="#ff9800" opacity="0.5"/>
+    <circle cx="610" cy="500" r="5" fill="#ff9800" opacity="0.6"/>
+    <circle cx="500" cy="455" r="5" fill="#ff9800" opacity="0.5"/>
+    <circle cx="340" cy="370" r="5" fill="#ff9800" opacity="0.5"/>
+    <circle cx="220" cy="240" r="6" fill="#42a5f5" opacity="0.6"/>
+    <circle cx="490" cy="150" r="6" fill="#7e57c2" opacity="0.6"/>
+
+    <!-- ===== MINI INFO BADGES (key travel info) ===== -->
+    <!-- A1 highway label -->
+    <g transform="translate(600,800)">
+      <rect x="-25" y="-10" width="50" height="18" rx="9" fill="rgba(45,106,79,0.7)"/>
+      <text x="0" y="3" text-anchor="middle" font-size="10" fill="white" font-weight="600">A1/E35</text>
+    </g>
+    <!-- FI-PI-LI label -->
+    <g transform="translate(340,210)">
+      <rect x="-30" y="-10" width="60" height="18" rx="9" fill="rgba(45,106,79,0.7)"/>
+      <text x="0" y="3" text-anchor="middle" font-size="10" fill="white" font-weight="600">FI-PI-LI</text>
+    </g>
+    <!-- ZTL warning near Pisa -->
+    <g transform="translate(175,290)">
+      <rect x="-22" y="-10" width="44" height="18" rx="9" fill="rgba(239,83,80,0.8)"/>
+      <text x="0" y="3" text-anchor="middle" font-size="9" fill="white" font-weight="700">⚠️ ZTL</text>
+    </g>
+    <!-- ZTL warning near Florence -->
+    <g transform="translate(485,200)">
+      <rect x="-22" y="-10" width="44" height="18" rx="9" fill="rgba(239,83,80,0.8)"/>
+      <text x="0" y="3" text-anchor="middle" font-size="9" fill="white" font-weight="700">⚠️ ZTL</text>
+    </g>
+
+    <!-- ===== LEGEND ===== -->
+    <g transform="translate(20,1020)">
+      <rect width="920" height="68" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow)"/>
+      <circle cx="30" cy="22" r="10" fill="#ef5350"/><text x="50" y="26" font-size="11" fill="#555">出发/到达</text>
+      <circle cx="155" cy="22" r="10" fill="#66bb6a"/><text x="175" y="26" font-size="11" fill="#555">自然景观</text>
+      <circle cx="275" cy="22" r="10" fill="#ff9800"/><text x="295" y="26" font-size="11" fill="#555">小镇美食</text>
+      <circle cx="395" cy="22" r="10" fill="#42a5f5"/><text x="415" y="26" font-size="11" fill="#555">地标建筑</text>
+      <circle cx="505" cy="22" r="10" fill="#7e57c2"/><text x="525" y="26" font-size="11" fill="#555">住宿</text>
+      <circle cx="595" cy="22" r="10" fill="white" stroke="#ff9800" stroke-width="2.5" stroke-dasharray="4,2"/>
+      <text x="615" y="26" font-size="11" fill="#e65100" font-weight="600">【备选】</text>
+      <rect x="700" y="15" width="40" height="16" rx="8" fill="rgba(239,83,80,0.8)"/>
+      <text x="720" y="27" text-anchor="middle" font-size="9" fill="white" font-weight="600">ZTL</text>
+      <text x="748" y="26" font-size="11" fill="#555">限行区</text>
+      <text x="30" y="52" font-size="11" fill="#888">总里程 ~470km · 驾车 ~6.5h · 绿虚线=核心高速 · 橙虚线=托斯卡纳乡间路 · 点击卡片可跳转 Google Maps</text>
+    </g>
+  </svg>
+  </div>
+</div>
+
+<!-- ===== Timeline Section ===== -->
+<h2 class="section-title">⏱️ 详细时间线</h2>
+
+<!-- STOP 1: 取车出发 -->
+<div class="tl-item" data-spot="roma-start">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">10:00</span>
+    <span class="tl-type-badge badge-start">🏁 出发准备</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🏁 罗马中心火车站取车</div>
+    <div class="tl-spot-subname" contenteditable="false">Roma Termini · Europcar / Hertz / Sixt</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">火车站地下层或 Via Marsala 沿线门店</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Roma+Termini+Station" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">📍 取车地点一般在火车站地下层或步行3分钟的 Via Marsala 沿线</p>
+    <p contenteditable="false">⏰ 建议预留30分钟办手续、检查车辆、设置导航</p>
+    <p contenteditable="false">📷 取车时拍照记录车辆已有划痕，避免还车时纠纷</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/6602b8ab0000000012023216" target="_blank">托斯卡纳💐｜租车和自驾详细攻略🚗</a>
+        <span class="xhs-stats">@魚在 · 1235赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">💡 注意事项</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 取车时拍照记录已有划痕</p>
+        <p>• 下载离线 Google Maps 或用 Waze</p>
+        <p>• 意大利山区信号偶尔不稳</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: Roma → Val d'Orcia -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">10:30</span>
+    <span class="tl-type-badge badge-drive">🚗 驾车 2h20min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">罗马 → 奥尔恰山谷</div>
+      <div class="drive-detail" contenteditable="false">190km · A1/E35 高速向北 → Chiusi-Chianciano Terme 出口下</div>
+    </div>
+    <span class="drive-cost">💰 过路费 €12-15</span>
+  </div>
+</div>
+
+<!-- STOP 2: 双排丝柏大道 -->
+<div class="tl-item" data-spot="cypress-avenue">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">12:50</span>
+    <span class="tl-type-badge badge-photo">📸 拍照 15min</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🌲 双排丝柏大道</div>
+    <div class="tl-spot-subname" contenteditable="false">Viale dei Cipressi · Poggio Covili</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span>GPS: <span class="gps-tag">43.0218, 11.6369</span></span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=43.0218,11.6369" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">托斯卡纳最经典的明信片画面——两排丝柏树夹着一条乡间小路，尽头是一座农庄</p>
+    <p contenteditable="false">📷 <strong>长焦镜头最佳</strong>，压缩感拍出经典纵深效果</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/67ee60ad000000001d014498" target="_blank">🌲意大利托斯卡纳6️⃣大丝柏树打卡点｜附📍</a>
+        <span class="xhs-stats">@Hi悦假期 · 1031赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/68309f19000000000303f3da" target="_blank">托斯卡纳的绝美风景，不止S弯丝柏树</a>
+        <span class="xhs-stats">@飞龙 · 255赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">路边临时停靠</div>
+        <div class="pm-detail">打双闪，不要挡路 · 免费</div>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 路边停车控制 10-15 分钟</p>
+        <p>• 行李全塞后备箱！</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: 双排丝柏 → 小耳朵 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">13:05</span>
+    <span class="tl-type-badge badge-drive">🚗 12min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">双排丝柏 → 小耳朵教堂</div>
+      <div class="drive-detail" contenteditable="false">7km 乡间道路，沿途风景本身就是画</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 3: 小耳朵教堂 (备选) -->
+<div class="tl-item" data-spot="chapel-vitaleta" style="border-left:4px solid #ff9800;">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">13:20</span>
+    <span class="tl-type-badge badge-photo">📸 拍照 15min</span>
+    <span class="tl-type-badge" style="background:#fff3e0;color:#e65100;border:1px dashed #ff9800;font-size:11px;font-weight:700;">【备选】小红书推荐</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">⛪ 【备选】小耳朵教堂</div>
+    <div class="tl-spot-subname" contenteditable="false">Cappella Madonna di Vitaleta</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span>GPS: <span class="gps-tag">43.0708, 11.6344</span></span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=43.0708,11.6344" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">孤独矗立在金色麦田中的小教堂，两侧各一排丝柏树——出现在无数托斯卡纳宣传照中</p>
+    <p contenteditable="false">📷 从公路边的观景点远眺即可，不需要走到教堂跟前</p>
+    <p contenteditable="false">💡 博主说"教堂本身很一般，但途径的湖很美"——路过有小湖可以多看两眼</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/681e176d000000002202f583" target="_blank">🇮🇹托斯卡纳的多云下☁️ ｜新S弯打卡点推荐！</a>
+        <span class="xhs-stats">@Bloom的动物园 · 313赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">公路旁小型停车位</div>
+        <div class="pm-detail">约3-4个车位 · 免费 · 先到先得</div>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">💡 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 远眺即可，不需走近</p>
+        <p>• 途中的小湖更值得看</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: 小耳朵 → 皮恩扎 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">13:35</span>
+    <span class="tl-type-badge badge-drive">🚗 12min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">小耳朵教堂 → 皮恩扎</div>
+      <div class="drive-detail" contenteditable="false">7km · 注意皮恩扎在山顶，最后有段上坡</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 4: 皮恩扎 -->
+<div class="tl-item" data-spot="pienza">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">13:45 - 15:15</span>
+    <span class="tl-type-badge badge-food">🍝 午餐+逛镇 1.5h</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🏘️ 皮恩扎 Pienza</div>
+    <div class="tl-spot-subname" contenteditable="false">"理想城市" · 佩科里诺奶酪之乡</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">文艺复兴理想城市 · 世界文化遗产</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Pienza+Italy" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">教宗庇护二世打造的"理想城市"，整座小镇是联合国世界文化遗产</p>
+    <p contenteditable="false"><strong>🍽️ 午餐推荐：</strong></p>
+    <p contenteditable="false">• <strong>猪肉黑松露意面</strong>（腾讯文档行程单推荐）</p>
+    <p contenteditable="false">• <strong>佩科里诺奶酪</strong>（Pecorino di Pienza）——皮恩扎特产</p>
+    <p contenteditable="false">• 随便找一家城墙边的小餐厅坐下，景观超值</p>
+    <p contenteditable="false"><strong>🚶 必逛：</strong></p>
+    <p contenteditable="false">• 庇护二世广场 Piazza Pio II — 小镇中心</p>
+    <p contenteditable="false">• 城墙步道 — 远眺整个奥尔恰山谷</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/6868dd16000000000b02c092" target="_blank">🇮🇹皮恩扎| 是托斯卡纳艳阳下遇见的田园诗</a>
+        <span class="xhs-stats">@Lu.陸 · 33赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/68ef2abe0000000004002e3b" target="_blank">🇮🇹艳阳下的托斯卡纳超完美自驾攻略🌳</a>
+        <span class="xhs-stats">@爱喜没冰了_ · 27赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">⭐ Parcheggio Pienza（推荐）</div>
+        <div class="pm-detail">Via Mario Mencatelli 40, Pienza SI</div>
+        <div class="pm-detail">~€6/4h · 收费安全 · 步行3min进镇</div>
+        <div class="pm-detail" style="margin-top:4px;padding-top:4px;border-top:1px dashed #bbdefb;">🆓 备选: Via Giorgio Santi, 12 — 免费白线车位</div>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 皮恩扎在山顶，最后有段上坡</p>
+        <p>• 在这里补好水和零食（后面长途无服务区）</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: 皮恩扎 → 圆形丝柏 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">15:15</span>
+    <span class="tl-type-badge badge-drive">🚗 7min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">皮恩扎 → 圆形丝柏林</div>
+      <div class="drive-detail" contenteditable="false">3km · 下山后很快就到</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 5: 圆形丝柏 (备选) -->
+<div class="tl-item" data-spot="round-cypress" style="border-left:4px solid #ff9800;">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">15:25</span>
+    <span class="tl-type-badge badge-photo">📸 10min</span>
+    <span class="tl-type-badge" style="background:#fff3e0;color:#e65100;border:1px dashed #ff9800;font-size:11px;font-weight:700;">【备选】小红书推荐</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🌲 【备选】圆形丝柏林</div>
+    <div class="tl-spot-subname" contenteditable="false">Cipressi di San Quirico d'Orcia</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span>GPS: <span class="gps-tag">43.0627, 11.5589</span></span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=43.0627,11.5589" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">一圈丝柏树环绕在山坡上，从高处看像上帝在大地上画了个圆</p>
+    <p contenteditable="false">📷 "树圈本身一般，重点是<strong>俯瞰整个奥尔恰谷平原的震撼 view</strong>"</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/67fe59ad0000000007036d82" target="_blank">托斯卡纳的春天（自驾）</a>
+        <span class="xhs-stats">@蒲公英 · 224赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">路边停靠</div>
+        <div class="pm-detail">免费 · 拍个全景就走</div>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: 圆形丝柏 → S型丝柏 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">15:35</span>
+    <span class="tl-type-badge badge-drive">🚗 20min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">圆形丝柏 → S型丝柏路</div>
+      <div class="drive-detail" contenteditable="false">14km · 继续奥尔恰山谷乡间公路</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 6: S型丝柏路 (备选) -->
+<div class="tl-item" data-spot="s-curve-cypress" style="border-left:4px solid #ff9800;">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">15:55</span>
+    <span class="tl-type-badge badge-photo">📸 15min</span>
+    <span class="tl-type-badge" style="background:#fff3e0;color:#e65100;border:1px dashed #ff9800;font-size:11px;font-weight:700;">【备选】小红书推荐</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🌲 【备选】S型丝柏路</div>
+    <div class="tl-spot-subname" contenteditable="false">Agriturismo Baccoleno</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span>GPS: <span class="gps-tag">43.2008, 11.5904</span></span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=43.2008,11.5904" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">奥尔恰山谷的标志！蜿蜒的乡间小路两旁排列着丝柏树，S形曲线极具视觉冲击</p>
+    <p contenteditable="false">📷 <strong>清晨或黄昏最佳</strong>，无人机视角绝了</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/68309f19000000000303f3da" target="_blank">托斯卡纳的绝美风景，不止S弯丝柏树</a>
+        <span class="xhs-stats">@飞龙 · 255赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/661d8f84000000001a010bf5" target="_blank">🇮🇹Toscana Val d'Orcia 奥尔恰谷含攻略</a>
+        <span class="xhs-stats">@Sunny · 150赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">路边停靠拍照</div>
+        <div class="pm-detail">免费</div>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• S弯部分区域已围栏封闭，只能站外面拍</p>
+        <p>• 如果皮恩扎玩久了，可以<strong>跳过这里</strong>直接去比萨</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: S型丝柏 → 比萨 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">16:15</span>
+    <span class="tl-type-badge badge-drive">🚗 驾车 约2h</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">奥尔恰山谷 → 比萨</div>
+      <div class="drive-detail" contenteditable="false">~200km · SP438 → E78/SGC → FI-PI-LI 快速路 → 比萨</div>
+      <div class="drive-detail" contenteditable="false">⚡ 今天最长一段路！中途没什么服务区，皮恩扎补好水和零食</div>
+    </div>
+    <span class="drive-cost">大部分免费快速路</span>
+  </div>
+</div>
+
+<!-- STOP 7: 比萨斜塔 -->
+<div class="tl-item" data-spot="pisa">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">18:15 - 19:45</span>
+    <span class="tl-type-badge badge-must">⭐ 必打卡 1.5h</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🏛️ 比萨斜塔</div>
+    <div class="tl-spot-subname" contenteditable="false">Torre di Pisa · 奇迹广场</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">Piazza dei Miracoli · 世界文化遗产</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Leaning+Tower+of+Pisa" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">趁日落前的金色光线拍照，斜塔+大教堂+洗礼堂在夕阳下超美</p>
+    <p contenteditable="false"><strong>🚶 游览建议（1.5h）：</strong></p>
+    <p contenteditable="false">• 停好车步行5分钟到奇迹广场</p>
+    <p contenteditable="false">• 拍经典"扶塔"照 → 绕斜塔一圈 → 看大教堂外观</p>
+    <p contenteditable="false">• 如果没提前买登塔票，外观拍照足够了</p>
+    <p contenteditable="false">📍 4月底日落约 19:55，<strong>18:30-19:30 是黄金拍摄时间</strong></p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/68f89b3e0000000005002e27" target="_blank">花半天来🇮🇹比萨逛逛吧</a>
+        <span class="xhs-stats">@瓜西在别处 · 449赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/69621655000000000a03e732" target="_blank">来佛罗伦萨一定要留一天给比萨！！</a>
+        <span class="xhs-stats">@Ohlalalalalala！· 371赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/69143a65000000000700f4f7" target="_blank">奇迹广场+比萨斜塔｜超全攻略+错峰拍照秘籍</a>
+        <span class="xhs-stats">@陪你一起旅行的萱草 · 77赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">⭐ Via Pasquale Galluppi 停车场</div>
+        <div class="pm-detail">Via Pasquale Galluppi, 56123 Pisa PI</div>
+        <div class="pm-detail">离斜塔最近！· 收费 · 可存行李</div>
+        <div class="pm-detail" style="margin-top:4px;padding-top:4px;border-top:1px dashed #bbdefb;">备选: Pisa Tower Parking · 露天 · 步行10min</div>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• <strong>比萨有 ZTL 限行区！</strong>闯入自动罚款</p>
+        <p>• 以上停车场均在 ZTL 外，安全</p>
+        <p>• 有关门时间，留意标牌！</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- STOP: 比萨晚餐 -->
+<div class="tl-item" data-spot="pisa-dinner">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">19:45 - 20:30</span>
+    <span class="tl-type-badge badge-food">🍕 晚餐 45min</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🍽️ 比萨晚餐</div>
+    <div class="tl-spot-subname" contenteditable="false">Pizza "精神故乡" 之一</div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">奇迹广场周边有不少餐厅，或直接在停车场附近找一家</p>
+    <p contenteditable="false">💡 不想花太多时间的话，买个 Panino（三明治）边走边吃也行</p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">💡 建议</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 控制在45min内，后面还有1h15min车程</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Drive: 比萨 → 佛罗伦萨 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">20:30</span>
+    <span class="tl-type-badge badge-drive">🚗 驾车 1h15min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🛣️</span>
+    <div>
+      <div class="drive-title" contenteditable="false">比萨 → 佛罗伦萨</div>
+      <div class="drive-detail" contenteditable="false">85km · FI-PI-LI 快速路（免费）或 A11 高速</div>
+      <div class="drive-detail" contenteditable="false">⚠️ 晚上开车注意意大利乡间没路灯</div>
+    </div>
+    <span class="drive-cost">FI-PI-LI 免费</span>
+  </div>
+</div>
+
+<!-- STOP 8: 佛罗伦萨 -->
+<div class="tl-item" data-spot="firenze">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">~21:45</span>
+    <span class="tl-type-badge badge-stay">🏨 入住</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🏨 抵达佛罗伦萨酒店</div>
+    <div class="tl-spot-subname" contenteditable="false">Via degli Alfani, 50121 Firenze</div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Via+degli+Alfani+50121+Firenze" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">如果 Day4/Day5 在佛罗伦萨全程步行，可以今晚就还车（火车站/机场还车点）</p>
+    <p contenteditable="false">如果 Day6 才开往威尼斯，需要找酒店附近停车场过夜</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/68dc0e6f000000000302d46e" target="_blank">自驾佛罗伦萨本地人推荐的老城停车点</a>
+        <span class="xhs-stats">@Viviko · 93赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/67e48bce000000000302b773" target="_blank">佛罗伦萨｜一定会再来，但不想自驾了 T_T</a>
+        <span class="xhs-stats">@悠了个悠的悠 · 53赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🅿️ 停车</div>
+      <div class="parking-mini" contenteditable="false">
+        <div class="pm-name">推荐: Parcheggio San Lorenzo</div>
+        <div class="pm-detail">Via Rosina · 地下 · 步行5min到酒店</div>
+        <div class="pm-detail">~€25-30/24h</div>
+        <div class="pm-detail" style="margin-top:4px;padding-top:4px;border-top:1px dashed #bbdefb;">备选: Garage Europa · Via Il Prato · ~€20/24h · 步行12min</div>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ ZTL警告</div>
+      <div class="tip-mini" contenteditable="false" style="background:#fce4ec;border-color:#f8bbd0;">
+        <p>• <strong>佛罗伦萨 ZTL 非常严格！</strong></p>
+        <p>• 导航设置避开限行区</p>
+        <p>• 推荐停车场均在 ZTL 外</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- ===== Parking Summary ===== -->
+<div class="parking-summary">
+  <h2 class="section-title">🅿️ 停车场速查表</h2>
+  <table class="parking-table">
+    <thead>
+      <tr><th>时间</th><th>景点</th><th>停车场</th><th>费用</th><th>备注</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>12:50</td><td>双排丝柏大道</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">短停10min，行李藏好</td></tr>
+      <tr><td>13:20</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>小耳朵教堂</td><td><span class="p-name">公路旁停车位</span></td><td>免费</td><td contenteditable="false">3-4个车位，先到先得</td></tr>
+      <tr><td>13:45</td><td>皮恩扎</td><td><span class="p-name">Parcheggio Pienza ⭐</span></td><td>~€6/4h</td><td contenteditable="false">收费安全，步行3min进镇</td></tr>
+      <tr><td>15:25</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>圆形丝柏</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">拍个全景就走</td></tr>
+      <tr><td>15:55</td><td><span style="color:#e65100;font-weight:600;">【备选】</span>S型丝柏路</td><td><span class="p-name">路边停靠</span></td><td>免费</td><td contenteditable="false">部分区域已围栏</td></tr>
+      <tr><td>18:15</td><td>比萨斜塔</td><td><span class="p-name">Via Galluppi ⭐</span></td><td>收费</td><td contenteditable="false">离斜塔最近，可存行李</td></tr>
+      <tr><td>21:45</td><td>佛罗伦萨</td><td><span class="p-name">San Lorenzo</span></td><td>~€25/24h</td><td contenteditable="false">地下停车，步行5min到酒店</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== Tips ===== -->
+<div class="tips-section">
+  <h2 class="section-title">💡 实用贴士</h2>
+  <div class="tip-grid">
+    <div class="tip-card tip-danger">
+      <h4>🔒 防盗铁律</h4>
+      <p contenteditable="false">车窗可见处<strong>绝对不留任何东西</strong>。人离车 → 全塞后备箱 + 拉遮物帘。</p>
+    </div>
+    <div class="tip-card tip-warn">
+      <h4>⚠️ ZTL 限行区</h4>
+      <p contenteditable="false">比萨、佛罗伦萨都有 ZTL，闯入自动拍照罚款（€80-100/次）。停推荐停车场就没问题。</p>
+    </div>
+    <div class="tip-card tip-info">
+      <h4>⛽ 加油须知</h4>
+      <p contenteditable="false">意大利油价约 €1.7-1.9/L。自助（Fai da Te）比人工便宜约 €0.1/L。</p>
+    </div>
+    <div class="tip-card tip-ok">
+      <h4>🛣️ 停车颜色</h4>
+      <p contenteditable="false"><strong>白线</strong> = 免费 ✅ · <strong>蓝线</strong> = 付费 💰 · <strong>黄线</strong> = 禁停 ❌</p>
+    </div>
+    <div class="tip-card tip-info">
+      <h4>📱 必备 App</h4>
+      <p contenteditable="false"><strong>Google Maps</strong>（离线地图）· <strong>Waze</strong>（实时路况）</p>
+    </div>
+    <div class="tip-card tip-warn">
+      <h4>🕐 时间弹性</h4>
+      <p contenteditable="false">时间表按正常节奏排，实际可能±30min。皮恩扎玩久了可以<strong>砍掉S弯丝柏</strong>直接去比萨。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Sources ===== -->
+<div class="sources">
+  <h3>📚 信息来源</h3>
+  <p>• 腾讯文档「勇闯意大利」行程表 · 4人出行原始规划</p>
+  <p>• 小红书多位博主实测分享（详见各景点参考链接）</p>
+  <p>• Rome2rio / Google Maps 驾车距离与时间数据</p>
+  <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月10日 · v2 · 支持在线编辑与批注</p>
+</div>
+
+</div>
+
+<div class="footer">
+  🇮🇹 Buon viaggio! 祝旅途愉快！
+</div>
+
+<script>
+// ===== State =====
+let editMode = false;
+let annotateMode = false;
+
+// ===== Edit Mode =====
+function toggleEdit() {
+  editMode = !editMode;
+  const btn = document.getElementById('btn-edit');
+  const hint = document.getElementById('toolbar-hint');
+  btn.classList.toggle('active', editMode);
+  document.body.classList.toggle('edit-mode', editMode);
+
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+
+  hint.textContent = editMode
+    ? '✏️ 编辑模式已开启 — 点击任意文字即可修改'
+    : '点击「编辑模式」可直接修改内容，「批注模式」可添加备注';
+}
+
+// ===== Annotate Mode =====
+function toggleAnnotate() {
+  annotateMode = !annotateMode;
+  const btn = document.getElementById('btn-annotate');
+  btn.classList.toggle('active', annotateMode);
+  document.body.classList.toggle('annotate-mode', annotateMode);
+
+  const hint = document.getElementById('toolbar-hint');
+  if (annotateMode) {
+    hint.textContent = '📝 批注模式已开启 — 点击「+ 添加批注」按钮';
+  } else if (!editMode) {
+    hint.textContent = '点击「编辑模式」可直接修改内容，「批注模式」可添加备注';
+  }
+}
+
+// ===== Add Note =====
+function addNote(btn) {
+  const note = document.createElement('div');
+  note.className = 'user-note';
+  note.innerHTML = '<span class="note-delete" onclick="removeNote(this)">✕</span><div contenteditable="true" style="outline:none;min-height:20px;" placeholder="在此输入批注...">在此输入批注...</div>';
+  btn.parentNode.insertBefore(note, btn);
+
+  // Focus and select placeholder
+  const editable = note.querySelector('[contenteditable]');
+  editable.focus();
+  const range = document.createRange();
+  range.selectNodeContents(editable);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+}
+
+function removeNote(el) {
+  el.closest('.user-note').remove();
+}
+
+// ===== Export Notes =====
+function exportNotes() {
+  const notes = document.querySelectorAll('.user-note');
+  if (notes.length === 0) {
+    alert('暂无批注内容');
+    return;
+  }
+
+  let text = '# Day3 行程批注\n导出时间: ' + new Date().toLocaleString('zh-CN') + '\n\n';
+
+  notes.forEach((note, i) => {
+    const spot = note.closest('.tl-item');
+    const spotName = spot ? (spot.querySelector('.tl-spot-name')?.textContent || '驾车段') : '未知位置';
+    const content = note.querySelector('[contenteditable]')?.textContent || '';
+    text += `## 批注 ${i + 1} — ${spotName}\n${content}\n\n`;
+  });
+
+  const blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Day3_批注_' + new Date().toISOString().slice(0, 10) + '.md';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ===== Save Local =====
+function saveLocal() {
+  const html = document.documentElement.outerHTML;
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Day3_行程规划_' + new Date().toISOString().slice(0, 10) + '.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ===== Auto-save: 静默保存 + 自动恢复，无弹窗 =====
+function showSaveToast() {
+  let t = document.getElementById('auto-save-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'auto-save-toast';
+    t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(45,106,79,0.92);color:#fff;padding:6px 18px;border-radius:20px;font-size:12px;z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(4px);';
+    document.body.appendChild(t);
+  }
+  t.textContent = '✓ 已自动保存';
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t._hideTimer);
+  t._hideTimer = setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 1500);
+}
+
+let autoSaveTimer = null;
+document.addEventListener('input', () => {
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem('day3_draft', document.querySelector('.container').innerHTML);
+      showSaveToast();
+    } catch (e) {}
+  }, 1000);
+});
+
+// 自动恢复，不弹窗
+window.addEventListener('load', () => {
+  const draft = localStorage.getItem('day3_draft');
+  if (draft) {
+    document.querySelector('.container').innerHTML = draft;
+  }
+});
+</script>
+
+</body>
+</html>

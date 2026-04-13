@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Day2 行程详细规划 | 梵蒂冈·圣彼得大教堂·博物馆·万神殿</title>
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #e8f5e9;
+    --orange: #ff9800;
+    --red: #ef5350;
+    --blue: #42a5f5;
+    --purple: #7e57c2;
+    --bg: #f5f0e8;
+    --card: #ffffff;
+    --text: #2c2c2c;
+    --text-secondary: #666;
+    --border: #e0d8c8;
+    --note-bg: #fffde7;
+    --note-border: #ffe082;
+    --gold: #c9a642;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1a237e 0%, #283593 40%, #3f51b5 100%);
+    color: white;
+    padding: 40px 20px 30px;
+    text-align: center;
+    position: relative;
+  }
+  .hero h1 { font-size: 26px; margin-bottom: 6px; }
+  .hero .subtitle { font-size: 13px; opacity: 0.85; }
+  .hero .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .toolbar {
+    position: sticky; top: 0; z-index: 100; background: white;
+    border-bottom: 1px solid var(--border); padding: 8px 16px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .toolbar-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 6px 12px; border-radius: 8px; border: 1px solid #ddd;
+    background: white; font-size: 12px; cursor: pointer;
+    transition: all 0.2s; white-space: nowrap; color: var(--text);
+  }
+  .toolbar-btn:hover { background: #f0f0f0; }
+  .toolbar-btn.active { background: var(--green); color: white; border-color: var(--green); }
+  .toolbar-btn.btn-note { border-color: var(--note-border); background: var(--note-bg); }
+  .toolbar-btn.btn-note:hover { background: #fff8e1; }
+  .toolbar-sep { width: 1px; height: 20px; background: #ddd; }
+  .toolbar-hint { font-size: 11px; color: #999; margin-left: auto; }
+  .stats-bar {
+    display: flex; justify-content: center; gap: 20px; padding: 14px 16px;
+    background: white; border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; min-width: 70px; }
+  .stat-item .num { font-size: 20px; font-weight: 700; color: #1a237e; }
+  .stat-item .label { font-size: 11px; color: #888; margin-top: 2px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .tl-item {
+    display: grid; grid-template-columns: 260px 1fr 260px; gap: 0;
+    margin-bottom: 12px; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); background: var(--card); position: relative;
+  }
+  .tl-item.item-drive { grid-template-columns: 1fr; background: #f8faf8; }
+  .tl-time-bar {
+    grid-column: 1 / -1; display: flex; align-items: center; gap: 8px;
+    padding: 10px 16px; background: linear-gradient(90deg, #e8eaf6 0%, white 100%);
+    border-bottom: 1px solid #eee;
+  }
+  .tl-time-tag {
+    font-size: 13px; font-weight: 700; color: #1a237e; background: white;
+    padding: 2px 12px; border-radius: 10px; border: 1px solid #c5cae9; white-space: nowrap;
+  }
+  .tl-type-badge { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600; }
+  .badge-photo { background: #fff3e0; color: #e65100; }
+  .badge-food { background: #fce4ec; color: #c62828; }
+  .badge-drive { background: #e8f5e9; color: #2e7d32; }
+  .badge-must { background: var(--red); color: white; }
+  .badge-stay { background: #ede7f6; color: #4a148c; }
+  .badge-start { background: #e3f2fd; color: #1565c0; }
+  .badge-art { background: #f3e5f5; color: #6a1b9a; }
+  .badge-walk { background: #e0f2f1; color: #00695c; }
+  .badge-church { background: #fff8e1; color: #f57f17; }
+  .badge-landmark { background: #fce4ec; color: #880e4f; }
+  .tl-left {
+    padding: 14px 16px; border-right: 1px solid #f0f0f0;
+    display: flex; flex-direction: column; gap: 8px; background: #fafaf8;
+  }
+  .tl-spot-name { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; }
+  .tl-spot-subname { font-size: 12px; color: var(--text-secondary); }
+  .tl-spot-addr { font-size: 12px; color: #888; display: flex; align-items: flex-start; gap: 4px; }
+  .tl-spot-addr .addr-icon { flex-shrink: 0; }
+  .gps-tag { display: inline-block; background: #f0f0f0; padding: 1px 8px; border-radius: 6px; font-family: 'SF Mono','Courier New',monospace; font-size: 11px; color: #666; }
+  .gmap-link {
+    display: inline-flex; align-items: center; gap: 4px; background: var(--green-light);
+    color: #2e7d32; padding: 4px 10px; border-radius: 8px; font-size: 12px;
+    font-weight: 600; text-decoration: none; border: 1px solid #c8e6c9; transition: all 0.2s;
+  }
+  .gmap-link:hover { background: #2e7d32; color: white; }
+  .tl-mid { padding: 14px 16px; border-right: 1px solid #f0f0f0; }
+  .tl-mid p { font-size: 13px; color: #555; margin-bottom: 6px; }
+  .tl-mid p:last-child { margin-bottom: 0; }
+  .xhs-links { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #eee; }
+  .xhs-links-title { font-size: 11px; color: #999; margin-bottom: 6px; font-weight: 600; }
+  .xhs-link-item { display: flex; align-items: center; gap: 6px; padding: 4px 0; font-size: 12px; }
+  .xhs-link-item a { color: #fe2c55; text-decoration: none; font-weight: 500; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .xhs-link-item a:hover { text-decoration: underline; }
+  .xhs-link-item .xhs-stats { font-size: 10px; color: #999; white-space: nowrap; }
+  .tl-right { padding: 14px 16px; background: #fdfcf9; }
+  .tl-right-section { margin-bottom: 10px; }
+  .tl-right-section:last-child { margin-bottom: 0; }
+  .tl-right-label { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; }
+  .parking-mini { background: #e3f2fd; border: 1px solid #bbdefb; border-radius: 8px; padding: 8px 10px; font-size: 12px; }
+  .parking-mini .pm-name { font-weight: 600; color: #1565c0; }
+  .parking-mini .pm-detail { color: #555; font-size: 11px; margin-top: 2px; }
+  .tip-mini { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 8px 10px; font-size: 12px; color: #555; }
+  .drive-card { padding: 12px 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .drive-card .drive-icon { font-size: 18px; }
+  .drive-card .drive-title { font-weight: 600; font-size: 14px; }
+  .drive-card .drive-detail { font-size: 12px; color: var(--text-secondary); }
+  .drive-card .drive-cost { margin-left: auto; font-size: 11px; color: #888; background: #f0f0f0; padding: 2px 8px; border-radius: 6px; }
+  [contenteditable="true"] { outline: none; border-radius: 4px; transition: background 0.2s; }
+  .edit-mode [contenteditable="true"]:hover { background: rgba(45,106,79,0.06); }
+  .edit-mode [contenteditable="true"]:focus { background: rgba(45,106,79,0.1); box-shadow: inset 0 0 0 1px rgba(45,106,79,0.3); }
+  .annotation-marker { display: none; }
+  .annotate-mode .annotation-marker { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: var(--orange); color: white; border-radius: 50%; font-size: 10px; font-weight: 700; cursor: pointer; margin-left: 4px; vertical-align: middle; line-height: 1; }
+  .user-note { background: var(--note-bg); border: 1px solid var(--note-border); border-radius: 8px; padding: 8px 10px; margin-top: 6px; font-size: 12px; position: relative; }
+  .user-note::before { content: '📝 我的批注'; display: block; font-size: 10px; font-weight: 700; color: #f57f17; margin-bottom: 4px; }
+  .user-note .note-delete { position: absolute; top: 6px; right: 8px; cursor: pointer; font-size: 12px; color: #ccc; }
+  .user-note .note-delete:hover { color: var(--red); }
+  .add-note-btn { display: none; margin-top: 6px; padding: 4px 10px; border-radius: 6px; border: 1px dashed var(--note-border); background: transparent; color: #f57f17; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+  .add-note-btn:hover { background: var(--note-bg); }
+  .annotate-mode .add-note-btn { display: inline-block; }
+  .tips-section { background: var(--card); border-radius: 14px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .tip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tip-card { border-radius: 10px; padding: 12px; font-size: 13px; }
+  .tip-card h4 { font-size: 14px; margin-bottom: 6px; }
+  .tip-card.tip-danger { background: #fce4ec; }
+  .tip-card.tip-warn { background: #fff8e1; }
+  .tip-card.tip-info { background: #e3f2fd; }
+  .tip-card.tip-ok { background: var(--green-light); }
+  .sources { background: var(--card); border-radius: 14px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 12px; color: #888; }
+  .sources h3 { font-size: 14px; color: #555; margin-bottom: 8px; }
+  .sources p { margin-bottom: 4px; }
+  .footer { text-align: center; padding: 20px; color: #bbb; font-size: 12px; }
+  @media (max-width: 768px) {
+    .tl-item { grid-template-columns: 1fr !important; }
+    .tl-left, .tl-mid, .tl-right { border-right: none !important; border-bottom: 1px solid #f0f0f0; }
+    .tl-right { border-bottom: none; }
+    .tip-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 22px; }
+    .stats-bar { gap: 12px; }
+    .toolbar-hint { display: none; }
+    .container { padding: 12px 10px; }
+    .drive-card { flex-direction: column; align-items: flex-start; }
+    .drive-card .drive-cost { margin-left: 0; }
+  }
+  @media print {
+    .toolbar { display: none; }
+    .add-note-btn { display: none; }
+    .annotation-marker { display: none; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🇻🇦 Day2 梵蒂冈深度日</h1>
+  <div class="subtitle">圣彼得大教堂登顶 → 梵蒂冈花园 → 梵蒂冈博物馆 → 万神殿 → 纳沃纳广场</div>
+  <div class="date-badge">📅 2026年4月27日 周一</div>
+</div>
+
+<!-- Toolbar -->
+<div class="toolbar" id="toolbar">
+  <button class="toolbar-btn" id="btn-edit" onclick="toggleEdit()">✏️ 编辑模式</button>
+  <button class="toolbar-btn btn-note" id="btn-annotate" onclick="toggleAnnotate()">📝 批注模式</button>
+  <div class="toolbar-sep"></div>
+  <button class="toolbar-btn" onclick="exportNotes()">💾 导出批注</button>
+  <button class="toolbar-btn" onclick="saveLocal()">📥 保存到本地</button>
+  <span class="toolbar-hint" id="toolbar-hint">点击「编辑模式」可直接修改内容，「批注模式」可添加备注</span>
+</div>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">09:30</div><div class="label">开始游览</div></div>
+  <div class="stat-item"><div class="num">~8h</div><div class="label">总游览时长</div></div>
+  <div class="stat-item"><div class="num">6</div><div class="label">景点/站点</div></div>
+  <div class="stat-item"><div class="num">🌅 19:30</div><div class="label">日落时间</div></div>
+  <div class="stat-item"><div class="num">步行+打车</div><div class="label">交通方式</div></div>
+</div>
+
+<div class="container">
+
+<!-- ===== Geographic Illustrated Route Map ===== -->
+<div class="map-section" style="background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+  <h2 class="section-title">🗺️ Day2 行程路线图</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:12px;">📐 基于罗马市区真实地理位置 · 手绘风地标建筑 · 点击景点可跳转 Google Maps 导航</p>
+
+  <div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+  <svg viewBox="0 0 960 920" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+    <defs>
+      <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#f8f3ea;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#efe6d6;stop-opacity:1"/>
+      </linearGradient>
+      <linearGradient id="vaticanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#e8eaf6;stop-opacity:0.3"/>
+        <stop offset="100%" style="stop-color:#c5cae9;stop-opacity:0.15"/>
+      </linearGradient>
+      <linearGradient id="centroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#fff3e0;stop-opacity:0.25"/>
+        <stop offset="100%" style="stop-color:#ffe0b2;stop-opacity:0.1"/>
+      </linearGradient>
+      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.12)"/>
+      </filter>
+      <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="120%">
+        <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.1)"/>
+      </filter>
+      <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="2" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- ===== BACKGROUND ===== -->
+    <rect width="960" height="920" rx="16" fill="url(#mapBg)"/>
+
+    <!-- Title -->
+    <text x="30" y="45" font-size="20" fill="#1a237e" letter-spacing="6" font-weight="700" opacity="0.25">D A Y  2  ·  V A T I C A N  &amp;  R O M A</text>
+
+    <!-- ===== TIBER RIVER (Tevere) — flowing N-S through center ===== -->
+    <path d="M440,0 C430,60 460,120 450,200 C440,280 470,350 455,440 C445,520 465,600 450,680 C440,750 460,820 450,920" stroke="#8bb8d0" stroke-width="22" fill="none" opacity="0.12" stroke-linecap="round"/>
+    <path d="M440,0 C430,60 460,120 450,200 C440,280 470,350 455,440 C445,520 465,600 450,680 C440,750 460,820 450,920" stroke="#8bb8d0" stroke-width="3.5" fill="none" opacity="0.35" stroke-linecap="round" stroke-dasharray="12,6"/>
+    <text x="425" y="760" font-size="11" fill="#7aa8c0" opacity="0.45" font-style="italic" transform="rotate(-8,425,760)">Tevere 台伯河</text>
+
+    <!-- ===== REGION ZONES ===== -->
+    <!-- Vatican zone (west of Tiber) -->
+    <ellipse cx="230" cy="440" rx="220" ry="280" fill="url(#vaticanGrad)" opacity="0.7"/>
+    <text x="90" y="750" font-size="12" fill="#3949ab" opacity="0.25" font-weight="700" letter-spacing="5">C I T T À  D E L  V A T I C A N O</text>
+
+    <!-- Centro Storico zone (east of Tiber) -->
+    <ellipse cx="700" cy="380" rx="220" ry="240" fill="url(#centroGrad)" opacity="0.6"/>
+    <text x="620" y="620" font-size="11" fill="#8b7355" opacity="0.25" font-weight="600" letter-spacing="4">C E N T R O  S T O R I C O</text>
+
+    <!-- ===== STREET GRID HINTS ===== -->
+    <g opacity="0.07" stroke="#a09080" stroke-width="1">
+      <!-- Vatican internal roads -->
+      <line x1="120" y1="200" x2="350" y2="200"/>
+      <line x1="200" y1="150" x2="200" y2="650"/>
+      <line x1="100" y1="400" x2="400" y2="400"/>
+      <!-- Centro roads -->
+      <line x1="500" y1="150" x2="500" y2="600"/>
+      <line x1="550" y1="200" x2="850" y2="200"/>
+      <line x1="600" y1="100" x2="600" y2="550"/>
+      <line x1="500" y1="350" x2="850" y2="350"/>
+    </g>
+    <!-- Via della Conciliazione (connecting St Peter's to Tiber) -->
+    <line x1="280" y1="470" x2="430" y2="470" stroke="#c4a97d" stroke-width="2" opacity="0.15"/>
+    <text x="310" y="488" font-size="8" fill="#a09080" opacity="0.3" font-style="italic">Via d. Conciliazione</text>
+
+    <!-- ===== HAND-DRAWN LANDMARK BUILDINGS ===== -->
+
+    <!-- ★ St. Peter's Basilica dome (large, prominent) -->
+    <g transform="translate(220,380)" opacity="0.2">
+      <!-- Main dome -->
+      <path d="M-35,0 Q-35,-45 0,-55 Q35,-45 35,0" fill="none" stroke="#1a237e" stroke-width="3"/>
+      <!-- Drum (base of dome) -->
+      <rect x="-30" y="0" width="60" height="15" rx="2" fill="none" stroke="#1a237e" stroke-width="2"/>
+      <!-- Lantern on top -->
+      <rect x="-5" y="-60" width="10" height="8" rx="1" fill="none" stroke="#1a237e" stroke-width="1.5"/>
+      <!-- Cross -->
+      <line x1="0" y1="-68" x2="0" y2="-75" stroke="#1a237e" stroke-width="1.5"/>
+      <line x1="-4" y1="-72" x2="4" y2="-72" stroke="#1a237e" stroke-width="1.5"/>
+      <!-- Columns below -->
+      <g opacity="0.7">
+        <rect x="-25" y="15" width="3" height="10" fill="#1a237e"/>
+        <rect x="-15" y="15" width="3" height="10" fill="#1a237e"/>
+        <rect x="-5" y="15" width="3" height="10" fill="#1a237e"/>
+        <rect x="5" y="15" width="3" height="10" fill="#1a237e"/>
+        <rect x="15" y="15" width="3" height="10" fill="#1a237e"/>
+        <rect x="25" y="15" width="3" height="10" fill="#1a237e"/>
+      </g>
+    </g>
+
+    <!-- ★ St. Peter's Square colonnade (curved arms) -->
+    <g transform="translate(220,460)" opacity="0.12">
+      <path d="M-60,0 Q-80,40 -40,60" fill="none" stroke="#1a237e" stroke-width="3" stroke-linecap="round"/>
+      <path d="M60,0 Q80,40 40,60" fill="none" stroke="#1a237e" stroke-width="3" stroke-linecap="round"/>
+      <!-- Obelisk -->
+      <line x1="0" y1="20" x2="0" y2="45" stroke="#1a237e" stroke-width="2"/>
+      <polygon points="0,18 -3,25 3,25" fill="#1a237e"/>
+    </g>
+
+    <!-- ★ Vatican Gardens (trees, north-west of basilica) -->
+    <g transform="translate(130,260)" opacity="0.18">
+      <circle cx="0" cy="0" r="10" fill="#5a8a5e"/>
+      <circle cx="18" cy="-5" r="8" fill="#5a8a5e"/>
+      <circle cx="-15" cy="8" r="9" fill="#5a8a5e"/>
+      <circle cx="30" cy="8" r="7" fill="#5a8a5e"/>
+      <circle cx="8" cy="15" r="8" fill="#5a8a5e"/>
+      <circle cx="-8" cy="-12" r="7" fill="#5a8a5e"/>
+    </g>
+
+    <!-- ★ Vatican Museums (north of Vatican, long building) -->
+    <g transform="translate(260,200)" opacity="0.15">
+      <rect x="0" y="0" width="80" height="18" rx="3" fill="none" stroke="#7e57c2" stroke-width="2"/>
+      <rect x="5" y="-5" width="12" height="5" rx="1" fill="#7e57c2"/>
+      <rect x="25" y="-5" width="12" height="5" rx="1" fill="#7e57c2"/>
+      <rect x="45" y="-5" width="12" height="5" rx="1" fill="#7e57c2"/>
+      <rect x="65" y="-5" width="12" height="5" rx="1" fill="#7e57c2"/>
+    </g>
+
+    <!-- ★ Pantheon (east of Tiber, circular with portico) -->
+    <g transform="translate(680,280)" opacity="0.18">
+      <!-- Circular body -->
+      <circle cx="0" cy="0" r="25" fill="none" stroke="#8b4513" stroke-width="2.5"/>
+      <!-- Oculus (open eye at top) -->
+      <circle cx="0" cy="-8" r="5" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+      <!-- Portico (front columns) -->
+      <rect x="-18" y="20" width="3" height="15" rx="0.5" fill="#8b4513"/>
+      <rect x="-9" y="20" width="3" height="15" rx="0.5" fill="#8b4513"/>
+      <rect x="0" y="20" width="3" height="15" rx="0.5" fill="#8b4513"/>
+      <rect x="9" y="20" width="3" height="15" rx="0.5" fill="#8b4513"/>
+      <rect x="18" y="20" width="3" height="15" rx="0.5" fill="#8b4513"/>
+      <!-- Pediment (triangle) -->
+      <path d="M-22,20 L0,10 L22,20" fill="none" stroke="#8b4513" stroke-width="1.5"/>
+    </g>
+
+    <!-- ★ Piazza Navona (elliptical piazza with fountain hints) -->
+    <g transform="translate(640,450)" opacity="0.15">
+      <ellipse cx="0" cy="0" rx="18" ry="35" fill="none" stroke="#c4a97d" stroke-width="2"/>
+      <!-- Fountain dots -->
+      <circle cx="0" cy="-15" r="3" fill="#42a5f5" opacity="0.6"/>
+      <circle cx="0" cy="0" r="3" fill="#42a5f5" opacity="0.6"/>
+      <circle cx="0" cy="15" r="3" fill="#42a5f5" opacity="0.6"/>
+    </g>
+
+    <!-- ===== COMPASS ===== -->
+    <g transform="translate(900,55)" opacity="0.5">
+      <circle cx="0" cy="0" r="26" fill="rgba(255,255,255,0.6)" stroke="#8b7355" stroke-width="1.5"/>
+      <text x="0" y="-10" text-anchor="middle" font-size="13" font-weight="800" fill="#8b7355">N</text>
+      <text x="0" y="20" text-anchor="middle" font-size="10" fill="#b0a080">S</text>
+      <text x="13" y="5" text-anchor="middle" font-size="10" fill="#b0a080">E</text>
+      <text x="-13" y="5" text-anchor="middle" font-size="10" fill="#b0a080">W</text>
+      <line x1="0" y1="-6" x2="0" y2="8" stroke="#8b7355" stroke-width="1.5"/>
+      <polygon points="0,-6 -3,1 3,1" fill="#8b7355"/>
+    </g>
+
+    <!-- ===== ROUTE LINES (geographic positions) ===== -->
+    <!-- Geographic layout:
+         ① Breakfast: near Vatican SW (~200,620)
+         ② St Peter's Basilica: Vatican center (~220,470)
+         ③ Vatican Gardens: Vatican NW (~150,280)
+         ④ Vatican Museums: Vatican N (~300,200)
+         ⑤ Pantheon: Centro E (~700,290) — crosses Tiber
+         ⑥ Navona: Centro NW (~650,440) -->
+
+    <!-- ① Breakfast → ② St Peter's (walk north) -->
+    <path d="M210,610 C215,560 218,530 220,490" stroke="#3f51b5" stroke-width="3.5" fill="none" stroke-dasharray="8,5" opacity="0.4" stroke-linecap="round"/>
+    <!-- ② St Peter's → ③ Vatican Gardens (walk NW) -->
+    <path d="M200,450 C180,400 165,350 155,300" stroke="#3f51b5" stroke-width="3.5" fill="none" stroke-dasharray="8,5" opacity="0.4" stroke-linecap="round"/>
+    <!-- ③ Gardens → ④ Museums (walk NE, internal) -->
+    <path d="M180,280 C210,250 250,230 300,215" stroke="#3f51b5" stroke-width="3.5" fill="none" stroke-dasharray="8,5" opacity="0.4" stroke-linecap="round"/>
+    <!-- ④ Museums → ⑤ Pantheon (taxi, crosses Tiber) -->
+    <path d="M360,210 C430,220 520,240 640,280" stroke="#3f51b5" stroke-width="4.5" fill="none" stroke-dasharray="16,8" opacity="0.45" stroke-linecap="round"/>
+    <!-- ⑤ Pantheon → ⑥ Navona (walk SW) -->
+    <path d="M680,310 C670,360 660,400 650,430" stroke="#3f51b5" stroke-width="3.5" fill="none" stroke-dasharray="8,5" opacity="0.4" stroke-linecap="round"/>
+
+    <!-- ===== DISTANCE/TRANSPORT PILLS ===== -->
+    <g font-size="11" font-weight="600">
+      <rect x="170" y="545" width="110" height="24" rx="12" fill="#3f51b5" opacity="0.82" filter="url(#shadow)"/>
+      <text x="225" y="561" fill="white" text-anchor="middle" font-size="10">🚶 步行 ~10min</text>
+
+      <rect x="120" y="365" width="120" height="24" rx="12" fill="#3f51b5" opacity="0.75"/>
+      <text x="180" y="381" fill="white" text-anchor="middle" font-size="10">⛪ 登顶+参观 2h</text>
+
+      <rect x="130" y="240" width="120" height="24" rx="12" fill="#3f51b5" opacity="0.75"/>
+      <text x="190" y="256" fill="white" text-anchor="middle" font-size="10">🌿 花园游览 ~45min</text>
+
+      <rect x="460" y="222" width="120" height="24" rx="12" fill="#3f51b5" opacity="0.82"/>
+      <text x="520" y="238" fill="white" text-anchor="middle" font-size="10">🚕 打车 ~15min</text>
+
+      <rect x="640" y="370" width="110" height="24" rx="12" fill="#3f51b5" opacity="0.75"/>
+      <text x="695" y="386" fill="white" text-anchor="middle" font-size="10">🚶 步行 ~8min</text>
+    </g>
+
+    <!-- ===== STOP CARDS ===== -->
+
+    <!-- ① 早餐 (Vatican SW area) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Breakfast+near+Vatican+Rome" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="30" y="600" width="290" height="72" rx="14" fill="white" stroke="#66bb6a" stroke-width="2.5"/>
+        <circle cx="68" cy="636" r="24" fill="#66bb6a" filter="url(#glow)"/>
+        <text x="68" y="643" text-anchor="middle" fill="white" font-size="17" font-weight="800">1</text>
+        <text x="104" y="621" font-size="15" font-weight="700" fill="#333">☕ 早餐</text>
+        <text x="104" y="641" font-size="12" fill="#888">已预约 09:30-10:30</text>
+        <text x="104" y="658" font-size="10" fill="#666">补充能量 · 今天暴走日</text>
+      </g>
+    </a>
+    <circle cx="210" cy="620" r="5" fill="#66bb6a" opacity="0.5"/>
+
+    <!-- ② 圣彼得大教堂 (Vatican center) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=St+Peters+Basilica+Vatican" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="30" y="440" width="310" height="82" rx="14" fill="white" stroke="#c9a642" stroke-width="2.5"/>
+        <circle cx="68" cy="482" r="24" fill="#c9a642" filter="url(#glow)"/>
+        <text x="68" y="489" text-anchor="middle" fill="white" font-size="17" font-weight="800">2</text>
+        <text x="104" y="462" font-size="15" font-weight="700" fill="#333">⛪ 圣彼得大教堂</text>
+        <text x="104" y="482" font-size="12" fill="#888">10:30-12:30 · ⭐必打卡 2h</text>
+        <text x="104" y="499" font-size="10" fill="#666">登穹顶俯瞰梵蒂冈 + 广场拍照</text>
+        <text x="104" y="512" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
+      </g>
+    </a>
+    <circle cx="220" cy="470" r="6" fill="#c9a642" opacity="0.6"/>
+
+    <!-- ③ 梵蒂冈花园 (Vatican NW, in gardens area) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Vatican+Gardens" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="20" y="260" width="290" height="72" rx="14" fill="white" stroke="#66bb6a" stroke-width="2.5"/>
+        <circle cx="58" cy="296" r="24" fill="#66bb6a" filter="url(#glow)"/>
+        <text x="58" y="303" text-anchor="middle" fill="white" font-size="17" font-weight="800">3</text>
+        <text x="94" y="281" font-size="15" font-weight="700" fill="#333">🌿 梵蒂冈花园</text>
+        <text x="94" y="301" font-size="12" fill="#888">已预约 13:30 · 含巴士游览</text>
+        <text x="94" y="318" font-size="10" fill="#666">每人40€ · 已预定</text>
+      </g>
+    </a>
+    <circle cx="155" cy="285" r="5" fill="#66bb6a" opacity="0.5"/>
+
+    <!-- ④ 梵蒂冈博物馆 (Vatican N, near wall) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Vatican+Museums" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="200" y="140" width="310" height="82" rx="14" fill="white" stroke="#7e57c2" stroke-width="2.5"/>
+        <circle cx="238" cy="182" r="24" fill="#7e57c2" filter="url(#glow)"/>
+        <text x="238" y="189" text-anchor="middle" fill="white" font-size="17" font-weight="800">4</text>
+        <text x="274" y="162" font-size="15" font-weight="700" fill="#333">🎨 梵蒂冈博物馆</text>
+        <text x="274" y="182" font-size="12" fill="#888">~14:15-17:45 · ⭐必打卡 3.5h</text>
+        <text x="274" y="199" font-size="10" fill="#666">西斯廷礼拜堂 · 拉斐尔房间</text>
+        <text x="274" y="213" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
+      </g>
+    </a>
+    <circle cx="305" cy="215" r="5" fill="#7e57c2" opacity="0.5"/>
+
+    <!-- ⑤ 万神殿 (Centro Storico, east of Tiber) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Pantheon+Rome" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="590" y="240" width="310" height="82" rx="14" fill="white" stroke="#ef5350" stroke-width="2.5"/>
+        <circle cx="628" cy="282" r="24" fill="#ef5350" filter="url(#glow)"/>
+        <text x="628" y="289" text-anchor="middle" fill="white" font-size="17" font-weight="800">5</text>
+        <text x="664" y="262" font-size="15" font-weight="700" fill="#333">🏛️ 万神殿</text>
+        <text x="664" y="282" font-size="12" fill="#888">已预约 18:00-18:30 入场</text>
+        <text x="664" y="299" font-size="10" fill="#666">2000年不倒的穹顶 · 眼洞天光</text>
+        <text x="664" y="313" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
+      </g>
+    </a>
+    <circle cx="685" cy="290" r="6" fill="#ef5350" opacity="0.6"/>
+
+    <!-- ⑥ 纳沃纳广场+晚餐 (Centro, south of Pantheon) -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Piazza+Navona+Rome" target="_blank">
+      <g filter="url(#cardShadow)" cursor="pointer">
+        <rect x="550" y="430" width="320" height="78" rx="14" fill="white" stroke="#ff9800" stroke-width="2.5"/>
+        <circle cx="588" cy="470" r="24" fill="#ff9800" filter="url(#glow)"/>
+        <text x="588" y="477" text-anchor="middle" fill="white" font-size="17" font-weight="800">6</text>
+        <text x="624" y="453" font-size="15" font-weight="700" fill="#333">🍝 纳沃纳广场 + 晚餐</text>
+        <text x="624" y="473" font-size="12" fill="#888">~18:45 · 散步+晚餐</text>
+        <text x="624" y="490" font-size="10" fill="#666">四河喷泉 · 贝尼尼杰作 · 巴洛克广场</text>
+      </g>
+    </a>
+    <circle cx="650" cy="450" r="5" fill="#ff9800" opacity="0.5"/>
+
+    <!-- ===== "CROSS THE TIBER" indicator ===== -->
+    <g transform="translate(445,240)" opacity="0.55">
+      <rect x="-55" y="-12" width="110" height="24" rx="12" fill="rgba(255,255,255,0.85)" stroke="#8bb8d0" stroke-width="1.5"/>
+      <text x="0" y="4" text-anchor="middle" font-size="10" fill="#5a8a9e" font-weight="600">🌉 横跨台伯河</text>
+    </g>
+
+    <!-- ===== AREA LABELS ===== -->
+    <text x="80" y="780" font-size="10" fill="#666" opacity="0.3" font-weight="600" letter-spacing="2">Borgo 区</text>
+
+    <!-- ===== LEGEND ===== -->
+    <g transform="translate(20,840)">
+      <rect width="920" height="65" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow)"/>
+      <circle cx="25" cy="22" r="9" fill="#66bb6a"/><text x="42" y="26" font-size="11" fill="#555">餐饮/花园</text>
+      <circle cx="140" cy="22" r="9" fill="#c9a642"/><text x="157" y="26" font-size="11" fill="#555">教堂</text>
+      <circle cx="220" cy="22" r="9" fill="#7e57c2"/><text x="237" y="26" font-size="11" fill="#555">博物馆</text>
+      <circle cx="320" cy="22" r="9" fill="#ef5350"/><text x="337" y="26" font-size="11" fill="#555">地标</text>
+      <circle cx="400" cy="22" r="9" fill="#ff9800"/><text x="417" y="26" font-size="11" fill="#555">美食广场</text>
+      <rect x="490" y="14" width="16" height="16" rx="8" fill="none" stroke="#8bb8d0" stroke-width="2" opacity="0.6"/>
+      <text x="512" y="26" font-size="11" fill="#555">台伯河</text>
+      <text x="25" y="52" font-size="10" fill="#888">Day2 梵蒂冈+罗马老城 · 步行+打车 · 点击卡片跳转 Google Maps 导航</text>
+    </g>
+  </svg>
+  </div>
+</div>
+
+<!-- ===== Timeline Section ===== -->
+<h2 class="section-title">⏱️ 详细时间线</h2>
+
+<!-- STOP 1: 早餐 -->
+<div class="tl-item" data-spot="breakfast">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">09:30 - 10:30</span>
+    <span class="tl-type-badge badge-food">☕ 早餐</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">☕ 早餐</div>
+    <div class="tl-spot-subname" contenteditable="false">已预约 · 补充能量准备暴走日</div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">今天行程密集，早餐一定要吃饱！</p>
+    <p contenteditable="false">💡 意大利式早餐：Cornetto（牛角包）+ Cappuccino 是标配</p>
+    <p contenteditable="false">⏰ 已预约 09:30-10:30，吃完直接出发去圣彼得大教堂</p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">💡 建议</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 带好水和能量棒</p>
+        <p>• 今天要走 15000+ 步</p>
+        <p>• 穿最舒服的运动鞋</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- STOP 2: 圣彼得大教堂 -->
+<div class="tl-item" data-spot="st-peters">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">10:30 - 12:30</span>
+    <span class="tl-type-badge badge-must">⭐ 必打卡 2h</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">⛪ 圣彼得大教堂</div>
+    <div class="tl-spot-subname" contenteditable="false">Basilica di San Pietro · 世界最大教堂</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">Piazza San Pietro, Città del Vaticano</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=St+Peters+Basilica+Vatican" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">天主教最神圣的教堂，建筑史上的奇迹。米开朗基罗设计的穹顶从地面到十字架顶 136.6 米</p>
+    <p contenteditable="false"><strong>🚶 建议路线（2h）：</strong></p>
+    <p contenteditable="false">• <strong>先登穹顶</strong>（电梯+320级台阶）→ 俯瞰整个梵蒂冈和罗马全景</p>
+    <p contenteditable="false">• 下来后参观教堂内部 → 米开朗基罗《圣殇》· 贝尼尼青铜华盖</p>
+    <p contenteditable="false">• 最后在圣彼得广场拍照 → 贝尼尼柱廊</p>
+    <p contenteditable="false">🎫 教堂免费 · <strong>登穹顶电梯票需在线预约</strong></p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/67c4e5d0000000001e03ec02" target="_blank">🇻🇦圣彼得大教堂登顶全攻略｜震撼到哭</a>
+        <span class="xhs-stats">@欧洲漫步 · 956赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/668a7c3e000000001e01fb8a" target="_blank">梵蒂冈一日游｜圣彼得+博物馆最佳动线</a>
+        <span class="xhs-stats">@行走的画报 · 743赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🎫 门票</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 教堂参观：<strong>免费</strong></p>
+        <p>• 登穹顶电梯：<strong>需在线预约</strong></p>
+        <p>• booking.basilicasanpietro.va</p>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• <strong>着装要求！</strong>不能露膝盖和肩膀</p>
+        <p>• 安检排队约 20-40min</p>
+        <p>• 穹顶台阶很窄，恐高慎选</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- 午餐 -->
+<div class="tl-item" data-spot="lunch">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">12:30 - 13:15</span>
+    <span class="tl-type-badge badge-food">🍕 午餐</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🍕 午餐</div>
+    <div class="tl-spot-subname" contenteditable="false">梵蒂冈周边 · 快速补给</div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">圣彼得广场出来后在附近简单吃一顿</p>
+    <p contenteditable="false">💡 Via della Conciliazione 沿线有很多餐厅，但<strong>游客区价格偏高</strong></p>
+    <p contenteditable="false">💡 推荐往 Borgo 区走几步，性价比更好</p>
+    <p contenteditable="false">⏰ 13:30 要到梵蒂冈花园，控制好时间！</p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">💡 建议</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 买个 Pizza al Taglio（切块披萨）边走边吃</p>
+        <p>• 省时且便宜 ~€3-5</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- STOP 3: 梵蒂冈花园 -->
+<div class="tl-item" data-spot="vatican-gardens">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">13:30 - ~14:15</span>
+    <span class="tl-type-badge badge-walk">🌿 花园游览</span>
+    <span class="tl-type-badge" style="background:#e8f5e9;color:#2e7d32;font-size:11px;font-weight:700;">已预定</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🌿 梵蒂冈花园</div>
+    <div class="tl-spot-subname" contenteditable="false">Giardini Vaticani · 含馆内巴士</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">梵蒂冈博物馆入口集合</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Vatican+Gardens" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">梵蒂冈花园是教皇的私人花园，平时不对外开放，需要预约才能进入</p>
+    <p contenteditable="false">🎫 <strong>【已预定】官网梵蒂冈花园+馆内巴士 · 每人40€</strong></p>
+    <p contenteditable="false">• 订的 13:30 场次，<strong>提前 15 分钟到达</strong></p>
+    <p contenteditable="false">• 花园游览结束后可以直接进入梵蒂冈博物馆</p>
+    <p contenteditable="false">💡 这个流程很顺：花园 → 博物馆 → 西斯廷礼拜堂，一路不走回头路</p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🎫 门票</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• <strong>40€/人 · 已预定</strong></p>
+        <p>• 含花园游览 + 馆内巴士</p>
+        <p>• 游览后直接进博物馆</p>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 提前15分钟到！迟到不等人</p>
+        <p>• 集合点在博物馆入口</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- STOP 4: 梵蒂冈博物馆 -->
+<div class="tl-item" data-spot="vatican-museum">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">~14:15 - 17:45</span>
+    <span class="tl-type-badge badge-must">⭐ 必打卡 3.5h</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🎨 梵蒂冈博物馆</div>
+    <div class="tl-spot-subname" contenteditable="false">Musei Vaticani · 世界四大博物馆之一</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">Viale Vaticano, 00165 Roma</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Vatican+Museums" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">全球最伟大的艺术宝库之一。梵蒂冈花园游览后<strong>直接从内部通道进入</strong>，省去排队</p>
+    <p contenteditable="false"><strong>🚶 必看路线（3.5h）：</strong></p>
+    <p contenteditable="false">• <strong>松果庭院</strong> → 拍照打卡经典球体雕塑</p>
+    <p contenteditable="false">• <strong>拉斐尔房间</strong> → 《雅典学院》必看！</p>
+    <p contenteditable="false">• <strong>地图廊</strong> → 40幅意大利地图壁画，金碧辉煌</p>
+    <p contenteditable="false">• <strong>西斯廷礼拜堂</strong> → 米开朗基罗《创世纪》天顶画 + 《最后的审判》</p>
+    <p contenteditable="false">⚠️ 西斯廷礼拜堂内<strong>禁止拍照+禁止说话</strong></p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/67d9e4a0000000001d02e81c" target="_blank">🇻🇦梵蒂冈博物馆3h最优路线｜每一步都是震撼</a>
+        <span class="xhs-stats">@艺术控旅行 · 1287赞</span>
+      </div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/6692bb8d000000001e034c81" target="_blank">梵蒂冈博物馆避坑指南｜这些地方千万别错过</a>
+        <span class="xhs-stats">@旅途中的美术课 · 892赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🎫 门票</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• <strong>花园票已含博物馆入场</strong></p>
+        <p>• 标准票 20€+5€预约费（已售罄）</p>
+        <p>• 英文讲解票 40€（可买）</p>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">⚠️ 注意</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 西斯廷礼拜堂<strong>禁止拍照</strong></p>
+        <p>• 博物馆超大，跟紧标记路线</p>
+        <p>• 带耳机听语音讲解更好</p>
+        <p>• 有洗手间的地方赶紧去！间隔很远</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Taxi: 梵蒂冈 → 万神殿 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">17:45</span>
+    <span class="tl-type-badge badge-drive">🚕 打车 15min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🚕</span>
+    <div>
+      <div class="drive-title" contenteditable="false">梵蒂冈博物馆 → 万神殿</div>
+      <div class="drive-detail" contenteditable="false">约3.5km · 打车约 €8-10 · 也可坐 Bus 64/40</div>
+    </div>
+    <span class="drive-cost">💰 ~€8-10</span>
+  </div>
+</div>
+
+<!-- STOP 5: 万神殿 -->
+<div class="tl-item" data-spot="pantheon">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">18:00 - 18:30</span>
+    <span class="tl-type-badge badge-must">⭐ 必打卡</span>
+    <span class="tl-type-badge" style="background:#e8f5e9;color:#2e7d32;font-size:11px;font-weight:700;">已预约</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🏛️ 万神殿</div>
+    <div class="tl-spot-subname" contenteditable="false">Pantheon · 2000年不倒的建筑奇迹</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">Piazza della Rotonda, Roma</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Pantheon+Rome" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">公元125年建成，至今2000年仍完好！穹顶上的"眼洞"（Oculus）是唯一光源</p>
+    <p contenteditable="false">🎫 <strong>已预约 18:00-18:30 入场</strong></p>
+    <p contenteditable="false">📷 抬头看穹顶！直径 43.3 米，和高度完全相等——放一个正球刚好</p>
+    <p contenteditable="false">💡 内部参观 20-30 分钟足够，重点感受空间的震撼</p>
+    <p contenteditable="false">• 拉斐尔墓就在里面（右侧第三间壁龛）</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/66e3a7c2000000001e02ef41" target="_blank">🇮🇹万神殿｜2000年的光从穹顶落下那一刻</a>
+        <span class="xhs-stats">@光与影的旅人 · 765赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">🎫 门票</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 5€/人（2023年起收费）</p>
+        <p>• <strong>已预约 18:00 场次</strong></p>
+        <p>• 不预约也能进，但要排队</p>
+      </div>
+    </div>
+    <div class="tl-right-section">
+      <div class="tl-right-label">💡 小贴士</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 门口广场有个好喝的咖啡店</p>
+        <p>• 附近的 Tazza d'Oro 咖啡很出名</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- Walk: 万神殿 → 纳沃纳广场 -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag" style="background:#f1f8e9;color:#558b2f;border-color:#c5e1a5;">18:30</span>
+    <span class="tl-type-badge badge-walk">🚶 步行 8min</span>
+  </div>
+  <div class="drive-card">
+    <span class="drive-icon">🚶</span>
+    <div>
+      <div class="drive-title" contenteditable="false">万神殿 → 纳沃纳广场</div>
+      <div class="drive-detail" contenteditable="false">约600m · 穿过小巷，一路都是美食和小店</div>
+    </div>
+  </div>
+</div>
+
+<!-- STOP 6: 纳沃纳广场+晚餐 -->
+<div class="tl-item" data-spot="navona">
+  <div class="tl-time-bar">
+    <span class="tl-time-tag">~18:45 - 20:30</span>
+    <span class="tl-type-badge badge-food">🍝 晚餐+散步</span>
+  </div>
+  <div class="tl-left">
+    <div class="tl-spot-name" contenteditable="false">🍝 纳沃纳广场 + 晚餐</div>
+    <div class="tl-spot-subname" contenteditable="false">Piazza Navona · 巴洛克广场</div>
+    <div class="tl-spot-addr">
+      <span class="addr-icon">📍</span>
+      <span contenteditable="false">Piazza Navona, Roma</span>
+    </div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Piazza+Navona+Rome" target="_blank">📍 Google Maps 导航</a>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p contenteditable="false">罗马最美的巴洛克广场！贝尼尼的四河喷泉就在正中央</p>
+    <p contenteditable="false"><strong>🍽️ 晚餐推荐：</strong></p>
+    <p contenteditable="false">• 广场周边价格偏贵，建议走到<strong>旁边小巷</strong>找餐厅</p>
+    <p contenteditable="false">• 推荐尝试：<strong>Amatriciana</strong>（阿马特里切培根番茄酱面）——罗马四大面之一</p>
+    <p contenteditable="false">• 或者 <strong>Supplì</strong>（炸饭团）——罗马街头小吃</p>
+    <p contenteditable="false">📷 傍晚的广场灯光 + 喷泉非常美，适合慢慢拍照</p>
+    <div class="xhs-links">
+      <div class="xhs-links-title">📕 小红书参考</div>
+      <div class="xhs-link-item">
+        <a href="https://www.xiaohongshu.com/explore/66bb3f57000000001e02c4d9" target="_blank">🇮🇹纳沃纳广场周边美食地图｜避开游客陷阱</a>
+        <span class="xhs-stats">@罗马吃货 · 534赞</span>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section">
+      <div class="tl-right-label">💡 周边推荐</div>
+      <div class="tip-mini" contenteditable="false">
+        <p>• 四河喷泉 → 贝尼尼代表作</p>
+        <p>• 摩尔人喷泉 → 广场南端</p>
+        <p>• 晚餐后可以沿台伯河散步回酒店</p>
+        <p>• 夜晚的罗马老城非常浪漫 🌙</p>
+      </div>
+    </div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+</div>
+
+<!-- ===== Tips ===== -->
+<div class="tips-section">
+  <h2 class="section-title">💡 Day2 实用贴士</h2>
+  <div class="tip-grid">
+    <div class="tip-card tip-danger">
+      <h4>👗 着装要求</h4>
+      <p contenteditable="false">梵蒂冈<strong>不能露膝盖和肩膀</strong>！穿长裤/长裙 + 有袖上衣。备一条围巾可以临时遮肩。</p>
+    </div>
+    <div class="tip-card tip-warn">
+      <h4>⏰ 时间紧凑</h4>
+      <p contenteditable="false">今天行程密集！每个景点都有预约时间，<strong>迟到不等人</strong>。建议手机设好每段闹钟提醒。</p>
+    </div>
+    <div class="tip-card tip-info">
+      <h4>📷 拍照禁令</h4>
+      <p contenteditable="false">西斯廷礼拜堂<strong>严禁拍照</strong>，有工作人员专门盯着。万神殿和圣彼得可以拍。</p>
+    </div>
+    <div class="tip-card tip-ok">
+      <h4>🚌 交通建议</h4>
+      <p contenteditable="false">梵蒂冈区域可步行。去万神殿建议打车（FreeNow）或坐 Bus 64/40。</p>
+    </div>
+    <div class="tip-card tip-warn">
+      <h4>🔒 防扒手</h4>
+      <p contenteditable="false">梵蒂冈博物馆入口排队和 Bus 64 路是<strong>重点防范区域</strong>。贵重物品贴身。</p>
+    </div>
+    <div class="tip-card tip-info">
+      <h4>🥤 补水</h4>
+      <p contenteditable="false">博物馆内有自动贩卖机。圣彼得广场有免费饮水点。今天走路多，多喝水！</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Sources ===== -->
+<div class="sources">
+  <h3>📚 信息来源</h3>
+  <p>• 腾讯文档「勇闯意大利」行程表 · 4人出行原始规划</p>
+  <p>• 梵蒂冈官方预约系统 tickets.museivaticani.va</p>
+  <p>• 圣彼得大教堂官网 booking.basilicasanpietro.va</p>
+  <p>• 小红书多位博主实测分享（详见各景点参考链接）</p>
+  <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月10日 · 支持在线编辑与批注</p>
+</div>
+
+</div>
+
+<div class="footer">
+  🇻🇦 Che meraviglia! 太壮观了！
+</div>
+
+<script>
+let editMode = false;
+let annotateMode = false;
+
+function toggleEdit() {
+  editMode = !editMode;
+  const btn = document.getElementById('btn-edit');
+  const hint = document.getElementById('toolbar-hint');
+  btn.classList.toggle('active', editMode);
+  document.body.classList.toggle('edit-mode', editMode);
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+  hint.textContent = editMode
+    ? '✏️ 编辑模式已开启 — 点击任意文字即可修改'
+    : '点击「编辑模式」可直接修改内容，「批注模式」可添加备注';
+}
+
+function toggleAnnotate() {
+  annotateMode = !annotateMode;
+  const btn = document.getElementById('btn-annotate');
+  btn.classList.toggle('active', annotateMode);
+  document.body.classList.toggle('annotate-mode', annotateMode);
+  const hint = document.getElementById('toolbar-hint');
+  if (annotateMode) {
+    hint.textContent = '📝 批注模式已开启 — 点击「+ 添加批注」按钮';
+  } else if (!editMode) {
+    hint.textContent = '点击「编辑模式」可直接修改内容，「批注模式」可添加备注';
+  }
+}
+
+function addNote(btn) {
+  const note = document.createElement('div');
+  note.className = 'user-note';
+  note.innerHTML = '<span class="note-delete" onclick="removeNote(this)">✕</span><div contenteditable="true" style="outline:none;min-height:20px;">在此输入批注...</div>';
+  btn.parentNode.insertBefore(note, btn);
+  const editable = note.querySelector('[contenteditable]');
+  editable.focus();
+  const range = document.createRange();
+  range.selectNodeContents(editable);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+}
+
+function removeNote(el) { el.closest('.user-note').remove(); }
+
+function exportNotes() {
+  const notes = document.querySelectorAll('.user-note');
+  if (notes.length === 0) { alert('暂无批注内容'); return; }
+  let text = '# Day2 行程批注\n导出时间: ' + new Date().toLocaleString('zh-CN') + '\n\n';
+  notes.forEach((note, i) => {
+    const spot = note.closest('.tl-item');
+    const spotName = spot ? (spot.querySelector('.tl-spot-name')?.textContent || '交通段') : '未知位置';
+    const content = note.querySelector('[contenteditable]')?.textContent || '';
+    text += `## 批注 ${i + 1} — ${spotName}\n${content}\n\n`;
+  });
+  const blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Day2_批注_' + new Date().toISOString().slice(0, 10) + '.md';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function saveLocal() {
+  const html = document.documentElement.outerHTML;
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Day2_行程规划_' + new Date().toISOString().slice(0, 10) + '.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ===== Auto-save: 静默保存 + 自动恢复，无弹窗 =====
+function showSaveToast() {
+  let t = document.getElementById('auto-save-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'auto-save-toast';
+    t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(26,35,126,0.92);color:#fff;padding:6px 18px;border-radius:20px;font-size:12px;z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(4px);';
+    document.body.appendChild(t);
+  }
+  t.textContent = '✓ 已自动保存';
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t._hideTimer);
+  t._hideTimer = setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 1500);
+}
+
+let autoSaveTimer = null;
+document.addEventListener('input', () => {
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem('day2_draft', document.querySelector('.container').innerHTML);
+      showSaveToast();
+    } catch (e) {}
+  }, 1000);
+});
+
+// 自动恢复，不弹窗
+window.addEventListener('load', () => {
+  const draft = localStorage.getItem('day2_draft');
+  if (draft) {
+    document.querySelector('.container').innerHTML = draft;
+  }
+});
+</script>
+
+</body>
+</html>
