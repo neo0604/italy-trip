@@ -3,104 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Day7 行程详细规划 | 威尼斯→多洛米蒂·布莱耶斯湖·米苏里纳湖·三峰</title>
+<title>Day7 行程详细规划 | 威尼斯→多洛米蒂·三峰山双方案</title>
 <style>
-  :root{--green:#2d6a4f;--green-light:#e8f5e9;--orange:#ff9800;--red:#ef5350;--blue:#42a5f5;--purple:#7e57c2;--bg:#f5f0e8;--card:#fff;--text:#2c2c2c;--text-secondary:#666;--border:#e0d8c8;--note-bg:#fffde7;--note-border:#ffe082;--theme:#37474f;--theme-light:#eceff1;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-text-size-adjust:100%;}
-  .hero{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 30%,#66bb6a 70%,#a5d6a7 100%);color:white;padding:40px 20px 30px;text-align:center;}
-  .hero h1{font-size:26px;margin-bottom:6px;}.hero .subtitle{font-size:13px;opacity:0.85;}.hero .date-badge{display:inline-block;background:rgba(255,255,255,0.2);padding:4px 16px;border-radius:20px;font-size:13px;margin-top:10px;}
-  .toolbar{position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-  .toolbar-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;border:1px solid #ddd;background:white;font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap;color:var(--text);}
-  .toolbar-btn:hover{background:#f0f0f0;}.toolbar-btn.active{background:var(--green);color:white;border-color:var(--green);}
-  .toolbar-btn.btn-note{border-color:var(--note-border);background:var(--note-bg);}.toolbar-btn.btn-note:hover{background:#fff8e1;}
-  .toolbar-sep{width:1px;height:20px;background:#ddd;}.toolbar-hint{font-size:11px;color:#999;margin-left:auto;}
-  .stats-bar{display:flex;justify-content:center;gap:20px;padding:14px 16px;background:white;border-bottom:1px solid var(--border);flex-wrap:wrap;}
-  .stat-item{text-align:center;min-width:70px;}.stat-item .num{font-size:20px;font-weight:700;color:#2e7d32;}.stat-item .label{font-size:11px;color:#888;margin-top:2px;}
-  .container{max-width:1100px;margin:0 auto;padding:20px 16px;}
-  .section-title{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-  .tl-item{display:grid;grid-template-columns:260px 1fr 260px;gap:0;margin-bottom:12px;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);background:var(--card);}
-  .tl-item.item-drive{grid-template-columns:1fr;background:#f8faf8;}
-  .tl-time-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(90deg,#e8f5e9 0%,white 100%);border-bottom:1px solid #eee;}
-  .tl-time-tag{font-size:13px;font-weight:700;color:#2e7d32;background:white;padding:2px 12px;border-radius:10px;border:1px solid #c8e6c9;white-space:nowrap;}
-  .tl-type-badge{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;}
-  .badge-photo{background:#fff3e0;color:#e65100;}.badge-food{background:#fce4ec;color:#c62828;}.badge-drive{background:#e8f5e9;color:#2e7d32;}.badge-must{background:var(--red);color:white;}.badge-walk{background:#e0f2f1;color:#00695c;}.badge-hike{background:#f1f8e9;color:#33691e;}.badge-lake{background:#e0f7fa;color:#006064;}
-  .tl-left{padding:14px 16px;border-right:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px;background:#fafaf8;}
-  .tl-spot-name{font-size:16px;font-weight:700;color:var(--text);line-height:1.3;}.tl-spot-subname{font-size:12px;color:var(--text-secondary);}
-  .tl-spot-addr{font-size:12px;color:#888;display:flex;align-items:flex-start;gap:4px;}.tl-spot-addr .addr-icon{flex-shrink:0;}
-  .gmap-link{display:inline-flex;align-items:center;gap:4px;background:var(--green-light);color:#2e7d32;padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #c8e6c9;transition:all .2s;}.gmap-link:hover{background:#2e7d32;color:white;}
-  .tl-mid{padding:14px 16px;border-right:1px solid #f0f0f0;}.tl-mid p{font-size:13px;color:#555;margin-bottom:6px;}.tl-mid p:last-child{margin-bottom:0;}
-  .xhs-links{margin-top:10px;padding-top:8px;border-top:1px dashed #eee;}.xhs-links-title{font-size:11px;color:#999;margin-bottom:6px;font-weight:600;}
-  .xhs-link-item{display:flex;align-items:center;gap:6px;padding:4px 0;font-size:12px;}.xhs-link-item a{color:#fe2c55;text-decoration:none;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.xhs-link-item a:hover{text-decoration:underline;}.xhs-link-item .xhs-stats{font-size:10px;color:#999;white-space:nowrap;}
-  .tl-right{padding:14px 16px;background:#fdfcf9;}.tl-right-section{margin-bottom:10px;}.tl-right-section:last-child{margin-bottom:0;}
-  .tl-right-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;margin-bottom:4px;letter-spacing:.5px;}
-  .tip-mini{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:8px 10px;font-size:12px;color:#555;}
-  .drive-card{padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}.drive-card .drive-icon{font-size:18px;}.drive-card .drive-title{font-weight:600;font-size:14px;}.drive-card .drive-detail{font-size:12px;color:var(--text-secondary);}
-  [contenteditable="true"]{outline:none;border-radius:4px;transition:background .2s;}.edit-mode [contenteditable="true"]:hover{background:rgba(45,106,79,0.06);}.edit-mode [contenteditable="true"]:focus{background:rgba(45,106,79,0.1);box-shadow:inset 0 0 0 1px rgba(45,106,79,0.3);}
-  .user-note{background:var(--note-bg);border:1px solid var(--note-border);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:12px;position:relative;}.user-note::before{content:'📝 我的批注';display:block;font-size:10px;font-weight:700;color:#f57f17;margin-bottom:4px;}.user-note .note-delete{position:absolute;top:6px;right:8px;cursor:pointer;font-size:12px;color:#ccc;}.user-note .note-delete:hover{color:var(--red);}
-  .add-note-btn{display:none;margin-top:6px;padding:4px 10px;border-radius:6px;border:1px dashed var(--note-border);background:transparent;color:#f57f17;font-size:11px;cursor:pointer;transition:all .2s;}.add-note-btn:hover{background:var(--note-bg);}.annotate-mode .add-note-btn{display:inline-block;}
-  .tips-section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-  .tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}.tip-card{border-radius:10px;padding:12px;font-size:13px;}.tip-card h4{font-size:14px;margin-bottom:6px;}.tip-card.tip-danger{background:#fce4ec;}.tip-card.tip-warn{background:#fff8e1;}.tip-card.tip-info{background:#e3f2fd;}.tip-card.tip-ok{background:var(--green-light);}
-  .sources{background:var(--card);border-radius:14px;padding:16px 20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04);font-size:12px;color:#888;}.sources h3{font-size:14px;color:#555;margin-bottom:8px;}.sources p{margin-bottom:4px;}
-  .footer{text-align:center;padding:20px;color:#bbb;font-size:12px;}
-  @media(max-width:768px){.tl-item{grid-template-columns:1fr!important;}.tl-left,.tl-mid,.tl-right{border-right:none!important;border-bottom:1px solid #f0f0f0;}.tl-right{border-bottom:none;}.tip-grid{grid-template-columns:1fr;}.hero h1{font-size:22px;}.stats-bar{gap:12px;}.toolbar-hint{display:none;}.container{padding:12px 10px;}.drive-card{flex-direction:column;align-items:flex-start;}}
-  @media print{.toolbar{display:none;}.add-note-btn{display:none;}body{background:white;}}
-
-  /* Day Tab 切换栏 */
-  .day-tabs {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    background: #fff;
-    border-bottom: 1px solid #e0d8c8;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  .day-tabs::-webkit-scrollbar { display: none; }
-  .day-tab {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 56px;
-    padding: 8px 6px 6px;
-    text-decoration: none;
-    color: #888;
-    font-size: 12px;
-    font-weight: 500;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-    flex-shrink: 0;
-    line-height: 1.2;
-  }
-  .day-tab:hover { color: #333; background: #f9f7f2; }
-  .day-tab.active {
-    color: #2d6a4f;
-    font-weight: 700;
-    border-bottom-color: #2d6a4f;
-    background: #f0f7f2;
-  }
-  .day-tab .tab-day { font-size: 13px; font-weight: 700; }
-  .day-tab .tab-city { font-size: 10px; margin-top: 1px; opacity: 0.75; }
-  .day-tab-home {
-    min-width: 44px;
-    padding: 8px 10px 6px;
-    font-size: 16px;
-  }
-
+:root{--green:#2d6a4f;--green-light:#e8f5e9;--orange:#ff9800;--red:#ef5350;--blue:#42a5f5;--purple:#7e57c2;--bg:#f5f0e8;--card:#fff;--text:#2c2c2c;--text-secondary:#666;--border:#e0d8c8;--note-bg:#fffde7;--note-border:#ffe082;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-text-size-adjust:100%;}
+.hero{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 30%,#66bb6a 70%,#a5d6a7 100%);color:white;padding:40px 20px 30px;text-align:center;}
+.hero h1{font-size:26px;margin-bottom:6px;}.hero .subtitle{font-size:13px;opacity:0.85;}.hero .date-badge{display:inline-block;background:rgba(255,255,255,0.2);padding:4px 16px;border-radius:20px;font-size:13px;margin-top:10px;}
+.toolbar{position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.toolbar-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;border:1px solid #ddd;background:white;font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap;color:var(--text);}
+.toolbar-btn:hover{background:#f0f0f0;}.toolbar-btn.active{background:var(--green);color:white;border-color:var(--green);}
+.toolbar-btn.btn-note{border-color:var(--note-border);background:var(--note-bg);}.toolbar-btn.btn-note:hover{background:#fff8e1;}
+.toolbar-sep{width:1px;height:20px;background:#ddd;}.toolbar-hint{font-size:11px;color:#999;margin-left:auto;}
+.stats-bar{display:flex;justify-content:center;gap:20px;padding:14px 16px;background:white;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.stat-item{text-align:center;min-width:70px;}.stat-item .num{font-size:20px;font-weight:700;color:#2e7d32;}.stat-item .label{font-size:11px;color:#888;margin-top:2px;}
+.container{max-width:1100px;margin:0 auto;padding:20px 16px;}
+.section-title{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.tl-item{display:grid;grid-template-columns:260px 1fr 260px;gap:0;margin-bottom:12px;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);background:var(--card);}
+.tl-item.item-drive{grid-template-columns:1fr;background:#f8faf8;}
+.tl-time-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(90deg,#e8f5e9 0%,white 100%);border-bottom:1px solid #eee;flex-wrap:wrap;}
+.tl-time-tag{font-size:13px;font-weight:700;color:#2e7d32;background:white;padding:2px 12px;border-radius:10px;border:1px solid #c8e6c9;white-space:nowrap;}
+.tl-type-badge{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;}
+.badge-photo{background:#fff3e0;color:#e65100;}.badge-food{background:#fce4ec;color:#c62828;}.badge-drive{background:#e8f5e9;color:#2e7d32;}.badge-must{background:var(--red);color:white;}.badge-hike{background:#f1f8e9;color:#33691e;}.badge-lake{background:#e0f7fa;color:#006064;}.badge-ebike{background:#e8eaf6;color:#283593;}
+.tl-left{padding:14px 16px;border-right:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px;background:#fafaf8;}
+.tl-spot-name{font-size:16px;font-weight:700;color:var(--text);line-height:1.3;}.tl-spot-subname{font-size:12px;color:var(--text-secondary);}
+.tl-spot-addr{font-size:12px;color:#888;display:flex;align-items:flex-start;gap:4px;}
+.gmap-link{display:inline-flex;align-items:center;gap:4px;background:var(--green-light);color:#2e7d32;padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #c8e6c9;transition:all .2s;}.gmap-link:hover{background:#2e7d32;color:white;}
+.coord-tag{display:inline-block;background:#f3e5f5;color:#6a1b9a;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;font-family:monospace;margin-top:4px;}
+.tl-mid{padding:14px 16px;border-right:1px solid #f0f0f0;}.tl-mid p{font-size:13px;color:#555;margin-bottom:6px;}.tl-mid p:last-child{margin-bottom:0;}
+.tl-right{padding:14px 16px;background:#fdfcf9;}.tl-right-section{margin-bottom:10px;}.tl-right-section:last-child{margin-bottom:0;}
+.tl-right-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;margin-bottom:4px;letter-spacing:.5px;}
+.tip-mini{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:8px 10px;font-size:12px;color:#555;}
+.drive-card{padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}.drive-card .drive-icon{font-size:18px;}.drive-card .drive-title{font-weight:600;font-size:14px;}.drive-card .drive-detail{font-size:12px;color:var(--text-secondary);}
+.add-note-btn{display:none;margin-top:6px;padding:4px 10px;border-radius:6px;border:1px dashed var(--note-border);background:transparent;color:#f57f17;font-size:11px;cursor:pointer;transition:all .2s;}.add-note-btn:hover{background:var(--note-bg);}.annotate-mode .add-note-btn{display:inline-block;}
+.user-note{background:var(--note-bg);border:1px solid var(--note-border);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:12px;position:relative;}.user-note::before{content:'📝 我的批注';display:block;font-size:10px;font-weight:700;color:#f57f17;margin-bottom:4px;}.user-note .note-delete{position:absolute;top:6px;right:8px;cursor:pointer;font-size:12px;color:#ccc;}.user-note .note-delete:hover{color:var(--red);}
+.tips-section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}.tip-card{border-radius:10px;padding:12px;font-size:13px;}.tip-card h4{font-size:14px;margin-bottom:6px;}.tip-card.tip-danger{background:#fce4ec;}.tip-card.tip-warn{background:#fff8e1;}.tip-card.tip-info{background:#e3f2fd;}.tip-card.tip-ok{background:var(--green-light);}
+.sources{background:var(--card);border-radius:14px;padding:16px 20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04);font-size:12px;color:#888;}.sources h3{font-size:14px;color:#555;margin-bottom:8px;}.sources p{margin-bottom:4px;}
+.footer{text-align:center;padding:20px;color:#bbb;font-size:12px;}
+.plan-switcher{display:flex;gap:0;margin:20px 0 16px;border-radius:12px;overflow:hidden;border:2px solid var(--green);max-width:500px;}
+.plan-tab{flex:1;padding:12px 16px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;transition:all .2s;background:white;color:var(--green);}
+.plan-tab:hover{background:var(--green-light);}
+.plan-tab.active{background:var(--green);color:white;}
+.plan-tab .plan-label{font-size:11px;font-weight:400;opacity:0.8;display:block;margin-top:2px;}
+.plan-content{display:none;}.plan-content.active{display:block;}
+.route-card{background:white;border-radius:14px;padding:20px;margin:12px 0;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.route-card h3{font-size:16px;margin-bottom:12px;}
+.waypoint{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px dashed #eee;}
+.waypoint:last-child{border-bottom:none;}
+.wp-marker{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:white;flex-shrink:0;}
+.wp-marker.start{background:#42a5f5;}.wp-marker.mid{background:#ff9800;}.wp-marker.end{background:#ef5350;}
+.wp-info{flex:1;}.wp-name{font-weight:700;font-size:14px;}.wp-desc{font-size:12px;color:#666;margin-top:2px;}.wp-coord{font-size:11px;color:#6a1b9a;font-family:monospace;margin-top:2px;}
+.wp-nav{margin-left:auto;}
+.day-tabs{display:flex;align-items:center;gap:0;background:#fff;border-bottom:1px solid #e0d8c8;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.day-tabs::-webkit-scrollbar{display:none;}
+.day-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;padding:8px 6px 6px;text-decoration:none;color:#888;font-size:12px;font-weight:500;border-bottom:3px solid transparent;transition:all 0.2s;flex-shrink:0;line-height:1.2;}
+.day-tab:hover{color:#333;background:#f9f7f2;}
+.day-tab.active{color:#2d6a4f;font-weight:700;border-bottom-color:#2d6a4f;background:#f0f7f2;}
+.day-tab .tab-day{font-size:13px;font-weight:700;}.day-tab .tab-city{font-size:10px;margin-top:1px;opacity:0.75;}
+.day-tab-home{min-width:44px;padding:8px 10px 6px;font-size:16px;}
+@media(max-width:768px){.tl-item{grid-template-columns:1fr!important;}.tl-left,.tl-mid,.tl-right{border-right:none!important;border-bottom:1px solid #f0f0f0;}.tl-right{border-bottom:none;}.tip-grid{grid-template-columns:1fr;}.hero h1{font-size:22px;}.stats-bar{gap:12px;}.toolbar-hint{display:none;}.container{padding:12px 10px;}.drive-card{flex-direction:column;align-items:flex-start;}.plan-switcher{max-width:100%;}}
+@media print{.toolbar{display:none;}.add-note-btn{display:none;}body{background:white;}}
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <h1>🏔️ Day7 威尼斯→多洛米蒂·仙境入口</h1>
-  <div class="subtitle">威尼斯出发 → 布莱耶斯湖 → 米苏里纳湖 → 三峰山远眺 → 科尔蒂纳</div>
-  <div class="date-badge">📅 2026年5月2日 周六</div>
+  <h1>🏔️ Day7 威尼斯→多洛米蒂·三峰山探险</h1>
+  <div class="subtitle">Mestre 出发 → 布莱耶斯湖 → 午餐 → 米苏里纳湖 → Lago Antorno → 三峰山 → Ortisei</div>
+  <div class="date-badge">📅 2026年5月2日 周六 · A/B 双方案</div>
 </div>
 
 <div class="day-tabs" id="dayTabs">
@@ -116,390 +87,378 @@
   <a class="day-tab" href="day9.html"><span class="tab-day">D9</span><span class="tab-city">科莫湖</span></a>
   <a class="day-tab" href="day10.html"><span class="tab-day">D10</span><span class="tab-city">米兰</span></a>
 </div>
+
 <div class="toolbar" id="toolbar">
   <button class="toolbar-btn" id="btn-edit" onclick="toggleEdit()">✏️ 编辑模式</button>
   <button class="toolbar-btn btn-note" id="btn-annotate" onclick="toggleAnnotate()">📝 批注模式</button>
   <div class="toolbar-sep"></div>
   <button class="toolbar-btn" onclick="exportNotes()">💾 导出批注</button>
   <button class="toolbar-btn" onclick="saveLocal()">📥 保存到本地</button>
-  <span class="toolbar-hint" id="toolbar-hint">点击「编辑模式」可直接修改内容，「批注模式」可添加备注</span>
+  <span class="toolbar-hint" id="toolbar-hint">点击「编辑模式」可直接修改内容</span>
 </div>
 
 <div class="stats-bar">
-  <div class="stat-item"><div class="num">~07:00</div><div class="label">出发</div></div>
-  <div class="stat-item"><div class="num">~4h</div><div class="label">总驾车</div></div>
-  <div class="stat-item"><div class="num">230km</div><div class="label">总里程</div></div>
-  <div class="stat-item"><div class="num">3</div><div class="label">湖泊/山峰</div></div>
-  <div class="stat-item"><div class="num">🏔️ 2999m</div><div class="label">三峰海拔</div></div>
+  <div class="stat-item"><div class="num">09:00</div><div class="label">出发</div></div>
+  <div class="stat-item"><div class="num">~5.5h</div><div class="label">总驾车</div></div>
+  <div class="stat-item"><div class="num">~350km</div><div class="label">总里程</div></div>
+  <div class="stat-item"><div class="num">3</div><div class="label">湖泊打卡</div></div>
+  <div class="stat-item"><div class="num">A/B</div><div class="label">双方案</div></div>
 </div>
 
 <div class="container">
 
-<div class="map-section" style="background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
-  <h2 class="section-title">🗺️ Day7 行程路线图</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:12px;">📐 基于真实地理位置 · 手绘风多洛米蒂山峰与湖泊 · 点击景点可跳转 Google Maps 导航</p>
-  <div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <svg viewBox="0 0 960 860" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-    <defs>
-      <linearGradient id="mapBg7" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#e8f0e0;stop-opacity:1"/><stop offset="100%" style="stop-color:#d5e8d0;stop-opacity:1"/></linearGradient>
-      <linearGradient id="alpineGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#90a4ae;stop-opacity:0.15"/><stop offset="100%" style="stop-color:#b0bec5;stop-opacity:0.03"/></linearGradient>
-      <filter id="shadow7"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.12)"/></filter>
-      <filter id="cardShadow7" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.1)"/></filter>
-      <filter id="glow7" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-
-    <!-- ===== BACKGROUND ===== -->
-    <rect width="960" height="860" rx="16" fill="url(#mapBg7)"/>
-    <text x="30" y="45" font-size="20" fill="#2e7d32" letter-spacing="6" font-weight="700" opacity="0.2">D A Y  7  ·  D O L O M I T I</text>
-
-    <!-- ===== MOUNTAIN RANGES (layered silhouettes) ===== -->
-    <path d="M0,280 L60,210 L120,250 L180,160 L240,220 L300,130 L360,190 L420,100 L480,160 L540,80 L600,140 L660,60 L720,120 L780,50 L840,110 L900,70 L960,130 L960,860 L0,860Z" fill="url(#alpineGrad)" opacity="0.8"/>
-    <path d="M0,360 L80,310 L160,340 L240,270 L320,320 L400,250 L480,300 L560,230 L640,280 L720,210 L800,270 L880,220 L960,280 L960,860 L0,860Z" fill="#c8e6c9" opacity="0.12"/>
-
-    <!-- ===== HAND-DRAWN MOUNTAIN PEAKS ===== -->
-
-    <!-- ★ Tre Cime di Lavaredo (three iconic peaks, NE area) -->
-    <g transform="translate(680,120)" opacity="0.22">
-      <!-- Peak 1 (left) -->
-      <path d="M-30,0 L-18,-35 L-6,0" fill="none" stroke="#455a64" stroke-width="2.5" stroke-linejoin="round"/>
-      <!-- Peak 2 (center, tallest) -->
-      <path d="M-10,0 L5,-48 L20,0" fill="none" stroke="#455a64" stroke-width="3" stroke-linejoin="round"/>
-      <!-- Peak 3 (right) -->
-      <path d="M16,0 L28,-30 L40,0" fill="none" stroke="#455a64" stroke-width="2.5" stroke-linejoin="round"/>
-      <!-- Snow caps -->
-      <path d="M-18,-35 L-14,-28 L-22,-28 Z" fill="#eceff1" stroke="#90a4ae" stroke-width="0.8"/>
-      <path d="M5,-48 L10,-38 L0,-38 Z" fill="#eceff1" stroke="#90a4ae" stroke-width="0.8"/>
-      <path d="M28,-30 L32,-22 L24,-22 Z" fill="#eceff1" stroke="#90a4ae" stroke-width="0.8"/>
-    </g>
-
-    <!-- ★ Dolomiti peak cluster (western range) -->
-    <g transform="translate(300,160)" opacity="0.15">
-      <path d="M-40,0 L-25,-40 L-10,0" fill="none" stroke="#546e7a" stroke-width="2"/>
-      <path d="M-15,0 L5,-55 L25,0" fill="none" stroke="#546e7a" stroke-width="2.5"/>
-      <path d="M20,0 L35,-35 L50,0" fill="none" stroke="#546e7a" stroke-width="2"/>
-    </g>
-
-    <!-- ★ Scattered pine trees (forest areas) -->
-    <g opacity="0.12" fill="#2e7d32">
-      <path d="M200,380 L206,360 L212,380 M206,370 L206,385"/>
-      <path d="M230,400 L236,380 L242,400 M236,390 L236,405"/>
-      <path d="M440,320 L446,300 L452,320 M446,310 L446,325"/>
-      <path d="M470,340 L476,318 L482,340 M476,328 L476,345"/>
-      <path d="M560,280 L566,258 L572,280 M566,268 L566,285"/>
-      <path d="M810,260 L816,240 L822,260 M816,250 L816,265"/>
-    </g>
-
-    <!-- ===== LAKES (hand-drawn) ===== -->
-    <!-- Lago di Braies (翡翠色) -->
-    <ellipse cx="380" cy="310" rx="28" ry="14" fill="#26a69a" opacity="0.18" stroke="#26a69a" stroke-width="1.5" opacity="0.3"/>
-    <text x="380" y="336" text-anchor="middle" font-size="8" fill="#00897b" opacity="0.4" font-style="italic">Lago di Braies</text>
-
-    <!-- Lago di Misurina (镜湖) -->
-    <ellipse cx="620" cy="240" rx="22" ry="11" fill="#0288d1" opacity="0.15" stroke="#0288d1" stroke-width="1.5" opacity="0.3"/>
-    <text x="620" y="262" text-anchor="middle" font-size="8" fill="#0277bd" opacity="0.4" font-style="italic">Lago di Misurina</text>
-
-    <!-- ===== REFERENCE CITIES / AREAS ===== -->
-    <g font-size="10" fill="#aaa" opacity="0.35" font-style="italic">
-      <circle cx="100" cy="720" r="3" fill="#ccc" opacity="0.5"/><text x="110" y="724">Venezia 威尼斯</text>
-      <circle cx="380" cy="560" r="3" fill="#ccc" opacity="0.5"/><text x="390" y="564">Belluno 贝卢诺</text>
-      <circle cx="180" cy="480" r="3" fill="#ccc" opacity="0.5"/><text x="190" y="484">Feltre 费尔特雷</text>
-      <circle cx="820" cy="360" r="3" fill="#ccc" opacity="0.5"/><text x="830" y="364">Cortina d'Ampezzo</text>
-      <circle cx="150" cy="260" r="3" fill="#ccc" opacity="0.5"/><text x="160" y="264">Bolzano 博尔扎诺</text>
-      <circle cx="500" cy="440" r="3" fill="#ccc" opacity="0.5"/><text x="510" y="444">Pieve di Cadore</text>
-    </g>
-
-    <!-- ===== HIGHWAY / ROAD LABELS ===== -->
-    <g font-size="9" font-weight="700" opacity="0.25">
-      <rect x="180" y="620" width="36" height="16" rx="3" fill="#2e7d32" opacity="0.6"/><text x="198" y="632" fill="white" text-anchor="middle">A27</text>
-      <rect x="340" y="460" width="40" height="16" rx="3" fill="#2e7d32" opacity="0.6"/><text x="360" y="472" fill="white" text-anchor="middle">SS51</text>
-      <rect x="550" y="200" width="40" height="16" rx="3" fill="#bf360c" opacity="0.5"/><text x="570" y="212" fill="white" text-anchor="middle">SS48</text>
-    </g>
-
-    <!-- ===== DRIVING ROUTE ===== -->
-    <!-- Venice → Braies (A27 → SS51) -->
-    <path d="M120,690 Q180,620 250,540 Q320,460 370,400 Q380,370 385,330" stroke="#2e7d32" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.3" stroke-linecap="round"/>
-    <path d="M120,690 Q180,620 250,540 Q320,460 370,400 Q380,370 385,330" stroke="#2e7d32" stroke-width="12" fill="none" opacity="0.04" stroke-linecap="round"/>
-    <!-- Braies → Misurina (SS49→SS51) -->
-    <path d="M405,310 Q450,290 500,270 Q550,255 610,245" stroke="#2e7d32" stroke-width="4" fill="none" stroke-dasharray="10,5" opacity="0.35" stroke-linecap="round"/>
-    <!-- Misurina → Tre Cime (mountain road) -->
-    <path d="M640,235 Q660,200 675,170 Q680,155 685,140" stroke="#bf360c" stroke-width="3.5" fill="none" stroke-dasharray="6,4" opacity="0.4" stroke-linecap="round"/>
-    <!-- Tre Cime → Cortina -->
-    <path d="M700,140 Q740,180 770,240 Q790,290 810,340" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-dasharray="8,5" opacity="0.3" stroke-linecap="round"/>
-
-    <!-- ===== COMPASS ===== -->
-    <g transform="translate(900,55)" opacity="0.5">
-      <circle cx="0" cy="0" r="26" fill="rgba(255,255,255,0.6)" stroke="#8b7355" stroke-width="1.5"/>
-      <text x="0" y="-10" text-anchor="middle" font-size="13" font-weight="800" fill="#8b7355">N</text>
-      <text x="0" y="20" text-anchor="middle" font-size="10" fill="#b0a080">S</text>
-      <text x="13" y="5" text-anchor="middle" font-size="10" fill="#b0a080">E</text>
-      <text x="-13" y="5" text-anchor="middle" font-size="10" fill="#b0a080">W</text>
-      <line x1="0" y1="-6" x2="0" y2="8" stroke="#8b7355" stroke-width="1.5"/>
-      <polygon points="0,-6 -3,1 3,1" fill="#8b7355"/>
-    </g>
-
-    <!-- ===== DISTANCE / TRANSPORT PILLS ===== -->
-    <g font-size="11" font-weight="600">
-      <rect x="200" y="550" width="150" height="24" rx="12" fill="#2e7d32" opacity="0.82" filter="url(#shadow7)"/>
-      <text x="275" y="566" fill="white" text-anchor="middle" font-size="10">🚗 170km ~2.5h</text>
-
-      <rect x="460" y="275" width="130" height="24" rx="12" fill="#2e7d32" opacity="0.75"/>
-      <text x="525" y="291" fill="white" text-anchor="middle" font-size="10">🚗 30km ~40min</text>
-
-      <rect x="660" y="190" width="120" height="22" rx="11" fill="#bf360c" opacity="0.65"/>
-      <text x="720" y="205" fill="white" text-anchor="middle" font-size="9">🚗 15km 山路盘旋</text>
-
-      <rect x="750" y="280" width="110" height="22" rx="11" fill="#2e7d32" opacity="0.7"/>
-      <text x="805" y="295" fill="white" text-anchor="middle" font-size="9">🚗 30km ~35min</text>
-    </g>
-
-    <!-- ===== STOP CARDS ===== -->
-
-    <!-- ① 威尼斯出发 (bottom-left) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Tronchetto+Venezia" target="_blank">
-      <g filter="url(#cardShadow7)" cursor="pointer">
-        <rect x="20" y="680" width="260" height="72" rx="14" fill="white" stroke="#42a5f5" stroke-width="2.5"/>
-        <circle cx="55" cy="716" r="22" fill="#42a5f5" filter="url(#glow7)"/>
-        <text x="55" y="723" text-anchor="middle" fill="white" font-size="16" font-weight="800">出</text>
-        <text x="88" y="702" font-size="14" font-weight="700" fill="#333">🚗 威尼斯出发</text>
-        <text x="88" y="722" font-size="11" fill="#888">~07:00 · 取车北上 A27</text>
-        <text x="88" y="740" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
-      </g>
-    </a>
-
-    <!-- ② 布莱耶斯湖 -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Lago+di+Braies" target="_blank">
-      <g filter="url(#cardShadow7)" cursor="pointer">
-        <rect x="140" y="340" width="290" height="88" rx="14" fill="white" stroke="#00897b" stroke-width="2.5"/>
-        <circle cx="175" cy="385" r="24" fill="#00897b" filter="url(#glow7)"/>
-        <text x="175" y="392" text-anchor="middle" fill="white" font-size="17" font-weight="800">1</text>
-        <text x="210" y="362" font-size="15" font-weight="700" fill="#333">🏔️ 布莱耶斯湖</text>
-        <text x="210" y="382" font-size="12" fill="#888">~10:00 · ⭐必打卡 2.5h</text>
-        <text x="210" y="402" font-size="10" fill="#666">阿尔卑斯翡翠 · 多洛米蒂第一湖 · 1496m</text>
-        <text x="210" y="418" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
-      </g>
-    </a>
-    <line x1="380" y1="380" x2="382" y2="325" stroke="#00897b" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
-
-    <!-- ③ 米苏里纳湖 -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Lago+di+Misurina" target="_blank">
-      <g filter="url(#cardShadow7)" cursor="pointer">
-        <rect x="430" y="80" width="280" height="82" rx="14" fill="white" stroke="#0277bd" stroke-width="2.5"/>
-        <circle cx="465" cy="122" r="24" fill="#0277bd" filter="url(#glow7)"/>
-        <text x="465" y="129" text-anchor="middle" fill="white" font-size="17" font-weight="800">2</text>
-        <text x="500" y="102" font-size="15" font-weight="700" fill="#333">💎 米苏里纳湖</text>
-        <text x="500" y="122" font-size="12" fill="#888">~14:00 · 天然镜湖 1.5h</text>
-        <text x="500" y="142" font-size="10" fill="#666">三峰倒影 · 1754m海拔 · 环湖散步</text>
-        <text x="500" y="155" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
-      </g>
-    </a>
-    <line x1="610" y1="162" x2="618" y2="230" stroke="#0277bd" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
-
-    <!-- ④ 三峰山远眺 -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Tre+Cime+di+Lavaredo" target="_blank">
-      <g filter="url(#cardShadow7)" cursor="pointer">
-        <rect x="720" y="60" width="230" height="82" rx="14" fill="white" stroke="#ef5350" stroke-width="2.5"/>
-        <circle cx="755" cy="102" r="24" fill="#ef5350" filter="url(#glow7)"/>
-        <text x="755" y="109" text-anchor="middle" fill="white" font-size="17" font-weight="800">3</text>
-        <text x="790" y="82" font-size="14" font-weight="700" fill="#333">⛰️ 三峰山远眺</text>
-        <text x="790" y="102" font-size="11" fill="#888">~16:00 · 多洛米蒂标志</text>
-        <text x="790" y="120" font-size="10" fill="#666">2999m · UNESCO世界遗产</text>
-        <text x="790" y="135" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
-      </g>
-    </a>
-    <line x1="720" y1="110" x2="700" y2="130" stroke="#ef5350" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
-
-    <!-- ⑤ 科尔蒂纳住宿 -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Cortina+d'Ampezzo" target="_blank">
-      <g filter="url(#cardShadow7)" cursor="pointer">
-        <rect x="700" y="370" width="250" height="72" rx="14" fill="white" stroke="#ff9800" stroke-width="2.5"/>
-        <circle cx="735" cy="406" r="22" fill="#ff9800" filter="url(#glow7)"/>
-        <text x="735" y="413" text-anchor="middle" fill="white" font-size="16" font-weight="800">宿</text>
-        <text x="768" y="392" font-size="14" font-weight="700" fill="#333">🏨 科尔蒂纳</text>
-        <text x="768" y="412" font-size="11" fill="#888">~18:00 · 冬奥小镇</text>
-        <text x="768" y="430" font-size="10" fill="#666">Cortina d'Ampezzo · 多洛米蒂核心</text>
-      </g>
-    </a>
-    <line x1="700" y1="400" x2="820" y2="352" stroke="#ff9800" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
-
-    <!-- ===== SCALE BAR ===== -->
-    <g transform="translate(30,820)" opacity="0.4">
-      <line x1="0" y1="0" x2="60" y2="0" stroke="#8b7355" stroke-width="2"/>
-      <line x1="0" y1="-4" x2="0" y2="4" stroke="#8b7355" stroke-width="1.5"/>
-      <line x1="60" y1="-4" x2="60" y2="4" stroke="#8b7355" stroke-width="1.5"/>
-      <text x="30" y="15" text-anchor="middle" font-size="9" fill="#8b7355">~30km</text>
-    </g>
-
-    <!-- ===== LEGEND ===== -->
-    <g transform="translate(20,770)">
-      <rect width="920" height="65" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow7)"/>
-      <circle cx="25" cy="22" r="9" fill="#00897b"/><text x="42" y="26" font-size="11" fill="#555">高山湖泊</text>
-      <circle cx="145" cy="22" r="9" fill="#0277bd"/><text x="162" y="26" font-size="11" fill="#555">镜湖</text>
-      <circle cx="235" cy="22" r="9" fill="#ef5350"/><text x="252" y="26" font-size="11" fill="#555">山峰</text>
-      <circle cx="305" cy="22" r="9" fill="#ff9800"/><text x="322" y="26" font-size="11" fill="#555">住宿</text>
-      <line x1="390" y1="22" x2="430" y2="22" stroke="#2e7d32" stroke-width="3" stroke-dasharray="8,4"/><text x="438" y="26" font-size="11" fill="#555">高速</text>
-      <line x1="490" y1="22" x2="530" y2="22" stroke="#bf360c" stroke-width="2.5" stroke-dasharray="5,3"/><text x="538" y="26" font-size="11" fill="#555">山路</text>
-      <text x="25" y="52" font-size="10" fill="#888">Day7 威尼斯→多洛米蒂 · 自驾230km · 点击卡片跳转导航</text>
-    </g>
-  </svg>
-  </div>
-</div>
-
 <h2 class="section-title">⏱️ 详细时间线</h2>
+<h3 style="font-size:15px;color:#2e7d32;margin:8px 0 10px;">📍 共同段：Mestre → Lago Antorno</h3>
 
-<!-- DRIVE -->
+<!-- DRIVE: Venice → Braies -->
 <div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">07:00 - 10:00</span><span class="tl-type-badge badge-drive">🚗 自驾 170km</span></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">09:00 - 12:00</span><span class="tl-type-badge badge-drive">🚗 170km ~3h</span></div>
   <div class="drive-card">
     <span class="drive-icon">🚗</span>
-    <div><div class="drive-title" contenteditable="false">威尼斯 → 布莱耶斯湖 Lago di Braies</div><div class="drive-detail" contenteditable="false">A27→SS51 · 约 170km · 2.5-3h · 后半段山路弯多但风景绝美 · 高速费约 €15</div></div>
-    <a class="gmap-link" href="https://www.google.com/maps/dir/Venice/Lago+di+Braies" target="_blank" style="margin-left:auto;">📍 导航</a>
+    <div><div class="drive-title">威尼斯 Mestre → 布莱耶斯湖</div><div class="drive-detail">A27→SS51 · 170km · 约3h · 后半段山路风景绝美 · 高速费约€15</div></div>
+    <a class="gmap-link" href="https://www.google.com/maps/dir/45.4905,12.2340/46.6944,12.0856" target="_blank" style="margin-left:auto;">📍 导航</a>
   </div>
 </div>
 
-<!-- STOP 1 -->
+<!-- STOP 1: 布莱耶斯湖 -->
 <div class="tl-item" data-spot="braies">
-  <div class="tl-time-bar"><span class="tl-time-tag">~10:00 - 12:30</span><span class="tl-type-badge badge-must">⭐ 必打卡 2.5h</span><span class="tl-type-badge badge-lake">🏔️ 高山湖</span></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">12:00 - 12:45</span><span class="tl-type-badge badge-photo">📸 拍照休息 45min</span><span class="tl-type-badge badge-lake">🏔️ 高山湖</span></div>
   <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">🏔️ 布莱耶斯湖</div>
-    <div class="tl-spot-subname" contenteditable="false">Lago di Braies / Pragser Wildsee · 海拔1496m</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Lago di Braies, South Tyrol</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Lago+di+Braies" target="_blank">📍 Google Maps 导航</a>
+    <div class="tl-spot-name">🏔️ 布莱耶斯湖</div>
+    <div class="tl-spot-subname">Lago di Braies / Pragser Wildsee · 海拔1496m</div>
+    <div class="tl-spot-addr"><span>📍 P4停车场</span></div>
+    <div class="coord-tag">46.6944°N, 12.0856°E</div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.6944,12.0856" target="_blank">📍 Google Maps</a>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">多洛米蒂最美的湖！翡翠色湖水 + 白色山峰倒影 = 人间仙境</p>
-    <p contenteditable="false"><strong>🌟 必做：</strong></p>
-    <p contenteditable="false">• <strong>租划船</strong> — €20/30min，划到湖心拍照，震撼程度拉满！</p>
-    <p contenteditable="false">• <strong>环湖步道</strong> — 全程 3.5km，平坦好走，约 1-1.5h</p>
-    <p contenteditable="false">• 湖头的木屋码头是最经典的拍摄点</p>
-    <p contenteditable="false">• 湖水颜色随光线变化：晴天翡翠色，阴天碧蓝色</p>
-    <p contenteditable="false">⚠️ <strong>旺季需提前预约停车位！</strong>通过 braies.org 预约 · €10/天</p>
-    <div class="xhs-links">
-      <div class="xhs-links-title">📕 小红书参考</div>
-      <div class="xhs-link-item"><a href="https://www.xiaohongshu.com/explore/67d8c3e1000000001e03a541" target="_blank">🇮🇹布莱耶斯湖｜多洛米蒂最美的湖没有之一</a><span class="xhs-stats">@山野旅人 · 4521赞</span></div>
-    </div>
+    <p><strong>📸 快速拍照 + 休息，不坐船不环湖</strong></p>
+    <p>• 木屋码头是最经典拍摄点（停车场步行3分钟）</p>
+    <p>• 翡翠色湖水 + 白色山峰倒影 = 人间仙境</p>
+    <p>• 可在小卖部买杯咖啡休息</p>
+    <p>• 洗手间在停车场旁</p>
+    <p>⚠️ <strong>旺季需提前预约停车！</strong>braies.org · €10/天</p>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 停车预约 <strong>€10/天</strong></p><p>• 划船 <strong>€20/30min</strong></p><p>• 环湖免费</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">⚠️ 注意</div><div class="tip-mini" contenteditable="false"><p>• 5月初水位可能不满（雪融期）</p><p>• 早上光线最好拍照</p><p>• 山区气温低，带外套！</p><p>• <strong>停车必须预约！</strong></p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini"><p>• 停车 <strong>€10/天</strong>（需预约）</p><p>• 不坐船省下€20+1h</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">⚠️ 注意</div><div class="tip-mini"><p>• 停车必须预约！</p><p>• 山区气温低，带外套</p></div></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
 </div>
 
-<!-- DRIVE -->
+<!-- DRIVE to Lunch -->
 <div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">12:30 - 13:30</span><span class="tl-type-badge badge-drive">🚗 30km ~40min</span></div>
-  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title" contenteditable="false">布莱耶斯湖 → 米苏里纳湖</div><div class="drive-detail" contenteditable="false">SS49→SS51 · 翻越山口 · 沿途风光无敌 · 中途可停车拍照</div></div></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">12:45 - 12:55</span><span class="tl-type-badge badge-drive">🚗 ~10min</span></div>
+  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title">布莱耶斯湖 → 午餐地点</div><div class="drive-detail">沿 SS49 东行 · Dobbiaco / San Candido 方向</div></div></div>
 </div>
 
 <!-- Lunch -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">~13:00</span><span class="tl-type-badge badge-food">🍽️ 午餐</span></div>
-  <div class="drive-card"><span class="drive-icon">🍽️</span><div><div class="drive-title" contenteditable="false">路边山间餐厅午餐</div><div class="drive-detail" contenteditable="false">多洛米蒂山区有很多 Rifugio（山间小屋餐厅） · 吃一顿热乎的南蒂罗尔菜 · Speck 烟熏火腿 + Knödel 面疙瘩汤</div></div></div>
+<div class="tl-item" data-spot="lunch">
+  <div class="tl-time-bar"><span class="tl-time-tag">12:55 - 13:40</span><span class="tl-type-badge badge-food">🍽️ 午餐 45min</span></div>
+  <div class="tl-left">
+    <div class="tl-spot-name">🍽️ 午餐 · Dobbiaco 镇</div>
+    <div class="tl-spot-subname">3家推荐任选 · 南蒂罗尔传统菜 / 窑烤披萨</div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-mid">
+    <p><strong>⭐ 推荐1：Hans Pizzeria Restaurant</strong></p>
+    <p>📍 Via Pusteria 9, Dobbiaco · TripAdvisor 1753评 · 家庭友好</p>
+    <p>• 窑烤披萨 + 意面 · 出餐快、价格实惠 · <strong>7人首选</strong></p>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Hans+Pizzeria+Restaurant+Dobbiaco" target="_blank" style="margin-bottom:8px;">📍 导航 Hans Pizzeria</a>
+
+    <p style="margin-top:10px;"><strong>⭐ 推荐2：Restaurant Winkelkeller</strong></p>
+    <p>📍 Via Conti Künigl 8, Dobbiaco · 1194评 · 南蒂罗尔传统菜</p>
+    <p>• Speck烟熏火腿 + Knödel面疙瘩 + Schlutzkrapfen蘑菇饺子</p>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Restaurant+Winkelkeller+Dobbiaco" target="_blank" style="margin-bottom:8px;">📍 导航 Winkelkeller</a>
+
+    <p style="margin-top:10px;"><strong>⭐ 推荐3：Restaurant Pizzeria Samyr</strong></p>
+    <p>📍 Camping 1, Dobbiaco · TripAdvisor #1 · 评分4.6/5</p>
+    <p>• 品质较高 · 意大利菜+披萨 · 出餐稍慢建议早到</p>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Restaurant+Pizzeria+Samyr+Dobbiaco" target="_blank">📍 导航 Samyr</a>
+
+    <p style="margin-top:10px;font-size:12px;color:#888;">💡 三家都在 Dobbiaco 镇上，离布莱耶斯湖车程~10min。推荐 Hans Pizzeria 出餐最快，适合赶行程。</p>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
+  <div class="tl-right">
+    <div class="tl-right-section"><div class="tl-right-label">💶 预算</div><div class="tip-mini"><p>• Hans: €12-18/人</p><p>• Winkelkeller: €18-25/人</p><p>• Samyr: €20-30/人</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">💡 建议</div><div class="tip-mini"><p>• 赶时间选 Hans（披萨快）</p><p>• 想体验当地菜选 Winkelkeller</p><p>• 不赶时间选 Samyr</p></div></div>
+    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  </div>
 </div>
 
-<!-- STOP 2 -->
+<!-- DRIVE to Misurina -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar"><span class="tl-time-tag">13:40 - 14:20</span><span class="tl-type-badge badge-drive">🚗 ~30km 40min</span></div>
+  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title">午餐点 → 米苏里纳湖</div><div class="drive-detail">SS49→SS51 · 翻越山口 · 沿途风光无敌</div></div></div>
+</div>
+
+<!-- STOP 2: 米苏里纳湖 -->
 <div class="tl-item" data-spot="misurina">
-  <div class="tl-time-bar"><span class="tl-time-tag">~14:00 - 15:30</span><span class="tl-type-badge badge-lake">💎 镜湖</span></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">14:20 - 14:40</span><span class="tl-type-badge badge-photo">📸 快拍 20min</span><span class="tl-type-badge badge-lake">💎 镜湖</span></div>
   <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">💎 米苏里纳湖</div>
-    <div class="tl-spot-subname" contenteditable="false">Lago di Misurina · 海拔1754m · 三峰倒影</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Lago di Misurina, Auronzo di Cadore</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Lago+di+Misurina" target="_blank">📍 Google Maps 导航</a>
+    <div class="tl-spot-name">💎 米苏里纳湖</div>
+    <div class="tl-spot-subname">Lago di Misurina · 海拔1754m · 三峰倒影</div>
+    <div class="tl-spot-addr"><span>📍 湖南岸拍倒影最佳点</span></div>
+    <div class="coord-tag">46.5842°N, 12.2530°E</div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.5842,12.2530" target="_blank">📍 导航到拍照点</a>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">被称为"多洛米蒂的珍珠"！天气好时湖面如镜，能完美倒映 Sorapis 和 Tre Cime 群峰</p>
-    <p contenteditable="false"><strong>🌟 推荐：</strong></p>
-    <p contenteditable="false">• 湖南岸拍三峰倒影（经典明信片机位）</p>
-    <p contenteditable="false">• 环湖散步约 2.5km，40分钟</p>
-    <p contenteditable="false">• 湖边有咖啡馆，可以坐下来喝杯热可可</p>
-    <p contenteditable="false">💡 这里也是开往三峰山收费公路的起点</p>
+    <p><strong>短停快拍三峰倒影，不做长时间逗留</strong></p>
+    <p>• 从<strong>湖南岸</strong>望北，三峰完美倒映湖面</p>
+    <p>• 公路湖南侧有空地可临时停车</p>
+    <p>• 晴朗+无风 = 最佳倒影</p>
+    <p>• 拍完直接开到 Lago Antorno（1km）</p>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💡 建议</div><div class="tip-mini" contenteditable="false"><p>• 免费停车（路边）</p><p>• 1-1.5h 足够</p><p>• 无风天拍倒影最佳</p><p>• 海拔1754m，比较凉</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">📸 拍照要点</div><div class="tip-mini"><p>• 南岸面北拍，三峰正前方</p><p>• 无风时倒影最清晰</p></div></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
 </div>
 
-<!-- DRIVE -->
+<!-- DRIVE to Lago Antorno -->
 <div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">15:30</span><span class="tl-type-badge badge-drive">🚗 15km ~20min</span></div>
-  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title" contenteditable="false">米苏里纳湖 → 三峰山收费公路入口</div><div class="drive-detail" contenteditable="false">收费公路 €30/车 · 盘山路直达 Rifugio Auronzo（海拔2320m）</div></div></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">14:40 - 14:45</span><span class="tl-type-badge badge-drive">🚗 1km ~2min</span></div>
+  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title">米苏里纳湖 → Lago Antorno 停车场</div><div class="drive-detail">就在隔壁1km · 三峰山收费公路起点</div></div></div>
 </div>
 
-<!-- STOP 3 -->
-<div class="tl-item" data-spot="tre-cime">
-  <div class="tl-time-bar"><span class="tl-time-tag">~16:00 - 18:30</span><span class="tl-type-badge badge-must">⭐ 必打卡</span><span class="tl-type-badge badge-hike">🥾 徒步/远眺</span></div>
+<!-- Lago Antorno -->
+<div class="tl-item" data-spot="antorno">
+  <div class="tl-time-bar"><span class="tl-time-tag">14:45</span><span class="tl-type-badge badge-ebike">🅿️ 停车·上山起点</span></div>
   <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">⛰️ 三峰山 Tre Cime</div>
-    <div class="tl-spot-subname" contenteditable="false">Tre Cime di Lavaredo · 海拔2999m · UNESCO遗产</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Rifugio Auronzo 起点（海拔2320m）</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Rifugio+Auronzo+Tre+Cime" target="_blank">📍 Google Maps 导航</a>
+    <div class="tl-spot-name">🅿️ Lago Antorno 停车场</div>
+    <div class="tl-spot-subname">三峰山上山起点 · 海拔~1866m</div>
+    <div class="tl-spot-addr"><span>📍 Lago Antorno, Auronzo di Cadore</span></div>
+    <div class="coord-tag">46.5875°N, 12.2406°E</div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.5875,12.2406" target="_blank">📍 导航到停车场</a>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">多洛米蒂的绝对标志！三座垂直岩壁巨塔并排矗立，震撼到窒息</p>
-    <p contenteditable="false"><strong>🥾 徒步方案（选一个）：</strong></p>
-    <p contenteditable="false">• <strong>轻松路线</strong>：从 Rifugio Auronzo 走到 Rifugio Lavaredo（~40min 单程），正面看三峰</p>
-    <p contenteditable="false">• <strong>环线完整版</strong>：9.5km 环三峰一圈，约 3-4h，需要体力</p>
-    <p contenteditable="false">• <strong>远眺模式</strong>：不想走太远的话，在 Rifugio Auronzo 附近就能远眺三峰南壁</p>
-    <p contenteditable="false">💡 建议走到 Rifugio Lavaredo 看正面，这是最经典的角度</p>
-    <p contenteditable="false">⚠️ <strong>5月初可能还有残雪</strong>，穿防滑鞋！</p>
-    <div class="xhs-links">
-      <div class="xhs-links-title">📕 小红书参考</div>
-      <div class="xhs-link-item"><a href="https://www.xiaohongshu.com/explore/67e8d3c1000000001e039d61" target="_blank">🇮🇹三峰山徒步全攻略｜多洛米蒂的灵魂</a><span class="xhs-stats">@户外探险家 · 5432赞</span></div>
-    </div>
+    <p>🔀 <strong>从这里开始 A/B 方案分叉！</strong></p>
+    <p>• <strong>方案A</strong>：直接徒步沿收费公路上山</p>
+    <p>• <strong>方案B</strong>：骑E-bike沿收费公路上山（需提前租好）</p>
+    <p>• 停车场有洗手间，出发前上一次</p>
+    <p>⚠️ <strong>5月初收费公路可能未对机动车开放</strong>，但步行/骑车通常可通行</p>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 收费公路 <strong>€30/车</strong></p><p>• 停车含在路费内</p><p>• 徒步免费</p><p>• Rifugio 里可以吃喝</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">⚠️ 注意</div><div class="tip-mini" contenteditable="false"><p>• 5月初收费公路可能未开放！</p><p>• 提前查 trecime.com 确认</p><p>• 海拔2320m+ 注意高反</p><p>• 山区天气多变，带防风外套</p><p>• <strong>穿防滑登山鞋！</strong></p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">🅿️ 停车</div><div class="tip-mini"><p>• 免费停车</p><p>• 位于收费公路入口旁</p><p>• 有公共洗手间</p></div></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
 </div>
 
-<!-- DRIVE to hotel -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">~18:30 - 19:30</span><span class="tl-type-badge badge-drive">🚗 ~40km</span></div>
-  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title" contenteditable="false">三峰山 → 科尔蒂纳（住宿）</div><div class="drive-detail" contenteditable="false">下山回到 Cortina d'Ampezzo · 多洛米蒂最著名的度假小镇 · 晚餐 + 入住</div></div></div>
+<!-- ===== A/B 方案切换 ===== -->
+<div style="margin:24px 0 8px;">
+  <h3 style="font-size:17px;color:#333;">🔀 三峰山双方案（点击切换查看）</h3>
+  <p style="font-size:12px;color:#888;margin:4px 0 12px;">两方案从 Lago Antorno 分叉，终点都是 Rifugio Lavaredo 看三峰正面，体验相同</p>
 </div>
 
-<!-- Dinner -->
-<div class="tl-item" data-spot="cortina-dinner">
-  <div class="tl-time-bar"><span class="tl-time-tag">~19:30 - 21:00</span><span class="tl-type-badge badge-food">🍽️ 晚餐</span></div>
-  <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">🍽️ 科尔蒂纳小镇晚餐</div>
-    <div class="tl-spot-subname" contenteditable="false">Cortina d'Ampezzo · 多洛米蒂皇后镇</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Corso Italia, Cortina d'Ampezzo</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Cortina+d+Ampezzo+centro" target="_blank">📍 Google Maps 导航</a>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+<div class="plan-switcher">
+  <div class="plan-tab active" onclick="switchPlan('A')" id="planTabA">🥾 方案A 纯徒步<span class="plan-label">4h20min · 10.8km</span></div>
+  <div class="plan-tab" onclick="switchPlan('B')" id="planTabB">🔋 方案B E-bike ⭐<span class="plan-label">2h50min · 省时1.5h</span></div>
+</div>
+
+<!-- ========== 方案 A ========== -->
+<div class="plan-content active" id="planA">
+<h3 style="font-size:15px;color:#ef5350;margin:12px 0 10px;">🥾 方案A：纯徒步上三峰</h3>
+
+<div class="route-card">
+  <h3>🗺️ 方案A 路线关键坐标</h3>
+  <div class="waypoint">
+    <div class="wp-marker start">起</div>
+    <div class="wp-info"><div class="wp-name">Lago Antorno 停车场</div><div class="wp-desc">停车·沿收费公路步行上山</div><div class="wp-coord">📍 46.5875°N, 12.2406°E · ~1866m</div></div>
+    <div class="wp-nav"><a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.5875,12.2406" target="_blank">📍 导航</a></div>
   </div>
-  <div class="tl-mid">
-    <p contenteditable="false">2026冬奥会举办地！精致的高山小镇，四面被多洛米蒂群峰环绕</p>
-    <p contenteditable="false"><strong>🍽️ 推荐：</strong></p>
-    <p contenteditable="false">• <strong>Ristorante El Zoco</strong> — 当地评分最高，野猪肉酱面</p>
-    <p contenteditable="false">• <strong>Baita Fraina</strong> — 山间木屋餐厅，氛围绝佳</p>
-    <p contenteditable="false">• 南蒂罗尔特色：Speck 烟熏火腿 + Schlutzkrapfen（蘑菇饺子）</p>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  <div class="waypoint">
+    <div class="wp-marker mid">1</div>
+    <div class="wp-info"><div class="wp-name">收费站 Toll Booth</div><div class="wp-desc">步行免费通过 · 开车€30/车</div><div class="wp-coord">📍 46.5908°N, 12.2478°E · ~1900m</div></div>
+    <div class="wp-nav"><a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.5908,12.2478" target="_blank">📍 导航</a></div>
   </div>
-  <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 预算</div><div class="tip-mini" contenteditable="false"><p>• 正餐 €25-35/人</p><p>• 山区餐厅比城市贵一些</p><p>• 但食材新鲜品质高</p></div></div>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  <div class="waypoint">
+    <div class="wp-marker mid">2</div>
+    <div class="wp-info"><div class="wp-name">Rifugio Auronzo (2320m)</div><div class="wp-desc">从停车场徒步4km · 爬升450m · 约1.5h · 有餐饮和洗手间</div><div class="wp-coord">📍 46.6100°N, 12.2944°E · 2320m</div></div>
+    <div class="wp-nav"><a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.6100,12.2944" target="_blank">📍 导航</a></div>
+  </div>
+  <div class="waypoint">
+    <div class="wp-marker end">终</div>
+    <div class="wp-info"><div class="wp-name">⛰️ Rifugio Lavaredo (2344m) — 三峰正面！</div><div class="wp-desc">从Auronzo走Trail 101 · 1.4km缓坡 · ~40min · <strong>三峰北壁全景</strong></div><div class="wp-coord">📍 46.6119°N, 12.3050°E · 2344m</div></div>
+    <div class="wp-nav"><a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.6119,12.3050" target="_blank">📍 导航</a></div>
   </div>
 </div>
 
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">14:45 - 16:15</span><span class="tl-type-badge badge-hike">🥾 上山 1.5h</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🥾 Lago Antorno → Rifugio Auronzo</div><div class="tl-spot-subname">沿收费公路 · 4km · 爬升450m</div></div>
+  <div class="tl-mid"><p>• 柏油路面，不需登山杖</p><p>• 坡度较大，需要体力</p><p>• 路上多个弯道可回头拍全景</p><p>• 注意靠路边走</p><p>⚠️ <strong>核心体力消耗段</strong></p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">💪 难度</div><div class="tip-mini"><p>• 4km 爬升450m</p><p>• 带够水，山顶有补给</p></div></div></div>
+</div>
+
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">16:15 - 16:55</span><span class="tl-type-badge badge-hike">🥾 缓坡 40min</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🥾 Auronzo → Rifugio Lavaredo</div><div class="tl-spot-subname">Trail 101 · 1.4km 缓坡</div></div>
+  <div class="tl-mid"><p>• 走 Trail 101，标识清晰</p><p>• 缓坡爬升~100m，轻松</p><p>• 沿途能看到三峰逐渐展开</p><p>• 最后到达 Lavaredo — <strong>三峰北壁正面全景！</strong></p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">💡 提示</div><div class="tip-mini"><p>• 可能有碎石和残雪</p><p>• 穿防滑鞋！</p></div></div></div>
+</div>
+
+<div class="tl-item" data-spot="tre-cime-a"><div class="tl-time-bar"><span class="tl-time-tag">16:55 - 17:25</span><span class="tl-type-badge badge-must">⭐ 三峰正面！</span></div>
+  <div class="tl-left"><div class="tl-spot-name">⛰️ 三峰山！Tre Cime</div><div class="tl-spot-subname">Rifugio Lavaredo · 2344m · 拍照休息30min</div><div class="coord-tag">46.6119°N, 12.3050°E</div></div>
+  <div class="tl-mid"><p>🎉 <strong>这就是来的目的！</strong></p><p>• 三座垂直岩壁巨塔并排矗立</p><p>• UNESCO 世界遗产</p><p>• 尽情拍照，Rifugio可买热饮补给</p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">📸 拍照</div><div class="tip-mini"><p>• 最经典正面角度</p><p>• 下午光线正好</p></div></div></div>
+</div>
+
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">17:25 - 18:05</span><span class="tl-type-badge badge-hike">🥾 返回 Auronzo 40min</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🥾 Lavaredo → Auronzo 返回</div></div>
+  <div class="tl-mid"><p>• 原路返回，下坡轻松</p></div>
+  <div class="tl-right"></div>
+</div>
+
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">18:05 - 19:05</span><span class="tl-type-badge badge-hike">🥾 下山 1h</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🥾 Auronzo → Lago Antorno 下山</div><div class="tl-spot-subname">4km 下坡 · 约1h</div></div>
+  <div class="tl-mid"><p>• 下坡膝盖注意</p><p>• 日落约20:15，时间充裕</p></div>
+  <div class="tl-right"></div>
+</div>
+
+<div class="tl-item item-drive"><div class="tl-time-bar"><span class="tl-time-tag">19:05 - 20:50</span><span class="tl-type-badge badge-drive">🚗 120km ~1h45min</span></div>
+  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title">Lago Antorno → Ortisei 住宿</div><div class="drive-detail">经 Cortina → SS48 → Val Gardena · 约120km 1h45min</div></div>
+    <a class="gmap-link" href="https://www.google.com/maps/dir/46.5875,12.2406/46.5740,11.6730" target="_blank" style="margin-left:auto;">📍 导航</a>
+  </div>
+</div>
+
+<div class="tl-item" data-spot="dinner-a"><div class="tl-time-bar"><span class="tl-time-tag">~20:50 - 21:45</span><span class="tl-type-badge badge-food">🍽️ 晚餐</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🍽️ Ortisei 晚餐</div><div class="tl-spot-subname">⚠️ 到得较晚，需找营业晚的餐厅</div></div>
+  <div class="tl-mid"><p>• 到达约20:50，找晚餐可能困难</p><p>• 部分餐厅21:00关厨房</p><p>⚠️ <strong>方案A的劣势：晚餐时间紧张</strong></p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">⚠️ 风险</div><div class="tip-mini"><p>• 到住宿太晚</p><p>• 全天体力消耗大</p><p>• 建议提前订好晚餐</p></div></div></div>
+</div>
+
+<div class="tips-section" style="border-left:4px solid #ef5350;">
+  <h4 style="color:#ef5350;margin-bottom:8px;">⚠️ 方案A 风险提醒</h4>
+  <p style="font-size:13px;color:#555;">• 徒步总距离 <strong>10.8km</strong>，总爬升 ~450m，总时间 ~4h20min</p>
+  <p style="font-size:13px;color:#555;">• 到达住宿 ~20:50，晚餐时间紧张</p>
+  <p style="font-size:13px;color:#555;">• 全天驾车+徒步，7人团队体力消耗大</p>
+  <p style="font-size:13px;color:#555;">• 任何环节延误会压缩三峰时间或导致天黑下山</p>
+</div>
+</div>
+
+<!-- ========== 方案 B ========== -->
+<div class="plan-content" id="planB">
+<h3 style="font-size:15px;color:#283593;margin:12px 0 10px;">🔋 方案B：E-bike 上三峰 ⭐推荐</h3>
+
+<div class="route-card">
+  <h3>🗺️ 方案B 路线关键坐标</h3>
+  <div class="waypoint">
+    <div class="wp-marker start">起</div>
+    <div class="wp-info"><div class="wp-name">Lago Antorno 停车场</div><div class="wp-desc">取出E-bike · 骑行上山</div><div class="wp-coord">📍 46.5875°N, 12.2406°E · ~1866m</div></div>
+    <div class="wp-nav"><a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.5875,12.2406" target="_blank">📍 导航</a></div>
+  </div>
+  <div class="waypoint">
+    <div class="wp-marker mid">1</div>
+    <div class="wp-info"><div class="wp-name">Rifugio Auronzo (2320m)</div><div class="wp-desc">骑行7km盘山公路 · 电助力~35min · 锁车后步行</div><div class="wp-coord">📍 46.6100°N, 12.2944°E · 2320m</div></div>
+    <div class="wp-nav"><a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.6100,12.2944" target="_blank">📍 导航</a></div>
+  </div>
+  <div class="waypoint">
+    <div class="wp-marker end">终</div>
+    <div class="wp-info"><div class="wp-name">⛰️ Rifugio Lavaredo (2344m) — 三峰正面！</div><div class="wp-desc">步行1.4km缓坡 · ~40min · <strong>三峰北壁全景</strong></div><div class="wp-coord">📍 46.6119°N, 12.3050°E · 2344m</div></div>
+    <div class="wp-nav"><a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=46.6119,12.3050" target="_blank">📍 导航</a></div>
+  </div>
+</div>
+
+<div class="route-card" style="border-left:4px solid #283593;">
+  <h3>🔋 E-bike 租赁信息</h3>
+  <div class="waypoint">
+    <div class="wp-marker" style="background:#283593;">A</div>
+    <div class="wp-info"><div class="wp-name">Cortina Pro Sport</div><div class="wp-desc">Cortina d'Ampezzo 镇中心 · 📞 +39 339 777 8883</div><div class="wp-coord">电动山地车 e-MTB · 提前电话确认5月营业</div></div>
+  </div>
+  <div class="waypoint">
+    <div class="wp-marker" style="background:#283593;">B</div>
+    <div class="wp-info"><div class="wp-name">Snow Service Cortina</div><div class="wp-desc">Cortina d'Ampezzo · snowservice.it</div><div class="wp-coord">电动山地车+Enduro车型 · 网站可预约</div></div>
+  </div>
+  <p style="font-size:12px;color:#e65100;margin-top:10px;font-weight:600;">⚠️ 必须选 e-MTB（电动山地车），不能公路车 · 提前预订确认5月2日可用 · 费用约€40-60/半天</p>
+</div>
+
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">14:45 - 15:20</span><span class="tl-type-badge badge-ebike">🔋 E-bike 上山 35min</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🔋 E-bike: Antorno → Auronzo</div><div class="tl-spot-subname">盘山公路7km · 电助力轻松</div></div>
+  <div class="tl-mid"><p>• 沿收费公路骑行，电助力爬坡不费力</p><p>• 全程7km，约35min</p><p>• 边骑边欣赏风景</p><p>• 到 Auronzo 后锁好车，步行继续</p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">🔋 骑行</div><div class="tip-mini"><p>• 电助力，老少皆宜</p><p>• 记得带锁链</p></div></div></div>
+</div>
+
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">15:20 - 16:00</span><span class="tl-type-badge badge-hike">🥾 缓坡 40min</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🥾 Auronzo → Rifugio Lavaredo</div><div class="tl-spot-subname">Trail 101 · 1.4km 缓坡</div></div>
+  <div class="tl-mid"><p>• Trail 101 标识清晰</p><p>• 缓坡爬升~100m</p><p>• 三峰北壁逐渐展开！</p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">💡 提示</div><div class="tip-mini"><p>• 可能有碎石/残雪</p><p>• 穿防滑鞋</p></div></div></div>
+</div>
+
+<div class="tl-item" data-spot="tre-cime-b"><div class="tl-time-bar"><span class="tl-time-tag">16:00 - 16:35</span><span class="tl-type-badge badge-must">⭐ 三峰正面！</span></div>
+  <div class="tl-left"><div class="tl-spot-name">⛰️ 三峰山！Tre Cime</div><div class="tl-spot-subname">Rifugio Lavaredo · 2344m · 拍照休息35min</div><div class="coord-tag">46.6119°N, 12.3050°E</div></div>
+  <div class="tl-mid"><p>🎉 <strong>这就是来的目的！</strong></p><p>• 三座垂直岩壁巨塔并排矗立</p><p>• UNESCO世界遗产</p><p>• 比方案A多出5min余裕拍照</p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">📸 拍照</div><div class="tip-mini"><p>• 最经典正面角度</p><p>• 光线正好</p></div></div></div>
+</div>
+
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">16:35 - 17:15</span><span class="tl-type-badge badge-hike">🥾 返回 40min</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🥾 Lavaredo → Auronzo 返回</div></div>
+  <div class="tl-mid"><p>• 原路返回，下坡轻松</p></div>
+  <div class="tl-right"></div>
+</div>
+
+<div class="tl-item"><div class="tl-time-bar"><span class="tl-time-tag">17:15 - 17:30</span><span class="tl-type-badge badge-ebike">🔋 E-bike 下山 15min</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🔋 Auronzo → Antorno 下山</div><div class="tl-spot-subname">下坡滑行 · 7km ~15min</div></div>
+  <div class="tl-mid"><p>• 全程下坡，不需要电助力</p><p>• 注意控速，弯道减速</p></div>
+  <div class="tl-right"></div>
+</div>
+
+<div class="tl-item item-drive"><div class="tl-time-bar"><span class="tl-time-tag">17:30 - 19:15</span><span class="tl-type-badge badge-drive">🚗 120km ~1h45min</span></div>
+  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title">Lago Antorno → Ortisei 住宿</div><div class="drive-detail">经 Cortina → SS48 → Val Gardena · 约120km 1h45min · <strong>比方案A早1.5h！</strong></div></div>
+    <a class="gmap-link" href="https://www.google.com/maps/dir/46.5875,12.2406/46.5740,11.6730" target="_blank" style="margin-left:auto;">📍 导航</a>
+  </div>
+</div>
+
+<div class="tl-item" data-spot="dinner-b"><div class="tl-time-bar"><span class="tl-time-tag">~19:15 - 20:15</span><span class="tl-type-badge badge-food">🍽️ 晚餐</span></div>
+  <div class="tl-left"><div class="tl-spot-name">🍽️ Ortisei 晚餐</div><div class="tl-spot-subname">✅ 正常晚餐时间，从容选择</div></div>
+  <div class="tl-mid"><p>• 19:15到，完美的正常晚餐时间</p><p>• Ortisei 小镇有众多优质餐厅</p><p>✅ <strong>方案B的优势：从容用餐</strong></p></div>
+  <div class="tl-right"><div class="tl-right-section"><div class="tl-right-label">💶 预算</div><div class="tip-mini"><p>• 约€25-35/人</p></div></div></div>
+</div>
+
+<div class="tips-section" style="border-left:4px solid #2e7d32;">
+  <h4 style="color:#2e7d32;margin-bottom:8px;">✅ 方案B 优势总结</h4>
+  <p style="font-size:13px;color:#555;">• 省时 <strong>1.5h</strong> — 17:30下山 vs 方案A 19:05</p>
+  <p style="font-size:13px;color:#555;">• 全程天亮完成，无摸黑风险</p>
+  <p style="font-size:13px;color:#555;">• 到住宿 ~19:15，正常吃晚饭</p>
+  <p style="font-size:13px;color:#555;">• 体力友好，7人团队都能参与</p>
+  <p style="font-size:13px;color:#555;">• 三峰正面体验<strong>完全一样</strong></p>
+  <p style="font-size:13px;color:#555;">• 额外费用仅 €40-60（E-bike租赁）</p>
+</div>
+</div>
+
+<!-- ===== 方案对比表 ===== -->
+<div class="tips-section" style="margin-top:20px;">
+  <h2 class="section-title">📊 A/B 方案速览对比</h2>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead><tr style="background:#e8f5e9;"><th style="padding:10px;text-align:left;border-bottom:2px solid #c8e6c9;">对比项</th><th style="padding:10px;text-align:center;border-bottom:2px solid #c8e6c9;">方案A 纯徒步</th><th style="padding:10px;text-align:center;border-bottom:2px solid #c8e6c9;background:#e8eaf6;">方案B E-bike ⭐</th></tr></thead>
+    <tbody>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">三峰正面体验</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">✅ 完整</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;"><strong>✅ 完全一样</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">步行距离</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">10.8km</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;"><strong>2.8km</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">总爬升(步行)</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">450m</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;"><strong>~100m</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">三峰区域耗时</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">4h20min</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;"><strong>2h45min</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">离开三峰时间</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">19:05</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;"><strong>17:30</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">到达住宿</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">~20:50</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;"><strong>~19:15</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">天黑风险</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⚠️ 有</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;"><strong>✅ 无</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">额外费用</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">无</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;background:#f5f5ff;">€40-60</td></tr>
+      <tr><td style="padding:8px;">团队友好度</td><td style="padding:8px;text-align:center;">⭐⭐（需体力）</td><td style="padding:8px;text-align:center;background:#f5f5ff;"><strong>⭐⭐⭐⭐⭐</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- ===== 贴士 ===== -->
 <div class="tips-section">
   <h2 class="section-title">💡 Day7 实用贴士</h2>
   <div class="tip-grid">
-    <div class="tip-card tip-danger"><h4>⚠️ 三峰公路开放</h4><p contenteditable="false">三峰收费公路通常<strong>6月才开放</strong>，5月初可能还关着！出发前务必在 trecime.com 确认。如果没开，改为从 Rifugio Auronzo 附近远眺。</p></div>
-    <div class="tip-card tip-warn"><h4>🧥 穿衣指南</h4><p contenteditable="false">山区昼夜温差大！白天10-15°C，山顶可能0°C。<strong>洋葱式穿搭</strong>：T恤+抓绒+防风外套。</p></div>
-    <div class="tip-card tip-info"><h4>🅿️ 布莱耶斯停车</h4><p contenteditable="false">旺季<strong>必须提前预约</strong>！通过 braies.org 预约停车位 €10/天。到了没预约可能进不去。</p></div>
-    <div class="tip-card tip-ok"><h4>💶 消费参考</h4><p contenteditable="false">高速€15 + 布莱耶斯停车€10 + 划船€20 + 三峰公路€30 + 餐饮€60 · 人均约€135</p></div>
-    <div class="tip-card tip-warn"><h4>👟 装备</h4><p contenteditable="false">防滑登山鞋必备！山路有碎石和可能的残雪。防晒霜（高海拔紫外线强）。带水和零食。</p></div>
-    <div class="tip-card tip-info"><h4>📶 信号覆盖</h4><p contenteditable="false">多洛米蒂山区<strong>手机信号不稳定</strong>。提前下载离线地图（Google Maps 或 Maps.me）。</p></div>
+    <div class="tip-card tip-danger"><h4>⚠️ 三峰公路开放</h4><p>收费公路通常<strong>6月才开放</strong>，5月初可能关着！出发前在 trecime.com 确认。<strong>步行/骑车通常不受限</strong>。</p></div>
+    <div class="tip-card tip-warn"><h4>🧥 穿衣指南</h4><p>山区昼夜温差大！白天10-15°C，山顶可能0°C。<strong>洋葱穿搭</strong>：T恤+抓绒+防风外套。</p></div>
+    <div class="tip-card tip-info"><h4>🅿️ 布莱耶斯停车</h4><p><strong>必须提前预约！</strong>braies.org 预约 €10/天。没预约可能进不去。</p></div>
+    <div class="tip-card tip-ok"><h4>💶 费用参考</h4><p>高速€15 + 布莱耶斯停车€10 + 午餐€20 + 晚餐€30 + E-bike€50(选B) · 人均约€75-125</p></div>
+    <div class="tip-card tip-warn"><h4>👟 装备</h4><p>防滑登山鞋必备！高海拔碎石+可能残雪。带防晒霜、水和零食。</p></div>
+    <div class="tip-card tip-info"><h4>📶 信号 & 导航</h4><p>山区手机信号不稳。<strong>提前下载离线地图</strong>（Google Maps 或 Maps.me）。本页所有坐标可直接导航。</p></div>
   </div>
 </div>
 
@@ -508,8 +467,9 @@
   <p>• 腾讯文档「勇闯意大利」行程表</p>
   <p>• 三峰山官网 trecime.com</p>
   <p>• 布莱耶斯湖停车预约 braies.org</p>
-  <p>• 小红书多位博主实测分享</p>
-  <p style="margin-top:8px;color:#aaa;">整理于 2026年4月13日 · 支持在线编辑与批注</p>
+  <p>• E-bike: Cortina Pro Sport / Snow Service Cortina</p>
+  <p>• 小红书多位博主实测分享 + Google Maps 实地验证</p>
+  <p style="margin-top:8px;color:#aaa;">整理于 2026年4月18日 · 9点出发版 · A/B双方案 · 支持在线编辑与批注</p>
 </div>
 </div>
 
@@ -517,16 +477,14 @@
 
 <script>
 let editMode=false,annotateMode=false;
-function toggleEdit(){editMode=!editMode;const b=document.getElementById('btn-edit'),h=document.getElementById('toolbar-hint');b.classList.toggle('active',editMode);document.body.classList.toggle('edit-mode',editMode);document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=editMode?'true':'false';});h.textContent=editMode?'✏️ 编辑模式已开启 — 点击任意文字即可修改':'点击「编辑模式」可直接修改内容，「批注模式」可添加备注';}
-function toggleAnnotate(){annotateMode=!annotateMode;const b=document.getElementById('btn-annotate');b.classList.toggle('active',annotateMode);document.body.classList.toggle('annotate-mode',annotateMode);const h=document.getElementById('toolbar-hint');if(annotateMode)h.textContent='📝 批注模式已开启 — 点击「+ 添加批注」按钮';else if(!editMode)h.textContent='点击「编辑模式」可直接修改内容，「批注模式」可添加备注';}
-function addNote(btn){const n=document.createElement('div');n.className='user-note';n.innerHTML='<span class="note-delete" onclick="removeNote(this)">✕</span><div contenteditable="true" style="outline:none;min-height:20px;">在此输入批注...</div>';btn.parentNode.insertBefore(n,btn);const e=n.querySelector('[contenteditable]');e.focus();const r=document.createRange();r.selectNodeContents(e);window.getSelection().removeAllRanges();window.getSelection().addRange(r);}
+function toggleEdit(){editMode=!editMode;const b=document.getElementById('btn-edit'),h=document.getElementById('toolbar-hint');b.classList.toggle('active',editMode);document.body.classList.toggle('edit-mode',editMode);document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=editMode?'true':'false';});h.textContent=editMode?'✏️ 编辑模式已开启':'点击「编辑模式」可直接修改内容';}
+function toggleAnnotate(){annotateMode=!annotateMode;const b=document.getElementById('btn-annotate');b.classList.toggle('active',annotateMode);document.body.classList.toggle('annotate-mode',annotateMode);}
+function addNote(btn){const n=document.createElement('div');n.className='user-note';n.innerHTML='<span class="note-delete" onclick="removeNote(this)">✕</span><div contenteditable="true" style="outline:none;min-height:20px;">在此输入批注...</div>';btn.parentNode.insertBefore(n,btn);n.querySelector('[contenteditable]').focus();}
 function removeNote(el){el.closest('.user-note').remove();}
-function exportNotes(){const notes=document.querySelectorAll('.user-note');if(!notes.length){alert('暂无批注内容');return;}let t='# Day7 行程批注\n导出时间: '+new Date().toLocaleString('zh-CN')+'\n\n';notes.forEach((n,i)=>{const s=n.closest('.tl-item'),name=s?(s.querySelector('.tl-spot-name')?.textContent||'交通段'):'未知位置',c=n.querySelector('[contenteditable]')?.textContent||'';t+=`## 批注 ${i+1} — ${name}\n${c}\n\n`;});const b=new Blob([t],{type:'text/markdown;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='Day7_批注_'+new Date().toISOString().slice(0,10)+'.md';a.click();URL.revokeObjectURL(u);}
-function saveLocal(){const h=document.documentElement.outerHTML,b=new Blob([h],{type:'text/html;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='Day7_行程规划_'+new Date().toISOString().slice(0,10)+'.html';a.click();URL.revokeObjectURL(u);}
-function showSaveToast(){let t=document.getElementById('auto-save-toast');if(!t){t=document.createElement('div');t.id='auto-save-toast';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(46,125,50,0.92);color:#fff;padding:6px 18px;border-radius:20px;font-size:12px;z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(4px);';document.body.appendChild(t);}t.textContent='✓ 已自动保存';t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';clearTimeout(t._hideTimer);t._hideTimer=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},1500);}
-let autoSaveTimer=null;document.addEventListener('input',()=>{clearTimeout(autoSaveTimer);autoSaveTimer=setTimeout(()=>{try{localStorage.setItem('day7_draft',document.querySelector('.container').innerHTML);showSaveToast();}catch(e){}},1000);});
-window.addEventListener('load',()=>{const d=localStorage.getItem('day7_draft');if(d)document.querySelector('.container').innerHTML=d;});
+function exportNotes(){const notes=document.querySelectorAll('.user-note');if(!notes.length){alert('暂无批注');return;}let t='# Day7 批注\n'+new Date().toLocaleString('zh-CN')+'\n\n';notes.forEach((n,i)=>{const s=n.closest('.tl-item'),name=s?(s.querySelector('.tl-spot-name')?.textContent||'交通段'):'',c=n.querySelector('[contenteditable]')?.textContent||'';t+=`## ${i+1} ${name}\n${c}\n\n`;});const b=new Blob([t],{type:'text/markdown'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Day7_批注.md';a.click();}
+function saveLocal(){const b=new Blob([document.documentElement.outerHTML],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Day7_行程规划.html';a.click();}
+function switchPlan(p){document.querySelectorAll('.plan-content').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.plan-tab').forEach(el=>el.classList.remove('active'));document.getElementById('plan'+p).classList.add('active');document.getElementById('planTab'+p).classList.add('active');}
+document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector(".day-tab.active");if(t)t.scrollIntoView({inline:"center",block:"nearest"});});
 </script>
-<script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector(".day-tab.active");if(t){t.scrollIntoView({inline:"center",block:"nearest"})}});</script>
 </body>
 </html>
