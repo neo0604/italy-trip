@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Day8 行程详细规划 | 多洛米蒂深度游·富内斯山谷·Seceda·山口公路</title>
+<title>Day8 行程详细规划 | 多洛米蒂深度游·富内斯山谷·苏西高原</title>
 <style>
   :root{--green:#2d6a4f;--green-light:#e8f5e9;--orange:#ff9800;--red:#ef5350;--blue:#42a5f5;--purple:#7e57c2;--bg:#f5f0e8;--card:#fff;--text:#2c2c2c;--text-secondary:#666;--border:#e0d8c8;--note-bg:#fffde7;--note-border:#ffe082;--theme:#4a148c;--theme-light:#f3e5f5;}
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -24,7 +24,7 @@
   .tl-time-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(90deg,#f3e5f5 0%,white 100%);border-bottom:1px solid #eee;}
   .tl-time-tag{font-size:13px;font-weight:700;color:#6a1b9a;background:white;padding:2px 12px;border-radius:10px;border:1px solid #ce93d8;white-space:nowrap;}
   .tl-type-badge{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;}
-  .badge-photo{background:#fff3e0;color:#e65100;}.badge-food{background:#fce4ec;color:#c62828;}.badge-drive{background:#f3e5f5;color:#6a1b9a;}.badge-must{background:var(--red);color:white;}.badge-walk{background:#e0f2f1;color:#00695c;}.badge-hike{background:#f1f8e9;color:#33691e;}.badge-scenic{background:#e8eaf6;color:#283593;}.badge-cable{background:#fff8e1;color:#f57f17;}
+  .badge-photo{background:#fff3e0;color:#e65100;}.badge-food{background:#fce4ec;color:#c62828;}.badge-drive{background:#f3e5f5;color:#6a1b9a;}.badge-must{background:var(--red);color:white;}.badge-walk{background:#e0f2f1;color:#00695c;}.badge-hike{background:#f1f8e9;color:#33691e;}.badge-scenic{background:#e8eaf6;color:#283593;}.badge-cable{background:#fff8e1;color:#f57f17;}.badge-town{background:#e3f2fd;color:#0d47a1;}
   .tl-left{padding:14px 16px;border-right:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px;background:#faf8fc;}
   .tl-spot-name{font-size:16px;font-weight:700;color:var(--text);line-height:1.3;}.tl-spot-subname{font-size:12px;color:var(--text-secondary);}
   .tl-spot-addr{font-size:12px;color:#888;display:flex;align-items:flex-start;gap:4px;}.tl-spot-addr .addr-icon{flex-shrink:0;}
@@ -41,9 +41,10 @@
   .add-note-btn{display:none;margin-top:6px;padding:4px 10px;border-radius:6px;border:1px dashed var(--note-border);background:transparent;color:#f57f17;font-size:11px;cursor:pointer;transition:all .2s;}.add-note-btn:hover{background:var(--note-bg);}.annotate-mode .add-note-btn{display:inline-block;}
   .tips-section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
   .tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}.tip-card{border-radius:10px;padding:12px;font-size:13px;}.tip-card h4{font-size:14px;margin-bottom:6px;}.tip-card.tip-danger{background:#fce4ec;}.tip-card.tip-warn{background:#fff8e1;}.tip-card.tip-info{background:#e3f2fd;}.tip-card.tip-ok{background:var(--green-light);}
+  .rest-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}.rest-card{background:white;border:1px solid #eee;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.04);transition:all .2s;}.rest-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-1px);}.rest-card h4{font-size:14px;margin-bottom:4px;color:var(--text);}.rest-card .rest-type{font-size:11px;color:#9c27b0;font-weight:600;margin-bottom:6px;}.rest-card .rest-desc{font-size:12px;color:#666;line-height:1.5;}.rest-card .rest-addr{font-size:11px;color:#aaa;margin-top:6px;}.rest-card .rest-price{display:inline-block;font-size:11px;background:#f3e5f5;color:#6a1b9a;padding:2px 8px;border-radius:6px;margin-top:6px;font-weight:600;}
   .sources{background:var(--card);border-radius:14px;padding:16px 20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04);font-size:12px;color:#888;}.sources h3{font-size:14px;color:#555;margin-bottom:8px;}.sources p{margin-bottom:4px;}
   .footer{text-align:center;padding:20px;color:#bbb;font-size:12px;}
-  @media(max-width:768px){.tl-item{grid-template-columns:1fr!important;}.tl-left,.tl-mid,.tl-right{border-right:none!important;border-bottom:1px solid #f0f0f0;}.tl-right{border-bottom:none;}.tip-grid{grid-template-columns:1fr;}.hero h1{font-size:22px;}.stats-bar{gap:12px;}.toolbar-hint{display:none;}.container{padding:12px 10px;}.drive-card{flex-direction:column;align-items:flex-start;}}
+  @media(max-width:768px){.tl-item{grid-template-columns:1fr!important;}.tl-left,.tl-mid,.tl-right{border-right:none!important;border-bottom:1px solid #f0f0f0;}.tl-right{border-bottom:none;}.tip-grid,.rest-grid{grid-template-columns:1fr;}.hero h1{font-size:22px;}.stats-bar{gap:12px;}.toolbar-hint{display:none;}.container{padding:12px 10px;}.drive-card{flex-direction:column;align-items:flex-start;}}
   @media print{.toolbar{display:none;}.add-note-btn{display:none;}body{background:white;}}
 
   /* Day Tab 切换栏 */
@@ -98,8 +99,8 @@
 <body>
 
 <div class="hero">
-  <h1>💜 Day8 多洛米蒂深度游·山口公路之旅</h1>
-  <div class="subtitle">富内斯山谷 → Seceda 缆车 → 加尔代纳山口 → 塞拉山口 → 奥蒂塞伊</div>
+  <h1>💜 Day8 多洛米蒂深度游·富内斯山谷·苏西高原</h1>
+  <div class="subtitle">Dolomites Chalet Niuasi → 富内斯山谷 → Alpe di Siusi 苏西高原 → Ortisei 小镇漫游</div>
   <div class="date-badge">📅 2026年5月3日 周日</div>
 </div>
 
@@ -127,115 +128,105 @@
 
 <div class="stats-bar">
   <div class="stat-item"><div class="num">~08:00</div><div class="label">出发</div></div>
-  <div class="stat-item"><div class="num">~3h</div><div class="label">总驾车</div></div>
-  <div class="stat-item"><div class="num">120km</div><div class="label">总里程</div></div>
-  <div class="stat-item"><div class="num">4</div><div class="label">景点</div></div>
-  <div class="stat-item"><div class="num">🚡 2518m</div><div class="label">Seceda 海拔</div></div>
+  <div class="stat-item"><div class="num">~0.5h</div><div class="label">总驾车</div></div>
+  <div class="stat-item"><div class="num">20km</div><div class="label">总里程</div></div>
+  <div class="stat-item"><div class="num">3</div><div class="label">核心体验</div></div>
+  <div class="stat-item"><div class="num">🏨</div><div class="label">同 Day7 住宿</div></div>
 </div>
 
 <div class="container">
 
 <div class="map-section" style="background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
   <h2 class="section-title">🗺️ Day8 行程路线图</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:12px;">📐 基于真实地理位置 · 手绘风多洛米蒂山口与峰群 · 点击景点可跳转 Google Maps 导航</p>
+  <p style="font-size:12px;color:#888;margin-bottom:12px;">📐 基于真实地理位置 · 富内斯山谷+苏西高原+Ortisei 小镇 · 点击景点可跳转 Google Maps 导航</p>
   <div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <svg viewBox="0 0 960 860" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <svg viewBox="0 0 960 780" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
     <defs>
       <linearGradient id="mapBg8" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#ede7f6;stop-opacity:1"/><stop offset="100%" style="stop-color:#d1c4e9;stop-opacity:1"/></linearGradient>
-      <linearGradient id="valleyGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#c8e6c9;stop-opacity:0.2"/><stop offset="100%" style="stop-color:#a5d6a7;stop-opacity:0.05"/></linearGradient>
+      <linearGradient id="valleyGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#c8e6c9;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#a5d6a7;stop-opacity:0.1"/></linearGradient>
+      <linearGradient id="meadowGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#dcedc8;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#c5e1a5;stop-opacity:0.1"/></linearGradient>
       <filter id="shadow8"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.12)"/></filter>
       <filter id="cardShadow8" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.1)"/></filter>
       <filter id="glow8" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>
 
-    <!-- ===== BACKGROUND ===== -->
-    <rect width="960" height="860" rx="16" fill="url(#mapBg8)"/>
-    <text x="30" y="45" font-size="20" fill="#6a1b9a" letter-spacing="6" font-weight="700" opacity="0.2">D A Y  8  ·  D O L O M I T I  L O O P</text>
+    <!-- BACKGROUND -->
+    <rect width="960" height="780" rx="16" fill="url(#mapBg8)"/>
+    <text x="30" y="45" font-size="20" fill="#6a1b9a" letter-spacing="6" font-weight="700" opacity="0.2">D A Y  8  ·  V A L  G A R D E N A</text>
 
-    <!-- ===== MOUNTAIN RANGES (layered) ===== -->
-    <path d="M0,300 L60,230 L120,270 L180,170 L240,230 L300,140 L360,200 L420,110 L480,180 L540,90 L600,160 L660,80 L720,140 L780,60 L840,120 L900,80 L960,150 L960,860 L0,860Z" fill="#b39ddb" opacity="0.1"/>
-    <path d="M0,400 L100,350 L200,380 L300,300 L400,350 L500,280 L600,330 L700,260 L800,310 L900,270 L960,300 L960,860 L0,860Z" fill="#ce93d8" opacity="0.07"/>
+    <!-- MOUNTAIN RANGES -->
+    <path d="M0,300 L60,230 L120,270 L180,170 L240,230 L300,140 L360,200 L420,110 L480,180 L540,90 L600,160 L660,80 L720,140 L780,60 L840,120 L900,80 L960,150 L960,780 L0,780Z" fill="#b39ddb" opacity="0.08"/>
 
-    <!-- ===== VAL DI FUNES (green valley, NW area) ===== -->
-    <path d="M80,480 Q120,430 180,400 Q240,380 300,400 Q320,420 300,460 Q260,490 200,500 Q140,505 100,495 Q80,490 80,480" fill="url(#valleyGrad)" stroke="#66bb6a" stroke-width="1.5" opacity="0.5"/>
-    <text x="190" y="520" text-anchor="middle" font-size="9" fill="#43a047" opacity="0.35" font-style="italic">Val di Funes 富内斯山谷</text>
+    <!-- Val di Funes valley area -->
+    <ellipse cx="250" cy="340" rx="160" ry="70" fill="url(#valleyGrad)" stroke="#66bb6a" stroke-width="1" opacity="0.4"/>
+    <text x="250" y="395" text-anchor="middle" font-size="9" fill="#43a047" opacity="0.4" font-style="italic">Val di Funes 富内斯山谷</text>
 
-    <!-- ===== HAND-DRAWN PEAKS ===== -->
+    <!-- Alpe di Siusi meadow area -->
+    <ellipse cx="680" cy="350" rx="180" ry="80" fill="url(#meadowGrad)" stroke="#8bc34a" stroke-width="1" opacity="0.4"/>
+    <text x="680" y="415" text-anchor="middle" font-size="9" fill="#558b2f" opacity="0.4" font-style="italic">Alpe di Siusi 苏西高原 56km²</text>
 
-    <!-- ★ Odle/Geisler group (above Funes valley) — iconic spires -->
-    <g transform="translate(200,320)" opacity="0.2">
+    <!-- Odle peaks -->
+    <g transform="translate(250,240)" opacity="0.2">
       <path d="M-35,0 L-28,-30 L-20,0" fill="none" stroke="#37474f" stroke-width="2" stroke-linejoin="round"/>
       <path d="M-22,0 L-12,-42 L-2,0" fill="none" stroke="#37474f" stroke-width="2.5" stroke-linejoin="round"/>
       <path d="M-5,0 L8,-38 L20,0" fill="none" stroke="#37474f" stroke-width="2" stroke-linejoin="round"/>
       <path d="M17,0 L28,-28 L38,0" fill="none" stroke="#37474f" stroke-width="2" stroke-linejoin="round"/>
-      <!-- snow -->
       <path d="M-12,-42 L-8,-34 L-16,-34 Z" fill="#eceff1" stroke="#90a4ae" stroke-width="0.6"/>
       <path d="M8,-38 L12,-30 L4,-30 Z" fill="#eceff1" stroke="#90a4ae" stroke-width="0.6"/>
+      <text x="3" y="-50" text-anchor="middle" font-size="9" fill="#546e7a" font-weight="600">Odle 盖斯勒</text>
     </g>
 
-    <!-- ★ Seceda ridge (knife-edge, center-north) -->
-    <g transform="translate(430,200)" opacity="0.18">
-      <path d="M-40,0 L-30,-20 L-15,-35 L0,-25 L15,-40 L30,-22 L40,0" fill="none" stroke="#4a148c" stroke-width="2.5" stroke-linejoin="round"/>
-      <!-- snow line -->
-      <path d="M-15,-35 L-10,-28 L-20,-28 Z" fill="#eceff1" opacity="0.6"/>
-      <path d="M15,-40 L20,-32 L10,-32 Z" fill="#eceff1" opacity="0.6"/>
-    </g>
-
-    <!-- ★ Sassolungo (east, near Sella) -->
-    <g transform="translate(700,300)" opacity="0.18">
+    <!-- Sassolungo peak -->
+    <g transform="translate(730,240)" opacity="0.18">
       <path d="M-20,0 L-5,-50 L10,0" fill="none" stroke="#455a64" stroke-width="3" stroke-linejoin="round"/>
       <path d="M5,0 L18,-35 L30,0" fill="none" stroke="#455a64" stroke-width="2.5" stroke-linejoin="round"/>
       <path d="M-5,-50 L0,-40 L-10,-40 Z" fill="#eceff1" stroke="#90a4ae" stroke-width="0.6"/>
+      <text x="8" y="-55" text-anchor="middle" font-size="9" fill="#546e7a" font-weight="600">Sassolungo 石柱峰</text>
     </g>
 
-    <!-- ★ Sella Group (massive block) -->
-    <g transform="translate(620,220)" opacity="0.12">
-      <rect x="-30" y="-20" width="60" height="20" rx="5" fill="none" stroke="#546e7a" stroke-width="2.5"/>
-      <path d="M-30,-20 L-20,-30 L0,-25 L20,-32 L30,-20" fill="none" stroke="#546e7a" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Sciliar peak -->
+    <g transform="translate(820,280)" opacity="0.15">
+      <path d="M-25,0 L-15,-20 L0,-28 L15,-20 L25,0" fill="none" stroke="#546e7a" stroke-width="2.5" stroke-linejoin="round"/>
+      <text x="0" y="-33" text-anchor="middle" font-size="8" fill="#78909c" font-weight="600">Sciliar</text>
     </g>
 
-    <!-- ★ Pine trees scattered -->
+    <!-- Pine trees -->
     <g opacity="0.1" fill="#2e7d32">
-      <path d="M120,440 L126,420 L132,440 M126,430 L126,445"/>
-      <path d="M260,410 L266,390 L272,410 M266,400 L266,415"/>
-      <path d="M350,370 L356,348 L362,370 M356,358 L356,375"/>
-      <path d="M500,350 L506,330 L512,350 M506,340 L506,355"/>
-      <path d="M780,400 L786,380 L792,400 M786,390 L786,405"/>
+      <path d="M120,380 L126,360 L132,380 M126,370 L126,385"/>
+      <path d="M360,310 L366,290 L372,310 M366,300 L366,315"/>
+      <path d="M550,360 L556,340 L562,360 M556,350 L556,365"/>
+      <path d="M800,380 L806,360 L812,380 M806,370 L806,385"/>
     </g>
 
-    <!-- ===== REFERENCE PLACES ===== -->
+    <!-- Reference places -->
     <g font-size="10" fill="#aaa" opacity="0.35" font-style="italic">
-      <circle cx="100" cy="620" r="3" fill="#ccc" opacity="0.5"/><text x="110" y="624">Bolzano 博尔扎诺</text>
-      <circle cx="350" cy="600" r="3" fill="#ccc" opacity="0.5"/><text x="360" y="604">Ortisei 奥蒂塞伊</text>
-      <circle cx="550" cy="500" r="3" fill="#ccc" opacity="0.5"/><text x="560" y="504">Selva di Val Gardena</text>
-      <circle cx="800" cy="500" r="3" fill="#ccc" opacity="0.5"/><text x="810" y="504">Canazei 卡纳泽伊</text>
+      <circle cx="100" cy="550" r="3" fill="#ccc" opacity="0.5"/><text x="110" y="554">Bressanone 布列瑟农</text>
+      <circle cx="700" cy="580" r="3" fill="#ccc" opacity="0.5"/><text x="710" y="584">Bolzano 博尔扎诺</text>
     </g>
 
-    <!-- ===== MOUNTAIN PASS LABELS ===== -->
-    <g font-size="9" font-weight="700" opacity="0.3">
-      <rect x="555" y="285" width="70" height="16" rx="3" fill="#6a1b9a" opacity="0.5"/><text x="590" y="297" fill="white" text-anchor="middle">P. Gardena</text>
-      <rect x="730" y="370" width="60" height="16" rx="3" fill="#ef5350" opacity="0.5"/><text x="760" y="382" fill="white" text-anchor="middle">P. Sella</text>
+    <!-- ROUTES -->
+    <!-- Hotel → Funes -->
+    <path d="M480,520 Q400,490 330,430 Q280,390 230,370" stroke="#6a1b9a" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.25" stroke-linecap="round"/>
+    <!-- Funes → Ortisei -->
+    <path d="M260,380 Q340,440 420,470 Q450,480 480,490" stroke="#43a047" stroke-width="4" fill="none" stroke-dasharray="10,5" opacity="0.3" stroke-linecap="round"/>
+    <!-- Ortisei → Alpe di Siusi (cable car) -->
+    <path d="M500,480 Q560,420 640,370 Q670,355 690,345" stroke="#9c27b0" stroke-width="3" fill="none" stroke-dasharray="6,4" opacity="0.4" stroke-linecap="round"/>
+    <!-- Alpe di Siusi → back Ortisei -->
+    <path d="M690,360 Q620,430 520,490" stroke="#9c27b0" stroke-width="3" fill="none" stroke-dasharray="6,4" opacity="0.2" stroke-linecap="round"/>
+
+    <!-- DISTANCE PILLS -->
+    <g font-size="11" font-weight="600">
+      <rect x="310" y="460" width="130" height="24" rx="12" fill="#6a1b9a" opacity="0.75" filter="url(#shadow8)"/>
+      <text x="375" y="476" fill="white" text-anchor="middle" font-size="10">🚗 15km ~20min</text>
+
+      <rect x="540" y="400" width="130" height="24" rx="12" fill="#9c27b0" opacity="0.7"/>
+      <text x="605" y="416" fill="white" text-anchor="middle" font-size="10">🚡 缆车 15min</text>
+
+      <rect x="310" y="420" width="140" height="24" rx="12" fill="#43a047" opacity="0.65"/>
+      <text x="380" y="436" fill="white" text-anchor="middle" font-size="10">🚗 回 Ortisei 20min</text>
     </g>
 
-    <!-- ===== LOOP ROUTE ===== -->
-    <!-- Cortina → Val di Funes (westward) -->
-    <path d="M860,580 Q750,560 600,530 Q450,510 300,480 Q220,470 180,460" stroke="#6a1b9a" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.25" stroke-linecap="round"/>
-    <!-- Funes → Seceda (cable car, vertical) -->
-    <path d="M200,430 Q250,360 350,310 Q400,280 440,240" stroke="#6a1b9a" stroke-width="4" fill="none" stroke-dasharray="10,5" opacity="0.35" stroke-linecap="round"/>
-    <!-- Seceda → Gardena Pass (SE) -->
-    <path d="M460,230 Q500,250 540,270 Q570,285 590,300" stroke="#6a1b9a" stroke-width="4" fill="none" stroke-dasharray="10,5" opacity="0.35" stroke-linecap="round"/>
-    <!-- Gardena → Sella Pass (S then E) -->
-    <path d="M610,310 Q650,330 690,350 Q730,370 760,390" stroke="#bf360c" stroke-width="4" fill="none" stroke-dasharray="8,5" opacity="0.35" stroke-linecap="round"/>
-    <!-- Sella → Ortisei (return west) -->
-    <path d="M760,420 Q700,460 600,490 Q500,510 400,530 Q360,550 350,580" stroke="#6a1b9a" stroke-width="4" fill="none" stroke-dasharray="10,5" opacity="0.25" stroke-linecap="round"/>
-    <!-- Route glow -->
-    <path d="M180,460 Q250,360 440,240 Q540,270 590,300 Q650,330 760,390" stroke="#6a1b9a" stroke-width="14" fill="none" opacity="0.03" stroke-linecap="round"/>
-
-    <!-- ===== CABLE CAR LINE (Funes → Seceda) ===== -->
-    <line x1="230" y1="430" x2="430" y2="220" stroke="#9c27b0" stroke-width="1.5" opacity="0.25" stroke-dasharray="3,2"/>
-    <circle cx="330" cy="325" r="4" fill="#9c27b0" opacity="0.25"/>
-
-    <!-- ===== COMPASS ===== -->
+    <!-- COMPASS -->
     <g transform="translate(900,55)" opacity="0.5">
       <circle cx="0" cy="0" r="26" fill="rgba(255,255,255,0.6)" stroke="#8b7355" stroke-width="1.5"/>
       <text x="0" y="-10" text-anchor="middle" font-size="13" font-weight="800" fill="#8b7355">N</text>
@@ -246,114 +237,79 @@
       <polygon points="0,-6 -3,1 3,1" fill="#8b7355"/>
     </g>
 
-    <!-- ===== DISTANCE / TRANSPORT PILLS ===== -->
-    <g font-size="11" font-weight="600">
-      <rect x="500" y="530" width="150" height="24" rx="12" fill="#6a1b9a" opacity="0.75" filter="url(#shadow8)"/>
-      <text x="575" y="546" fill="white" text-anchor="middle" font-size="10">🚗 40km ~50min</text>
+    <!-- STOP CARDS -->
 
-      <rect x="280" y="350" width="130" height="24" rx="12" fill="#9c27b0" opacity="0.7"/>
-      <text x="345" y="366" fill="white" text-anchor="middle" font-size="10">🚡 缆车 15min</text>
-
-      <rect x="490" y="258" width="130" height="24" rx="12" fill="#6a1b9a" opacity="0.75"/>
-      <text x="555" y="274" fill="white" text-anchor="middle" font-size="10">🚗 25km ~35min</text>
-
-      <rect x="700" y="340" width="120" height="22" rx="11" fill="#bf360c" opacity="0.65"/>
-      <text x="760" y="355" fill="white" text-anchor="middle" font-size="9">🚗 盘山公路 20km</text>
-
-      <rect x="500" y="480" width="130" height="22" rx="11" fill="#6a1b9a" opacity="0.65"/>
-      <text x="565" y="495" fill="white" text-anchor="middle" font-size="9">🚗 返程 35km</text>
-    </g>
-
-    <!-- ===== STOP CARDS ===== -->
-
-    <!-- ① 富内斯山谷 (NW) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Val+di+Funes+Santa+Maddalena" target="_blank">
+    <!-- 🏨 住宿 Dolomites Chalet Niuasi -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Dolomites+Chalet+Niuasi+Ortisei" target="_blank">
       <g filter="url(#cardShadow8)" cursor="pointer">
-        <rect x="20" y="530" width="290" height="88" rx="14" fill="white" stroke="#43a047" stroke-width="2.5"/>
-        <circle cx="55" cy="575" r="24" fill="#43a047" filter="url(#glow8)"/>
-        <text x="55" y="582" text-anchor="middle" fill="white" font-size="17" font-weight="800">1</text>
-        <text x="90" y="552" font-size="15" font-weight="700" fill="#333">🏡 富内斯山谷</text>
-        <text x="90" y="572" font-size="12" fill="#888">~09:00 · ⭐必打卡 1.5h</text>
-        <text x="90" y="592" font-size="10" fill="#666">圣马达莱纳 · Windows经典壁纸</text>
-        <text x="90" y="608" font-size="11" fill="#43a047" font-weight="600">📍 点击导航 →</text>
+        <rect x="380" y="510" width="280" height="72" rx="14" fill="white" stroke="#ff9800" stroke-width="2.5"/>
+        <circle cx="415" cy="546" r="22" fill="#ff9800" filter="url(#glow8)"/>
+        <text x="415" y="553" text-anchor="middle" fill="white" font-size="16" font-weight="800">宿</text>
+        <text x="448" y="532" font-size="14" font-weight="700" fill="#333">🏨 Dolomites Chalet Niuasi</text>
+        <text x="448" y="552" font-size="11" fill="#888">Ortisei 镇西侧 · 同 Day7 住宿</text>
+        <text x="448" y="572" font-size="10" fill="#ff9800" font-weight="600">📍 点击导航 →</text>
       </g>
     </a>
-    <line x1="200" y1="530" x2="195" y2="500" stroke="#43a047" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
 
-    <!-- ② Seceda 山顶 (center-N) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Seceda+Ortisei" target="_blank">
+    <!-- ① 富内斯山谷 -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Parkplatz+Bergerplatz+Santa+Maddalena" target="_blank">
       <g filter="url(#cardShadow8)" cursor="pointer">
-        <rect x="250" y="130" width="290" height="88" rx="14" fill="white" stroke="#6a1b9a" stroke-width="2.5"/>
-        <circle cx="285" cy="175" r="24" fill="#6a1b9a" filter="url(#glow8)"/>
-        <text x="285" y="182" text-anchor="middle" fill="white" font-size="17" font-weight="800">2</text>
-        <text x="320" y="152" font-size="15" font-weight="700" fill="#333">🚡 Seceda 山顶</text>
-        <text x="320" y="172" font-size="12" fill="#888">~11:30 · ⭐必打卡 2h</text>
-        <text x="320" y="192" font-size="10" fill="#666">海拔2518m · 刀锋山脊 · 缆车直达</text>
-        <text x="320" y="208" font-size="11" fill="#6a1b9a" font-weight="600">📍 点击导航 →</text>
+        <rect x="30" y="290" width="290" height="95" rx="14" fill="white" stroke="#43a047" stroke-width="2.5"/>
+        <circle cx="65" cy="340" r="24" fill="#43a047" filter="url(#glow8)"/>
+        <text x="65" y="347" text-anchor="middle" fill="white" font-size="17" font-weight="800">1</text>
+        <text x="100" y="312" font-size="15" font-weight="700" fill="#333">🏡 富内斯山谷</text>
+        <text x="100" y="332" font-size="12" fill="#888">~08:30 · ⭐必打卡 2h</text>
+        <text x="100" y="352" font-size="10" fill="#666">圣马达莱纳教堂 · Odle 盖斯勒群峰</text>
+        <text x="100" y="370" font-size="10" fill="#666">🅿️ Parkplatz Bergerplatz €8/天</text>
+        <text x="100" y="378" font-size="11" fill="#43a047" font-weight="600">📍 点击导航 →</text>
       </g>
     </a>
-    <line x1="430" y1="218" x2="435" y2="225" stroke="#6a1b9a" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
 
-    <!-- ③ 加尔代纳山口 (center-E) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Passo+Gardena" target="_blank">
+    <!-- ② 苏西高原 Alpe di Siusi -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Alpe+di+Siusi+cable+car+Ortisei" target="_blank">
       <g filter="url(#cardShadow8)" cursor="pointer">
-        <rect x="580" y="100" width="280" height="82" rx="14" fill="white" stroke="#0277bd" stroke-width="2.5"/>
-        <circle cx="615" cy="142" r="24" fill="#0277bd" filter="url(#glow8)"/>
-        <text x="615" y="149" text-anchor="middle" fill="white" font-size="17" font-weight="800">3</text>
-        <text x="650" y="122" font-size="14" font-weight="700" fill="#333">🏔️ 加尔代纳山口</text>
-        <text x="650" y="142" font-size="11" fill="#888">~15:30 · Passo Gardena 2121m</text>
-        <text x="650" y="160" font-size="10" fill="#666">环形公路制高点 · 群峰环绕</text>
-        <text x="650" y="175" font-size="11" fill="#2d6a4f" font-weight="600">📍 点击导航 →</text>
+        <rect x="590" y="270" width="300" height="95" rx="14" fill="white" stroke="#8bc34a" stroke-width="2.5"/>
+        <circle cx="625" cy="320" r="24" fill="#8bc34a" filter="url(#glow8)"/>
+        <text x="625" y="327" text-anchor="middle" fill="white" font-size="17" font-weight="800">2</text>
+        <text x="660" y="292" font-size="15" font-weight="700" fill="#333">🚡 苏西高原 Alpe di Siusi</text>
+        <text x="660" y="312" font-size="12" fill="#888">~11:00 · ⭐必打卡 3.5h</text>
+        <text x="660" y="332" font-size="10" fill="#666">欧洲最大高山草甸 56km² · 缆车直达</text>
+        <text x="660" y="350" font-size="10" fill="#666">Sassolungo 石柱峰全景 · 轻松步道</text>
+        <text x="660" y="358" font-size="11" fill="#558b2f" font-weight="600">📍 点击导航 →</text>
       </g>
     </a>
-    <line x1="590" y1="182" x2="590" y2="290" stroke="#0277bd" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
 
-    <!-- ④ 塞拉山口 (SE) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Passo+Sella" target="_blank">
+    <!-- ③ Ortisei 小镇 -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Ortisei+centro+Str+Rezia" target="_blank">
       <g filter="url(#cardShadow8)" cursor="pointer">
-        <rect x="670" y="420" width="280" height="88" rx="14" fill="white" stroke="#ef5350" stroke-width="2.5"/>
-        <circle cx="705" cy="465" r="24" fill="#ef5350" filter="url(#glow8)"/>
-        <text x="705" y="472" text-anchor="middle" fill="white" font-size="17" font-weight="800">4</text>
-        <text x="740" y="442" font-size="14" font-weight="700" fill="#333">⛰️ 塞拉山口</text>
-        <text x="740" y="462" font-size="11" fill="#888">~16:30 · Passo Sella 2240m</text>
-        <text x="740" y="480" font-size="10" fill="#666">Sassolungo 正对面 · 日落拍摄点</text>
-        <text x="740" y="498" font-size="11" fill="#ef5350" font-weight="600">📍 点击导航 →</text>
+        <rect x="350" y="620" width="280" height="82" rx="14" fill="white" stroke="#6a1b9a" stroke-width="2.5"/>
+        <circle cx="385" cy="662" r="24" fill="#6a1b9a" filter="url(#glow8)"/>
+        <text x="385" y="669" text-anchor="middle" fill="white" font-size="17" font-weight="800">3</text>
+        <text x="420" y="642" font-size="15" font-weight="700" fill="#333">🏘️ Ortisei 小镇漫游</text>
+        <text x="420" y="662" font-size="12" fill="#888">~15:00 · 散步+晚餐 3-4h</text>
+        <text x="420" y="680" font-size="10" fill="#666">木雕之乡 · Str. Rezia 主街 · 南蒂罗尔美食</text>
+        <text x="420" y="696" font-size="11" fill="#6a1b9a" font-weight="600">📍 点击导航 →</text>
       </g>
     </a>
-    <line x1="760" y1="420" x2="762" y2="395" stroke="#ef5350" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
 
-    <!-- ⑤ 奥蒂塞伊住宿 (center-S) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Ortisei+Val+Gardena" target="_blank">
-      <g filter="url(#cardShadow8)" cursor="pointer">
-        <rect x="250" y="630" width="260" height="72" rx="14" fill="white" stroke="#ff9800" stroke-width="2.5"/>
-        <circle cx="285" cy="666" r="22" fill="#ff9800" filter="url(#glow8)"/>
-        <text x="285" y="673" text-anchor="middle" fill="white" font-size="16" font-weight="800">宿</text>
-        <text x="318" y="652" font-size="14" font-weight="700" fill="#333">🏨 奥蒂塞伊</text>
-        <text x="318" y="672" font-size="11" fill="#888">~18:00 · Ortisei 小镇</text>
-        <text x="318" y="690" font-size="10" fill="#666">加尔代纳山谷核心 · 木雕之乡</text>
-      </g>
-    </a>
-    <line x1="360" y1="630" x2="355" y2="600" stroke="#ff9800" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
-
-    <!-- ===== SCALE BAR ===== -->
-    <g transform="translate(30,820)" opacity="0.4">
-      <line x1="0" y1="0" x2="50" y2="0" stroke="#8b7355" stroke-width="2"/>
-      <line x1="0" y1="-4" x2="0" y2="4" stroke="#8b7355" stroke-width="1.5"/>
-      <line x1="50" y1="-4" x2="50" y2="4" stroke="#8b7355" stroke-width="1.5"/>
-      <text x="25" y="15" text-anchor="middle" font-size="9" fill="#8b7355">~10km</text>
-    </g>
-
-    <!-- ===== LEGEND ===== -->
-    <g transform="translate(20,770)">
-      <rect width="920" height="65" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow8)"/>
+    <!-- LEGEND -->
+    <g transform="translate(20,720)">
+      <rect width="920" height="45" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow8)"/>
       <circle cx="25" cy="22" r="9" fill="#43a047"/><text x="42" y="26" font-size="11" fill="#555">山谷</text>
-      <circle cx="110" cy="22" r="9" fill="#6a1b9a"/><text x="127" y="26" font-size="11" fill="#555">缆车/顶峰</text>
-      <circle cx="220" cy="22" r="9" fill="#0277bd"/><text x="237" y="26" font-size="11" fill="#555">山口</text>
-      <circle cx="300" cy="22" r="9" fill="#ef5350"/><text x="317" y="26" font-size="11" fill="#555">公路</text>
-      <circle cx="380" cy="22" r="9" fill="#ff9800"/><text x="397" y="26" font-size="11" fill="#555">住宿</text>
-      <line x1="460" y1="22" x2="500" y2="22" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8,4"/><text x="508" y="26" font-size="11" fill="#555">环线路线</text>
-      <line x1="590" y1="22" x2="630" y2="22" stroke="#bf360c" stroke-width="2.5" stroke-dasharray="5,3"/><text x="638" y="26" font-size="11" fill="#555">盘山路</text>
-      <text x="25" y="52" font-size="10" fill="#888">Day8 多洛米蒂深度环线 · 自驾120km · 点击卡片跳转导航</text>
+      <circle cx="110" cy="22" r="9" fill="#8bc34a"/><text x="127" y="26" font-size="11" fill="#555">高原</text>
+      <circle cx="200" cy="22" r="9" fill="#6a1b9a"/><text x="217" y="26" font-size="11" fill="#555">小镇</text>
+      <circle cx="285" cy="22" r="9" fill="#ff9800"/><text x="302" y="26" font-size="11" fill="#555">住宿</text>
+      <line x1="370" y1="22" x2="410" y2="22" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8,4"/><text x="418" y="26" font-size="11" fill="#555">自驾</text>
+      <line x1="470" y1="22" x2="510" y2="22" stroke="#9c27b0" stroke-width="2.5" stroke-dasharray="5,3"/><text x="518" y="26" font-size="11" fill="#555">缆车</text>
+      <text x="600" y="26" font-size="10" fill="#888">Day8 富内斯+苏西高原+Ortisei · 轻松一天 · 4人团</text>
+    </g>
+
+    <!-- SCALE BAR -->
+    <g transform="translate(870,720)" opacity="0.4">
+      <line x1="0" y1="22" x2="50" y2="22" stroke="#8b7355" stroke-width="2"/>
+      <line x1="0" y1="18" x2="0" y2="26" stroke="#8b7355" stroke-width="1.5"/>
+      <line x1="50" y1="18" x2="50" y2="26" stroke="#8b7355" stroke-width="1.5"/>
+      <text x="25" y="37" text-anchor="middle" font-size="9" fill="#8b7355">~5km</text>
     </g>
   </svg>
   </div>
@@ -361,34 +317,38 @@
 
 <h2 class="section-title">⏱️ 详细时间线</h2>
 
-<!-- DRIVE -->
+<!-- DRIVE Hotel → Funes -->
 <div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">08:00 - 09:00</span><span class="tl-type-badge badge-drive">🚗 40km ~50min</span></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">08:00 - 08:30</span><span class="tl-type-badge badge-drive">🚗 15km ~20min</span></div>
   <div class="drive-card">
     <span class="drive-icon">🚗</span>
-    <div><div class="drive-title" contenteditable="false">科尔蒂纳 → 富内斯山谷 Val di Funes</div><div class="drive-detail" contenteditable="false">SS49→SS12 · 穿越多洛米蒂腹地 · 沿途风景绝美 · 建议走国道不走高速</div></div>
-    <a class="gmap-link" href="https://www.google.com/maps/dir/Cortina+d+Ampezzo/Santa+Maddalena+Funes" target="_blank" style="margin-left:auto;">📍 导航</a>
+    <div><div class="drive-title" contenteditable="false">Dolomites Chalet Niuasi → 富内斯山谷</div><div class="drive-detail" contenteditable="false">从 Ortisei 出发沿 SS12 向北 · 到 Santa Maddalena 约 20 分钟 · 清晨出发赶最佳光线</div></div>
+    <a class="gmap-link" href="https://www.google.com/maps/dir/Dolomites+Chalet+Niuasi+Ortisei/Parkplatz+Bergerplatz+Santa+Maddalena" target="_blank" style="margin-left:auto;">📍 导航</a>
   </div>
 </div>
 
-<!-- STOP 1 -->
+<!-- STOP 1: 富内斯山谷 -->
 <div class="tl-item" data-spot="funes">
-  <div class="tl-time-bar"><span class="tl-time-tag">~09:00 - 10:30</span><span class="tl-type-badge badge-must">⭐ 必打卡 1.5h</span><span class="tl-type-badge badge-photo">📸 摄影圣地</span></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">~08:30 - 10:30</span><span class="tl-type-badge badge-must">⭐ 必打卡 2h</span><span class="tl-type-badge badge-photo">📸 摄影圣地</span></div>
   <div class="tl-left">
     <div class="tl-spot-name" contenteditable="false">🏡 富内斯山谷</div>
     <div class="tl-spot-subname" contenteditable="false">Val di Funes / Villnöss · 圣马达莱纳教堂</div>
     <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Chiesa di San Giovanni in Ranui, Santa Maddalena</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Chiesa+di+San+Giovanni+in+Ranui" target="_blank">📍 Google Maps 导航</a>
+    <div class="tl-spot-addr"><span class="addr-icon">🅿️</span><span contenteditable="false">Parkplatz Bergerplatz（指定停车场 · €8/天）</span></div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Parkplatz+Bergerplatz+Santa+Maddalena" target="_blank">📍 Google Maps 导航</a>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">多洛米蒂最经典的明信片画面！小教堂 + 绿色草地 + 背后盖斯勒群峰 = 完美构图</p>
+    <p contenteditable="false">多洛米蒂最经典的明信片画面！圣乔瓦尼教堂 + 绿色草地 + 背后 Odle 盖斯勒群峰 = 完美构图</p>
     <p contenteditable="false"><strong>🌟 必做：</strong></p>
-    <p contenteditable="false">• <strong>圣乔瓦尼教堂</strong> — 洋葱头尖塔 + Odle 群峰背景，经典中的经典</p>
-    <p contenteditable="false">• <strong>圣马达莱纳村</strong> — 整个村子就是一幅画，随便拍都是大片</p>
-    <p contenteditable="false">• 清晨光线最美（我们来得正好！）</p>
-    <p contenteditable="false">• 有步道可以走近教堂，约 15min 单程</p>
-    <p contenteditable="false">💡 这就是 Windows 经典壁纸的取景地！</p>
+    <p contenteditable="false">• <strong>圣乔瓦尼教堂</strong>（Chiesa di San Giovanni in Ranui）— 洋葱头尖塔 + Odle 群峰背景，经典中的经典</p>
+    <p contenteditable="false">• <strong>全景步道</strong>（Panoramaweg）— 从 Bergerplatz 步行到教堂约 20-25min 单程，9.5km 环线约 3.5h</p>
+    <p contenteditable="false">• 4 人轻装打卡建议走<strong>短途版</strong>：停车场→教堂拍照→村庄小逛，约 1.5-2h 足够</p>
+    <p contenteditable="false">• 清晨日出后光线最美（我们 08:30 到正好！）</p>
+    <p contenteditable="false">💡 这就是 <strong>Windows 经典壁纸</strong>的取景地！</p>
+    <p contenteditable="false" style="margin-top:8px;color:#c62828;font-weight:600;">⚠️ 2026 年新规：5月1日起设两道交通屏障，游客不能开车到教堂，必须停在指定停车场步行！</p>
+    <p contenteditable="false" style="color:#c62828;">• 禁止在草地上行走（只能走标记步道）</p>
+    <p contenteditable="false" style="color:#c62828;">• 禁止飞无人机 · 禁止路边停车</p>
     <div class="xhs-links">
       <div class="xhs-links-title">📕 小红书参考</div>
       <div class="xhs-link-item"><a href="https://www.xiaohongshu.com/explore/67d9a3e1000000001e02b541" target="_blank">🇮🇹富内斯山谷｜被Windows选中的人间仙境</a><span class="xhs-stats">@欧洲行者 · 6789赞</span></div>
@@ -396,185 +356,173 @@
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 免费参观</p><p>• 路边免费停车</p><p>• 教堂内部参观 €3</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">📸 拍摄建议</div><div class="tip-mini" contenteditable="false"><p>• 最佳机位：教堂正面草坡上</p><p>• 带长焦压缩背景群峰</p><p>• 晨光（09:00前）效果最佳</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 🅿️ 停车 €8/天（Bergerplatz）</p><p>• 教堂内部参观 €3</p><p>• 步道免费</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">📸 拍摄建议</div><div class="tip-mini" contenteditable="false"><p>• 最佳机位：教堂正面草坡上</p><p>• 带长焦压缩背景群峰更震撼</p><p>• 晨光（08:30-09:30）效果最佳</p><p>• 带广角拍教堂+群峰全景</p></div></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
 </div>
 
-<!-- DRIVE to Ortisei -->
+<!-- DRIVE Funes → Ortisei -->
 <div class="tl-item item-drive">
   <div class="tl-time-bar"><span class="tl-time-tag">10:30 - 11:00</span><span class="tl-type-badge badge-drive">🚗 15km ~20min</span></div>
-  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title" contenteditable="false">富内斯 → 奥蒂塞伊缆车站</div><div class="drive-detail" contenteditable="false">下到加尔代纳谷底的 Ortisei 小镇 · 停车后乘缆车上 Seceda</div></div></div>
+  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title" contenteditable="false">富内斯山谷 → Ortisei 缆车站</div><div class="drive-detail" contenteditable="false">回到加尔代纳谷底 Ortisei 镇 · 在缆车站附近停车 · 准备上苏西高原</div></div>
+  <a class="gmap-link" href="https://www.google.com/maps/dir/Parkplatz+Bergerplatz+Santa+Maddalena/Funivia+Ortisei+Alpe+di+Siusi" target="_blank" style="margin-left:auto;">📍 导航</a>
+  </div>
 </div>
 
-<!-- STOP 2 -->
-<div class="tl-item" data-spot="seceda">
-  <div class="tl-time-bar"><span class="tl-time-tag">~11:00 - 14:00</span><span class="tl-type-badge badge-must">⭐ 必打卡 3h</span><span class="tl-type-badge badge-cable">🚡 缆车</span></div>
+<!-- STOP 2: 苏西高原 -->
+<div class="tl-item" data-spot="siusi">
+  <div class="tl-time-bar"><span class="tl-time-tag">~11:00 - 14:30</span><span class="tl-type-badge badge-must">⭐ 必打卡 3.5h</span><span class="tl-type-badge badge-cable">🚡 缆车</span><span class="tl-type-badge badge-hike">🥾 轻松步道</span></div>
   <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">🚡 Seceda 山顶</div>
-    <div class="tl-spot-subname" contenteditable="false">Seceda · 海拔2518m · 刀锋山脊</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Seceda 缆车站, Ortisei / St. Ulrich</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Seceda+Ortisei+cable+car" target="_blank">📍 Google Maps 导航</a>
+    <div class="tl-spot-name" contenteditable="false">🚡 苏西高原 Alpe di Siusi</div>
+    <div class="tl-spot-subname" contenteditable="false">Seiser Alm · 欧洲最大高山草甸 · 56km²</div>
+    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Funivia Ortisei - Alpe di Siusi (Mont Sëuc)</span></div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Funivia+Ortisei+Alpe+di+Siusi" target="_blank">📍 Google Maps 导航</a>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">多洛米蒂最震撼的观景台！站在 2518m 山顶，脚下是刀切般的山脊，360° 全景群峰</p>
+    <p contenteditable="false">欧洲最大的高山草甸！56 平方公里的碧绿高原，背靠 Sassolungo（石柱峰）和 Sciliar，5 月初绿意初显，游客极少</p>
     <p contenteditable="false"><strong>🚡 缆车信息：</strong></p>
-    <p contenteditable="false">• 两段缆车：Ortisei → Furnes → Seceda</p>
-    <p contenteditable="false">• 往返约 €42/人（2026 价格）</p>
-    <p contenteditable="false">• 运行时间 08:30-17:00，每 15min 一班</p>
-    <p contenteditable="false"><strong>🌟 山顶必做：</strong></p>
-    <p contenteditable="false">• <strong>刀锋山脊步道</strong> — 沿山脊走 20min，两侧悬崖，视觉震撼！</p>
-    <p contenteditable="false">• <strong>Pieralongia 观景台</strong> — 看 Sassolungo、Sella 群组</p>
-    <p contenteditable="false">• 山顶有 Rifugio 可以午餐（推荐 Speck + Knödel）</p>
-    <p contenteditable="false">⚠️ <strong>5月初山顶可能有雪</strong>，穿防滑鞋！风大穿防风衣！</p>
-    <div class="xhs-links">
-      <div class="xhs-links-title">📕 小红书参考</div>
-      <div class="xhs-link-item"><a href="https://www.xiaohongshu.com/explore/67e9c4b1000000001e039e72" target="_blank">🇮🇹Seceda｜多洛米蒂最强观景台，值回票价！</a><span class="xhs-stats">@山巅旅人 · 7234赞</span></div>
-    </div>
+    <p contenteditable="false">• <strong>Ortisei → Alpe di Siusi 缆车</strong>（Mont Sëuc）</p>
+    <p contenteditable="false">• ✅ <strong>5月1日已开放</strong>，运行 08:30-17:00</p>
+    <p contenteditable="false">• 每 15 分钟一班，上行约 15 分钟</p>
+    <p contenteditable="false"><strong>🌟 推荐玩法（半日版·4人团）：</strong></p>
+    <p contenteditable="false">• 缆车上到高原 → 出站 10min 走到 <strong>Schgaguler Schwaige</strong> 山屋，Sassolungo 正面全景绝佳</p>
+    <p contenteditable="false">• 沿 <strong>9 号步道</strong> 往 Saltria 方向，全程平缓草甸路，边走边拍</p>
+    <p contenteditable="false">• 如果山屋 <strong>Gostner Schwaige / Rauchhütte</strong> 已开业，可以在那午餐</p>
+    <p contenteditable="false">• 原路或乘 <strong>Almbus</strong> 返回缆车站下山</p>
+    <p contenteditable="false">⚠️ <strong>5月初注意：</strong>部分山屋可能还没营业（通常 5 月底全开），<strong>自带干粮和水！</strong></p>
+    <p contenteditable="false">⚠️ 高原海拔 ~1850-2000m，风大体感温度低，穿抓绒或轻薄羽绒</p>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 缆车往返 <strong>€42/人</strong></p><p>• Ortisei 停车 €2/h</p><p>• 山顶午餐 €15-25/人</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">⚠️ 注意</div><div class="tip-mini" contenteditable="false"><p>• 提前查缆车是否开放</p><p>• funivieortisei.it 可查</p><p>• 山顶气温 0-5°C，大风</p><p>• <strong>防滑鞋 + 防风衣必备！</strong></p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 缆车往返 <strong>~€25-35/人</strong></p><p>• 4人合计约 €100-140</p><p>• Ortisei 停车 €2/h</p><p>• 山屋午餐（若开）~€15-20/人</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">🥾 步道难度</div><div class="tip-mini" contenteditable="false"><p>• <strong>难度：简单</strong>（全平路）</p><p>• 9号步道：约 5km 单程</p><p>• 不需要登山装备</p><p>• 运动鞋即可，防水更佳</p></div></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
 </div>
 
-<!-- Lunch on mountain -->
+<!-- Cable car down -->
 <div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">~12:30</span><span class="tl-type-badge badge-food">🍽️ 山顶午餐</span></div>
-  <div class="drive-card"><span class="drive-icon">🍽️</span><div><div class="drive-title" contenteditable="false">Seceda 山顶 Rifugio 午餐</div><div class="drive-detail" contenteditable="false">在 2500m 高山上吃一顿热乎饭 · Speck 烟熏火腿拼盘 + Knödel 面疙瘩汤 + 热巧克力</div></div></div>
+  <div class="tl-time-bar"><span class="tl-time-tag">~14:30 - 15:00</span><span class="tl-type-badge badge-cable">🚡 缆车下山</span></div>
+  <div class="drive-card"><span class="drive-icon">🚡</span><div><div class="drive-title" contenteditable="false">苏西高原 → 缆车下山回 Ortisei</div><div class="drive-detail" contenteditable="false">缆车末班 17:00 · 建议 14:30 前开始下山 · 回到镇上开始 Ortisei 漫步</div></div></div>
 </div>
 
-<!-- DRIVE Gardena Pass -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">14:00 - 15:00</span><span class="tl-type-badge badge-drive">🚗 25km ~35min</span></div>
-  <div class="drive-card">
-    <span class="drive-icon">🚗</span>
-    <div><div class="drive-title" contenteditable="false">奥蒂塞伊 → 加尔代纳山口 Passo Gardena</div><div class="drive-detail" contenteditable="false">沿 SS243 盘山而上 · 每个弯道都是新风景 · 多处观景停车点</div></div>
-    <a class="gmap-link" href="https://www.google.com/maps/dir/Ortisei/Passo+Gardena" target="_blank" style="margin-left:auto;">📍 导航</a>
-  </div>
-</div>
-
-<!-- STOP 3 -->
-<div class="tl-item" data-spot="gardena">
-  <div class="tl-time-bar"><span class="tl-time-tag">~15:00 - 16:00</span><span class="tl-type-badge badge-scenic">🏔️ 观景</span><span class="tl-type-badge badge-photo">📸 公路大片</span></div>
+<!-- STOP 3: Ortisei 小镇 -->
+<div class="tl-item" data-spot="ortisei">
+  <div class="tl-time-bar"><span class="tl-time-tag">~15:00 - 17:00</span><span class="tl-type-badge badge-town">🏘️ 小镇漫步</span><span class="tl-type-badge badge-photo">📸 打卡</span></div>
   <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">🏔️ 加尔代纳山口</div>
-    <div class="tl-spot-subname" contenteditable="false">Passo Gardena / Grödnerjoch · 海拔2121m</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Passo Gardena, Selva di Val Gardena</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Passo+Gardena" target="_blank">📍 Google Maps 导航</a>
+    <div class="tl-spot-name" contenteditable="false">🏘️ Ortisei 小镇漫步</div>
+    <div class="tl-spot-subname" contenteditable="false">St. Ulrich · 加尔代纳谷明珠 · 木雕之乡</div>
+    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Str. Rezia 主街, Ortisei</span></div>
+    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Ortisei+centro+Str+Rezia" target="_blank">📍 Google Maps 导航</a>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">多洛米蒂四大山口之一！环形公路的制高点，两侧被 Sella 群组和 Cir 峰群夹持</p>
-    <p contenteditable="false"><strong>🌟 体验：</strong></p>
-    <p contenteditable="false">• 山口顶部有大型停车场和观景平台</p>
-    <p contenteditable="false">• Cir 群峰就在头顶，垂直岩壁近在咫尺</p>
-    <p contenteditable="false">• <strong>公路本身就是风景</strong> — S 弯盘山路 + 群峰背景 = 公路大片</p>
-    <p contenteditable="false">• 山口有纪念品商店和小咖啡馆</p>
-    <p contenteditable="false">💡 著名自行车赛 Maratona dles Dolomites 经过此山口</p>
+    <p contenteditable="false">加尔代纳谷最美的小镇！色彩缤纷的拉登文化建筑 + 传承百年的木雕工艺</p>
+    <p contenteditable="false"><strong>🌟 推荐打卡：</strong></p>
+    <p contenteditable="false">• <strong>Str. Rezia 主街</strong> — 镇上最热闹的步行街，两侧是精品商店和木雕工坊</p>
+    <p contenteditable="false">• <strong>木雕工坊</strong> — Val Gardena 是意大利木雕之都，可以看匠人现场雕刻</p>
+    <p contenteditable="false">• <strong>教堂广场</strong> — 小镇中心，彩色建筑群拍照很出片</p>
+    <p contenteditable="false">• <strong>Scoiattolo 冰淇淋</strong> — 当地人气最高的手工冰淇淋店，每日新鲜口味</p>
+    <p contenteditable="false">• <strong>Lindenhof 奶酪店</strong> — 品尝南蒂罗尔各种当地奶酪</p>
+    <p contenteditable="false">💡 小镇不大，步行 2 小时可以逛完核心区域</p>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 免费通行</p><p>• 免费停车（山口顶部）</p><p>• 咖啡 €3-4</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">📸 拍摄</div><div class="tip-mini" contenteditable="false"><p>• 公路 S 弯俯拍（带无人机更佳）</p><p>• 抬头拍 Cir 峰群</p><p>• 人+车+山=完美公路照</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">🛍️ 特色购物</div><div class="tip-mini" contenteditable="false"><p>• 手工木雕（Val Gardena 特产）</p><p>• 南蒂罗尔 Speck 烟熏火腿</p><p>• 当地奶酪和果酱</p><p>• 蒂罗尔风格纺织品</p></div></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
-</div>
-
-<!-- DRIVE Sella Pass -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">16:00 - 16:30</span><span class="tl-type-badge badge-drive">🚗 12km ~20min</span></div>
-  <div class="drive-card">
-    <span class="drive-icon">🚗</span>
-    <div><div class="drive-title" contenteditable="false">加尔代纳山口 → 塞拉山口 Passo Sella</div><div class="drive-detail" contenteditable="false">两个山口之间仅 12km · 一路在群峰间穿行 · 注意弯道 · 这段公路拍照超赞</div></div>
-  </div>
-</div>
-
-<!-- STOP 4 -->
-<div class="tl-item" data-spot="sella">
-  <div class="tl-time-bar"><span class="tl-time-tag">~16:30 - 17:30</span><span class="tl-type-badge badge-scenic">⛰️ 观景</span><span class="tl-type-badge badge-must">⭐ 必打卡</span></div>
-  <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">⛰️ 塞拉山口</div>
-    <div class="tl-spot-subname" contenteditable="false">Passo Sella / Sellajoch · 海拔2240m</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Passo Sella, Canazei</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Passo+Sella" target="_blank">📍 Google Maps 导航</a>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
-  </div>
-  <div class="tl-mid">
-    <p contenteditable="false">多洛米蒂最震撼的山口！正面直对 Sassolungo（长石峰），一根巨大的石柱直刺天空</p>
-    <p contenteditable="false"><strong>🌟 体验：</strong></p>
-    <p contenteditable="false">• <strong>Sassolungo 正面照</strong> — 从山口停车场就能看到完整的长石峰群</p>
-    <p contenteditable="false">• <strong>黄昏最佳</strong> — 夕阳照在 Sassolungo 岩壁上呈金红色（Enrosadira 现象）</p>
-    <p contenteditable="false">• 山口有 Rifugio 和商店，可以喝杯热饮</p>
-    <p contenteditable="false">• 如果天气好可以走一小段步道，视野更开阔</p>
-    <p contenteditable="false">💡 <strong>Enrosadira 日照金山</strong>：多洛米蒂白云石在日出/日落时会变成粉红-金色，是独特的地质现象！</p>
-    <div class="xhs-links">
-      <div class="xhs-links-title">📕 小红书参考</div>
-      <div class="xhs-link-item"><a href="https://www.xiaohongshu.com/explore/67f8b3d1000000001e038c43" target="_blank">🇮🇹塞拉山口日落｜多洛米蒂最美的公路尽头</a><span class="xhs-stats">@自驾达人 · 5678赞</span></div>
-    </div>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
-  </div>
-  <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 免费通行 + 免费停车</p><p>• 咖啡/热饮 €3-5</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">🌅 日落</div><div class="tip-mini" contenteditable="false"><p>• 5月初日落约 20:15</p><p>• 17:00-18:00 光线最美</p><p>• 日照金山现象持续到日落后</p></div></div>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
-  </div>
-</div>
-
-<!-- DRIVE back -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">~17:30 - 18:30</span><span class="tl-type-badge badge-drive">🚗 ~30km</span></div>
-  <div class="drive-card"><span class="drive-icon">🚗</span><div><div class="drive-title" contenteditable="false">塞拉山口 → 奥蒂塞伊（住宿）</div><div class="drive-detail" contenteditable="false">沿 SS242 下山回到加尔代纳谷 Ortisei · 今晚住在这个可爱的蒂罗尔小镇</div></div></div>
 </div>
 
 <!-- Dinner -->
-<div class="tl-item" data-spot="ortisei-dinner">
-  <div class="tl-time-bar"><span class="tl-time-tag">~18:30 - 20:00</span><span class="tl-type-badge badge-food">🍽️ 晚餐</span></div>
+<div class="tl-item" data-spot="dinner">
+  <div class="tl-time-bar"><span class="tl-time-tag">~18:00 - 20:00</span><span class="tl-type-badge badge-food">🍽️ 晚餐</span></div>
   <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">🍽️ 奥蒂塞伊小镇晚餐</div>
-    <div class="tl-spot-subname" contenteditable="false">Ortisei / St. Ulrich · 加尔代纳谷明珠</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Str. Rezia, Ortisei</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Ortisei+centro+ristorante" target="_blank">📍 Google Maps 导航</a>
+    <div class="tl-spot-name" contenteditable="false">🍽️ Ortisei 晚餐推荐</div>
+    <div class="tl-spot-subname" contenteditable="false">南蒂罗尔+拉登传统美食</div>
+    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Ortisei 镇中心，步行可达</span></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-mid">
-    <p contenteditable="false">奥蒂塞伊是加尔代纳谷最美的小镇！色彩缤纷的拉登文化建筑 + 木雕之乡</p>
-    <p contenteditable="false"><strong>🍽️ 推荐：</strong></p>
-    <p contenteditable="false">• <strong>Tubladel</strong> — 米其林推荐，创意南蒂罗尔菜</p>
-    <p contenteditable="false">• <strong>Mauriz Keller</strong> — 地窖餐厅氛围感满分</p>
-    <p contenteditable="false">• 必尝：Schlutzkrapfen（菠菜奶酪饺子）+ 苹果馅饼</p>
-    <p contenteditable="false">• 镇上 Str. Rezia 主街可以饭后散步，看木雕商店</p>
+    <p contenteditable="false" style="font-weight:700;margin-bottom:10px;">🍴 餐厅精选（4 人晚餐）</p>
+
+    <div class="rest-grid">
+      <div class="rest-card">
+        <h4>🏆 Tubladel</h4>
+        <div class="rest-type">⭐ TripAdvisor 4.4/5 · 2528 条评价 · 排名 #5</div>
+        <div class="rest-desc">南蒂罗尔传统美食的现代演绎。必点：<strong>鹿肉宽面配杜松百里香</strong>、<strong>酥烤猪肘</strong>、自制甜点。用料讲究，全当地采购食材。服务卓越，温馨家庭氛围。</div>
+        <div class="rest-addr">📍 Streda Trebinger 22</div>
+        <div class="rest-price">€€€ · 人均约 €35-50</div>
+      </div>
+
+      <div class="rest-card">
+        <h4>🥇 Anna Stuben</h4>
+        <div class="rest-type">⭐ 米其林一星 · 精致料理</div>
+        <div class="rest-desc">位于 Hotel Gardena 内的<strong>米其林一星</strong>餐厅，主厨 Reimund Brunner 将传统南蒂罗尔食材做出现代艺术感。适合 4 人团的特别一餐。<strong>需提前预约！</strong></div>
+        <div class="rest-addr">📍 Via Vidalong 3 (Hotel Gardena)</div>
+        <div class="rest-price">€€€€ · 品鉴套餐约 €80-120/人</div>
+      </div>
+
+      <div class="rest-card">
+        <h4>🍺 Osteria Traube</h4>
+        <div class="rest-type">⭐ TripAdvisor 4.5/5 · 传统小酒馆</div>
+        <div class="rest-desc">镇中心广场上的传统蒂罗尔酒馆。木质装修+瓷砖火炉，超正宗。必点：<strong>Canederli 面疙瘩汤</strong>、<strong>Mezzelune 半月饺</strong>、<strong>烤猪肘</strong>。配一杯梨子格拉帕收尾。</div>
+        <div class="rest-addr">📍 Via Rezia 51</div>
+        <div class="rest-price">€€ · 人均约 €25-35</div>
+      </div>
+
+      <div class="rest-card">
+        <h4>🍕 Terrazza</h4>
+        <div class="rest-type">⭐ 餐厅+披萨 · 性价比之选</div>
+        <div class="rest-desc">正餐和披萨都做，选择丰富。适合 4 人中有人想吃正餐有人想吃披萨的情况。氛围轻松，不需要提前预约。</div>
+        <div class="rest-addr">📍 Streda Sneton 1</div>
+        <div class="rest-price">€€ · 人均约 €20-30</div>
+      </div>
+    </div>
+
+    <p contenteditable="false" style="margin-top:10px;"><strong>🥘 必尝南蒂罗尔美食：</strong></p>
+    <p contenteditable="false">• <strong>Schlutzkrapfen</strong> — 菠菜奶酪半月形饺子（拉登传统）</p>
+    <p contenteditable="false">• <strong>Canederli / Knödel</strong> — 面包团子，有汤版和干版</p>
+    <p contenteditable="false">• <strong>Speck 拼盘</strong> — 本地烟熏火腿，配脆面包和酸黄瓜</p>
+    <p contenteditable="false">• <strong>Kaiserschmarrn</strong> — 奥地利甜煎饼配糖粉和果酱</p>
+    <p contenteditable="false">• <strong>Apple Strudel</strong> — 苹果卷，南蒂罗尔版本是最好的</p>
+    <p contenteditable="false">• <strong>Polenta</strong> — 配融化奶酪和蘑菇</p>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
   <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 预算</div><div class="tip-mini" contenteditable="false"><p>• 正餐 €25-40/人</p><p>• 当地精酿啤酒 €5-7</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">💶 晚餐预算</div><div class="tip-mini" contenteditable="false"><p>• 大众路线：€25-35/人</p><p>• 米其林体验：€80-120/人</p><p>• 当地精酿啤酒 €5-7</p><p>• 格拉帕酒（餐后）€4-6</p><p>• 4人晚餐预算：€120-200</p></div></div>
+    <div class="tl-right-section"><div class="tl-right-label">📞 预约建议</div><div class="tip-mini" contenteditable="false"><p>• <strong>Anna Stuben — 必须预约！</strong></p><p>• Tubladel — 建议预约</p><p>• Osteria Traube — 可 walk-in</p><p>• Terrazza — 不需要预约</p></div></div>
     <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
+</div>
+
+<!-- Walk back -->
+<div class="tl-item item-drive">
+  <div class="tl-time-bar"><span class="tl-time-tag">~20:00</span><span class="tl-type-badge badge-walk">🚶 步行回酒店</span></div>
+  <div class="drive-card"><span class="drive-icon">🚶</span><div><div class="drive-title" contenteditable="false">晚餐后散步回 Dolomites Chalet Niuasi</div><div class="drive-detail" contenteditable="false">酒店距镇中心步行仅 5 分钟 · 一路都是可爱的蒂罗尔风格房屋 · 享受多洛米蒂的宁静夜晚</div></div></div>
 </div>
 
 <div class="tips-section">
   <h2 class="section-title">💡 Day8 实用贴士</h2>
   <div class="tip-grid">
-    <div class="tip-card tip-danger"><h4>⚠️ 山口公路开放</h4><p contenteditable="false">加尔代纳和塞拉山口通常<strong>5月中旬后才开放</strong>！5月初有可能还封路。出发前查 <strong>provincia.bz.it</strong> 山口公路状态。</p></div>
-    <div class="tip-card tip-warn"><h4>🚡 缆车运营</h4><p contenteditable="false">Seceda 缆车 5月初可能还在维护期（冬季结束后检修）。<strong>提前在 funivieortisei.it 确认开放时间。</strong></p></div>
-    <div class="tip-card tip-info"><h4>🧥 穿衣</h4><p contenteditable="false">Seceda 山顶 0-5°C + 大风。<strong>防风羽绒服/冲锋衣 + 帽子手套 + 防滑鞋</strong>。山口也冷，别穿短袖上去。</p></div>
-    <div class="tip-card tip-ok"><h4>💶 消费参考</h4><p contenteditable="false">缆车€42 + 停车€10 + 餐饮€60 · 人均约€112。山口公路免费通行。</p></div>
-    <div class="tip-card tip-warn"><h4>🚗 驾驶安全</h4><p contenteditable="false">山口公路<strong>弯道多、坡度大</strong>（10-15%）。注意避让自行车骑手（这里是骑行圣地）。下山请用低挡减速，别踩刹车到冒烟。</p></div>
-    <div class="tip-card tip-info"><h4>📱 备用方案</h4><p contenteditable="false">如果山口封路或缆车停运：在奥蒂塞伊镇上逛木雕工坊 + 走 Seceda 低海拔步道 + 开到 Alpe di Siusi（苏西高原）替代。</p></div>
+    <div class="tip-card tip-warn"><h4>⚠️ 富内斯新规（2026）</h4><p contenteditable="false">5月1日起 Santa Maddalena 设<strong>两道交通屏障</strong>，不能开车到教堂。必须停在 Bergerplatz 等指定停车场后步行。<strong>禁止踩草地、飞无人机、路边停车。</strong></p></div>
+    <div class="tip-card tip-info"><h4>🚡 缆车确认</h4><p contenteditable="false">Ortisei → Alpe di Siusi 缆车 <strong>5月1日已开放</strong>，运行 08:30-17:00。官网确认：<strong>funiviaortisei.eu</strong>。末班车 17:00，别错过！</p></div>
+    <div class="tip-card tip-info"><h4>🧥 穿衣指南</h4><p contenteditable="false">苏西高原海拔 1850-2000m，5月初体感温度 5-12°C。<strong>穿抓绒/轻薄羽绒 + 防风外套</strong>。镇上比较暖和，可脱一层。</p></div>
+    <div class="tip-card tip-ok"><h4>💶 Day8 费用参考（4人）</h4><p contenteditable="false">停车 €8+€10 + 缆车 €120 + 午餐 €60 + 晚餐 €140 · <strong>4 人合计约 €340</strong>（人均 €85）。Seceda 缆车省了一大笔。</p></div>
+    <div class="tip-card tip-warn"><h4>🥾 自带干粮</h4><p contenteditable="false">5 月初苏西高原上的山屋可能还没全部营业（通常 5 月底全开）。<strong>建议带面包、水果、水上山</strong>，万一山屋关门也不饿肚子。</p></div>
+    <div class="tip-card tip-ok"><h4>😌 今天节奏</h4><p contenteditable="false">昨天 Day7 走了 11km 魔戒步道，今天安排的是<strong>轻松恢复日</strong>。苏西高原步道平缓，小镇散步+美食，让腿歇一歇。</p></div>
   </div>
 </div>
 
 <div class="sources">
   <h3>📚 信息来源</h3>
-  <p>• 腾讯文档「勇闯意大利」行程表</p>
-  <p>• Seceda 缆车官网 funivieortisei.it</p>
-  <p>• 南蒂罗尔旅游局 suedtirol.info</p>
+  <p>• Val Gardena 官方旅游网站 valgardena.it</p>
+  <p>• Ortisei 缆车官网 funiviaortisei.eu</p>
+  <p>• TripAdvisor Ortisei 餐厅评价 2026</p>
+  <p>• Michelin Guide — Anna Stuben（一星）</p>
   <p>• 小红书多位博主实测分享</p>
-  <p style="margin-top:8px;color:#aaa;">整理于 2026年4月13日 · 支持在线编辑与批注</p>
+  <p style="margin-top:8px;color:#aaa;">整理于 2026年4月18日 · 支持在线编辑与批注 · 4人团版本</p>
 </div>
 </div>
 
