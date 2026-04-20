@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>意大利 10 天行李清单</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --card: #fff;
+    --border: #e8e4dd;
+    --text: #2a2a2a;
+    --muted: #8a8680;
+    --accent: #c2410c;
+    --accent-soft: #fff4e6;
+    --p3: #dc2626;
+    --p2: #d97706;
+    --p1: #6b7280;
+    --checked: #9ca3af;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 16px;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 4px;
+    text-align: center;
+  }
+  .sub {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .progress-bar {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 10px 0;
+    z-index: 10;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .progress-track {
+    height: 8px;
+    background: #e8e4dd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #c2410c);
+    width: 0%;
+    transition: width 0.3s;
+  }
+  .progress-text {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+    text-align: center;
+  }
+  .section {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .section-count {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: normal;
+  }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f4f1ec;
+    cursor: pointer;
+    user-select: none;
+  }
+  .item:last-child { border-bottom: none; }
+  .item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    margin-top: 2px;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+  }
+  .item-body { flex: 1; }
+  .item-name {
+    font-weight: 500;
+  }
+  .item-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .item.checked .item-name,
+  .item.checked .item-meta {
+    text-decoration: line-through;
+    color: var(--checked);
+  }
+  .pri {
+    display: inline-block;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    color: #fff;
+  }
+  .p3 { background: var(--p3); }
+  .p2 { background: var(--p2); }
+  .p1 { background: var(--p1); }
+  .qty {
+    display: inline-block;
+    font-size: 12px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: #f4f1ec;
+    color: #6b7280;
+    margin-left: 6px;
+  }
+  .warn {
+    background: #fef3c7;
+    border-left: 3px solid #f59e0b;
+    padding: 8px 12px;
+    margin: 8px 16px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 20px 0;
+  }
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .btn:active { background: #f4f1ec; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🇮🇹 意大利 10 天行李清单</h1>
+  <div class="sub">4/26 - 5/5 · 4 人自驾 · 温差 20°C</div>
+
+  <div class="progress-bar">
+    <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+    <div class="progress-text"><span id="done">0</span> / <span id="total">0</span> 已打包</div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn" onclick="reset()">🔄 清空</button>
+    <button class="btn" onclick="checkAll()">✅ 全选</button>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="footer">
+    优先级：<span class="pri p3">必带</span> <span class="pri p2">建议</span> <span class="pri p1">可选</span><br>
+    数据自动保存在本机浏览器<br>
+    _整理：老六 · 2026-04-20_
+  </div>
+</div>
+
+<script>
+const data = [
+  {
+    title: "① 证件 & 财务（命根子）",
+    items: [
+      {n:"护照",q:"4本",m:"有效期≥回国后6个月",p:3},
+      {n:"申根签证",q:"4份",m:"拍照存云端",p:3},
+      {n:"身份证",q:"4张",m:"国内段值机",p:3},
+      {n:"国际驾照翻译件/IDP",q:"4份",m:"租车必查",p:3},
+      {n:"驾照原件",q:"4张",m:"",p:3},
+      {n:"机票行程单",q:"1套",m:"纸质+电子",p:3},
+      {n:"酒店订单",q:"10份",m:"含Airbnb门锁信息",p:3},
+      {n:"租车订单",q:"1份",m:"提车用",p:3},
+      {n:"信用卡 Visa/Master",q:"每人1-2张",m:"主要支付",p:3},
+      {n:"现金欧元",q:"500-800€",m:"20/50面额为主",p:3},
+      {n:"意大利电话卡",q:"4张",m:"TIM/Vodafone",p:3},
+    ]
+  },
+  {
+    title: "② 衣物·日常（罗马/佛罗伦萨/威尼斯 20°C+）",
+    items: [
+      {n:"短袖T恤",q:"每人3-4件",m:"速干优先",p:3},
+      {n:"长袖衬衫",q:"每人2件",m:"进教堂需遮肩",p:3},
+      {n:"长裤（轻便）",q:"每人2条",m:"一条深色百搭",p:3},
+      {n:"牛仔裤/休闲裤",q:"每人1条",m:"",p:2},
+      {n:"内衣",q:"每人5-7套",m:"",p:3},
+      {n:"普通袜子",q:"每人5双",m:"",p:3},
+      {n:"睡衣",q:"每人1套",m:"",p:2},
+    ]
+  },
+  {
+    title: "③ 衣物·多洛米蒂徒步层（Day7-8，5-10°C）",
+    items: [
+      {n:"速干T（徒步）",q:"每人2件",m:"羊毛/Coolmax",p:3},
+      {n:"抓绒衣（中层）",q:"每人1件",m:"关键保暖层",p:3},
+      {n:"轻薄羽绒服",q:"每人1件",m:"可压缩",p:3},
+      {n:"防风防水冲锋衣",q:"每人1件",m:"多洛米蒂天气多变",p:3},
+      {n:"速干徒步裤",q:"每人1-2条",m:"可拆卸款更好",p:3},
+      {n:"保暖秋裤",q:"每人1条",m:"徒步/夜晚",p:2},
+      {n:"羊毛厚袜",q:"每人2-3双",m:"防磨脚起泡",p:3},
+      {n:"防晒帽",q:"每人1顶",m:"高原紫外线强",p:3},
+      {n:"保暖毛线帽",q:"每人1顶",m:"早晚/高海拔",p:3},
+      {n:"薄手套",q:"每人1副",m:"缆车站风大",p:3},
+      {n:"墨镜",q:"每人1副",m:"雪地反光强",p:3},
+      {n:"脖套/围巾",q:"每人1条",m:"多用途",p:2},
+    ]
+  },
+  {
+    title: "④ 鞋类",
+    items: [
+      {n:"防水中帮登山鞋",q:"每人1双",m:"⚠️ Day7三峰山必需，待确认是否已有",p:3},
+      {n:"日常运动鞋/休闲鞋",q:"每人1双",m:"城市行走",p:3},
+      {n:"凉鞋/拖鞋",q:"每人1双",m:"酒店/Airbnb",p:2},
+    ]
+  },
+  {
+    title: "⑤ 徒步/户外装备（Day7 三峰山、Day8 苏西高原）",
+    items: [
+      {n:"登山杖",q:"每人1对",m:"⚠️ Ortisei 可租，待确认",p:3},
+      {n:"户外背包 20-30L",q:"每人1个",m:"日间徒步装水食物",p:3},
+      {n:"水袋/水壶 1.5L",q:"每人1个",m:"多洛米蒂山泉可直饮",p:3},
+      {n:"头灯/小手电",q:"2个",m:"Day8富内斯日落后",p:2},
+      {n:"护膝",q:"按需",m:"膝盖旧伤必带",p:2},
+      {n:"防晒霜 SPF50+",q:"2瓶",m:"高原紫外线强2-3倍",p:3},
+      {n:"唇膏/润唇",q:"4支",m:"高原干燥",p:3},
+      {n:"驱蚊液",q:"1瓶",m:"威尼斯/托斯卡纳",p:2},
+      {n:"能量棒/巧克力",q:"20-30根",m:"山区小店少",p:2},
+    ]
+  },
+  {
+    title: "⑥ 电子设备",
+    items: [
+      {n:"手机",q:"每人1部",m:"导航/拍照/支付",p:3},
+      {n:"手机充电器",q:"每人1套",m:"",p:3},
+      {n:"移动电源 20000mAh",q:"2个",m:"⚠️ ≤100Wh 且随身不托运",p:3},
+      {n:"欧标转换插头",q:"3-4个",m:"意大利 L/F 型（国标双圆头）",p:3},
+      {n:"多口USB充电头",q:"1-2个",m:"酒店集中充电",p:2},
+      {n:"数据线 Type-C/Lightning",q:"各2-3根",m:"",p:3},
+      {n:"相机",q:"1部",m:"多洛米蒂出片必备",p:2},
+      {n:"相机电池",q:"2-3块",m:"冷天耗电快",p:2},
+      {n:"储存卡",q:"2张",m:"",p:2},
+      {n:"车载手机支架",q:"1个",m:"自驾导航",p:3},
+      {n:"车充 USB-C PD",q:"1个",m:"",p:3},
+      {n:"无人机",q:"按需",m:"⚠️ 意大利多景区禁飞",p:1},
+    ]
+  },
+  {
+    title: "⑦ 洗漱/个护",
+    items: [
+      {n:"牙刷",q:"每人1把",m:"",p:3},
+      {n:"牙膏",q:"1-2支",m:"≤100ml 随身",p:3},
+      {n:"洗面奶",q:"2支",m:"分装",p:2},
+      {n:"洗发水/沐浴露",q:"按需",m:"Airbnb 可能没有",p:2},
+      {n:"毛巾",q:"4条",m:"Airbnb 一般有",p:2},
+      {n:"护肤套装",q:"每人1套",m:"多洛米蒂干燥，面霜加量",p:3},
+      {n:"隐形眼镜/护理液",q:"按需",m:"",p:2},
+      {n:"女士生理用品",q:"按需",m:"意大利难买习惯品牌",p:3},
+      {n:"梳子/剃须刀",q:"按需",m:"",p:2},
+      {n:"指甲刀",q:"1个",m:"托运",p:1},
+    ]
+  },
+  {
+    title: "⑧ 药品（欧洲药店买药流程复杂）",
+    items: [
+      {n:"感冒药",q:"1盒",m:"温差大易感冒",p:3},
+      {n:"退烧药（对乙酰氨基酚）",q:"1盒",m:"",p:3},
+      {n:"肠胃药（整肠生/蒙脱石散）",q:"1盒",m:"水土不服",p:3},
+      {n:"止泻药",q:"1盒",m:"",p:3},
+      {n:"止痛药（布洛芬）",q:"1盒",m:"徒步肌肉酸",p:3},
+      {n:"创可贴",q:"20片",m:"徒步磨脚必备",p:3},
+      {n:"水泡贴 Compeed",q:"1盒",m:"⭐ 新鞋徒步救命",p:3},
+      {n:"晕车药",q:"1盒",m:"山区盘山路多",p:2},
+      {n:"高反药（红景天）",q:"按需",m:"多洛米蒂 2500m+",p:2},
+      {n:"抗过敏药",q:"1盒",m:"花粉季",p:2},
+      {n:"个人处方药",q:"按需",m:"带英文处方",p:3},
+      {n:"体温计",q:"1个",m:"",p:2},
+      {n:"医用口罩",q:"20个",m:"长途飞行/医院",p:2},
+    ]
+  },
+  {
+    title: "⑨ 日用杂物",
+    items: [
+      {n:"折叠雨伞",q:"4把",m:"5月偶有阵雨",p:2},
+      {n:"一次性雨衣",q:"4件",m:"徒步用",p:2},
+      {n:"洗衣袋",q:"2个",m:"脏衣分装",p:2},
+      {n:"密封袋（多尺寸）",q:"10个",m:"分装液体/电子",p:2},
+      {n:"保鲜袋",q:"1卷",m:"食物/鞋套",p:1},
+      {n:"眼罩+耳塞",q:"每人1套",m:"长途飞行",p:2},
+      {n:"颈枕",q:"每人1个",m:"10h+ 长途飞行",p:2},
+      {n:"便携水杯",q:"每人1个",m:"欧洲水龙头可直饮",p:2},
+      {n:"旅行折叠袋",q:"1-2个",m:"回程买买买",p:2},
+      {n:"纸巾/湿巾",q:"多包",m:"欧洲公厕不一定有",p:3},
+      {n:"垃圾袋",q:"1卷",m:"车内整理",p:2},
+      {n:"小剪刀",q:"1把",m:"⚠️ 托运",p:1},
+      {n:"针线包",q:"1个",m:"应急",p:1},
+    ]
+  },
+  {
+    title: "⑩ 自驾专用",
+    items: [
+      {n:"租车订单凭证",q:"1份",m:"提车用",p:3},
+      {n:"主驾信用卡（押金）",q:"1张",m:"预留 2000€ 额度",p:3},
+      {n:"离线地图下载",q:"每人",m:"山区信号差",p:3},
+      {n:"ZTL 区域清单",q:"1份",m:"罗马/佛罗伦萨/米兰严禁驶入",p:3},
+      {n:"停车币（1€/2€硬币）",q:"20€",m:"小镇老式停车表",p:2},
+      {n:"救援电话（ADAC）",q:"记手机",m:"爆胎故障",p:2},
+    ]
+  },
+  {
+    title: "⑪ 随身贴身包（飞机上+城市防扒）",
+    items: [
+      {n:"护照（全部）",q:"4本",m:"不能托运",p:3},
+      {n:"驾照翻译件",q:"4份",m:"",p:3},
+      {n:"信用卡+少量现金",q:"",m:"",p:3},
+      {n:"手机+充电宝",q:"",m:"充电宝不能托运",p:3},
+      {n:"重要药品",q:"1份",m:"长期服药必随身",p:3},
+      {n:"备用眼镜",q:"按需",m:"",p:2},
+      {n:"笔",q:"2支",m:"填海关申报",p:2},
+    ]
+  },
+];
+
+const list = document.getElementById('list');
+const STORAGE_KEY = 'italy_pack_v1';
+const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+let total = 0;
+data.forEach((sec, si) => {
+  const secEl = document.createElement('div');
+  secEl.className = 'section';
+  const secTitle = document.createElement('div');
+  secTitle.className = 'section-title';
+  secTitle.innerHTML = `<span>${sec.title}</span><span class="section-count" id="sc-${si}"></span>`;
+  secEl.appendChild(secTitle);
+  sec.items.forEach((it, ii) => {
+    const id = `${si}-${ii}`;
+    total++;
+    const d = document.createElement('label');
+    d.className = 'item';
+    d.dataset.id = id;
+    const checked = saved[id] ? 'checked' : '';
+    if (saved[id]) d.classList.add('checked');
+    const pLabel = it.p===3?'必带':it.p===2?'建议':'可选';
+    d.innerHTML = `
+      <input type="checkbox" ${checked} onchange="toggle('${id}', this)">
+      <div class="item-body">
+        <div class="item-name">${it.n}<span class="pri p${it.p}">${pLabel}</span>${it.q?`<span class="qty">${it.q}</span>`:''}</div>
+        ${it.m?`<div class="item-meta">${it.m}</div>`:''}
+      </div>
+    `;
+    secEl.appendChild(d);
+  });
+  list.appendChild(secEl);
+});
+
+document.getElementById('total').textContent = total;
+
+function toggle(id, cb) {
+  const item = document.querySelector(`.item[data-id="${id}"]`);
+  if (cb.checked) {
+    item.classList.add('checked');
+    saved[id] = 1;
+  } else {
+    item.classList.remove('checked');
+    delete saved[id];
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  updateProgress();
+}
+
+function updateProgress() {
+  const done = Object.keys(saved).length;
+  document.getElementById('done').textContent = done;
+  const pct = total ? (done / total * 100) : 0;
+  document.getElementById('fill').style.width = pct + '%';
+  // section counts
+  data.forEach((sec, si) => {
+    let secDone = 0;
+    sec.items.forEach((_, ii) => { if (saved[`${si}-${ii}`]) secDone++; });
+    document.getElementById(`sc-${si}`).textContent = `${secDone}/${sec.items.length}`;
+  });
+}
+
+function reset() {
+  if (!confirm('清空所有打勾状态？')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+function checkAll() {
+  data.forEach((sec, si) => {
+    sec.items.forEach((_, ii) => {
+      saved[`${si}-${ii}`] = 1;
+    });
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  location.reload();
+}
+
+updateProgress();
+</script>
+</body>
+</html>
