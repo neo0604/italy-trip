@@ -3,50 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Day9 行程详细规划 | 多洛米蒂→贝加莫→马尔彭萨</title>
+<title>Day9 四方案对比 | Ortisei → MXP</title>
 <style>
-  :root{--green:#2d6a4f;--green-light:#e8f5e9;--orange:#ff9800;--red:#ef5350;--blue:#42a5f5;--purple:#7e57c2;--bg:#f5f0e8;--card:#fff;--text:#2c2c2c;--text-secondary:#666;--border:#e0d8c8;--note-bg:#fffde7;--note-border:#ffe082;--theme:#01579b;--theme-light:#e1f5fe;}
+  :root{--bg:#f5f0e8;--card:#fff;--text:#2c2c2c;--border:#e0d8c8;
+        --a-color:#6a1b9a;--a-light:#f3e5f5;
+        --b-color:#0277bd;--b-light:#e1f5fe;
+        --c-color:#c62828;--c-light:#ffebee;
+        --d-color:#2e7d32;--d-light:#e8f5e9;}
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-text-size-adjust:100%;}
-  .hero{background:linear-gradient(135deg,#4a148c 0%,#6a1b9a 30%,#8e24aa 70%,#ce93d8 100%);color:white;padding:40px 20px 30px;text-align:center;}
-  .hero h1{font-size:26px;margin-bottom:6px;}.hero .subtitle{font-size:13px;opacity:0.85;}.hero .date-badge{display:inline-block;background:rgba(255,255,255,0.2);padding:4px 16px;border-radius:20px;font-size:13px;margin-top:10px;}
-  .toolbar{position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-  .toolbar-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;border:1px solid #ddd;background:white;font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap;color:var(--text);}
-  .toolbar-btn:hover{background:#f0f0f0;}.toolbar-btn.active{background:#6a1b9a;color:white;border-color:#6a1b9a;}
-  .toolbar-btn.btn-note{border-color:var(--note-border);background:var(--note-bg);}.toolbar-btn.btn-note:hover{background:#fff8e1;}
-  .toolbar-sep{width:1px;height:20px;background:#ddd;}.toolbar-hint{font-size:11px;color:#999;margin-left:auto;}
-  .stats-bar{display:flex;justify-content:center;gap:20px;padding:14px 16px;background:white;border-bottom:1px solid var(--border);flex-wrap:wrap;}
-  .stat-item{text-align:center;min-width:70px;}.stat-item .num{font-size:20px;font-weight:700;color:#6a1b9a;}.stat-item .label{font-size:11px;color:#888;margin-top:2px;}
-  .container{max-width:1100px;margin:0 auto;padding:20px 16px;}
-  .section-title{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-  .tl-item{display:grid;grid-template-columns:260px 1fr 260px;gap:0;margin-bottom:12px;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);background:var(--card);}
-  .tl-item.item-drive{grid-template-columns:1fr;background:#f3e5f5;}
-  .tl-time-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:10px 16px;background:linear-gradient(90deg,#f3e5f5 0%,white 100%);border-bottom:1px solid #eee;}
-  .tl-time-tag{font-size:13px;font-weight:700;color:#6a1b9a;background:white;padding:2px 12px;border-radius:10px;border:1px solid #ce93d8;white-space:nowrap;}
-  .tl-type-badge{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;}
-  .badge-photo{background:#fff3e0;color:#e65100;}.badge-food{background:#fce4ec;color:#c62828;}.badge-drive{background:#f3e5f5;color:#6a1b9a;}.badge-must{background:var(--red);color:white;}.badge-walk{background:#e0f2f1;color:#00695c;}.badge-city{background:#ede7f6;color:#4a148c;}.badge-shop{background:#fff3e0;color:#e65100;}.badge-hotel{background:#e8f5e9;color:#2e7d32;}
-  .tl-left{padding:14px 16px;border-right:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px;background:#faf5ff;}
-  .tl-spot-name{font-size:16px;font-weight:700;color:var(--text);line-height:1.3;}.tl-spot-subname{font-size:12px;color:var(--text-secondary);}
-  .tl-spot-addr{font-size:12px;color:#888;display:flex;align-items:flex-start;gap:4px;}.tl-spot-addr .addr-icon{flex-shrink:0;}
-  .gmap-link{display:inline-flex;align-items:center;gap:4px;background:#f3e5f5;color:#6a1b9a;padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #ce93d8;transition:all .2s;}.gmap-link:hover{background:#6a1b9a;color:white;}
-  .tl-mid{padding:14px 16px;border-right:1px solid #f0f0f0;}.tl-mid p{font-size:13px;color:#555;margin-bottom:6px;}.tl-mid p:last-child{margin-bottom:0;}
-  .xhs-links{margin-top:10px;padding-top:8px;border-top:1px dashed #eee;}.xhs-links-title{font-size:11px;color:#999;margin-bottom:6px;font-weight:600;}
-  .xhs-link-item{display:flex;align-items:center;gap:6px;padding:4px 0;font-size:12px;}.xhs-link-item a{color:#fe2c55;text-decoration:none;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.xhs-link-item a:hover{text-decoration:underline;}.xhs-link-item .xhs-stats{font-size:10px;color:#999;white-space:nowrap;}
-  .tl-right{padding:14px 16px;background:#fdfcfa;}.tl-right-section{margin-bottom:10px;}.tl-right-section:last-child{margin-bottom:0;}
-  .tl-right-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;margin-bottom:4px;letter-spacing:.5px;}
-  .tip-mini{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:8px 10px;font-size:12px;color:#555;}
-  .drive-card{padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}.drive-card .drive-icon{font-size:18px;}.drive-card .drive-title{font-weight:600;font-size:14px;}.drive-card .drive-detail{font-size:12px;color:var(--text-secondary);}
-  [contenteditable="true"]{outline:none;border-radius:4px;transition:background .2s;}.edit-mode [contenteditable="true"]:hover{background:rgba(106,27,154,0.06);}.edit-mode [contenteditable="true"]:focus{background:rgba(106,27,154,0.1);box-shadow:inset 0 0 0 1px rgba(106,27,154,0.3);}
-  .user-note{background:var(--note-bg);border:1px solid var(--note-border);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:12px;position:relative;}.user-note::before{content:'📝 我的批注';display:block;font-size:10px;font-weight:700;color:#f57f17;margin-bottom:4px;}.user-note .note-delete{position:absolute;top:6px;right:8px;cursor:pointer;font-size:12px;color:#ccc;}.user-note .note-delete:hover{color:var(--red);}
-  .add-note-btn{display:none;margin-top:6px;padding:4px 10px;border-radius:6px;border:1px dashed var(--note-border);background:transparent;color:#f57f17;font-size:11px;cursor:pointer;transition:all .2s;}.add-note-btn:hover{background:var(--note-bg);}.annotate-mode .add-note-btn{display:inline-block;}
-  .tips-section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-  .tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}.tip-card{border-radius:10px;padding:12px;font-size:13px;}.tip-card h4{font-size:14px;margin-bottom:6px;}.tip-card.tip-danger{background:#fce4ec;}.tip-card.tip-warn{background:#fff8e1;}.tip-card.tip-info{background:#ede7f6;}.tip-card.tip-ok{background:var(--green-light);}
-  .sources{background:var(--card);border-radius:14px;padding:16px 20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04);font-size:12px;color:#888;}.sources h3{font-size:14px;color:#555;margin-bottom:8px;}.sources p{margin-bottom:4px;}
-  .footer{text-align:center;padding:20px;color:#bbb;font-size:12px;}
-  @media(max-width:768px){.tl-item{grid-template-columns:1fr!important;}.tl-left,.tl-mid,.tl-right{border-right:none!important;border-bottom:1px solid #f0f0f0;}.tl-right{border-bottom:none;}.tip-grid{grid-template-columns:1fr;}.hero h1{font-size:22px;}.stats-bar{gap:12px;}.toolbar-hint{display:none;}.container{padding:12px 10px;}.drive-card{flex-direction:column;align-items:flex-start;}}
-  @media print{.toolbar{display:none;}.add-note-btn{display:none;}body{background:white;}}
-
-  /* Day Tab */
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-text-size-adjust:100%;}
+  .hero{background:linear-gradient(135deg,#4a148c 0%,#6a1b9a 25%,#0277bd 55%,#2e7d32 100%);color:white;padding:40px 20px 30px;text-align:center;}
+  .hero h1{font-size:26px;margin-bottom:6px;}
+  .hero .subtitle{font-size:13px;opacity:0.9;}
+  .hero .date-badge{display:inline-block;background:rgba(255,255,255,0.2);padding:4px 16px;border-radius:20px;font-size:13px;margin-top:10px;}
+  .hero .intro{margin-top:14px;font-size:13px;opacity:0.95;max-width:680px;margin:14px auto 0;line-height:1.7;}
   .day-tabs{display:flex;align-items:center;gap:0;background:#fff;border-bottom:1px solid #e0d8c8;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
   .day-tabs::-webkit-scrollbar{display:none;}
   .day-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;padding:8px 6px 6px;text-decoration:none;color:#888;font-size:12px;font-weight:500;border-bottom:3px solid transparent;transition:all 0.2s;flex-shrink:0;line-height:1.2;}
@@ -54,25 +24,82 @@
   .day-tab.active{color:#6a1b9a;font-weight:700;border-bottom-color:#6a1b9a;background:#f5f0ff;}
   .day-tab .tab-day{font-size:13px;font-weight:700;}.day-tab .tab-city{font-size:10px;margin-top:1px;opacity:0.75;}
   .day-tab-home{min-width:44px;padding:8px 10px 6px;font-size:16px;}
-
-  /* 餐厅推荐卡片 */
-  .restaurant-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
-  .restaurant-card{background:white;border-radius:12px;padding:16px;border:1px solid #eee;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:transform 0.2s;}
-  .restaurant-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.08);}
-  .restaurant-card .r-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;}
-  .restaurant-card .r-type{font-size:11px;color:#6a1b9a;font-weight:600;margin-bottom:6px;}
-  .restaurant-card .r-desc{font-size:12px;color:#666;line-height:1.5;margin-bottom:8px;}
-  .restaurant-card .r-price{font-size:12px;color:#e65100;font-weight:600;}
-  .restaurant-card .r-tip{font-size:11px;color:#888;margin-top:4px;font-style:italic;}
-  @media(max-width:768px){.restaurant-grid{grid-template-columns:1fr;}}
+  .plan-selector{background:white;border-bottom:1px solid var(--border);padding:14px 12px;position:sticky;top:42px;z-index:190;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+  .plan-selector-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .plan-btn{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 14px;border-radius:12px;border:2px solid #e8e8e8;background:#fafafa;cursor:pointer;transition:all .2s;text-align:left;}
+  .plan-btn:hover{transform:translateY(-2px);}
+  .plan-btn .pb-title{font-size:14px;font-weight:700;color:#333;}
+  .plan-btn .pb-tag{font-size:11px;color:#888;line-height:1.4;}
+  .plan-btn.active{box-shadow:0 4px 14px rgba(0,0,0,0.1);transform:translateY(-2px);}
+  .plan-btn[data-plan="A"].active{border-color:var(--a-color);background:var(--a-light);} .plan-btn[data-plan="A"].active .pb-title{color:var(--a-color);}
+  .plan-btn[data-plan="B"].active{border-color:var(--b-color);background:var(--b-light);} .plan-btn[data-plan="B"].active .pb-title{color:var(--b-color);}
+  .plan-btn[data-plan="C"].active{border-color:var(--c-color);background:var(--c-light);} .plan-btn[data-plan="C"].active .pb-title{color:var(--c-color);}
+  .plan-btn[data-plan="D"].active{border-color:var(--d-color);background:var(--d-light);} .plan-btn[data-plan="D"].active .pb-title{color:var(--d-color);}
+  .container{max-width:1100px;margin:0 auto;padding:20px 16px;}
+  .plan-panel{display:none;}
+  .plan-panel.active{display:block;}
+  .plan-header{background:var(--card);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-left:6px solid #ccc;}
+  .plan-panel[data-plan="A"] .plan-header{border-left-color:var(--a-color);}
+  .plan-panel[data-plan="B"] .plan-header{border-left-color:var(--b-color);}
+  .plan-panel[data-plan="C"] .plan-header{border-left-color:var(--c-color);}
+  .plan-panel[data-plan="D"] .plan-header{border-left-color:var(--d-color);}
+  .plan-header h2{font-size:22px;margin-bottom:6px;}
+  .plan-header .subtitle{font-size:13px;color:#666;margin-bottom:14px;}
+  .stats-bar{display:flex;gap:10px;flex-wrap:wrap;}
+  .stat-item{flex:1;min-width:80px;text-align:center;padding:10px;background:#faf7f2;border-radius:10px;}
+  .stat-item .num{font-size:16px;font-weight:700;}.stat-item .label{font-size:11px;color:#888;margin-top:2px;}
+  .plan-panel[data-plan="A"] .stat-item .num{color:var(--a-color);}
+  .plan-panel[data-plan="B"] .stat-item .num{color:var(--b-color);}
+  .plan-panel[data-plan="C"] .stat-item .num{color:var(--c-color);}
+  .plan-panel[data-plan="D"] .stat-item .num{color:var(--d-color);}
+  .map-section,.timeline,.pros-cons,.compare-section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+  .section-title{font-size:18px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .map-caption{font-size:12px;color:#888;margin-bottom:12px;}
+  .svg-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tl-row{display:grid;grid-template-columns:100px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed #eee;}
+  .tl-row:last-child{border-bottom:none;}
+  .tl-time{font-size:13px;font-weight:700;color:#666;}
+  .tl-content .tl-title{font-size:14px;font-weight:600;color:#333;margin-bottom:4px;}
+  .tl-content .tl-desc{font-size:12px;color:#666;line-height:1.6;}
+  .tl-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;margin-right:6px;margin-bottom:4px;}
+  .tag-drive{background:#f3e5f5;color:#6a1b9a;}.tag-visit{background:#fff3e0;color:#e65100;}.tag-food{background:#fce4ec;color:#c62828;}.tag-hotel{background:#e8f5e9;color:#2e7d32;}.tag-must{background:#ef5350;color:white;}
+  .pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .pc-card{padding:14px;border-radius:10px;}
+  .pc-pros{background:#e8f5e9;border:1px solid #a5d6a7;}.pc-cons{background:#ffebee;border:1px solid #ef9a9a;}
+  .pc-card h4{font-size:14px;margin-bottom:8px;}
+  .pc-card ul{list-style:none;padding:0;}.pc-card li{font-size:12px;color:#333;padding:4px 0;line-height:1.5;}
+  .pc-card li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:8px;vertical-align:middle;}
+  .pc-pros li::before{background:#43a047;}.pc-cons li::before{background:#e53935;}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+  .info-card{padding:14px;background:#faf7f2;border-radius:10px;border-left:3px solid #ccc;}
+  .plan-panel[data-plan="A"] .info-card{border-left-color:var(--a-color);}
+  .plan-panel[data-plan="B"] .info-card{border-left-color:var(--b-color);}
+  .plan-panel[data-plan="C"] .info-card{border-left-color:var(--c-color);}
+  .plan-panel[data-plan="D"] .info-card{border-left-color:var(--d-color);}
+  .info-card h4{font-size:13px;margin-bottom:6px;}
+  .info-card p{font-size:12px;color:#555;line-height:1.6;margin-bottom:4px;}
+  .compare-table{width:100%;border-collapse:collapse;font-size:12px;}
+  .compare-table th,.compare-table td{padding:10px 8px;border-bottom:1px solid #eee;text-align:center;}
+  .compare-table th{background:#faf7f2;font-weight:700;color:#555;font-size:13px;}
+  .compare-table th:first-child,.compare-table td:first-child{text-align:left;color:#888;font-size:11px;}
+  .compare-table .pa{color:var(--a-color);font-weight:600;}.compare-table .pb{color:var(--b-color);font-weight:600;}.compare-table .pc{color:var(--c-color);font-weight:600;}.compare-table .pd{color:var(--d-color);font-weight:600;}
+  .advice{background:#fffde7;border:1px solid #ffe082;border-radius:14px;padding:20px;margin-bottom:16px;}
+  .advice h3{font-size:16px;margin-bottom:12px;color:#e65100;}
+  .advice-item{padding:10px 0;border-bottom:1px dashed #ffe082;}
+  .advice-item:last-child{border-bottom:none;}
+  .advice-item b{color:#333;}
+  .advice-item p{font-size:13px;color:#555;line-height:1.7;margin-top:4px;}
+  .footer{text-align:center;padding:20px;color:#bbb;font-size:12px;}
+  @media(max-width:768px){.plan-selector-inner{grid-template-columns:repeat(2,1fr);}.info-grid,.pc-grid{grid-template-columns:1fr;}.hero h1{font-size:22px;}.stats-bar{gap:6px;}.stat-item{min-width:60px;padding:8px 4px;}.stat-item .num{font-size:13px;}.stat-item .label{font-size:10px;}.tl-row{grid-template-columns:80px 1fr;gap:10px;}.tl-time{font-size:11px;}.tl-content .tl-title{font-size:13px;}.container{padding:12px 10px;}.compare-table{font-size:11px;}.compare-table th,.compare-table td{padding:6px 4px;}}
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <h1>💜 Day9 告别多洛米蒂·贝加莫古城·夜宿机场</h1>
-  <div class="subtitle">Ortisei 出发 → 贝加莫 Città Alta → MXP Rooms Guest House · 悠闲收官日</div>
-  <div class="date-badge">📅 2026年5月4日 周一</div>
+  <h1>🎯 Day9 四方案对比 · 最后一天怎么玩</h1>
+  <div class="subtitle">2026年5月4日 周一 · Ortisei → MXP Rooms · 可用时间 ~10h</div>
+  <div class="date-badge">📅 2026-05-04 Monday</div>
+  <div class="intro">Day9 是告别多洛米蒂的一天。这里给你 4 个方案，各有侧重——自然风光、文化古城、都市体验、双城组合。点击上方按钮切换查看。</div>
 </div>
 
 <div class="day-tabs" id="dayTabs">
@@ -85,378 +112,643 @@
   <a class="day-tab" href="day6.html"><span class="tab-day">D6</span><span class="tab-city">威尼斯</span></a>
   <a class="day-tab" href="day7.html"><span class="tab-day">D7</span><span class="tab-city">多洛米蒂</span></a>
   <a class="day-tab" href="day8.html"><span class="tab-day">D8</span><span class="tab-city">多洛米蒂</span></a>
-  <a class="day-tab active" href="day9.html"><span class="tab-day">D9</span><span class="tab-city">贝加莫</span></a>
+  <a class="day-tab active" href="day9.html"><span class="tab-day">D9</span><span class="tab-city">四方案</span></a>
   <a class="day-tab" href="day10.html"><span class="tab-day">D10</span><span class="tab-city">米兰</span></a>
 </div>
 
-<div class="toolbar" id="toolbar">
-  <button class="toolbar-btn" id="btn-edit" onclick="toggleEdit()">✏️ 编辑模式</button>
-  <button class="toolbar-btn btn-note" id="btn-annotate" onclick="toggleAnnotate()">📝 批注模式</button>
-  <div class="toolbar-sep"></div>
-  <button class="toolbar-btn" onclick="exportNotes()">💾 导出批注</button>
-  <button class="toolbar-btn" onclick="saveLocal()">📥 保存到本地</button>
-  <span class="toolbar-hint" id="toolbar-hint">点击「编辑模式」可直接修改内容，「批注模式」可添加备注</span>
+<div class="plan-selector">
+  <div class="plan-selector-inner">
+    <button class="plan-btn active" data-plan="A" onclick="showPlan('A')"><div class="pb-title">🏰 A · 贝加莫古城</div><div class="pb-tag">UNESCO 世遗 · 最省力</div></button>
+    <button class="plan-btn" data-plan="B" onclick="showPlan('B')"><div class="pb-title">🏔️ B · Varenna 湖畔</div><div class="pb-tag">科莫湖 · 最出片</div></button>
+    <button class="plan-btn" data-plan="C" onclick="showPlan('C')"><div class="pb-title">🏙️ C · 米兰市区</div><div class="pb-tag">大教堂 · Galleria</div></button>
+    <button class="plan-btn" data-plan="D" onclick="showPlan('D')"><div class="pb-title">🌊 D · Como+贝加莫</div><div class="pb-tag">双城 · 全都要</div></button>
+  </div>
 </div>
 
-<div class="stats-bar">
-  <div class="stat-item"><div class="num">~10:00</div><div class="label">出发</div></div>
-  <div class="stat-item"><div class="num">~4h</div><div class="label">总驾车</div></div>
-  <div class="stat-item"><div class="num">335km</div><div class="label">总里程</div></div>
-  <div class="stat-item"><div class="num">1</div><div class="label">主要停留</div></div>
-  <div class="stat-item"><div class="num">🏰</div><div class="label">贝加莫</div></div>
-</div>
+<div class="container" id="panels">
 
-<div class="container">
-
-<div class="map-section" style="background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
-  <h2 class="section-title">🗺️ Day9 行程路线图</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:12px;">📐 基于真实地理位置 · 手绘风阿尔卑斯与伦巴第平原 · 点击景点可跳转 Google Maps 导航</p>
-  <div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <svg viewBox="0 0 960 750" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-    <defs>
-      <linearGradient id="mapBg9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ede7f6;stop-opacity:1"/><stop offset="100%" style="stop-color:#e8f5e9;stop-opacity:1"/></linearGradient>
-      <linearGradient id="alpineGrad9" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#90a4ae;stop-opacity:0.18"/><stop offset="100%" style="stop-color:#cfd8dc;stop-opacity:0.03"/></linearGradient>
-      <filter id="shadow9"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.12)"/></filter>
-      <filter id="cardShadow9" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.1)"/></filter>
-      <filter id="glow9" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-
-    <!-- BACKGROUND -->
-    <rect width="960" height="750" rx="16" fill="url(#mapBg9)"/>
-    <text x="30" y="42" font-size="18" fill="#6a1b9a" letter-spacing="5" font-weight="700" opacity="0.15">D A Y  9  ·  B E R G A M O  →  M X P</text>
-
-    <!-- ALPINE MOUNTAINS -->
-    <path d="M0,160 L60,100 L120,140 L180,60 L240,120 L300,50 L360,100 L420,55 L480,110 L540,70 L600,130 L660,80 L720,140 L780,100 L840,150 L960,120 L960,260 L0,260Z" fill="url(#alpineGrad9)" opacity="0.8"/>
-
-    <!-- HAND-DRAWN PEAKS (Dolomites area, right) -->
-    <g transform="translate(780,85)" opacity="0.2">
-      <path d="M-30,0 L-18,-38 L-6,0" fill="none" stroke="#455a64" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M-10,0 L5,-50 L20,0" fill="none" stroke="#455a64" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M16,0 L28,-30 L40,0" fill="none" stroke="#455a64" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M5,-50 L10,-40 L0,-40 Z" fill="#eceff1" opacity="0.5"/>
-    </g>
-
-    <!-- PO VALLEY -->
-    <rect x="0" y="480" width="960" height="270" rx="0" fill="#c8e6c9" opacity="0.05"/>
-    <text x="400" y="620" font-size="11" fill="#689f63" opacity="0.12" font-style="italic" letter-spacing="4">P I A N U R A  P A D A N A</text>
-
-    <!-- REFERENCE CITIES -->
-    <g font-size="10" fill="#aaa" opacity="0.3" font-style="italic">
-      <circle cx="830" cy="170" r="3" fill="#ccc" opacity="0.5"/><text x="840" y="174">Bolzano 博尔扎诺</text>
-      <circle cx="680" cy="310" r="3" fill="#ccc" opacity="0.5"/><text x="690" y="314">Verona 维罗纳</text>
-      <circle cx="540" cy="350" r="3" fill="#ccc" opacity="0.5"/><text x="550" y="354">Brescia 布雷西亚</text>
-      <circle cx="230" cy="500" r="3" fill="#ccc" opacity="0.5"/><text x="240" y="504">Milano 米兰</text>
-      <circle cx="350" cy="280" r="3" fill="#ccc" opacity="0.5"/><text x="360" y="284">Lago di Como</text>
-    </g>
-
-    <!-- HIGHWAY LABELS -->
-    <g font-size="9" font-weight="700" opacity="0.25">
-      <rect x="720" y="240" width="36" height="16" rx="3" fill="#6a1b9a" opacity="0.6"/><text x="738" y="252" fill="white" text-anchor="middle">A22</text>
-      <rect x="560" y="370" width="30" height="16" rx="3" fill="#6a1b9a" opacity="0.6"/><text x="575" y="382" fill="white" text-anchor="middle">A4</text>
-      <rect x="290" y="450" width="30" height="16" rx="3" fill="#6a1b9a" opacity="0.6"/><text x="305" y="462" fill="white" text-anchor="middle">A4</text>
-    </g>
-
-    <!-- HAND-DRAWN LANDMARKS -->
-
-    <!-- Bergamo Venetian Walls (center) -->
-    <g transform="translate(400,410)" opacity="0.18">
-      <rect x="-20" y="-5" width="40" height="15" rx="2" fill="none" stroke="#6a1b9a" stroke-width="2"/>
-      <rect x="-18" y="-12" width="8" height="7" rx="1" fill="none" stroke="#6a1b9a" stroke-width="1.5"/>
-      <rect x="-4" y="-15" width="8" height="10" rx="1" fill="none" stroke="#6a1b9a" stroke-width="1.5"/>
-      <rect x="10" y="-12" width="8" height="7" rx="1" fill="none" stroke="#6a1b9a" stroke-width="1.5"/>
-      <line x1="0" y1="-15" x2="0" y2="-25" stroke="#6a1b9a" stroke-width="1.5"/>
-      <polygon points="0,-27 -3,-22 3,-22" fill="#6a1b9a"/>
-    </g>
-
-    <!-- Airplane near MXP -->
-    <g transform="translate(190,530)" opacity="0.15">
-      <path d="M0,0 L-8,-4 L-20,0 L-8,-2 L-12,-10 L-6,-6 L0,-16 L6,-6 L12,-10 L8,-2 L20,0 L8,-4 Z" fill="#455a64" transform="rotate(-30)"/>
-    </g>
-
-    <!-- Pine trees scattered -->
-    <g opacity="0.08" fill="#2e7d32">
-      <path d="M640,260 L646,240 L652,260 M646,250 L646,265"/>
-      <path d="M500,300 L506,280 L512,300 M506,290 L506,305"/>
-      <path d="M320,360 L326,340 L332,360 M326,350 L326,365"/>
-    </g>
-
-    <!-- DRIVING ROUTE -->
-    <!-- Ortisei → Bergamo (A22 south → A4 west) -->
-    <path d="M820,190 Q760,230 700,280 Q640,330 580,370 Q520,400 430,420" stroke="#6a1b9a" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.25" stroke-linecap="round"/>
-    <path d="M820,190 Q760,230 700,280 Q640,330 580,370 Q520,400 430,420" stroke="#6a1b9a" stroke-width="14" fill="none" opacity="0.03" stroke-linecap="round"/>
-    <!-- Bergamo → MXP Rooms -->
-    <path d="M400,430 Q340,460 280,490 Q240,510 210,540" stroke="#6a1b9a" stroke-width="4.5" fill="none" stroke-dasharray="12,6" opacity="0.3" stroke-linecap="round"/>
-
-    <!-- COMPASS -->
-    <g transform="translate(900,55)" opacity="0.5">
-      <circle cx="0" cy="0" r="26" fill="rgba(255,255,255,0.6)" stroke="#8b7355" stroke-width="1.5"/>
-      <text x="0" y="-10" text-anchor="middle" font-size="13" font-weight="800" fill="#8b7355">N</text>
-      <text x="0" y="20" text-anchor="middle" font-size="10" fill="#b0a080">S</text>
-      <text x="13" y="5" text-anchor="middle" font-size="10" fill="#b0a080">E</text>
-      <text x="-13" y="5" text-anchor="middle" font-size="10" fill="#b0a080">W</text>
-      <line x1="0" y1="-6" x2="0" y2="8" stroke="#8b7355" stroke-width="1.5"/>
-      <polygon points="0,-6 -3,1 3,1" fill="#8b7355"/>
-    </g>
-
-    <!-- DISTANCE PILLS -->
-    <g font-size="11" font-weight="600">
-      <rect x="580" y="290" width="170" height="24" rx="12" fill="#6a1b9a" opacity="0.82" filter="url(#shadow9)"/>
-      <text x="665" y="306" fill="white" text-anchor="middle" font-size="10">🚗 270km ~2h45m (A22→A4)</text>
-
-      <rect x="240" y="470" width="140" height="24" rx="12" fill="#6a1b9a" opacity="0.75"/>
-      <text x="310" y="486" fill="white" text-anchor="middle" font-size="10">🚗 65km ~55min (A4)</text>
-    </g>
-
-    <!-- STOP CARDS -->
-
-    <!-- ① Ortisei 出发 -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Dolomites+Chalet+Niuasi+Ortisei" target="_blank">
-      <g filter="url(#cardShadow9)" cursor="pointer">
-        <rect x="620" y="110" width="300" height="72" rx="14" fill="white" stroke="#43a047" stroke-width="2.5"/>
-        <circle cx="655" cy="146" r="22" fill="#43a047" filter="url(#glow9)"/>
-        <text x="655" y="153" text-anchor="middle" fill="white" font-size="16" font-weight="800">出</text>
-        <text x="688" y="132" font-size="14" font-weight="700" fill="#333">🚗 Ortisei 出发</text>
-        <text x="688" y="152" font-size="11" fill="#888">~08:30 · 告别多洛米蒂的山</text>
-        <text x="688" y="170" font-size="11" fill="#2d6a4f" font-weight="600">📍 Dolomites Chalet Niuasi</text>
+<div class="plan-panel active" data-plan="A">
+  <div class="plan-header">
+    <h2>🏰 方案 A：贝加莫古城 Città Alta</h2>
+    <div class="subtitle">UNESCO 世界遗产威尼斯城墙 + 中世纪古城 · 文化历史 · 省力首选</div>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="num">~3.5h</div><div class="label">总驾车</div></div>
+      <div class="stat-item"><div class="num">3h</div><div class="label">停留</div></div>
+      <div class="stat-item"><div class="num">€50</div><div class="label">4人费用</div></div>
+      <div class="stat-item"><div class="num">⭐⭐⭐⭐</div><div class="label">文化</div></div>
+      <div class="stat-item"><div class="num">⭐</div><div class="label">自然</div></div>
+    </div>
+  </div>
+  <div class="map-section">
+    <h3 class="section-title">🗺️ 方案 A 详细路线图</h3>
+    <p class="map-caption">Ortisei → 贝加莫上城区 → MXP Rooms · 最直接的一条路</p>
+    <div class="svg-wrap">
+    <svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;">
+      <defs>
+        <linearGradient id="bgA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f3e5f5"/><stop offset="100%" stop-color="#e8f5e9"/></linearGradient>
+        <filter id="shA"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.12)"/></filter>
+      </defs>
+      <rect width="960" height="620" rx="16" fill="url(#bgA)"/>
+      <text x="30" y="36" font-size="15" fill="#6a1b9a" letter-spacing="4" font-weight="700" opacity="0.2">P L A N  A  ·  B E R G A M O</text>
+      <path d="M0,130 L60,80 L120,110 L180,50 L240,100 L300,40 L360,90 L420,50 L480,100 L540,60 L600,110 L660,70 L720,120 L780,80 L840,130 L960,100 L960,200 L0,200Z" fill="#90a4ae" opacity="0.15"/>
+      <rect x="0" y="380" width="960" height="240" fill="#c8e6c9" opacity="0.15"/>
+      <text x="480" y="510" font-size="11" fill="#689f63" opacity="0.25" font-style="italic" letter-spacing="3" text-anchor="middle">P I A N U R A  P A D A N A</text>
+      <g font-size="10" fill="#999" opacity="0.45">
+        <circle cx="830" cy="135" r="3"/><text x="840" y="139">Bolzano</text>
+        <circle cx="650" cy="260" r="3"/><text x="660" y="264">Verona</text>
+        <circle cx="500" cy="310" r="3"/><text x="510" y="314">Brescia</text>
+        <circle cx="220" cy="470" r="3"/><text x="230" y="474">Milano</text>
+        <circle cx="330" cy="260" r="3"/><text x="340" y="264">Lago di Como</text>
       </g>
-    </a>
-
-    <!-- ② 贝加莫 Città Alta -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Citta+Alta+Bergamo" target="_blank">
-      <g filter="url(#cardShadow9)" cursor="pointer">
-        <rect x="460" y="440" width="310" height="92" rx="14" fill="white" stroke="#6a1b9a" stroke-width="2.5"/>
-        <circle cx="495" cy="487" r="24" fill="#6a1b9a" filter="url(#glow9)"/>
-        <text x="495" y="494" text-anchor="middle" fill="white" font-size="17" font-weight="800">1</text>
-        <text x="530" y="462" font-size="15" font-weight="700" fill="#333">🏰 贝加莫 · Città Alta</text>
-        <text x="530" y="482" font-size="12" fill="#888">~11:30 · ⭐ UNESCO 世界遗产 · 2-3h</text>
-        <text x="530" y="502" font-size="10" fill="#666">威尼斯城墙 · 缆车 · 老广场 · 午餐</text>
-        <text x="530" y="522" font-size="11" fill="#6a1b9a" font-weight="600">📍 点击导航 →</text>
+      <g font-size="10" font-weight="700">
+        <rect x="720" y="210" width="36" height="18" rx="3" fill="#6a1b9a" opacity="0.75"/><text x="738" y="223" fill="white" text-anchor="middle">A22</text>
+        <rect x="530" y="330" width="30" height="18" rx="3" fill="#6a1b9a" opacity="0.75"/><text x="545" y="343" fill="white" text-anchor="middle">A4</text>
+        <rect x="290" y="420" width="30" height="18" rx="3" fill="#6a1b9a" opacity="0.75"/><text x="305" y="433" fill="white" text-anchor="middle">A4</text>
       </g>
-    </a>
-    <line x1="430" y1="425" x2="460" y2="460" stroke="#6a1b9a" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
-
-    <!-- ③ MXP Rooms Guest House -->
-    <a href="https://www.google.com/maps/search/?api=1&query=MXP+Rooms+Guest+House+Cardano+al+Campo" target="_blank">
-      <g filter="url(#cardShadow9)" cursor="pointer">
-        <rect x="30" y="540" width="300" height="92" rx="14" fill="white" stroke="#2e7d32" stroke-width="2.5"/>
-        <circle cx="65" cy="587" r="24" fill="#2e7d32" filter="url(#glow9)"/>
-        <text x="65" y="594" text-anchor="middle" fill="white" font-size="17" font-weight="800">终</text>
-        <text x="100" y="562" font-size="15" font-weight="700" fill="#333">🏨 MXP Rooms Guest House</text>
-        <text x="100" y="582" font-size="12" fill="#888">~16:30 · Cardano al Campo</text>
-        <text x="100" y="602" font-size="10" fill="#666">马尔彭萨机场旁 · 还车 · 休息</text>
-        <text x="100" y="622" font-size="11" fill="#2e7d32" font-weight="600">📍 点击导航 →</text>
+      <path d="M820,160 Q760,200 700,240 Q640,290 580,330 Q520,360 420,385" stroke="#6a1b9a" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.55" stroke-linecap="round"/>
+      <path d="M390,400 Q310,425 250,450 Q210,475 180,500" stroke="#6a1b9a" stroke-width="4.5" fill="none" stroke-dasharray="12,6" opacity="0.55" stroke-linecap="round"/>
+      <g font-size="11" font-weight="600">
+        <rect x="555" y="250" width="170" height="22" rx="11" fill="#6a1b9a" opacity="0.88" filter="url(#shA)"/>
+        <text x="640" y="265" fill="white" text-anchor="middle" font-size="10">🚗 270km · 2h45m</text>
+        <rect x="220" y="430" width="130" height="22" rx="11" fill="#6a1b9a" opacity="0.85"/>
+        <text x="285" y="445" fill="white" text-anchor="middle" font-size="10">🚗 65km · 55min</text>
       </g>
-    </a>
-
-    <!-- SCALE BAR -->
-    <g transform="translate(30,710)" opacity="0.4">
-      <line x1="0" y1="0" x2="70" y2="0" stroke="#8b7355" stroke-width="2"/>
-      <line x1="0" y1="-4" x2="0" y2="4" stroke="#8b7355" stroke-width="1.5"/>
-      <line x1="70" y1="-4" x2="70" y2="4" stroke="#8b7355" stroke-width="1.5"/>
-      <text x="35" y="15" text-anchor="middle" font-size="9" fill="#8b7355">~50km</text>
-    </g>
-
-    <!-- LEGEND -->
-    <g transform="translate(20,670)">
-      <rect width="920" height="55" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow9)"/>
-      <circle cx="25" cy="22" r="9" fill="#43a047"/><text x="42" y="26" font-size="11" fill="#555">出发</text>
-      <circle cx="110" cy="22" r="9" fill="#6a1b9a"/><text x="127" y="26" font-size="11" fill="#555">古城</text>
-      <circle cx="195" cy="22" r="9" fill="#2e7d32"/><text x="212" y="26" font-size="11" fill="#555">住宿</text>
-      <line x1="280" y1="22" x2="320" y2="22" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8,4"/><text x="328" y="26" font-size="11" fill="#555">高速路线</text>
-      <text x="25" y="45" font-size="10" fill="#888">Day9 Ortisei → 贝加莫 → MXP Rooms · 自驾335km · 点击卡片跳转导航</text>
-    </g>
-  </svg>
-  </div>
-</div>
-
-<h2 class="section-title">⏱️ 详细时间线</h2>
-
-<!-- 早上出发 -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">08:00 - 08:30</span><span class="tl-type-badge badge-hotel">🏨 退房</span></div>
-  <div class="drive-card">
-    <span class="drive-icon">🧳</span>
-    <div><div class="drive-title" contenteditable="false">Dolomites Chalet Niuasi 退房</div><div class="drive-detail" contenteditable="false">整理行李，最后看一眼多洛米蒂的山 · 退房 check-out · 车辆检查，出发前加满油</div></div>
-  </div>
-</div>
-
-<!-- DRIVE Ortisei → Bergamo -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">08:30 - 11:15</span><span class="tl-type-badge badge-drive">🚗 270km ~2h45m</span></div>
-  <div class="drive-card">
-    <span class="drive-icon">🚗</span>
-    <div><div class="drive-title" contenteditable="false">Ortisei → 贝加莫 Bergamo</div><div class="drive-detail" contenteditable="false">SS242 → A22南下 → A4西行 → 出 Bergamo · 从阿尔卑斯山谷一路到伦巴第平原 · 高速费约€20 · 沿途风景从雪山过渡到平原 · A22 经过博尔扎诺、特伦托，风景很好</div></div>
-    <a class="gmap-link" href="https://www.google.com/maps/dir/Ortisei/Bergamo+Citta+Alta" target="_blank" style="margin-left:auto;">📍 导航</a>
-  </div>
-</div>
-
-<!-- STOP 1: 贝加莫 -->
-<div class="tl-item" data-spot="bergamo">
-  <div class="tl-time-bar"><span class="tl-time-tag">~12:45 - 15:30</span><span class="tl-type-badge badge-must">⭐ 必打卡 3h</span><span class="tl-type-badge badge-city">🏰 古城</span></div>
-  <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">🏰 贝加莫 · Città Alta</div>
-    <div class="tl-spot-subname" contenteditable="false">Bergamo Upper Town · UNESCO 威尼斯城墙 · 千年山城</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Città Alta, Bergamo, Lombardia</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=Citta+Alta+Bergamo" target="_blank">📍 Google Maps 导航</a>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
-  </div>
-  <div class="tl-mid">
-    <p contenteditable="false">贝加莫的 Città Alta（上城区）是意大利最美的中世纪山城之一，建在一座 300 米高的山丘上，被 <strong>UNESCO 世界遗产</strong>的威尼斯城墙完整包围</p>
-    <p contenteditable="false"><strong>🌟 必做（2-3h 精华路线）：</strong></p>
-    <p contenteditable="false">• <strong>🚡 坐缆车上山</strong> — Funicolare di Bergamo Alta，2 分钟直达山顶，本身就是一段体验（€1.35 单程，包含在公交票内）</p>
-    <p contenteditable="false">• <strong>Piazza Vecchia 老广场</strong> — 上城的心脏！文艺复兴风格广场，被建筑大师柯布西耶称为"世界上最美的广场"。中间是 Contarini 喷泉</p>
-    <p contenteditable="false">• <strong>Cappella Colleoni 科莱奥尼礼拜堂</strong> — 广场旁边，文艺复兴杰作，外立面彩色大理石雕刻精美绝伦</p>
-    <p contenteditable="false">• <strong>Santa Maria Maggiore 大教堂</strong> — 罗曼式外观 + 巴洛克内饰，12 世纪始建，华丽的壁毯和木雕</p>
-    <p contenteditable="false">• <strong>威尼斯城墙漫步</strong> — 沿 Viale delle Mura 走一段，天气好时能远眺米兰天际线和亚平宁山脉</p>
-    <p contenteditable="false">• <strong>Porta San Giacomo</strong> — 城墙四大城门中最壮观的，白色大理石在阳光下很上相</p>
-    <p contenteditable="false">💡 <strong>冰淇淋彩蛋</strong>：La Marianna（Colle Aperto 旁），<strong>Stracciatella 口味冰淇淋的发源地</strong>，就是这家店 1961 年发明的！</p>
-    <div class="xhs-links">
-      <div class="xhs-links-title">📕 小红书参考</div>
-      <div class="xhs-link-item"><a href="https://www.xiaohongshu.com/search_result?keyword=贝加莫" target="_blank">🇮🇹 贝加莫 Bergamo｜被低估的意大利最美山城</a><span class="xhs-stats">搜索更多</span></div>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Ortisei" target="_blank">
+        <g filter="url(#shA)" cursor="pointer">
+          <rect x="620" y="100" width="280" height="60" rx="12" fill="white" stroke="#43a047" stroke-width="2.5"/>
+          <circle cx="655" cy="130" r="20" fill="#43a047"/>
+          <text x="655" y="136" text-anchor="middle" fill="white" font-size="14" font-weight="800">出</text>
+          <text x="685" y="122" font-size="13" font-weight="700" fill="#333">🚗 Ortisei 出发</text>
+          <text x="685" y="140" font-size="11" fill="#888">10:00 · 告别多洛米蒂</text>
+          <text x="685" y="155" font-size="10" fill="#43a047" font-weight="600">Dolomites Chalet Niuasi</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Parcheggio+Citta+Alta+Bergamo" target="_blank">
+        <g filter="url(#shA)" cursor="pointer">
+          <rect x="380" y="360" width="340" height="80" rx="12" fill="white" stroke="#6a1b9a" stroke-width="3"/>
+          <circle cx="415" cy="400" r="22" fill="#6a1b9a"/>
+          <text x="415" y="406" text-anchor="middle" fill="white" font-size="15" font-weight="800">1</text>
+          <text x="445" y="385" font-size="14" font-weight="700" fill="#333">🏰 贝加莫 Città Alta</text>
+          <text x="445" y="403" font-size="11" fill="#888">12:30-15:45 · UNESCO · 3h</text>
+          <text x="445" y="420" font-size="10" fill="#666">Parcheggio Città Alta · 450车位 · €3.30/h</text>
+          <text x="445" y="435" font-size="10" fill="#6a1b9a" font-weight="600">📍 点击导航</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=MXP+Rooms+Guest+House+Cardano+al+Campo" target="_blank">
+        <g filter="url(#shA)" cursor="pointer">
+          <rect x="30" y="490" width="280" height="60" rx="12" fill="white" stroke="#2e7d32" stroke-width="2.5"/>
+          <circle cx="65" cy="520" r="20" fill="#2e7d32"/>
+          <text x="65" y="526" text-anchor="middle" fill="white" font-size="14" font-weight="800">终</text>
+          <text x="95" y="512" font-size="13" font-weight="700" fill="#333">🏨 MXP Rooms</text>
+          <text x="95" y="530" font-size="11" fill="#888">16:45 · 还车+入住</text>
+          <text x="95" y="545" font-size="10" fill="#2e7d32" font-weight="600">Cardano al Campo</text>
+        </g>
+      </a>
+      <g transform="translate(20,570)">
+        <rect width="920" height="36" rx="10" fill="white" opacity="0.92" stroke="#e0d8c8"/>
+        <circle cx="25" cy="18" r="7" fill="#43a047"/><text x="40" y="22" font-size="10" fill="#555">出发</text>
+        <circle cx="100" cy="18" r="7" fill="#6a1b9a"/><text x="115" y="22" font-size="10" fill="#555">主景点</text>
+        <circle cx="190" cy="18" r="7" fill="#2e7d32"/><text x="205" y="22" font-size="10" fill="#555">住宿</text>
+        <line x1="270" y1="18" x2="310" y2="18" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8,4"/><text x="320" y="22" font-size="10" fill="#555">自驾路线</text>
+        <text x="430" y="22" font-size="10" fill="#888">总里程 ~335km · 约 3.5h 驾车 · 贝加莫上城停车直达核心</text>
+      </g>
+    </svg>
     </div>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
   </div>
-  <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">💶 费用</div><div class="tip-mini" contenteditable="false"><p>• 缆车 €1.35 / 单程</p><p>• Cappella Colleoni 免费</p><p>• 教堂免费</p><p>• 城墙免费</p><p>• 冰淇淋 €3-5</p><p>• 基本是 <strong>零消费古城</strong>！</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">🅿️ 停车</div><div class="tip-mini" contenteditable="false"><p>• <strong>Parcheggio della Fara</strong>（上城内）€2/h</p><p>• 或停下城 Parcheggio Piazzale della Malpensata（€1.5/h），坐缆车上去</p><p>• 周一非集市日，停车位相对好找</p></div></div>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  <div class="timeline">
+    <h3 class="section-title">⏱️ 时间线</h3>
+    <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 出发</span>Ortisei 退房</div><div class="tl-desc">吃完早餐，整理行李，加满油出发 · SS242 → A22 南下</div></div></div>
+    <div class="tl-row"><div class="tl-time">10:00-12:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 270km</span>Ortisei → 贝加莫</div><div class="tl-desc">A22 经过博尔扎诺、特伦托 → 转 A4 往米兰方向 · 高速费约 €20 · 沿途风景从雪山过渡到平原</div></div></div>
+    <div class="tl-row"><div class="tl-time">12:30-13:15</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-food">🍽️ 午餐</span>Da Mimmo 或城区简餐</div><div class="tl-desc">Casoncelli（贝加莫特色半月饺）+ Polenta e Osei 甜点 · Via Colleoni 沿街餐厅多</div></div></div>
+    <div class="tl-row"><div class="tl-time">13:15-15:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-must">⭐ 必打卡</span><span class="tl-tag tag-visit">🏰 古城漫步</span>上城区精华路线</div><div class="tl-desc">Piazza della Cittadella → Piazza Vecchia 老广场 → Cappella Colleoni 礼拜堂 → Santa Maria Maggiore 大教堂 → Via Gombito → Rocca 堡垒 → 威尼斯城墙 → Porta San Giacomo</div></div></div>
+    <div class="tl-row"><div class="tl-time">15:30-15:45</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-food">🍦 冰淇淋</span>La Marianna</div><div class="tl-desc">Stracciatella 冰淇淋发源地！1961 年就是这家发明的，必吃</div></div></div>
+    <div class="tl-row"><div class="tl-time">15:45-16:45</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 65km</span>贝加莫 → MXP</div><div class="tl-desc">A4 西行 → 出 Cardano al Campo · 约 55min · 高速费约 €6</div></div></div>
+    <div class="tl-row"><div class="tl-time">16:45</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-hotel">🏨 入住</span>MXP Rooms Guest House</div><div class="tl-desc">还车 + Check-in · 附近晚餐 · 整理明天行李</div></div></div>
   </div>
-</div>
-
-<!-- Lunch at Bergamo -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">~13:30</span><span class="tl-type-badge badge-food">🍽️ 午餐</span></div>
-  <div class="drive-card"><span class="drive-icon">🍽️</span><div><div class="drive-title" contenteditable="false">贝加莫上城区午餐</div><div class="drive-detail" contenteditable="false">推荐 Polenta e Osei（贝加莫招牌菜）或 Casoncelli（当地特色半月饺）· Via Bartolomeo Colleoni 沿街有很多不错的餐厅</div></div></div>
-</div>
-
-<!-- 贝加莫餐厅推荐 -->
-<div style="background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
-  <h2 class="section-title">🍽️ 贝加莫午餐推荐</h2>
-  <p style="font-size:13px;color:#666;margin-bottom:12px;">贝加莫是美食之城，以 <strong>Casoncelli</strong>（甜咸半月饺）和 <strong>Polenta</strong> 闻名。上城区餐厅集中在 Via Colleoni 和 Piazza Vecchia 周围。</p>
-  <div class="restaurant-grid">
-    <div class="restaurant-card">
-      <div class="r-name">🥇 Trattoria Tre Torri</div>
-      <div class="r-type">传统贝加莫菜 · TripAdvisor 4.5/5</div>
-      <div class="r-desc">上城区老牌餐厅，<strong>Casoncelli alla Bergamasca</strong>（鼠尾草黄油半月饺）是招牌，分量足，味道地道。窗边位置能看到山谷</div>
-      <div class="r-price">💶 €15-25/人</div>
-      <div class="r-tip">📍 Via San Lorenzo, Città Alta</div>
+  <div class="pros-cons">
+    <h3 class="section-title">⚖️ 方案 A 优缺点</h3>
+    <div class="pc-grid">
+      <div class="pc-card pc-pros"><h4>✅ 优点</h4><ul>
+        <li>UNESCO 世界遗产，文化含量最高</li>
+        <li>停车方便，上城停车场 450 车位直达核心</li>
+        <li>到 MXP 最近（1h），时间最宽裕</li>
+        <li>Stracciatella 冰淇淋发源地</li>
+        <li>下雨天最佳方案，室内景点多</li>
+        <li>4 人费用最低（~€50），几乎零门票</li>
+      </ul></div>
+      <div class="pc-card pc-cons"><h4>❌ 缺点</h4><ul>
+        <li>连续多天自然风光后，可能审美疲劳</li>
+        <li>周一部分博物馆关闭（但城墙+教堂+广场都开）</li>
+        <li>自然风光几乎没有</li>
+        <li>拍照出片度中等（古城感强但视觉冲击一般）</li>
+      </ul></div>
     </div>
-    <div class="restaurant-card">
-      <div class="r-name">🍝 Ristorante Colleoni & Dell'Angelo</div>
-      <div class="r-type">高端意餐 · Piazza Vecchia 广场上</div>
-      <div class="r-desc">就在老广场上，露天座位直面 Palazzo della Ragione。适合吃一顿正式午餐，Risotto alla bergamasca 值得尝试</div>
-      <div class="r-price">💶 €30-50/人</div>
-      <div class="r-tip">📍 广场位置绝佳，适合景观午餐</div>
-    </div>
-    <div class="restaurant-card">
-      <div class="r-name">🍦 La Marianna</div>
-      <div class="r-type">咖啡 + 冰淇淋 · Stracciatella 发源地</div>
-      <div class="r-desc"><strong>1961 年发明了 Stracciatella 口味冰淇淋的传奇店铺！</strong>必点原味 Stracciatella。也有简餐和好喝的咖啡，户外座位对着山谷</div>
-      <div class="r-price">💶 冰淇淋 €3-5 / 简餐 €12-18</div>
-      <div class="r-tip">📍 Largo Colle Aperto · 饭后甜点必来</div>
-    </div>
-    <div class="restaurant-card">
-      <div class="r-name">🍕 Da Mimmo</div>
-      <div class="r-type">披萨 + 简餐 · 性价比之选</div>
-      <div class="r-desc">下城缆车站附近，适合赶时间的快速午餐。薄底披萨和 focaccia 都不错，当地人常去</div>
-      <div class="r-price">💶 €10-18/人</div>
-      <div class="r-tip">📍 下城 Via Colleoni 附近 · 快吃快走</div>
+    <div class="info-grid">
+      <div class="info-card"><h4>🅿️ 停车</h4>
+        <p><b>Parcheggio Città Alta</b>（BEST IN PARKING）</p>
+        <p>Via della Fara 3b · 450 车位 · €3.30/h</p>
+        <p>24h 开放 · 电梯直达上城</p>
+      </div>
+      <div class="info-card"><h4>🍽️ 推荐餐厅</h4>
+        <p><b>Da Mimmo</b> — Casoncelli 饺子 · €25-35</p>
+        <p><b>La Marianna</b> — Stracciatella · €5-8</p>
+        <p><b>Colleoni & Dell'Angelo</b> — 广场景观 · €35-50</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- DRIVE Bergamo → MXP Rooms -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">14:30 - 15:30</span><span class="tl-type-badge badge-drive">🚗 65km ~55min</span></div>
-  <div class="drive-card">
-    <span class="drive-icon">🚗</span>
-    <div><div class="drive-title" contenteditable="false">贝加莫 → MXP Rooms Guest House</div><div class="drive-detail" contenteditable="false">A4 西行 → 出 Cardano al Campo · 约 65km · 55min · 高速费约€6 · 直接开到酒店附近还车点还车</div></div>
-    <a class="gmap-link" href="https://www.google.com/maps/dir/Bergamo/Via+dell'Ongaro+8+Cardano+al+Campo" target="_blank" style="margin-left:auto;">📍 导航</a>
+<div class="plan-panel" data-plan="B">
+  <div class="plan-header">
+    <h2>🏔️ 方案 B：科莫湖 Varenna（B+ 版）</h2>
+    <div class="subtitle">科莫湖最宁静的湖畔小镇 · Villa Monastero 花园 + 情人步道 · 自然风光</div>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="num">~5.5h</div><div class="label">总驾车</div></div>
+      <div class="stat-item"><div class="num">2.5h</div><div class="label">停留</div></div>
+      <div class="stat-item"><div class="num">€120</div><div class="label">4人费用</div></div>
+      <div class="stat-item"><div class="num">⭐⭐⭐⭐</div><div class="label">自然</div></div>
+      <div class="stat-item"><div class="num">⭐⭐⭐⭐⭐</div><div class="label">出片</div></div>
+    </div>
+  </div>
+  <div class="map-section">
+    <h3 class="section-title">🗺️ 方案 B 详细路线图</h3>
+    <p class="map-caption">Ortisei → Varenna 湖畔小镇（绕行科莫湖东岸）→ MXP Rooms · 路程最长但最出片</p>
+    <div class="svg-wrap">
+    <svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;">
+      <defs>
+        <linearGradient id="bgB" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e1f5fe"/><stop offset="100%" stop-color="#e8f5e9"/></linearGradient>
+        <linearGradient id="lakeGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#0288d1"/></linearGradient>
+        <filter id="shB"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.12)"/></filter>
+      </defs>
+      <rect width="960" height="620" rx="16" fill="url(#bgB)"/>
+      <text x="30" y="36" font-size="15" fill="#0277bd" letter-spacing="4" font-weight="700" opacity="0.2">P L A N  B  ·  L A K E  C O M O</text>
+      <path d="M600,130 L660,80 L720,110 L780,60 L840,100 L960,80 L960,180 L600,180Z" fill="#90a4ae" opacity="0.18"/>
+      <path d="M0,160 L80,100 L160,130 L240,80 L320,120 L400,90 L480,130 L560,100 L560,200 L0,200Z" fill="#90a4ae" opacity="0.18"/>
+      <path d="M280,130 Q260,220 270,290 Q280,360 300,410 L340,410 Q320,360 310,290 Q305,230 320,150 Q310,135 295,130 Z" fill="url(#lakeGrad)" opacity="0.55"/>
+      <path d="M320,290 Q380,300 430,350 L430,380 Q370,340 320,320 Z" fill="url(#lakeGrad)" opacity="0.55"/>
+      <text x="270" y="260" font-size="12" fill="#01579b" font-weight="700" opacity="0.75">Lago di</text>
+      <text x="270" y="275" font-size="12" fill="#01579b" font-weight="700" opacity="0.75">Como</text>
+      <rect x="0" y="420" width="960" height="200" fill="#c8e6c9" opacity="0.15"/>
+      <g font-size="10" fill="#999" opacity="0.5">
+        <circle cx="820" cy="135" r="3"/><text x="830" y="139">Bolzano</text>
+        <circle cx="650" cy="230" r="3"/><text x="660" y="234">Verona</text>
+        <circle cx="500" cy="290" r="3"/><text x="510" y="294">Brescia</text>
+        <circle cx="380" cy="340" r="3"/><text x="390" y="344">Lecco</text>
+        <circle cx="220" cy="450" r="3"/><text x="230" y="454">Milano</text>
+        <circle cx="420" cy="420" r="3"/><text x="430" y="424">Bergamo</text>
+      </g>
+      <g font-size="10" font-weight="700">
+        <rect x="710" y="200" width="36" height="18" rx="3" fill="#0277bd" opacity="0.75"/><text x="728" y="213" fill="white" text-anchor="middle">A22</text>
+        <rect x="520" y="310" width="30" height="18" rx="3" fill="#0277bd" opacity="0.75"/><text x="535" y="323" fill="white" text-anchor="middle">A4</text>
+        <rect x="400" y="360" width="36" height="18" rx="3" fill="#0277bd" opacity="0.75"/><text x="418" y="373" fill="white" text-anchor="middle">SS36</text>
+        <rect x="260" y="480" width="30" height="18" rx="3" fill="#0277bd" opacity="0.75"/><text x="275" y="493" fill="white" text-anchor="middle">A8</text>
+      </g>
+      <path d="M810,150 Q720,200 630,240 Q530,290 450,330 Q400,360 360,330 Q340,310 310,290" stroke="#0277bd" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.6" stroke-linecap="round"/>
+      <path d="M305,310 Q330,380 310,440 Q270,470 220,490 Q190,500 170,500" stroke="#0277bd" stroke-width="4.5" fill="none" stroke-dasharray="12,6" opacity="0.6" stroke-linecap="round"/>
+      <g font-size="11" font-weight="600">
+        <rect x="500" y="220" width="170" height="22" rx="11" fill="#0277bd" opacity="0.88" filter="url(#shB)"/>
+        <text x="585" y="235" fill="white" text-anchor="middle" font-size="10">🚗 355km · 3h45m</text>
+        <rect x="220" y="465" width="140" height="22" rx="11" fill="#0277bd" opacity="0.88"/>
+        <text x="290" y="480" fill="white" text-anchor="middle" font-size="10">🚗 130km · 1h45m</text>
+      </g>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Ortisei" target="_blank">
+        <g filter="url(#shB)" cursor="pointer">
+          <rect x="620" y="95" width="280" height="60" rx="12" fill="white" stroke="#43a047" stroke-width="2.5"/>
+          <circle cx="655" cy="125" r="20" fill="#43a047"/>
+          <text x="655" y="131" text-anchor="middle" fill="white" font-size="14" font-weight="800">出</text>
+          <text x="685" y="117" font-size="13" font-weight="700" fill="#333">🚗 Ortisei 出发</text>
+          <text x="685" y="135" font-size="11" fill="#888">10:00 · 最长路程日</text>
+          <text x="685" y="150" font-size="10" fill="#43a047" font-weight="600">Dolomites Chalet Niuasi</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Varenna+Lago+di+Como" target="_blank">
+        <g filter="url(#shB)" cursor="pointer">
+          <rect x="60" y="250" width="230" height="90" rx="12" fill="white" stroke="#0277bd" stroke-width="3"/>
+          <circle cx="90" cy="295" r="22" fill="#0277bd"/>
+          <text x="90" y="301" text-anchor="middle" fill="white" font-size="15" font-weight="800">1</text>
+          <text x="120" y="275" font-size="14" font-weight="700" fill="#333">🏔️ Varenna 湖畔</text>
+          <text x="120" y="292" font-size="11" fill="#888">13:45-16:15 · 2.5h</text>
+          <text x="120" y="308" font-size="10" fill="#666">Villa Monastero 花园</text>
+          <text x="120" y="321" font-size="10" fill="#666">情人步道 · 彩色老城</text>
+          <text x="120" y="335" font-size="10" fill="#0277bd" font-weight="600">📍 点击导航</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=MXP+Rooms+Guest+House+Cardano+al+Campo" target="_blank">
+        <g filter="url(#shB)" cursor="pointer">
+          <rect x="30" y="470" width="260" height="60" rx="12" fill="white" stroke="#2e7d32" stroke-width="2.5"/>
+          <circle cx="60" cy="500" r="20" fill="#2e7d32"/>
+          <text x="60" y="506" text-anchor="middle" fill="white" font-size="14" font-weight="800">终</text>
+          <text x="90" y="492" font-size="13" font-weight="700" fill="#333">🏨 MXP Rooms</text>
+          <text x="90" y="510" font-size="11" fill="#888">18:00 · 还车+入住</text>
+          <text x="90" y="525" font-size="10" fill="#2e7d32" font-weight="600">Cardano al Campo</text>
+        </g>
+      </a>
+      <g transform="translate(20,570)">
+        <rect width="920" height="36" rx="10" fill="white" opacity="0.92" stroke="#e0d8c8"/>
+        <circle cx="25" cy="18" r="7" fill="#43a047"/><text x="40" y="22" font-size="10" fill="#555">出发</text>
+        <circle cx="100" cy="18" r="7" fill="#0277bd"/><text x="115" y="22" font-size="10" fill="#555">主景点</text>
+        <circle cx="190" cy="18" r="7" fill="#2e7d32"/><text x="205" y="22" font-size="10" fill="#555">住宿</text>
+        <line x1="270" y1="18" x2="310" y2="18" stroke="#0277bd" stroke-width="3" stroke-dasharray="8,4"/><text x="320" y="22" font-size="10" fill="#555">自驾路线</text>
+        <text x="430" y="22" font-size="10" fill="#888">总里程 ~485km · 约 5.5h · Villa Balbianello 周一关！改去 Varenna</text>
+      </g>
+    </svg>
+    </div>
+  </div>
+  <div class="timeline">
+    <h3 class="section-title">⏱️ 时间线</h3>
+    <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 出发</span>Ortisei 退房</div><div class="tl-desc">今天开得远，建议早点吃早餐 · SS242 → A22 南下</div></div></div>
+    <div class="tl-row"><div class="tl-time">10:00-13:45</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 355km</span>Ortisei → Varenna</div><div class="tl-desc">A22 → A4 西行 → 在 Lecco 出高速转 SS36 沿湖北上 · 最后 30km 湖畔公路风景好但不快 · 高速费约 €30</div></div></div>
+    <div class="tl-row"><div class="tl-time">13:45-14:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-food">🍽️ 午餐</span>湖边餐厅</div><div class="tl-desc">Il Caminetto 或 Vecchia Varenna，露台能看到整个湖面</div></div></div>
+    <div class="tl-row"><div class="tl-time">14:30-15:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-must">⭐ 必打卡</span><span class="tl-tag tag-visit">🌺 花园</span>Villa Monastero</div><div class="tl-desc">湖畔别墅 + 花园步道 · 柠檬树、雕塑、科莫湖全景 · €10/人（周一开放！）</div></div></div>
+    <div class="tl-row"><div class="tl-time">15:30-16:15</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-visit">🚶 漫步</span>情人步道 + 老城</div><div class="tl-desc">Passeggiata degli Innamorati 悬崖栈道紧贴湖面 → Piazza San Giorgio → 彩色老街</div></div></div>
+    <div class="tl-row"><div class="tl-time">16:15-18:00</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 130km</span>Varenna → MXP</div><div class="tl-desc">原路返回 SS36 → A4 → 出 Cardano al Campo · 约 1h45m · 高速费约 €10</div></div></div>
+    <div class="tl-row"><div class="tl-time">18:00</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-hotel">🏨 入住</span>MXP Rooms Guest House</div><div class="tl-desc">还车 + Check-in · 附近晚餐（时间稍晚）</div></div></div>
+  </div>
+  <div class="pros-cons">
+    <h3 class="section-title">⚖️ 方案 B 优缺点</h3>
+    <div class="pc-grid">
+      <div class="pc-card pc-pros"><h4>✅ 优点</h4><ul>
+        <li>科莫湖名气最大，"到此一游"满足感强</li>
+        <li>湖光山色与前几天山景形成对比</li>
+        <li>情人步道 + 彩色老城拍照出片度 MAX</li>
+        <li>Villa Monastero 花园周一正常开放</li>
+        <li>Varenna 比 Bellagio 安静十倍，游客少</li>
+        <li>自然风光体验最好</li>
+      </ul></div>
+      <div class="pc-card pc-cons"><h4>❌ 缺点</h4><ul>
+        <li>驾车时间最长（5.5h），比较累</li>
+        <li>到 MXP 最远（1h45m）</li>
+        <li>Varenna 停车位有限，要早到</li>
+        <li>Villa del Balbianello 周一关闭无法去</li>
+        <li>下雨天体验大打折扣</li>
+        <li>4 人费用较高（~€120，含花园门票）</li>
+      </ul></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><h4>🅿️ 停车</h4>
+        <p><b>Parcheggio Varenna</b>（沿湖）€2/h</p>
+        <p>周一下午游客少，位置相对好找</p>
+        <p>备选：Parcheggio Olivedo（车站附近）</p>
+      </div>
+      <div class="info-card"><h4>🍽️ 推荐餐厅</h4>
+        <p><b>Il Caminetto</b> — 传统 lombardo · €30-45</p>
+        <p><b>Vecchia Varenna</b> — 湖景露台 · €40-60</p>
+        <p><b>Nilus Bar</b> — 轻食+精酿 · €15-25</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- 还车 -->
-<div class="tl-item item-drive">
-  <div class="tl-time-bar"><span class="tl-time-tag">~16:30</span><span class="tl-type-badge badge-drive">🔑 还车</span></div>
-  <div class="drive-card"><span class="drive-icon">🔑</span><div><div class="drive-title" contenteditable="false">马尔彭萨机场还车</div><div class="drive-detail" contenteditable="false">MXP 机场各大租车公司均有还车点 · 还车前拍照留档（车身+油表+里程） · 确认加满油 · 保留还车收据 · 还完车步行/shuttle 到酒店</div></div></div>
+<div class="plan-panel" data-plan="C">
+  <div class="plan-header">
+    <h2>🏙️ 方案 C：米兰市区半日游</h2>
+    <div class="subtitle">先还车放行李再玩 · 大教堂 + Galleria 拱廊 + 时尚四边形 · 都市地标</div>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="num">~3.5h</div><div class="label">驾车</div></div>
+      <div class="stat-item"><div class="num">3-4h</div><div class="label">市区</div></div>
+      <div class="stat-item"><div class="num">€160</div><div class="label">4人费用</div></div>
+      <div class="stat-item"><div class="num">⭐⭐⭐⭐</div><div class="label">文化</div></div>
+      <div class="stat-item"><div class="num">⭐⭐⭐⭐⭐</div><div class="label">地标</div></div>
+    </div>
+  </div>
+  <div class="map-section">
+    <h3 class="section-title">🗺️ 方案 C 详细路线图</h3>
+    <p class="map-caption">Ortisei → MXP 先还车 → Malpensa Express 火车进米兰 → 城中心步行 → 火车回酒店</p>
+    <div class="svg-wrap">
+    <svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;">
+      <defs>
+        <linearGradient id="bgC" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffebee"/><stop offset="100%" stop-color="#fff3e0"/></linearGradient>
+        <filter id="shC"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.12)"/></filter>
+      </defs>
+      <rect width="960" height="620" rx="16" fill="url(#bgC)"/>
+      <text x="30" y="36" font-size="15" fill="#c62828" letter-spacing="4" font-weight="700" opacity="0.2">P L A N  C  ·  M I L A N O</text>
+      <path d="M500,130 L560,80 L620,110 L680,60 L740,100 L800,70 L860,110 L960,80 L960,180 L500,180Z" fill="#90a4ae" opacity="0.15"/>
+      <rect x="0" y="350" width="960" height="270" fill="#c8e6c9" opacity="0.15"/>
+      <g font-size="10" fill="#999" opacity="0.5">
+        <circle cx="750" cy="145" r="3"/><text x="760" y="149">Bolzano</text>
+        <circle cx="600" cy="220" r="3"/><text x="610" y="224">Verona</text>
+        <circle cx="450" cy="280" r="3"/><text x="460" y="284">Brescia</text>
+        <circle cx="330" cy="340" r="3"/><text x="340" y="344">Bergamo</text>
+      </g>
+      <g font-size="10" font-weight="700">
+        <rect x="680" y="220" width="36" height="18" rx="3" fill="#c62828" opacity="0.75"/><text x="698" y="233" fill="white" text-anchor="middle">A22</text>
+        <rect x="450" y="310" width="30" height="18" rx="3" fill="#c62828" opacity="0.75"/><text x="465" y="323" fill="white" text-anchor="middle">A4</text>
+      </g>
+      <path d="M780,150 Q700,190 620,230 Q540,270 440,305 Q340,340 240,370 Q180,390 140,415" stroke="#c62828" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.6" stroke-linecap="round"/>
+      <path d="M140,430 Q220,500 300,530" stroke="#c62828" stroke-width="3" fill="none" stroke-dasharray="4,4" opacity="0.8" stroke-linecap="round"/>
+      <g font-size="10" font-weight="600">
+        <rect x="160" y="470" width="110" height="20" rx="10" fill="#c62828" opacity="0.88"/>
+        <text x="215" y="484" fill="white" text-anchor="middle" font-size="10">🚆 35min €13</text>
+      </g>
+      <g font-size="11" font-weight="600">
+        <rect x="440" y="200" width="170" height="22" rx="11" fill="#c62828" opacity="0.88" filter="url(#shC)"/>
+        <text x="525" y="215" fill="white" text-anchor="middle" font-size="10">🚗 335km · 3h30m</text>
+      </g>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Ortisei" target="_blank">
+        <g filter="url(#shC)" cursor="pointer">
+          <rect x="570" y="95" width="280" height="60" rx="12" fill="white" stroke="#43a047" stroke-width="2.5"/>
+          <circle cx="605" cy="125" r="20" fill="#43a047"/>
+          <text x="605" y="131" text-anchor="middle" fill="white" font-size="14" font-weight="800">出</text>
+          <text x="635" y="117" font-size="13" font-weight="700" fill="#333">🚗 Ortisei 出发</text>
+          <text x="635" y="135" font-size="11" fill="#888">10:00 · 直奔机场</text>
+          <text x="635" y="150" font-size="10" fill="#43a047" font-weight="600">Dolomites Chalet Niuasi</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=MXP+Rooms+Guest+House+Cardano+al+Campo" target="_blank">
+        <g filter="url(#shC)" cursor="pointer">
+          <rect x="30" y="380" width="230" height="65" rx="12" fill="white" stroke="#2e7d32" stroke-width="2.5"/>
+          <circle cx="60" cy="412" r="20" fill="#2e7d32"/>
+          <text x="60" y="418" text-anchor="middle" fill="white" font-size="13" font-weight="800">还</text>
+          <text x="90" y="400" font-size="13" font-weight="700" fill="#333">🏨 MXP Rooms</text>
+          <text x="90" y="418" font-size="10" fill="#888">13:30 · 先还车放行李</text>
+          <text x="90" y="433" font-size="10" fill="#2e7d32" font-weight="600">Cardano al Campo</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Milano+Duomo" target="_blank">
+        <g filter="url(#shC)" cursor="pointer">
+          <rect x="300" y="490" width="280" height="80" rx="12" fill="white" stroke="#c62828" stroke-width="3"/>
+          <circle cx="335" cy="530" r="22" fill="#c62828"/>
+          <text x="335" y="536" text-anchor="middle" fill="white" font-size="15" font-weight="800">1</text>
+          <text x="365" y="515" font-size="14" font-weight="700" fill="#333">🏙️ 米兰市中心</text>
+          <text x="365" y="533" font-size="11" fill="#888">14:45-17:30 · 步行 3h</text>
+          <text x="365" y="548" font-size="10" fill="#666">Duomo → Galleria → 时尚街</text>
+          <text x="365" y="562" font-size="10" fill="#c62828" font-weight="600">📍 点击导航</text>
+        </g>
+      </a>
+      <g transform="translate(20,580)">
+        <rect width="920" height="30" rx="10" fill="white" opacity="0.92" stroke="#e0d8c8"/>
+        <circle cx="25" cy="15" r="6" fill="#43a047"/><text x="38" y="19" font-size="10" fill="#555">出发</text>
+        <circle cx="95" cy="15" r="6" fill="#2e7d32"/><text x="108" y="19" font-size="10" fill="#555">还车</text>
+        <circle cx="170" cy="15" r="6" fill="#c62828"/><text x="183" y="19" font-size="10" fill="#555">市区</text>
+        <line x1="240" y1="15" x2="280" y2="15" stroke="#c62828" stroke-width="3" stroke-dasharray="8,4"/><text x="290" y="19" font-size="10" fill="#555">自驾</text>
+        <line x1="340" y1="15" x2="380" y2="15" stroke="#c62828" stroke-width="2" stroke-dasharray="4,4"/><text x="390" y="19" font-size="10" fill="#555">火车</text>
+        <text x="470" y="19" font-size="10" fill="#888">先开 3.5h 到酒店还车 · 再 Malpensa Express 进城</text>
+      </g>
+    </svg>
+    </div>
+  </div>
+  <div class="timeline">
+    <h3 class="section-title">⏱️ 时间线</h3>
+    <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 出发</span>Ortisei 退房</div><div class="tl-desc">直奔 MXP 酒店 · SS242 → A22 → A4 → Cardano al Campo</div></div></div>
+    <div class="tl-row"><div class="tl-time">10:00-13:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 335km</span>Ortisei → MXP Rooms</div><div class="tl-desc">一路高速 · 高速费约 €26 · 中途休息 1 次足够</div></div></div>
+    <div class="tl-row"><div class="tl-time">13:30-14:00</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-hotel">🏨 还车</span>酒店 check-in + 还车</div><div class="tl-desc">还车拍照留档 → 放行李 → 轻装出发</div></div></div>
+    <div class="tl-row"><div class="tl-time">14:00-14:45</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚆 Malpensa Express</span>机场 → Milano Cadorna</div><div class="tl-desc">酒店到 Malpensa 火车站 5min 车程 · 车程 35min · €13/人（4 人 €52）</div></div></div>
+    <div class="tl-row"><div class="tl-time">14:45-15:15</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-visit">🏰 免费</span>Castello Sforzesco 城堡</div><div class="tl-desc">从 Cadorna 步行 15min · 免费进庭院 · 外观壮观</div></div></div>
+    <div class="tl-row"><div class="tl-time">15:15-16:15</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-must">⭐ 必打卡</span>米兰大教堂 Duomo</div><div class="tl-desc">世界最大哥特式教堂！外观免费 · 登顶电梯 €14/人（可选，45min）</div></div></div>
+    <div class="tl-row"><div class="tl-time">16:15-16:45</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-visit">🛍️ 建筑奇迹</span>Galleria Vittorio Emanuele II</div><div class="tl-desc">全球最美购物拱廊！穹顶 + 马赛克地板 · 踩公牛许愿 · Prada/LV 旗舰店</div></div></div>
+    <div class="tl-row"><div class="tl-time">16:45-17:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-visit">👗 时尚</span>Via Montenapoleone</div><div class="tl-desc">米兰时尚四边形 · 全球顶级购物街 · 咖啡休息</div></div></div>
+    <div class="tl-row"><div class="tl-time">17:30-18:15</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚆 回程</span>Cadorna → MXP</div><div class="tl-desc">Malpensa Express 返回 · 18:15 回到酒店</div></div></div>
+    <div class="tl-row"><div class="tl-time">18:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-hotel">🍽️ 晚餐</span>酒店周边</div><div class="tl-desc">Cardano al Campo 镇上有几家不错的意餐</div></div></div>
+  </div>
+  <div class="pros-cons">
+    <h3 class="section-title">⚖️ 方案 C 优缺点</h3>
+    <div class="pc-grid">
+      <div class="pc-card pc-pros"><h4>✅ 优点</h4><ul>
+        <li>先还车放行李，心理上最轻松</li>
+        <li>米兰大教堂绝对震撼，"到此一游"最强</li>
+        <li>Galleria 拱廊是建筑奇迹</li>
+        <li>购物天堂（如果感兴趣）</li>
+        <li>不需要自己找停车位</li>
+        <li>下雨天适配度高</li>
+      </ul></div>
+      <div class="pc-card pc-cons"><h4>❌ 缺点</h4><ul>
+        <li>自然风光完全没有</li>
+        <li>额外交通费 ~€104（4 人火车往返）</li>
+        <li>市区游览时间有限（~3h）</li>
+        <li>周一部分博物馆关闭（但 Duomo 开）</li>
+        <li>游客最多，Duomo 附近人山人海</li>
+        <li>如果 Day10 已安排米兰，内容重复</li>
+      </ul></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><h4>🚆 交通</h4>
+        <p>酒店 → Malpensa 火车站：shuttle 5min</p>
+        <p>Malpensa Express：€13/人单程，35min 到 Cadorna</p>
+        <p>市区步行：Cadorna → Duomo 15min</p>
+      </div>
+      <div class="info-card"><h4>🍽️ 米兰必吃</h4>
+        <p><b>Luini Panzerotti</b> — 炸包子 · €3-5</p>
+        <p><b>Spontini</b> — 厚底披萨 · €6-10</p>
+        <p><b>Galleria 咖啡</b> — espresso · €1.5 站着</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- STOP 2: MXP Rooms -->
-<div class="tl-item" data-spot="mxp-rooms">
-  <div class="tl-time-bar"><span class="tl-time-tag">~16:00 - 晚上</span><span class="tl-type-badge badge-hotel">🏨 入住</span></div>
-  <div class="tl-left">
-    <div class="tl-spot-name" contenteditable="false">🏨 MXP Rooms Guest House</div>
-    <div class="tl-spot-subname" contenteditable="false">Cardano al Campo · 马尔彭萨机场旁</div>
-    <div class="tl-spot-addr"><span class="addr-icon">📍</span><span contenteditable="false">Via dell'Ongaro 8, Cardano al Campo</span></div>
-    <a class="gmap-link" href="https://www.google.com/maps/search/?api=1&query=MXP+Rooms+Guest+House+Cardano+al+Campo" target="_blank">📍 Google Maps 导航</a>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+<div class="plan-panel" data-plan="D">
+  <div class="plan-header">
+    <h2>🌊 方案 D：Como 老城 + 贝加莫双城</h2>
+    <div class="subtitle">一日双城 · Como 湖南端老城 + 贝加莫 UNESCO · 湖景 + 古城全都要</div>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="num">~5h</div><div class="label">总驾车</div></div>
+      <div class="stat-item"><div class="num">4h</div><div class="label">停留</div></div>
+      <div class="stat-item"><div class="num">€90</div><div class="label">4人费用</div></div>
+      <div class="stat-item"><div class="num">⭐⭐⭐</div><div class="label">自然</div></div>
+      <div class="stat-item"><div class="num">⭐⭐⭐⭐</div><div class="label">综合</div></div>
+    </div>
   </div>
-  <div class="tl-mid">
-    <p contenteditable="false">明天要赶飞机，今晚住在马尔彭萨机场旁的 B&B，方便明天直接去机场</p>
-    <p contenteditable="false"><strong>🌙 到达后安排：</strong></p>
-    <p contenteditable="false">• <strong>Check-in 休息</strong> — 连续多天的高强度行程，最后一晚好好歇歇</p>
-    <p contenteditable="false">• <strong>整理行李</strong> — 清点物品、整理购物退税单据、确认航班信息</p>
-    <p contenteditable="false">• <strong>附近晚餐</strong> — Cardano al Campo 镇上有餐厅，也可以在酒店周边解决</p>
-    <p contenteditable="false">• <strong>明早安排</strong> — 确认 Day10 航班时间，计算到机场的时间（酒店到 MXP T1 约 5-10 分钟车程）</p>
-    <p contenteditable="false">💡 如果精力还行，傍晚可以在 Cardano al Campo 小镇散散步，感受一下安静的意大利小镇氛围</p>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  <div class="map-section">
+    <h3 class="section-title">🗺️ 方案 D 详细路线图</h3>
+    <p class="map-caption">Ortisei → 贝加莫上城（早午餐+古城）→ Como 老城（湖南端，下午湖景）→ MXP Rooms · 双城串联，顺路不绕远</p>
+    <div class="svg-wrap">
+    <svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:960px;margin:0 auto;display:block;">
+      <defs>
+        <linearGradient id="bgD" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8f5e9"/><stop offset="50%" stop-color="#e1f5fe"/><stop offset="100%" stop-color="#f3e5f5"/></linearGradient>
+        <linearGradient id="lakeD" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#0288d1"/></linearGradient>
+        <filter id="shD"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.12)"/></filter>
+      </defs>
+      <rect width="960" height="620" rx="16" fill="url(#bgD)"/>
+      <text x="30" y="36" font-size="15" fill="#2e7d32" letter-spacing="4" font-weight="700" opacity="0.2">P L A N  D  ·  C O M O  +  B E R G A M O</text>
+      <path d="M0,120 L80,80 L160,110 L240,60 L320,100 L400,70 L480,100 L560,60 L640,100 L720,70 L800,110 L880,80 L960,100 L960,170 L0,170Z" fill="#90a4ae" opacity="0.18"/>
+      <path d="M200,180 Q180,260 190,330 Q205,390 225,420 L275,420 Q255,390 240,330 Q235,260 250,180 Q230,170 215,175 Z" fill="url(#lakeD)" opacity="0.6"/>
+      <text x="170" y="300" font-size="11" fill="#01579b" font-weight="700" opacity="0.75">Lago di</text>
+      <text x="170" y="315" font-size="11" fill="#01579b" font-weight="700" opacity="0.75">Como</text>
+      <rect x="0" y="430" width="960" height="190" fill="#c8e6c9" opacity="0.15"/>
+      <g font-size="10" fill="#999" opacity="0.5">
+        <circle cx="830" cy="125" r="3"/><text x="840" y="129">Bolzano</text>
+        <circle cx="650" cy="220" r="3"/><text x="660" y="224">Verona</text>
+        <circle cx="520" cy="290" r="3"/><text x="530" y="294">Brescia</text>
+        <circle cx="260" cy="460" r="3"/><text x="270" y="464">Milano</text>
+      </g>
+      <g font-size="10" font-weight="700">
+        <rect x="720" y="190" width="36" height="18" rx="3" fill="#2e7d32" opacity="0.75"/><text x="738" y="203" fill="white" text-anchor="middle">A22</text>
+        <rect x="550" y="300" width="30" height="18" rx="3" fill="#2e7d32" opacity="0.75"/><text x="565" y="313" fill="white" text-anchor="middle">A4</text>
+        <rect x="300" y="395" width="36" height="18" rx="3" fill="#2e7d32" opacity="0.75"/><text x="318" y="408" fill="white" text-anchor="middle">A9</text>
+        <rect x="230" y="490" width="30" height="18" rx="3" fill="#2e7d32" opacity="0.75"/><text x="245" y="503" fill="white" text-anchor="middle">A8</text>
+      </g>
+      <!-- Ortisei -> Bergamo -->
+      <path d="M820,155 Q750,200 670,240 Q580,285 490,320 Q450,335 430,365" stroke="#2e7d32" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.6" stroke-linecap="round"/>
+      <!-- Bergamo -> Como -->
+      <path d="M410,395 Q380,410 340,420 Q310,430 280,420" stroke="#2e7d32" stroke-width="5" fill="none" stroke-dasharray="14,7" opacity="0.6" stroke-linecap="round"/>
+      <!-- Como -> MXP -->
+      <path d="M245,420 Q245,470 230,490 Q200,510 170,515" stroke="#2e7d32" stroke-width="4.5" fill="none" stroke-dasharray="12,6" opacity="0.6" stroke-linecap="round"/>
+      <g font-size="11" font-weight="600">
+        <rect x="555" y="240" width="170" height="22" rx="11" fill="#2e7d32" opacity="0.88" filter="url(#shD)"/>
+        <text x="640" y="255" fill="white" text-anchor="middle" font-size="10">🚗 270km · 2h45m</text>
+        <rect x="300" y="430" width="130" height="22" rx="11" fill="#2e7d32" opacity="0.88"/>
+        <text x="365" y="445" fill="white" text-anchor="middle" font-size="10">🚗 65km · 55min</text>
+        <rect x="160" y="475" width="110" height="22" rx="11" fill="#2e7d32" opacity="0.88"/>
+        <text x="215" y="490" fill="white" text-anchor="middle" font-size="10">🚗 50km · 50min</text>
+      </g>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Ortisei" target="_blank">
+        <g filter="url(#shD)" cursor="pointer">
+          <rect x="640" y="95" width="280" height="60" rx="12" fill="white" stroke="#43a047" stroke-width="2.5"/>
+          <circle cx="675" cy="125" r="20" fill="#43a047"/>
+          <text x="675" y="131" text-anchor="middle" fill="white" font-size="14" font-weight="800">出</text>
+          <text x="705" y="117" font-size="13" font-weight="700" fill="#333">🚗 Ortisei 出发</text>
+          <text x="705" y="135" font-size="11" fill="#888">10:00 · 双城日</text>
+          <text x="705" y="150" font-size="10" fill="#43a047" font-weight="600">Dolomites Chalet Niuasi</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Citta+Alta+Bergamo" target="_blank">
+        <g filter="url(#shD)" cursor="pointer">
+          <rect x="400" y="340" width="310" height="75" rx="12" fill="white" stroke="#6a1b9a" stroke-width="2.5"/>
+          <circle cx="435" cy="377" r="22" fill="#6a1b9a"/>
+          <text x="435" y="384" text-anchor="middle" fill="white" font-size="15" font-weight="800">1</text>
+          <text x="465" y="360" font-size="14" font-weight="700" fill="#333">🏰 贝加莫 Città Alta</text>
+          <text x="465" y="378" font-size="11" fill="#888">12:30-14:30 · 2h 精简版</text>
+          <text x="465" y="393" font-size="10" fill="#666">老广场+城墙+冰淇淋 · 午餐</text>
+          <text x="465" y="408" font-size="10" fill="#6a1b9a" font-weight="600">📍 点击导航</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Como+Italy" target="_blank">
+        <g filter="url(#shD)" cursor="pointer">
+          <rect x="70" y="340" width="260" height="90" rx="12" fill="white" stroke="#0277bd" stroke-width="3"/>
+          <circle cx="105" cy="385" r="22" fill="#0277bd"/>
+          <text x="105" y="392" text-anchor="middle" fill="white" font-size="15" font-weight="800">2</text>
+          <text x="135" y="365" font-size="14" font-weight="700" fill="#333">🌊 Como 老城</text>
+          <text x="135" y="382" font-size="11" fill="#888">15:30-17:30 · 湖边 2h</text>
+          <text x="135" y="398" font-size="10" fill="#666">Piazza Cavour · Duomo</text>
+          <text x="135" y="411" font-size="10" fill="#666">湖边 passeggiata · 缆车可选</text>
+          <text x="135" y="425" font-size="10" fill="#0277bd" font-weight="600">📍 点击导航</text>
+        </g>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=MXP+Rooms+Guest+House+Cardano+al+Campo" target="_blank">
+        <g filter="url(#shD)" cursor="pointer">
+          <rect x="30" y="530" width="250" height="60" rx="12" fill="white" stroke="#2e7d32" stroke-width="2.5"/>
+          <circle cx="60" cy="560" r="20" fill="#2e7d32"/>
+          <text x="60" y="566" text-anchor="middle" fill="white" font-size="14" font-weight="800">终</text>
+          <text x="90" y="552" font-size="13" font-weight="700" fill="#333">🏨 MXP Rooms</text>
+          <text x="90" y="570" font-size="11" fill="#888">18:30 · 还车+入住</text>
+          <text x="90" y="585" font-size="10" fill="#2e7d32" font-weight="600">Cardano al Campo</text>
+        </g>
+      </a>
+      <g transform="translate(300,530)">
+        <rect width="620" height="60" rx="10" fill="white" opacity="0.92" stroke="#e0d8c8"/>
+        <circle cx="20" cy="18" r="6" fill="#43a047"/><text x="32" y="22" font-size="10" fill="#555">出发</text>
+        <circle cx="80" cy="18" r="6" fill="#6a1b9a"/><text x="92" y="22" font-size="10" fill="#555">贝加莫</text>
+        <circle cx="160" cy="18" r="6" fill="#0277bd"/><text x="172" y="22" font-size="10" fill="#555">Como</text>
+        <circle cx="230" cy="18" r="6" fill="#2e7d32"/><text x="242" y="22" font-size="10" fill="#555">住宿</text>
+        <line x1="300" y1="18" x2="340" y2="18" stroke="#2e7d32" stroke-width="3" stroke-dasharray="8,4"/><text x="350" y="22" font-size="10" fill="#555">自驾</text>
+        <text x="20" y="48" font-size="10" fill="#888">总里程 ~385km · 约 4.5h 驾车 · 双城模式，每处都是精简版</text>
+      </g>
+    </svg>
+    </div>
   </div>
-  <div class="tl-right">
-    <div class="tl-right-section"><div class="tl-right-label">🏨 酒店信息</div><div class="tip-mini" contenteditable="false"><p>• <strong>MXP Rooms Guest House</strong></p><p>• Via dell'Ongaro 8</p><p>• Cardano al Campo</p><p>• 距 MXP T1 约 3km</p><p>• 官网: mxp-rooms.it</p></div></div>
-    <div class="tl-right-section"><div class="tl-right-label">✈️ 明日航班</div><div class="tip-mini" contenteditable="false"><p>• 提前整理好退税单据</p><p>• 确认航班信息和登机时间</p><p>• 酒店到机场很近，不用太赶</p><p>• 国际航班提前 3h 到机场</p></div></div>
-    <button class="add-note-btn" onclick="addNote(this)">+ 添加批注</button>
+  <div class="timeline">
+    <h3 class="section-title">⏱️ 时间线</h3>
+    <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 出发</span>Ortisei 退房</div><div class="tl-desc">先到贝加莫 · SS242 → A22 → A4 西行</div></div></div>
+    <div class="tl-row"><div class="tl-time">10:00-12:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 270km</span>Ortisei → 贝加莫</div><div class="tl-desc">A22 南下 → A4 西行 → 出贝加莫 · 高速费约 €20</div></div></div>
+    <div class="tl-row"><div class="tl-time">12:30-14:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-must">⭐ 精简版</span><span class="tl-tag tag-visit">🏰 贝加莫</span>上城区 + 午餐</div><div class="tl-desc">停 Parcheggio Città Alta · <b>精华 2h</b>：午餐 Casoncelli → Piazza Vecchia → Cappella Colleoni → 城墙走一段 → La Marianna 冰淇淋</div></div></div>
+    <div class="tl-row"><div class="tl-time">14:30-15:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 65km</span>贝加莫 → Como 老城</div><div class="tl-desc">A4 → 转 A9 北上 → 出 Como Centro · 约 55min · 沿途就能看到湖</div></div></div>
+    <div class="tl-row"><div class="tl-time">15:30-17:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-must">⭐ 必打卡</span><span class="tl-tag tag-visit">🌊 Como</span>老城 + 湖边漫步</div><div class="tl-desc">停 Parcheggio Valduce · <b>湖南端老城 2h</b>：Piazza Cavour 湖边广场 → Duomo di Como 大教堂 → 湖边 passeggiata → 可选 Funicolare 缆车上 Brunate 山顶看湖全景（€3.60，7min）</div></div></div>
+    <div class="tl-row"><div class="tl-time">17:30-18:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-drive">🚗 自驾 50km</span>Como → MXP</div><div class="tl-desc">A9 → A8 → 出 Cardano al Campo · 约 50min · 高速费约 €5</div></div></div>
+    <div class="tl-row"><div class="tl-time">18:30</div><div class="tl-content"><div class="tl-title"><span class="tl-tag tag-hotel">🏨 入住</span>MXP Rooms Guest House</div><div class="tl-desc">还车 + Check-in · 附近晚餐</div></div></div>
+  </div>
+  <div class="pros-cons">
+    <h3 class="section-title">⚖️ 方案 D 优缺点</h3>
+    <div class="pc-grid">
+      <div class="pc-card pc-pros"><h4>✅ 优点</h4><ul>
+        <li>一天体验湖景+古城两种风格，满足感强</li>
+        <li>Como 老城在湖南端，路上就能看到湖景</li>
+        <li>相比 B 方案省 1h 车程（不用深入湖北）</li>
+        <li>贝加莫午餐 + Como 下午，节奏合理</li>
+        <li>Como 可坐缆车上 Brunate 看湖全景</li>
+        <li>湖景文化两手抓，适合"不想遗憾"心态</li>
+      </ul></div>
+      <div class="pc-card pc-cons"><h4>❌ 缺点</h4><ul>
+        <li>每个点都只能 2h，不够深入</li>
+        <li>节奏稍赶，两次停车两次开车</li>
+        <li>Como 比 Varenna 商业化，游客多</li>
+        <li>比 A、C 费用稍高（停车×2）</li>
+        <li>到 MXP 时间较晚（18:30）</li>
+      </ul></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><h4>🅿️ 停车</h4>
+        <p><b>贝加莫</b>：Parcheggio Città Alta（€3.30/h）</p>
+        <p><b>Como</b>：Parcheggio Valduce（步行 5min 到湖边），或 Parcheggio Viale Lecco（€1.5/h）</p>
+      </div>
+      <div class="info-card"><h4>💡 关键提示</h4>
+        <p>贝加莫控制在 2h 内！别贪多</p>
+        <p>Como 老城可以不上缆车，单看湖边也够</p>
+        <p>如果嫌赶，可以砍掉 Como 缆车</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="tips-section">
-  <h2 class="section-title">💡 Day9 实用贴士</h2>
-  <div class="tip-grid">
-    <div class="tip-card tip-danger"><h4>⚠️ 还车注意</h4><p contenteditable="false"><strong>还车前必须拍照留档！</strong>车身四面 + 油表 + 里程表。大多数租车公司要求满油还车。保留还车收据。确认无额外费用后再离开。</p></div>
-    <div class="tip-card tip-warn"><h4>🅿️ 贝加莫停车</h4><p contenteditable="false">上城区道路狭窄，建议停在<strong>下城区缆车站附近</strong>（Parcheggio Piazzale della Malpensata），坐缆车上山更省心。周一停车位相对好找。</p></div>
-    <div class="tip-card tip-info"><h4>🚡 缆车小贴士</h4><p contenteditable="false">贝加莫缆车运行时间 7:00-次日凌晨，班次密集（约 7 分钟一班）。单程票 €1.35，包含在城市公交票内。建议缆车上山、步行下山（沿城墙走）。</p></div>
-    <div class="tip-card tip-ok"><h4>💶 消费参考</h4><p contenteditable="false">高速€26 + 缆车€2.7 + 午餐€20 + 冰淇淋€4 + 晚餐€20 · 人均约€73（不含购物）· 贝加莫上城区景点几乎全免费！</p></div>
-    <div class="tip-card tip-warn"><h4>🛍️ 退税准备</h4><p contenteditable="false">今晚是最后一晚！整理所有退税单据。确认每张 Tax Free 表格已填好护照信息。明天在 MXP 机场 check-in 后、过安检前找退税柜台盖章。</p></div>
-    <div class="tip-card tip-info"><h4>📱 明日须知</h4><p contenteditable="false">Day10 从 MXP Rooms 到马尔彭萨机场仅 5-10 分钟。确认航班信息、座位、行李额度。提前下载值机 boarding pass。最后一天，轻松就好！</p></div>
+<div class="compare-section">
+  <h3 class="section-title">📊 四方案横向对比</h3>
+  <div style="overflow-x:auto;">
+  <table class="compare-table">
+    <thead>
+      <tr><th>维度</th><th class="pa">A 贝加莫</th><th class="pb">B Varenna</th><th class="pc">C 米兰</th><th class="pd">D 双城</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>定位风格</td><td>中世纪古城</td><td>湖光山色</td><td>现代都市</td><td>湖+城混合</td></tr>
+      <tr><td>自然风光</td><td>⭐</td><td>⭐⭐⭐⭐</td><td>⭐</td><td>⭐⭐⭐</td></tr>
+      <tr><td>文化含量</td><td>⭐⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>总驾车</td><td>3.5h ✅</td><td>5.5h ❌</td><td>3.5h ✅</td><td>4.5h</td></tr>
+      <tr><td>停留时间</td><td>3h</td><td>2.5h</td><td>3-4h</td><td>2+2h</td></tr>
+      <tr><td>赶路感</td><td>轻松 ✅</td><td>略赶</td><td>轻松 ✅</td><td>略赶</td></tr>
+      <tr><td>停车难度</td><td>容易 ✅</td><td>一般</td><td>无需 ✅</td><td>2次停</td></tr>
+      <tr><td>周一影响</td><td>博物馆关</td><td>Balbianello关</td><td>博物馆关</td><td>景点都开</td></tr>
+      <tr><td>下雨适配</td><td>⭐⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐</td></tr>
+      <tr><td>拍照出片</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>4人费用</td><td>~€50</td><td>~€120</td><td>~€160</td><td>~€90</td></tr>
+      <tr><td>到 MXP</td><td>16:45</td><td>18:00</td><td>18:15</td><td>18:30</td></tr>
+    </tbody>
+  </table>
   </div>
 </div>
 
-<div style="background:var(--card);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
-  <h2 class="section-title">🤔 为什么选贝加莫？</h2>
-  <div style="font-size:13px;color:#555;line-height:1.8;">
-    <p>• <strong>正好顺路</strong> — Ortisei → MXP 必经之路上，不需要绕路</p>
-    <p>• <strong>被严重低估</strong> — 90% 的游客只去米兰，但贝加莫的 Città Alta 比很多热门景点都惊艳</p>
-    <p>• <strong>UNESCO 世界遗产</strong> — 16 世纪威尼斯城墙完整保存，全欧洲罕见</p>
-    <p>• <strong>几乎免费</strong> — 所有主要景点免费开放，只花缆车钱和午餐钱</p>
-    <p>• <strong>节奏完美</strong> — 2-3h 足够玩精华，不会太累（Day7、Day8 都是高强度）</p>
-    <p>• <strong>Stracciatella 冰淇淋</strong> — 全世界第一支 Stracciatella 就诞生在这里的 La Marianna！</p>
+<div class="advice">
+  <h3>🎯 老六的建议</h3>
+  <div class="advice-item">
+    <b>想看自然风光，不怕累 → 方案 B（Varenna）</b>
+    <p>前 8 天都在看山，Varenna 的湖景是完全不同的视觉体验。情人步道和 Villa Monastero 都很出片。缺点是路程长，到 MXP 已经 18:00。</p>
+  </div>
+  <div class="advice-item">
+    <b>想轻松省力，文化口味 → 方案 A（贝加莫）</b>
+    <p>路程最短，上城停车直达，节奏最悠闲。UNESCO 世遗 + Stracciatella 冰淇淋发源地 + 下雨天也不影响。4 人费用最低。</p>
+  </div>
+  <div class="advice-item">
+    <b>想打卡地标 → 方案 C（米兰）</b>
+    <p>先还车再玩，心理上最轻松。米兰大教堂 + Galleria 拱廊是世界级建筑。<b>但注意 Day10 已经安排了米兰，可能内容重复。</b></p>
+  </div>
+  <div class="advice-item">
+    <b>不想遗憾，湖景+文化都要 → 方案 D（Como+贝加莫）</b>
+    <p>双城串联是折中方案：贝加莫给你 UNESCO 古城 + Casoncelli 午餐，Como 给你湖景 + 缆车全景。每处 2h，不深入但都能体验。适合"都想看一眼"的心态。</p>
+  </div>
+  <div class="advice-item" style="background:#ffebee;padding:10px;border-radius:8px;">
+    <b style="color:#c62828;">⚠️ 重要提醒：5月4日是周一</b>
+    <p>• Villa del Balbianello 关闭（B 方案已改为 Varenna，Villa Monastero 周一开）<br>• 贝加莫 Accademia Carrara 等博物馆关闭，但广场/教堂/城墙/Cappella Colleoni 全开<br>• 米兰部分博物馆关，但 Duomo、Galleria 全开</p>
   </div>
 </div>
 
-<div class="sources">
-  <h3>📚 信息来源</h3>
-  <p>• Visit Bergamo 官方旅游网站 visitbergamo.net</p>
-  <p>• Explore Bergamo 上城区攻略 explorebergamo.com</p>
-  <p>• TripAdvisor 贝加莫餐厅评分</p>
-  <p>• MXP Rooms 官网 mxp-rooms.it</p>
-  <p>• Rome2Rio / Wanderlog 路线数据</p>
-  <p style="margin-top:8px;color:#aaa;">整理于 2026年4月18日 · 支持在线编辑与批注</p>
 </div>
-</div>
-
-<div class="footer">🇮🇹 Bergamo — dove il cielo incontra la storia! 贝加莫，天空与历史交汇的地方！</div>
 
 <script>
-let editMode=false,annotateMode=false;
-function toggleEdit(){editMode=!editMode;const b=document.getElementById('btn-edit'),h=document.getElementById('toolbar-hint');b.classList.toggle('active',editMode);document.body.classList.toggle('edit-mode',editMode);document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=editMode?'true':'false';});h.textContent=editMode?'✏️ 编辑模式已开启 — 点击任意文字即可修改':'点击「编辑模式」可直接修改内容，「批注模式」可添加备注';}
-function toggleAnnotate(){annotateMode=!annotateMode;const b=document.getElementById('btn-annotate');b.classList.toggle('active',annotateMode);document.body.classList.toggle('annotate-mode',annotateMode);const h=document.getElementById('toolbar-hint');if(annotateMode)h.textContent='📝 批注模式已开启 — 点击「+ 添加批注」按钮';else if(!editMode)h.textContent='点击「编辑模式」可直接修改内容，「批注模式」可添加备注';}
-function addNote(btn){const n=document.createElement('div');n.className='user-note';n.innerHTML='<span class="note-delete" onclick="removeNote(this)">✕</span><div contenteditable="true" style="outline:none;min-height:20px;">在此输入批注...</div>';btn.parentNode.insertBefore(n,btn);const e=n.querySelector('[contenteditable]');e.focus();const r=document.createRange();r.selectNodeContents(e);window.getSelection().removeAllRanges();window.getSelection().addRange(r);}
-function removeNote(el){el.closest('.user-note').remove();}
-function exportNotes(){const notes=document.querySelectorAll('.user-note');if(!notes.length){alert('暂无批注内容');return;}let t='# Day9 行程批注\n导出时间: '+new Date().toLocaleString('zh-CN')+'\n\n';notes.forEach((n,i)=>{const s=n.closest('.tl-item'),name=s?(s.querySelector('.tl-spot-name')?.textContent||'交通段'):'未知位置',c=n.querySelector('[contenteditable]')?.textContent||'';t+=`## 批注 ${i+1} — ${name}\n${c}\n\n`;});const b=new Blob([t],{type:'text/markdown;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='Day9_批注_'+new Date().toISOString().slice(0,10)+'.md';a.click();URL.revokeObjectURL(u);}
-function saveLocal(){const h=document.documentElement.outerHTML,b=new Blob([h],{type:'text/html;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='Day9_行程规划_'+new Date().toISOString().slice(0,10)+'.html';a.click();URL.revokeObjectURL(u);}
-function showSaveToast(){let t=document.getElementById('auto-save-toast');if(!t){t=document.createElement('div');t.id='auto-save-toast';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(106,27,154,0.92);color:#fff;padding:6px 18px;border-radius:20px;font-size:12px;z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(4px);';document.body.appendChild(t);}t.textContent='✓ 已自动保存';t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';clearTimeout(t._hideTimer);t._hideTimer=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},1500);}
-let autoSaveTimer=null;document.addEventListener('input',()=>{clearTimeout(autoSaveTimer);autoSaveTimer=setTimeout(()=>{try{localStorage.setItem('day9_draft',document.querySelector('.container').innerHTML);showSaveToast();}catch(e){}},1000);});
-window.addEventListener('load',()=>{const d=localStorage.getItem('day9_draft');if(d)document.querySelector('.container').innerHTML=d;});
+function showPlan(id){
+  document.querySelectorAll('.plan-btn').forEach(b=>b.classList.toggle('active',b.dataset.plan===id));
+  document.querySelectorAll('.plan-panel').forEach(p=>p.classList.toggle('active',p.dataset.plan===id));
+  window.scrollTo({top:document.querySelector('.plan-selector').offsetTop,behavior:'smooth'});
+}
+document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector(".day-tab.active");if(t){t.scrollIntoView({inline:"center",block:"nearest"})}});
 </script>
-<script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector(".day-tab.active");if(t){t.scrollIntoView({inline:"center",block:"nearest"})}});</script>
+
+<div class="footer">🇮🇹 Day9 · Goodbye Dolomiti! 告别多洛米蒂，意大利之行的倒数第二天！</div>
+
 </body>
 </html>
