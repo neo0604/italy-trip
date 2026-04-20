@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<link rel="stylesheet" href="mobile-fix.css">
 <title>Day10 行程详细规划 | 米兰→深圳·回程日</title>
 <style>
   :root{--green:#2d6a4f;--green-light:#e8f5e9;--orange:#ff9800;--red:#ef5350;--blue:#42a5f5;--purple:#7e57c2;--bg:#f5f0e8;--card:#fff;--text:#2c2c2c;--text-secondary:#666;--border:#e0d8c8;--note-bg:#fffde7;--note-border:#ffe082;--theme:#b71c1c;--theme-light:#ffebee;}
@@ -97,6 +98,7 @@
     padding: 8px 10px 6px;
     font-size: 16px;
   }
+
 
 </style>
 </head>
@@ -429,5 +431,7 @@ let autoSaveTimer=null;document.addEventListener('input',()=>{clearTimeout(autoS
 window.addEventListener('load',()=>{const d=localStorage.getItem('day10_draft');if(d)document.querySelector('.container').innerHTML=d;});
 </script>
 <script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector(".day-tab.active");if(t){t.scrollIntoView({inline:"center",block:"nearest"})}});</script>
+
+
 </body>
 </html>

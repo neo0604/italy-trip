@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<link rel="stylesheet" href="mobile-fix.css">
 <title>Day5 行程详细规划 | 佛罗伦萨·乌菲兹美术馆·老桥·米开朗基罗广场</title>
 <style>
   :root {
@@ -28,7 +29,7 @@
   .hero h1 { font-size: 26px; margin-bottom: 6px; }
   .hero .subtitle { font-size: 13px; opacity: 0.85; }
   .hero .date-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 16px; border-radius: 20px; font-size: 13px; margin-top: 10px; }
-  .toolbar { position: sticky; top: 0; z-index: 90; background: white; border-bottom: 1px solid var(--border); padding: 8px 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .toolbar { position: sticky; top: 0; z-index: 89; background: white; border-bottom: 1px solid var(--border); padding: 8px 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
   .toolbar-btn { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border-radius: 8px; border: 1px solid #ddd; background: white; font-size: 12px; cursor: pointer; transition: all 0.2s; white-space: nowrap; color: var(--text); }
   .toolbar-btn:hover { background: #f0f0f0; }
   .toolbar-btn.active { background: var(--green); color: white; border-color: var(--green); }
@@ -164,6 +165,7 @@
     padding: 8px 10px 6px;
     font-size: 16px;
   }
+
 
 </style>
 </head>
@@ -831,5 +833,7 @@ window.addEventListener('load', () => {
 </script>
 
 <script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector(".day-tab.active");if(t){t.scrollIntoView({inline:"center",block:"nearest"})}});</script>
+
+
 </body>
 </html>
