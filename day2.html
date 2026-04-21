@@ -227,6 +227,146 @@
     font-size: 16px;
   }
 
+  /* ===== 🍽️ 美食推荐模块 ===== */
+  .food-section {
+    background: linear-gradient(135deg, #fff5f7 0%, #fff 40%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194,24,91,0.08);
+    border: 1px solid #fce4ec;
+  }
+  .food-section .section-title { color: #880e4f; }
+  .food-intro {
+    background: #fff;
+    border-left: 3px solid #c2185b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .food-intro strong { color: #c2185b; }
+  .food-slot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2185b;
+    margin: 14px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #f8bbd0;
+  }
+  .food-slot-title .slot-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    margin-left: auto;
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid #fce4ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .food-card:hover { border-color: #c2185b; box-shadow: 0 4px 12px rgba(194,24,91,0.1); }
+  .food-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .food-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .food-card-name .food-icon { color: #c2185b; margin-right: 4px; }
+  .food-card-rating {
+    font-size: 11px;
+    background: #fff8e1;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-card-desc strong { color: #c2185b; }
+  .food-card-addr {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .food-gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    margin-right: 6px;
+    transition: all 0.2s;
+  }
+  .food-gmap-link:hover { background: #2e7d32; color: white; }
+  .food-xhs-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f0f0f0;
+  }
+  .food-xhs-title {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .food-xhs-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .food-xhs-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .food-xhs-item a:hover { text-decoration: underline; }
+  .food-xhs-item .xhs-meta {
+    font-size: 10px;
+    color: #999;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .food-card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .food-card-name { font-size: 14px; }
+  }
 
 </style>
 </head>
@@ -556,6 +696,96 @@
       <text x="0" y="4" text-anchor="middle" font-size="10" fill="#5a8a9e" font-weight="600">🌉 横跨台伯河</text>
     </g>
 
+    <!-- ===== 🍽️ 餐厅标注 v3 — 地理准确优先 =====
+         核心原则（2026-04-21 Neo 确认）：
+         1. 餐厅胶囊必须在地图上出现在"相对最近的景点"方向，这样离开景点时能自然想到附近有什么吃的
+         2. 胶囊互不重叠；曲线穿越景点卡是可接受的（放宽要求）
+         
+         真实地理 → SVG 位置：
+         - TheGusto (Prati, 博物馆北) → 博物馆卡正上方（北边）
+         - Alice Pizza (Prati, Viale Giulio Cesare, 博物馆北偏东) → 博物馆卡右上方
+         - Pastasciutta (Via delle Grazie 5, Borgo, 圣彼得东) → 圣彼得卡右下方
+         - La Nuova Piazzetta (Via della Posta Vecchia 4, 纳沃纳东北角) → 纳沃纳卡正上方
+    -->
+    <defs>
+      <filter id="foodShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.2"/>
+        <feOffset dx="0" dy="1" result="offsetblur"/>
+        <feComponentTransfer><feFuncA type="linear" slope="0.18"/></feComponentTransfer>
+        <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g class="food-pins">
+
+      <!-- ① TheGusto Cucina · 午餐首推 ⭐ — Prati 区，博物馆北
+           胶囊：(200,58)-(460,92) — 博物馆卡正上方（博物馆顶 y=140，留 48px 余量；水印 y<50）
+           地标：(360,120) — 博物馆卡顶内 20px 处（表示 Prati 靠近博物馆北侧）
+           曲线：从胶囊底(330,92)→地标(360,120)，短 2 点钟方向弧 -->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=TheGusto+Cucina+con+Enoteca+Roma" target="_blank">
+        <g cursor="pointer">
+          <path d="M 330,92 C 340,102 350,112 358,118" fill="none" stroke="#c2185b" stroke-width="1.6" stroke-dasharray="3,3" opacity="0.75" stroke-linecap="round"/>
+          <circle cx="360" cy="120" r="8" fill="none" stroke="#c2185b" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+          <circle cx="360" cy="120" r="4.5" fill="#c2185b"/>
+          <circle cx="360" cy="120" r="1.8" fill="#fff"/>
+          <rect x="200" y="58" width="260" height="34" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.5" filter="url(#foodShadow)"/>
+          <text x="212" y="74" font-size="11.5" fill="#880e4f" font-weight="700">🍝 TheGusto Cucina</text>
+          <text x="385" y="74" font-size="9.5" fill="#e65100" font-weight="700">⭐首推</text>
+          <text x="212" y="86" font-size="10" fill="#666">Prati区 · 牛肝菌宽面 · G4.9</text>
+        </g>
+      </a>
+
+      <!-- ② Alice Pizza · 快速午餐 — Prati 区，Viale Giulio Cesare（博物馆北偏东）
+           胶囊：(490,58)-(720,92) — 博物馆卡右上方，紧接 TheGusto 右边（间距 30px）
+           地标：(475,120) — 博物馆卡顶内 20px 处偏右
+           曲线：从胶囊底(540,92)→地标(475,120)，短 7 点钟方向弧 -->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Alice+Pizza+Viale+Giulio+Cesare+Roma" target="_blank">
+        <g cursor="pointer">
+          <path d="M 540,92 C 520,102 500,112 478,118" fill="none" stroke="#c2185b" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.65" stroke-linecap="round"/>
+          <circle cx="475" cy="120" r="8" fill="none" stroke="#c2185b" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+          <circle cx="475" cy="120" r="4.5" fill="#c2185b"/>
+          <circle cx="475" cy="120" r="1.8" fill="#fff"/>
+          <rect x="490" y="58" width="230" height="34" rx="10" fill="#fff" stroke="#f48fb1" stroke-width="1.2" filter="url(#foodShadow)"/>
+          <text x="502" y="74" font-size="11.5" fill="#880e4f" font-weight="700">🍕 Alice Pizza</text>
+          <text x="640" y="74" font-size="9.5" fill="#999" font-weight="500">快速午餐</text>
+          <text x="502" y="86" font-size="10" fill="#666">Prati区 · 称重披萨 · 博物馆步行10min</text>
+        </g>
+      </a>
+
+      <!-- ③ Pastasciutta · 意面小店 — Via delle Grazie 5, Borgo 区（圣彼得东侧！）
+           胶囊：(350,540)-(545,574) — 圣彼得卡底(y=522)下方、Tiber(x=450)右上
+           地标：(345,480) — 圣彼得卡右外（卡右 x=340 + 5px）
+           曲线：从胶囊顶(380,540)→地标(345,480)，短 11 点钟方向弧（允许擦过圣彼得卡右下角）-->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Pastasciutta+Via+delle+Grazie+Roma" target="_blank">
+        <g cursor="pointer">
+          <path d="M 380,540 C 370,520 355,500 347,484" fill="none" stroke="#c2185b" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.65" stroke-linecap="round"/>
+          <circle cx="345" cy="480" r="8" fill="none" stroke="#c2185b" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+          <circle cx="345" cy="480" r="4.5" fill="#c2185b"/>
+          <circle cx="345" cy="480" r="1.8" fill="#fff"/>
+          <rect x="350" y="540" width="195" height="34" rx="10" fill="#fff" stroke="#f48fb1" stroke-width="1.2" filter="url(#foodShadow)"/>
+          <text x="362" y="556" font-size="11.5" fill="#880e4f" font-weight="700">🍝 Pastasciutta</text>
+          <text x="490" y="556" font-size="9.5" fill="#999" font-weight="500">Borgo区</text>
+          <text x="362" y="568" font-size="10" fill="#666">圣彼得东·番茄肉酱意面 €7.5</text>
+        </g>
+      </a>
+
+      <!-- ④ La Nuova Piazzetta Navona · 晚餐首推 ⭐ — Via della Posta Vecchia 4（纳沃纳东北角）
+           胶囊：(560,330)-(820,364) — 万神殿卡底(y=322)下方 8px、步行pill(y=370-394)上方 6px
+           地标：(680,440) — 纳沃纳卡顶内 10px（东北角）
+           曲线：从胶囊底(690,364)→地标(680,440)，竖直短弧 -->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Nuova+Piazzetta+Navona+Via+della+Posta+Vecchia+Roma" target="_blank">
+        <g cursor="pointer">
+          <path d="M 690,364 C 688,390 684,415 681,438" fill="none" stroke="#c2185b" stroke-width="1.6" stroke-dasharray="3,3" opacity="0.75" stroke-linecap="round"/>
+          <circle cx="680" cy="440" r="8" fill="none" stroke="#c2185b" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+          <circle cx="680" cy="440" r="4.5" fill="#c2185b"/>
+          <circle cx="680" cy="440" r="1.8" fill="#fff"/>
+          <rect x="560" y="330" width="260" height="34" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.5" filter="url(#foodShadow)"/>
+          <text x="572" y="346" font-size="11.5" fill="#880e4f" font-weight="700">🦞 La Nuova Piazzetta</text>
+          <text x="750" y="346" font-size="9.5" fill="#e65100" font-weight="700">⭐晚餐</text>
+          <text x="572" y="358" font-size="10" fill="#666">纳沃纳 · 龙虾意面 · G4.9</text>
+        </g>
+      </a>
+    </g>
+
     <!-- ===== AREA LABELS ===== -->
     <text x="80" y="780" font-size="10" fill="#666" opacity="0.3" font-weight="600" letter-spacing="2">Borgo 区</text>
 
@@ -567,8 +797,9 @@
       <circle cx="220" cy="22" r="9" fill="#7e57c2"/><text x="237" y="26" font-size="11" fill="#555">博物馆</text>
       <circle cx="320" cy="22" r="9" fill="#ef5350"/><text x="337" y="26" font-size="11" fill="#555">地标</text>
       <circle cx="400" cy="22" r="9" fill="#ff9800"/><text x="417" y="26" font-size="11" fill="#555">美食广场</text>
-      <rect x="490" y="14" width="16" height="16" rx="8" fill="none" stroke="#8bb8d0" stroke-width="2" opacity="0.6"/>
-      <text x="512" y="26" font-size="11" fill="#555">台伯河</text>
+      <circle cx="500" cy="22" r="9" fill="#c2185b"/><text x="517" y="26" font-size="11" fill="#555">🍽️美食</text>
+      <rect x="580" y="14" width="16" height="16" rx="8" fill="none" stroke="#8bb8d0" stroke-width="2" opacity="0.6"/>
+      <text x="602" y="26" font-size="11" fill="#555">台伯河</text>
       <text x="25" y="52" font-size="10" fill="#888">Day2 梵蒂冈+罗马老城 · 步行+打车 · 点击卡片跳转 Google Maps 导航</text>
     </g>
   </svg>
@@ -956,6 +1187,95 @@
       <h4>🥤 补水</h4>
       <p contenteditable="false">博物馆内有自动贩卖机。圣彼得广场有免费饮水点。今天走路多，多喝水！</p>
     </div>
+  </div>
+</div>
+
+<!-- ===== 🍽️ Day2 美食推荐（小红书精选） ===== -->
+<div class="food-section">
+  <h2 class="section-title">🍽️ Day2 美食推荐 <span style="font-size:12px;font-weight:500;color:#888;">· 小红书精选</span></h2>
+
+  <div class="food-intro">
+    📕 以下餐厅基于小红书高赞攻略整理，沿 <strong>梵蒂冈博物馆 → 纳沃纳广场</strong> 动线分布。<br>
+    💡 梵蒂冈内部没有餐厅，<strong>博物馆参观完出来再吃午餐</strong>（在 Prati 区 Viale Giulio Cesare 周边最集中）。<strong>纳沃纳广场</strong>附近餐厅因游客多易踩雷，看 G歌评分 4.5+ 再去。
+  </div>
+
+  <!-- ☀️ 午餐（梵蒂冈北 Prati 区） -->
+  <div class="food-slot-title">☀️ 午餐 · 梵蒂冈北 Prati 区 <span class="slot-time">~12:30 博物馆/教堂间隙</span></div>
+
+  <div class="food-card" style="border-color:#c2185b;">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🌟</span>TheGusto Cucina con Enoteca</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.9 · 首推</div>
+    </div>
+    <div class="food-card-desc">
+      梵蒂冈附近的<strong>宝藏意餐</strong>，Google Maps 4.9 高分。主推 <strong>牛肝菌宽面</strong>（鲜香浓郁、菌菇饱满）、<strong>松露意面</strong>、<strong>海鲜意面</strong>。人均 €25-40，是梵蒂冈周边性价比极高的正餐选择。
+    </div>
+    <div class="food-card-addr">📍 Viale Giulio Cesare, 103, 00192 Roma RM（梵蒂冈博物馆步行 12min）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=TheGusto+Cucina+con+Enoteca+Roma" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block">
+      <div class="food-xhs-title">📕 小红书原帖</div>
+      <div class="food-xhs-item">
+        <a href="https://www.xiaohongshu.com/explore/69dc024a000000002301e60b" target="_blank">梵蒂冈周边Google4.9宝藏意餐！牛肝菌宽面绝了</a>
+        <span class="xhs-meta">@在罗马吃什么</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍕</span>Alice Pizza</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 称重披萨 · 快速午餐</div>
+    </div>
+    <div class="food-card-desc">
+      罗马本地连锁披萨店（非游客店），按<strong>克重计费</strong>，烤盘上现切现称。十几种口味，<strong>人均 €6-10 就能吃饱</strong>。如果不想坐下正餐，这里是梵蒂冈周边最快捷的选择。
+    </div>
+    <div class="food-card-addr">📍 Viale Giulio Cesare, 36, 00192 Roma RM（梵蒂冈博物馆步行 10min）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Alice+Pizza+Viale+Giulio+Cesare+Roma" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block">
+      <div class="food-xhs-title">📕 小红书原帖</div>
+      <div class="food-xhs-item">
+        <a href="https://www.xiaohongshu.com/explore/693c5209000000001e00eba3" target="_blank">梵蒂冈周边平价好吃的意餐合集</a>
+        <span class="xhs-meta">@罗马美食地图</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍝</span>Pastasciutta</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 快手意面</div>
+    </div>
+    <div class="food-card-desc">
+      就在 Alice Pizza 旁边的<strong>外带意面店</strong>，点单现煮 + 酱汁混合。招牌是 <strong>Amatriciana（番茄肉酱）</strong> 和 <strong>Carbonara（蛋奶培根）</strong>，大份 €7.5-8，站着吃或带走。Neo 团队4人可以一人一样各点不踩雷。
+    </div>
+    <div class="food-card-addr">📍 Viale Giulio Cesare 附近（Alice Pizza 旁）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Pastasciutta+Prati+Roma" target="_blank">📍 Google Maps</a>
+  </div>
+
+  <!-- 🌙 晚餐（纳沃纳广场附近） -->
+  <div class="food-slot-title">🌙 晚餐 · 纳沃纳广场附近 <span class="slot-time">19:00 后（万神殿参观完）</span></div>
+
+  <div class="food-card" style="border-color:#c2185b;">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🦞</span>La Nuova Piazzetta Navona</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.9 · 纳沃纳首选</div>
+    </div>
+    <div class="food-card-desc">
+      纳沃纳广场附近<strong>少数不踩雷</strong>的优质餐厅，Google Maps 4.9。主推 <strong>龙虾意面</strong> 和海鲜套餐。虽在游客区但服务热情、份量实在，人均 €35-50。晚餐<strong>建议预约</strong>（G Maps 上可直接预订）。
+    </div>
+    <div class="food-card-addr">📍 纳沃纳广场附近（具体地址请在 Google Maps 搜索）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=La+Nuova+Piazzetta+Navona+Roma" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block">
+      <div class="food-xhs-title">📕 小红书原帖</div>
+      <div class="food-xhs-item">
+        <a href="https://www.xiaohongshu.com/explore/69e4c630000000001f0070f0" target="_blank">纳沃纳广场高分宝藏意餐</a>
+        <span class="xhs-meta">@罗马小众美食</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="food-intro" style="margin-top:16px;margin-bottom:0;border-left-color:#c2185b;">
+    💡 <strong>梵蒂冈+罗马3条吃饭铁律</strong>：① 梵蒂冈博物馆自带 caffetteria 只做咖啡简餐，正餐一定要出博物馆再吃；② 纳沃纳/特莱维周边<strong>菜单英文优先的都是游客店</strong>，意大利文菜单+门口没站人招揽的才是本地店；③ 晚餐 <strong>20:00</strong> 才是意大利人真正开饭时间，中国人的"饿点"19:00 正好避开人潮。
   </div>
 </div>
 

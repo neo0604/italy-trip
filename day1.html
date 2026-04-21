@@ -577,6 +577,79 @@
     </a>
     <circle cx="370" cy="130" r="5" fill="#66bb6a" opacity="0.6"/>
 
+    <!-- ===== 🍽️ 餐厅标注（Day1 · 地理准确 v1） =====
+         真实地理 → SVG 映射：
+         - Pastificio Guerra (Via della Croce 8)：西班牙台阶北 50m → 胶囊在西班牙广场卡⑤右上方
+         - Ristorante Nino (Via Borgognona 11)：西班牙广场南 100m → 胶囊在西班牙广场卡⑤左下
+         - Antico Caffè Greco (Via Condotti 86)：西班牙广场西南 → 胶囊在西班牙广场卡⑤右下
+         
+         占用清单：
+         - 罗盘 (874-926, 29-81)
+         - 西班牙广场卡⑤ (160-460, 70-148)
+         - 苹丘卡④ (190-470, 170-248)
+         - 博尔盖塞卡③ (580-900, 250-328)
+    -->
+    <defs>
+      <filter id="foodShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.2"/>
+        <feOffset dx="0" dy="1" result="offsetblur"/>
+        <feComponentTransfer><feFuncA type="linear" slope="0.18"/></feComponentTransfer>
+        <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g class="food-pins">
+
+      <!-- ① Pastificio Guerra · 晚餐首推 ⭐ — Via della Croce 8（西班牙台阶正北 50m）
+           胶囊：(470,30)-(720,64) — 西班牙广场卡⑤(y=70-148)正上方、罗盘(x>874)左
+           地标：(370,88) — 西班牙广场卡⑤顶内 18px
+           曲线：胶囊左下(480,64)→地标(370,88)，短 7 点钟方向弧 -->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Pastificio+Guerra+Via+della+Croce+Roma" target="_blank">
+        <g cursor="pointer">
+          <path d="M 480,64 C 450,72 410,82 374,88" fill="none" stroke="#c2185b" stroke-width="1.6" stroke-dasharray="3,3" opacity="0.75" stroke-linecap="round"/>
+          <circle cx="370" cy="88" r="8" fill="none" stroke="#c2185b" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+          <circle cx="370" cy="88" r="4.5" fill="#c2185b"/>
+          <circle cx="370" cy="88" r="1.8" fill="#fff"/>
+          <rect x="470" y="30" width="250" height="34" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.5" filter="url(#foodShadow)"/>
+          <text x="482" y="46" font-size="11.5" fill="#880e4f" font-weight="700">🍝 Pastificio Guerra</text>
+          <text x="650" y="46" font-size="9.5" fill="#e65100" font-weight="700">⭐首推</text>
+          <text x="482" y="58" font-size="10" fill="#666">Via d. Croce · 4€鲜意面 · G4.6</text>
+        </g>
+      </a>
+
+      <!-- ② Ristorante Nino · 传统晚餐 — Via Borgognona 11（西班牙广场南 100m）
+           胶囊：(20,160)-(195,194) — 西班牙广场卡⑤(y=70-148)下方、苹丘卡④(x>190)左外
+           地标：(305,148) — 西班牙广场卡⑤底内 0px
+           曲线：胶囊右上(180,162)→地标(305,150)，短 1 点钟方向弧（擦过西班牙广场卡底）-->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Ristorante+Nino+Via+Borgognona+Roma" target="_blank">
+        <g cursor="pointer">
+          <path d="M 180,162 C 220,158 260,152 302,150" fill="none" stroke="#c2185b" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.65" stroke-linecap="round"/>
+          <circle cx="305" cy="148" r="8" fill="none" stroke="#c2185b" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+          <circle cx="305" cy="148" r="4.5" fill="#c2185b"/>
+          <circle cx="305" cy="148" r="1.8" fill="#fff"/>
+          <rect x="20" y="160" width="175" height="34" rx="10" fill="#fff" stroke="#f48fb1" stroke-width="1.2" filter="url(#foodShadow)"/>
+          <text x="32" y="176" font-size="11.5" fill="#880e4f" font-weight="700">🍷 Ristorante Nino</text>
+          <text x="32" y="188" font-size="10" fill="#666">Via Borgognona · 老店 · G4.5</text>
+        </g>
+      </a>
+
+      <!-- ③ Antico Caffè Greco · 餐后咖啡 — Via Condotti 86（西班牙广场西南 200m）
+           胶囊：(485,160)-(730,194) — 西班牙广场卡⑤(y=70-148)下方、苹丘卡④(x<470)右外
+           地标：(425,148) — 西班牙广场卡⑤底内偏右
+           曲线：胶囊左上(495,162)→地标(425,150)，短 11 点钟方向弧 -->
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Antico+Caffe+Greco+Via+Condotti+Roma" target="_blank">
+        <g cursor="pointer">
+          <path d="M 495,162 C 470,158 445,152 428,150" fill="none" stroke="#c2185b" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.65" stroke-linecap="round"/>
+          <circle cx="425" cy="148" r="8" fill="none" stroke="#c2185b" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+          <circle cx="425" cy="148" r="4.5" fill="#c2185b"/>
+          <circle cx="425" cy="148" r="1.8" fill="#fff"/>
+          <rect x="485" y="160" width="245" height="34" rx="10" fill="#fff" stroke="#f48fb1" stroke-width="1.2" filter="url(#foodShadow)"/>
+          <text x="497" y="176" font-size="11.5" fill="#880e4f" font-weight="700">☕ Antico Caffè Greco</text>
+          <text x="650" y="176" font-size="9.5" fill="#999" font-weight="500">餐后</text>
+          <text x="497" y="188" font-size="10" fill="#666">Via Condotti·1760年老咖啡馆</text>
+        </g>
+      </a>
+    </g>
+
     <!-- ===== AREA LABELS ===== -->
     <text x="100" y="700" font-size="11" fill="#8b7355" opacity="0.25" font-weight="600" letter-spacing="4">T R A S T E V E R E</text>
 
@@ -586,13 +659,14 @@
     </g>
 
     <!-- ===== LEGEND ===== -->
-    <g transform="translate(550,830)">
-      <rect width="380" height="72" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow)"/>
+    <g transform="translate(440,830)">
+      <rect width="500" height="72" rx="14" fill="white" opacity="0.9" stroke="#e0d8c8" stroke-width="1" filter="url(#shadow)"/>
       <circle cx="25" cy="22" r="9" fill="#42a5f5"/><text x="42" y="26" font-size="11" fill="#555">抵达</text>
-      <circle cx="100" cy="22" r="9" fill="#ef5350"/><text x="117" y="26" font-size="11" fill="#555">地标</text>
-      <circle cx="175" cy="22" r="9" fill="#7e57c2"/><text x="192" y="26" font-size="11" fill="#555">美术馆</text>
-      <circle cx="260" cy="22" r="9" fill="#ff9800"/><text x="277" y="26" font-size="11" fill="#555">日落</text>
-      <circle cx="325" cy="22" r="9" fill="#66bb6a"/><text x="342" y="26" font-size="11" fill="#555">美食</text>
+      <circle cx="95" cy="22" r="9" fill="#ef5350"/><text x="112" y="26" font-size="11" fill="#555">地标</text>
+      <circle cx="165" cy="22" r="9" fill="#7e57c2"/><text x="182" y="26" font-size="11" fill="#555">美术馆</text>
+      <circle cx="245" cy="22" r="9" fill="#ff9800"/><text x="262" y="26" font-size="11" fill="#555">日落</text>
+      <circle cx="305" cy="22" r="9" fill="#66bb6a"/><text x="322" y="26" font-size="11" fill="#555">景点</text>
+      <circle cx="370" cy="22" r="9" fill="#c2185b"/><text x="387" y="26" font-size="11" fill="#555">🍽️美食</text>
       <text x="25" y="52" font-size="10" fill="#888">Day1 罗马市区 · 步行+打车 · 点击卡片导航</text>
     </g>
   </svg>
