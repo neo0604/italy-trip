@@ -165,6 +165,148 @@
     font-size: 16px;
   }
 
+
+  /* ===== 🍽️ 美食推荐模块（全局） ===== */
+  .food-section {
+    background: linear-gradient(135deg, #fff5f7 0%, #fff 40%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194,24,91,0.08);
+    border: 1px solid #fce4ec;
+  }
+  .food-section .section-title { color: #880e4f; }
+  .food-intro {
+    background: #fff;
+    border-left: 3px solid #c2185b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .food-intro strong { color: #c2185b; }
+  .food-slot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2185b;
+    margin: 14px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #f8bbd0;
+  }
+  .food-slot-title .slot-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    margin-left: auto;
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid #fce4ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .food-card:hover { border-color: #c2185b; box-shadow: 0 4px 12px rgba(194,24,91,0.1); }
+  .food-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .food-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .food-card-name .food-icon { color: #c2185b; margin-right: 4px; }
+  .food-card-rating {
+    font-size: 11px;
+    background: #fff8e1;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-card-desc strong { color: #c2185b; }
+  .food-card-addr {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .food-gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    margin-right: 6px;
+    transition: all 0.2s;
+  }
+  .food-gmap-link:hover { background: #2e7d32; color: white; }
+  .food-xhs-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f0f0f0;
+  }
+  .food-xhs-title {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .food-xhs-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .food-xhs-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .food-xhs-item a:hover { text-decoration: underline; }
+  .food-xhs-item .xhs-meta {
+    font-size: 10px;
+    color: #999;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .food-card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .food-card-name { font-size: 14px; }
+  }
+
 </style>
 </head>
 <body>
@@ -873,6 +1015,76 @@
   <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月13日 · 支持在线编辑与批注</p>
 </div>
 
+</div>
+
+
+
+<!-- ===== 🍽️ Day4 美食推荐（小红书精选） ===== -->
+<div class="food-section">
+  <h2 class="section-title">🍽️ Day4 美食推荐 <span style="font-size:12px;font-weight:500;color:#888;">· 中央市场 + 老桥全日美食</span></h2>
+
+  <div class="food-intro">📕 Day4 佛罗伦萨全天深度游，路线 <strong>中央市场早午餐 → 圣母百花 → 老桥 → 皮蒂宫晚餐</strong>。</div>
+
+  <div class="food-slot-title">🌅 早餐 · 中央市场二层 <span class="slot-time">8:30-10:00</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🥐</span>Mercato Centrale Firenze · 二层美食广场</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ 本地食材天堂</div>
+    </div>
+    <div class="food-card-desc">佛罗伦萨<strong>最大的室内市场</strong>，一层是食材铺（奶酪、火腿、葡萄酒现卖），<strong>二层是美食广场</strong>有 15+ 家摊位。推荐 <strong>Lampredotto（牛肚三明治，佛村街头味）</strong> €6、现做意面档 €10-15、<strong>Trapizzino 披萨卷</strong>。</div>
+    <div class="food-card-addr">📍 Piazza del Mercato Centrale, 50123 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Firenze" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-slot-title">☀️ 午餐 · 老桥/乌菲兹周边 <span class="slot-time">~13:30 乌菲兹出来</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍝</span>Osteria Vini e Vecchi Sapori</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.7 · 11个桌子的神店</div>
+    </div>
+    <div class="food-card-desc">乌菲兹旁<strong>只有11张桌子的托斯卡纳小馆</strong>。老板 Mario 亲自端菜。招牌 <strong>野猪意面（Pappardelle al Cinghiale）</strong>、<strong>牛脸肉（Guancia di Manzo）</strong>。<strong>只收现金</strong>，不接受预约，中午 12:30 准时排队。人均 €35-45。</div>
+    <div class="food-card-addr">📍 Via dei Magazzini, 3/R, 50122 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Vini+e+Vecchi+Sapori+Firenze" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block"><div class="food-xhs-title">📕 小红书参考</div><div class="food-xhs-item"><a href="https://www.xiaohongshu.com/search_result?keyword=佛罗伦萨11桌神店！野猪意面必吃" target="_blank">佛罗伦萨11桌神店！野猪意面必吃</a><span class="xhs-meta">@意大利小众攻略</span></div></div>
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍕</span>Gusta Pizza</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.6 · 心形披萨</div>
+    </div>
+    <div class="food-card-desc">老桥对岸（Oltrarno 区）<strong>永远排队的披萨店</strong>，招牌是<strong>心形玛格丽特</strong>（€7-9），烤炉直火。店小，多半外带到 <strong>圣神广场（Piazza Santo Spirito）</strong>坐着吃最有氛围。</div>
+    <div class="food-card-addr">📍 Via Maggio, 46/R, 50125 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Gusta+Pizza+Firenze" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-slot-title">🌙 晚餐 · 老桥南岸 Oltrarno 区 <span class="slot-time">20:00 后</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍷</span>Osteria dell'Enoteca</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ 本地人周末首选</div>
+    </div>
+    <div class="food-card-desc">Oltrarno 区<strong>文艺挑高老厂房改造餐厅</strong>，每月换菜单。招牌 <strong>慢炖牛脸肉佐 Chianti</strong>，<strong>烤鸽子胸肉</strong>。酒单超过 300 款，按杯 €6-12。人均 €55-70，<strong>务必预约</strong>。</div>
+    <div class="food-card-addr">📍 Via Romana, 70/R, 50125 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Osteria+dell'Enoteca+Firenze" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🥂</span>Il Santo Bevitore</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ Oltrarno 区 Slow Food</div>
+    </div>
+    <div class="food-card-desc">连续多年入选<strong>Slow Food 意大利推荐</strong>，菜单季节性强。冬春推 <strong>野味慢炖</strong>，夏秋推 <strong>海鲜冷盘 + 冷面</strong>。气氛像文艺酒馆，人均 €50-60。</div>
+    <div class="food-card-addr">📍 Via di Santo Spirito, 64/66/R, 50125 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Il+Santo+Bevitore+Firenze" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-intro" style="margin-top:16px;margin-bottom:0;border-left-color:#c2185b;">💡 <strong>佛村一日多吃 3 条</strong>：① 中央市场 <strong>Lampredotto 摊位 Nerbone</strong>，牛肚三明治蘸面包汁是绝配；② 老桥南岸 Oltrarno 区<strong>价格比北岸低 20%</strong>，还更本地；③ 想在<strong>落日时段</strong>吃饭去 Piazzale Michelangelo 山坡上的 <em>La Loggia</em>，景比菜贵但值。</div>
 </div>
 
 <div class="footer">

@@ -167,6 +167,148 @@
   }
 
 
+
+  /* ===== 🍽️ 美食推荐模块（全局） ===== */
+  .food-section {
+    background: linear-gradient(135deg, #fff5f7 0%, #fff 40%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194,24,91,0.08);
+    border: 1px solid #fce4ec;
+  }
+  .food-section .section-title { color: #880e4f; }
+  .food-intro {
+    background: #fff;
+    border-left: 3px solid #c2185b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .food-intro strong { color: #c2185b; }
+  .food-slot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2185b;
+    margin: 14px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #f8bbd0;
+  }
+  .food-slot-title .slot-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    margin-left: auto;
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid #fce4ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .food-card:hover { border-color: #c2185b; box-shadow: 0 4px 12px rgba(194,24,91,0.1); }
+  .food-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .food-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .food-card-name .food-icon { color: #c2185b; margin-right: 4px; }
+  .food-card-rating {
+    font-size: 11px;
+    background: #fff8e1;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-card-desc strong { color: #c2185b; }
+  .food-card-addr {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .food-gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    margin-right: 6px;
+    transition: all 0.2s;
+  }
+  .food-gmap-link:hover { background: #2e7d32; color: white; }
+  .food-xhs-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f0f0f0;
+  }
+  .food-xhs-title {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .food-xhs-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .food-xhs-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .food-xhs-item a:hover { text-decoration: underline; }
+  .food-xhs-item .xhs-meta {
+    font-size: 10px;
+    color: #999;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .food-card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .food-card-name { font-size: 14px; }
+  }
+
 </style>
 </head>
 <body>
@@ -757,6 +899,63 @@
   <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月13日 · 支持在线编辑与批注</p>
 </div>
 
+</div>
+
+
+
+<!-- ===== 🍽️ Day5 美食推荐（小红书精选） ===== -->
+<div class="food-section">
+  <h2 class="section-title">🍽️ Day5 美食推荐 <span style="font-size:12px;font-weight:500;color:#888;">· 圣十字 + 圣母百花深度美食</span></h2>
+
+  <div class="food-intro">📕 Day5 佛罗伦萨继续，路线 <strong>美第奇礼拜堂 → 学院美术馆 → 圣十字广场 → 米开朗基罗广场</strong>，美食聚焦圣十字和大广场附近。</div>
+
+  <div class="food-slot-title">☀️ 午餐 · 圣十字广场周边 <span class="slot-time">~13:00 学院美术馆出来</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍝</span>Trattoria Cibrèo</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ 米其林推荐 · Cibreo 家族</div>
+    </div>
+    <div class="food-card-desc">佛村<strong>Cibrèo 家族</strong>的小馆版（米其林收录），用料和旗舰店一样，<strong>价位只有一半</strong>。菜单极简：前菜 + 主菜 + 甜点各 3-4 个，天天换。招牌 <strong>番茄黄油意面</strong>、<strong>烤鸭胸</strong>。<strong>不接受预约</strong>，中午 12:50 开门前 10 分钟排队。人均 €40。</div>
+    <div class="food-card-addr">📍 Via dei Macci, 122/R, 50122 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Cibreo+Firenze" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block"><div class="food-xhs-title">📕 小红书参考</div><div class="food-xhs-item"><a href="https://www.xiaohongshu.com/search_result?keyword=佛罗伦萨%20Cibreo%20小馆性价比之王" target="_blank">佛罗伦萨 Cibreo 小馆性价比之王</a><span class="xhs-meta">@佛村老饕</span></div></div>
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🐗</span>Osteria del Cinghiale Bianco</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 白野猪小馆</div>
+    </div>
+    <div class="food-card-desc">名字直译"白野猪小馆"，主打<strong>托斯卡纳野味</strong>。招牌 <strong>野猪肉酱手工意面（Pappardelle al Cinghiale）</strong>和 <strong>Bistecca Fiorentina</strong>。环境中世纪，人均 €40-50。</div>
+    <div class="food-card-addr">📍 Borgo San Jacopo, 43/R, 50125 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Osteria+del+Cinghiale+Bianco+Firenze" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-slot-title">🌙 晚餐 · 米开朗基罗广场下山 <span class="slot-time">看完日落后 20:30 左右</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">👑</span>La Giostra</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ 哈布斯堡王子开的餐厅</div>
+    </div>
+    <div class="food-card-desc">佛村最<strong>戏剧性</strong>的餐厅——奥地利哈布斯堡王子 Dimitri d'Asburgo Lorena 开的。招牌 <strong>野猪肉酱意面</strong>、<strong>鞑靼牛肉</strong>。免费提供<strong>气泡酒+松露脆饼开胃</strong>。人均 €60-75。<strong>极度难订</strong>，官网预约。</div>
+    <div class="food-card-addr">📍 Borgo Pinti, 12/R, 50121 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=La+Giostra+Firenze" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🥩</span>Buca Lapi</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.5 · 1880年老馆</div>
+    </div>
+    <div class="food-card-desc">佛罗伦萨<strong>1880 年开业</strong>的地下老馆，拱顶贴满世界各地的葡萄酒标签。号称 <strong>"佛罗伦萨 T骨的发源地"</strong>。一份 €65/kg，三人分一份合适。人均 €70-85，需预约。</div>
+    <div class="food-card-addr">📍 Via del Trebbio, 1/R, 50123 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Buca+Lapi+Firenze" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block"><div class="food-xhs-title">📕 小红书参考</div><div class="food-xhs-item"><a href="https://www.xiaohongshu.com/search_result?keyword=1880%20年老字号%20Buca%20Lapi，T骨天花板" target="_blank">1880 年老字号 Buca Lapi，T骨天花板</a><span class="xhs-meta">@意大利牛排控</span></div></div>
+  </div>
+
+  <div class="food-intro" style="margin-top:16px;margin-bottom:0;border-left-color:#c2185b;">💡 <strong>佛村再忠告 2 条</strong>：① 看到餐厅写 "Buca"（地下室）往往是 <strong>1800s 老铺传统</strong>，不是贬义，质量反而靠谱；② <strong>米开朗基罗广场山上没有好餐厅</strong>（全是坑），看完日落下山到 Santa Croce 区再吃。</div>
 </div>
 
 <div class="footer">

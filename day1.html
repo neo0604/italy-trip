@@ -298,6 +298,148 @@
   }
 
 
+
+  /* ===== 🍽️ 美食推荐模块（全局） ===== */
+  .food-section {
+    background: linear-gradient(135deg, #fff5f7 0%, #fff 40%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194,24,91,0.08);
+    border: 1px solid #fce4ec;
+  }
+  .food-section .section-title { color: #880e4f; }
+  .food-intro {
+    background: #fff;
+    border-left: 3px solid #c2185b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .food-intro strong { color: #c2185b; }
+  .food-slot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2185b;
+    margin: 14px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #f8bbd0;
+  }
+  .food-slot-title .slot-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    margin-left: auto;
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid #fce4ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .food-card:hover { border-color: #c2185b; box-shadow: 0 4px 12px rgba(194,24,91,0.1); }
+  .food-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .food-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .food-card-name .food-icon { color: #c2185b; margin-right: 4px; }
+  .food-card-rating {
+    font-size: 11px;
+    background: #fff8e1;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-card-desc strong { color: #c2185b; }
+  .food-card-addr {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .food-gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    margin-right: 6px;
+    transition: all 0.2s;
+  }
+  .food-gmap-link:hover { background: #2e7d32; color: white; }
+  .food-xhs-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f0f0f0;
+  }
+  .food-xhs-title {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .food-xhs-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .food-xhs-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .food-xhs-item a:hover { text-decoration: underline; }
+  .food-xhs-item .xhs-meta {
+    font-size: 10px;
+    color: #999;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .food-card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .food-card-name { font-size: 14px; }
+  }
+
 </style>
 </head>
 <body>
@@ -999,6 +1141,73 @@
   <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月10日 · 支持在线编辑与批注</p>
 </div>
 
+</div>
+
+
+
+<!-- ===== 🍽️ Day1 美食推荐（小红书精选） ===== -->
+<div class="food-section">
+  <h2 class="section-title">🍽️ Day1 美食推荐 <span style="font-size:12px;font-weight:500;color:#888;">· 罗马老城区精选</span></h2>
+
+  <div class="food-intro">📕 Day1 落地后行李放酒店，主要在 <strong>西班牙台阶 → 特莱维喷泉 → 万神殿 → 纳沃纳广场</strong> 一带活动，以下餐厅覆盖午、晚两餐，避开游客陷阱。<br>💡 <strong>落地当天最容易踩雷</strong>——饿+累+不熟环境。建议提前预约 1 家晚餐店（Google Maps 或 TheFork）。</div>
+
+  <div class="food-slot-title">☀️ 午餐 · 西班牙台阶附近 <span class="slot-time">~13:00 值完机场后</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🥗</span>Ginger Sapori e Salute</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ G歌 4.5 · 健康轻食</div>
+    </div>
+    <div class="food-card-desc">西班牙台阶步行3分钟的<strong>健康轻食店</strong>，有意面、沙拉、果汁、brunch全套。落地第一顿不想太油腻的首选，室内装修清新，<strong>人均 €18-28</strong>。</div>
+    <div class="food-card-addr">📍 Via Borgognona, 43/44, 00187 Roma RM（西班牙台阶旁）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Ginger+Sapori+e+Salute+Rome" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">☕</span>Antico Caffè Greco</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 罗马最老咖啡馆 · 1760年</div>
+    </div>
+    <div class="food-card-desc">罗马<strong>1760 年开业</strong>的百年咖啡馆，歌德、拜伦、安徒生都来过。一杯浓缩 €2.5（站着喝），坐下贵 3 倍但值得体验。不建议正餐，用来<strong>喝咖啡 +甜点小歇</strong>最合适。</div>
+    <div class="food-card-addr">📍 Via dei Condotti, 86, 00187 Roma RM</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Antico+Caffe+Greco+Rome" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-slot-title">🌙 晚餐 · 特莱维喷泉/万神殿附近 <span class="slot-time">20:00 后（意大利人开饭时间）</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍝</span>Osteria Barberini</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.6 · 松露控必去</div>
+    </div>
+    <div class="food-card-desc">罗马<strong>松露主题小馆</strong>，特莱维喷泉步行 8 分钟。招牌 <strong>黑松露手工意面</strong>（餐桌现刨）、<strong>松露牛里脊</strong>。人均 €45-60，<strong>务必提前预约</strong>（官网或 Google Maps），位子不多。</div>
+    <div class="food-card-addr">📍 Via della Purificazione, 21, 00187 Roma RM</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Osteria+Barberini+Rome" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block"><div class="food-xhs-title">📕 小红书参考</div><div class="food-xhs-item"><a href="https://www.xiaohongshu.com/search_result?keyword=罗马黑松露意面天花板！必须提前订位" target="_blank">罗马黑松露意面天花板！必须提前订位</a><span class="xhs-meta">@意大利踩坑指南</span></div></div>
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍕</span>Armando al Pantheon</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ 米其林推荐 · 罗马传统菜</div>
+    </div>
+    <div class="food-card-desc">万神殿旁边<strong>1961年老店</strong>，米其林指南收录，专做罗马本地菜。必点 <strong>Cacio e Pepe（芝士胡椒面）</strong>、<strong>Saltimbocca（小牛肉配火腿）</strong>。<strong>极其难订</strong>，至少提前 2 周官网预约。人均 €40-55。</div>
+    <div class="food-card-addr">📍 Salita de' Crescenzi, 31, 00186 Roma RM（万神殿旁）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Armando+al+Pantheon+Rome" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block"><div class="food-xhs-title">📕 小红书参考</div><div class="food-xhs-item"><a href="https://www.xiaohongshu.com/search_result?keyword=万神殿旁老字号！罗马传统菜标杆" target="_blank">万神殿旁老字号！罗马传统菜标杆</a><span class="xhs-meta">@罗马本地菜</span></div></div>
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍖</span>Trattoria Der Pallaro</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 无菜单体验 · 家庭小馆</div>
+    </div>
+    <div class="food-card-desc">纳沃纳广场附近的<strong>无菜单家庭餐厅</strong>。老板 Paola 奶奶根据当天食材决定给你上什么，<strong>固定价 €30/人</strong>（含前菜、主菜、甜点、酒水）。<strong>性价比之王</strong>，就是别挑食。</div>
+    <div class="food-card-addr">📍 Largo del Pallaro, 15, 00186 Roma RM</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Der+Pallaro+Rome" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-intro" style="margin-top:16px;margin-bottom:0;border-left-color:#c2185b;">💡 <strong>罗马第一天3条求生指南</strong>：① 特莱维喷泉 50m 范围内的餐厅<strong>90%是游客店</strong>，最好再走 3-5 个街区；② 看到菜单写"menu turistico 固定套餐 €15-20"且门口有人招揽的——<strong>一律绕开</strong>；③ 罗马小费非必须，<strong>服务费 coperto €1.5-3/人</strong>已在账单里。</div>
 </div>
 
 <div class="footer">

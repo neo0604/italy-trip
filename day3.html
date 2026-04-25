@@ -538,6 +538,148 @@
     font-size: 16px;
   }
 
+
+  /* ===== 🍽️ 美食推荐模块（全局） ===== */
+  .food-section {
+    background: linear-gradient(135deg, #fff5f7 0%, #fff 40%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194,24,91,0.08);
+    border: 1px solid #fce4ec;
+  }
+  .food-section .section-title { color: #880e4f; }
+  .food-intro {
+    background: #fff;
+    border-left: 3px solid #c2185b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .food-intro strong { color: #c2185b; }
+  .food-slot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2185b;
+    margin: 14px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #f8bbd0;
+  }
+  .food-slot-title .slot-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    margin-left: auto;
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid #fce4ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .food-card:hover { border-color: #c2185b; box-shadow: 0 4px 12px rgba(194,24,91,0.1); }
+  .food-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .food-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .food-card-name .food-icon { color: #c2185b; margin-right: 4px; }
+  .food-card-rating {
+    font-size: 11px;
+    background: #fff8e1;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-card-desc strong { color: #c2185b; }
+  .food-card-addr {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .food-gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    margin-right: 6px;
+    transition: all 0.2s;
+  }
+  .food-gmap-link:hover { background: #2e7d32; color: white; }
+  .food-xhs-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f0f0f0;
+  }
+  .food-xhs-title {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .food-xhs-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .food-xhs-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .food-xhs-item a:hover { text-decoration: underline; }
+  .food-xhs-item .xhs-meta {
+    font-size: 10px;
+    color: #999;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .food-card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .food-card-name { font-size: 14px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1905,6 +2047,73 @@
   <p style="margin-top: 8px; color: #aaa;">整理于 2026年4月13日 · v3 · 新增天空之城 · 支持在线编辑与批注</p>
 </div>
 
+</div>
+
+
+
+<!-- ===== 🍽️ Day3 美食推荐（小红书精选） ===== -->
+<div class="food-section">
+  <h2 class="section-title">🍽️ Day3 美食推荐 <span style="font-size:12px;font-weight:500;color:#888;">· 比萨小憩 + 佛罗伦萨第一晚</span></h2>
+
+  <div class="food-intro">📕 Day3 <strong>罗马 → 比萨 → 佛罗伦萨</strong>，午餐在比萨斜塔附近解决，晚餐到佛罗伦萨开吃托斯卡纳经典菜。</div>
+
+  <div class="food-slot-title">☀️ 午餐 · 比萨斜塔附近 <span class="slot-time">~13:30 到比萨后</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍝</span>L'Antica Trattoria Da Bruno</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ G歌 4.4 · 本地托斯卡纳菜</div>
+    </div>
+    <div class="food-card-desc">斜塔步行 5 分钟的<strong>老式托斯卡纳餐厅</strong>，1963 年开业。招牌 <strong>Zuppa alla Pisana（比萨豆汤）</strong>、<strong>Baccalà alla Pisana（比萨式鳕鱼）</strong>。比塔脚下的所有游客店都强 10 倍。人均 €25-35。</div>
+    <div class="food-card-addr">📍 Via Luigi Bianchi, 12, 56127 Pisa PI（斜塔北 400m）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Antica+Trattoria+Da+Bruno+Pisa" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍕</span>Pizzeria Il Montino</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 比萨本地人公认</div>
+    </div>
+    <div class="food-card-desc">比萨老城区<strong>本地人最爱的披萨店</strong>（不在斜塔景区，但开车 5 分钟）。招牌 <strong>Cecina（鹰嘴豆饼）</strong>和 <strong>Sfiziosa 披萨</strong>。如果想赶时间这里外带最快，<strong>一块 Cecina €2.5</strong> 两个人一块就饱。</div>
+    <div class="food-card-addr">📍 Vicolo del Monte, 1, 56126 Pisa PI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Il+Montino+Pisa" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-slot-title">🌙 晚餐 · 佛罗伦萨 SMN 站/中央市场附近 <span class="slot-time">20:00 入住酒店后</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🥩</span>Trattoria Mario</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.5 · 中央市场旁地标</div>
+    </div>
+    <div class="food-card-desc">佛罗伦萨<strong>1953年老馆</strong>，中央市场旁边。招牌 <strong>Bistecca alla Fiorentina（佛罗伦萨 T骨牛排）</strong>按克计费（一般 €55/kg），一份约 1-1.2 kg。不接受预约，<strong>中午 12:00 开门前就得到</strong>排队（晚上不营业！）。</div>
+    <div class="food-card-addr">📍 Via Rosina, 2/R, 50123 Firenze FI（SMN 站步行10min）</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Mario+Firenze" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block"><div class="food-xhs-title">📕 小红书参考</div><div class="food-xhs-item"><a href="https://www.xiaohongshu.com/search_result?keyword=佛罗伦萨最正的T骨牛排！Trattoria%20Mario" target="_blank">佛罗伦萨最正的T骨牛排！Trattoria Mario</a><span class="xhs-meta">@佛村吃喝指南</span></div></div>
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🥪</span>All'Antico Vinaio</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ 全球网红三明治</div>
+    </div>
+    <div class="food-card-desc">佛罗伦萨<strong>最火的 Schiacciata 三明治店</strong>（全球 8 家分店的总店）。招牌 <strong>La Favolosa</strong>（火腿+奶酪+朝鲜蓟+辣酱）一个 €8-10，能当正餐。<strong>乌菲兹旁总店常年排 30 分钟队</strong>，可以早/晚避开高峰去。</div>
+    <div class="food-card-addr">📍 Via dei Neri, 74/R, 50122 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=All'Antico+Vinaio+Via+dei+Neri" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍷</span>Osteria Cipolla Rossa</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 中央市场安静选</div>
+    </div>
+    <div class="food-card-desc">如果 Trattoria Mario 人爆满，这家是<strong>同街区的 Plan B</strong>。托斯卡纳经典菜齐全，环境比 Mario 安静，<strong>人均 €35-45</strong>。招牌 <strong>Pappa al Pomodoro（番茄面包汤）</strong>。</div>
+    <div class="food-card-addr">📍 Via dei Conti, 53/R, 50123 Firenze FI</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Osteria+Cipolla+Rossa+Firenze" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-intro" style="margin-top:16px;margin-bottom:0;border-left-color:#c2185b;">💡 <strong>佛罗伦萨吃肉3条</strong>：① T骨牛排是<strong>1.2kg 起</strong>——两人一份刚好，四人建议点 2 份；② 托斯卡纳<strong>餐前面包默认不收面包费</strong>，但如果送橄榄油/大蒜酱会加 €2-3；③ 晚餐<strong>19:30 才陆续开门</strong>，太早去要么吃闭门羹要么被当游客。</div>
 </div>
 
 <div class="footer">

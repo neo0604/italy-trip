@@ -164,6 +164,148 @@
     font-size: 16px;
   }
 
+
+  /* ===== 🍽️ 美食推荐模块（全局） ===== */
+  .food-section {
+    background: linear-gradient(135deg, #fff5f7 0%, #fff 40%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194,24,91,0.08);
+    border: 1px solid #fce4ec;
+  }
+  .food-section .section-title { color: #880e4f; }
+  .food-intro {
+    background: #fff;
+    border-left: 3px solid #c2185b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .food-intro strong { color: #c2185b; }
+  .food-slot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2185b;
+    margin: 14px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #f8bbd0;
+  }
+  .food-slot-title .slot-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    margin-left: auto;
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid #fce4ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .food-card:hover { border-color: #c2185b; box-shadow: 0 4px 12px rgba(194,24,91,0.1); }
+  .food-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .food-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .food-card-name .food-icon { color: #c2185b; margin-right: 4px; }
+  .food-card-rating {
+    font-size: 11px;
+    background: #fff8e1;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-card-desc strong { color: #c2185b; }
+  .food-card-addr {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .food-gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    margin-right: 6px;
+    transition: all 0.2s;
+  }
+  .food-gmap-link:hover { background: #2e7d32; color: white; }
+  .food-xhs-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f0f0f0;
+  }
+  .food-xhs-title {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .food-xhs-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .food-xhs-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .food-xhs-item a:hover { text-decoration: underline; }
+  .food-xhs-item .xhs-meta {
+    font-size: 10px;
+    color: #999;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .food-card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .food-card-name { font-size: 14px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1054,6 +1196,73 @@
   <p style="font-size:12px;color:#999;margin-top:8px;">🇮🇹 Venezia — 水上之城</p>
 </div>
 
+</div>
+
+
+
+<!-- ===== 🍽️ Day6 美食推荐（小红书精选） ===== -->
+<div class="food-section">
+  <h2 class="section-title">🍽️ Day6 美食推荐 <span style="font-size:12px;font-weight:500;color:#888;">· 威尼斯 Cicchetti + 墨鱼面</span></h2>
+
+  <div class="food-intro">📕 Day6 <strong>佛罗伦萨 → 威尼斯</strong>。威尼斯主岛餐厅<strong>普遍游客化</strong>，选这几家能避雷。午餐在学院/Rialto 市场吃 <strong>Cicchetti（站立小吃）</strong>，晚餐离开圣马可区到偏僻小巷。</div>
+
+  <div class="food-slot-title">☀️ 午餐 · Cicchetti · Rialto 市场/Cannaregio 区 <span class="slot-time">~13:00</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍷</span>Cantine del Vino già Schiavi</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.5 · Cicchetti 圣殿</div>
+    </div>
+    <div class="food-card-desc">威尼斯<strong>最著名的 Cicchetti 小酒馆</strong>，学院美术馆旁运河边。<strong>每块小吃 €1.5</strong>，配 Ombra（小杯白葡萄酒）€1.5。推荐 <strong>鳕鱼酱面包</strong>、<strong>南瓜风味片</strong>、<strong>Gorgonzola+核桃面包</strong>。<strong>站在运河边吃是威尼斯的精髓</strong>。</div>
+    <div class="food-card-addr">📍 Fondamenta Nani, 992, 30123 Venezia VE</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Cantine+del+Vino+Schiavi+Venice" target="_blank">📍 Google Maps</a>
+    <div class="food-xhs-block"><div class="food-xhs-title">📕 小红书参考</div><div class="food-xhs-item"><a href="https://www.xiaohongshu.com/search_result?keyword=威尼斯Cicchetti天花板！运河边小酒馆" target="_blank">威尼斯Cicchetti天花板！运河边小酒馆</a><span class="xhs-meta">@威尼斯漫游</span></div></div>
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🥖</span>All'Arco</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ G歌 4.6 · Rialto 市场网红</div>
+    </div>
+    <div class="food-card-desc">Rialto 市场附近<strong>最火的 Cicchetti 店</strong>，父子经营。现做<strong>生章鱼片面包</strong>、<strong>金枪鱼鞑靼</strong>、<strong>腌凤尾鱼</strong>。一块 €1.8-3，配酒 €2。中午 12 点后去人挤到门外。</div>
+    <div class="food-card-addr">📍 Calle Arco, 436, 30125 Venezia VE</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=All'Arco+Venezia" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-slot-title">🌙 晚餐 · Cannaregio/Castello 区（远离圣马可） <span class="slot-time">20:00 后</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🦑</span>Osteria Alle Testiere</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ 米其林推荐 · 海鲜圣地</div>
+    </div>
+    <div class="food-card-desc"><strong>只有 9 张桌子</strong>的海鲜神级小馆，米其林连年推荐。菜单每天换，<strong>主厨 Bruno 亲自在厨房</strong>。招牌 <strong>墨鱼汁意面</strong>、<strong>蒜香蛤蜊意面</strong>、<strong>烤鱼</strong>。<strong>至少提前 1 周订位</strong>。人均 €70-90。</div>
+    <div class="food-card-addr">📍 Calle del Mondo Novo, 5801, 30122 Venezia VE</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Osteria+Alle+Testiere+Venice" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🐟</span>Trattoria al Gatto Nero</div>
+      <div class="food-card-rating">⭐⭐⭐⭐⭐ Burano 岛最佳海鲜</div>
+    </div>
+    <div class="food-card-desc">如果 Day6 有时间去 <strong>Burano 彩色岛</strong>，这家是岛上的海鲜神殿。招牌 <strong>Risotto de Gò（虾虎鱼烩饭）</strong> 是 Burano 独有。人均 €65-80，<strong>务必预约</strong>。</div>
+    <div class="food-card-addr">📍 Fondamenta della Giudecca, 88, 30142 Burano VE</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Trattoria+al+Gatto+Nero+Burano" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍤</span>Osteria al Squero</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ G歌 4.5 · 观贡多拉船坞</div>
+    </div>
+    <div class="food-card-desc">Dorsoduro 区<strong>对着贡多拉造船厂</strong>的小店。Cicchetti 一块 €1.5-2.5，配 Spritz €3。晚餐<strong>配着落日看老工匠修船</strong>，是威尼斯最浪漫的位置。不收预约，先到先得。</div>
+    <div class="food-card-addr">📍 Fondamenta Nani, 943-944, 30123 Venezia VE</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Osteria+al+Squero+Venice" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-intro" style="margin-top:16px;margin-bottom:0;border-left-color:#c2185b;">💡 <strong>威尼斯3条防坑</strong>：① 圣马可广场周边的露天餐厅<strong>一杯咖啡 €8 + 音乐费 €6</strong>——纯看景用，别吃饭；② 菜单上写 "coperto €3-5" 是<strong>餐位费</strong>（不是小费），全威尼斯都有；③ 点海鲜前<strong>问清楚是不是按克计价（"al etto"）</strong>——一条鱼按 100g €8 算出来可能 €80。</div>
 </div>
 
 <div class="footer">

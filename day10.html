@@ -100,6 +100,148 @@
   }
 
 
+
+  /* ===== 🍽️ 美食推荐模块（全局） ===== */
+  .food-section {
+    background: linear-gradient(135deg, #fff5f7 0%, #fff 40%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194,24,91,0.08);
+    border: 1px solid #fce4ec;
+  }
+  .food-section .section-title { color: #880e4f; }
+  .food-intro {
+    background: #fff;
+    border-left: 3px solid #c2185b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .food-intro strong { color: #c2185b; }
+  .food-slot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2185b;
+    margin: 14px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #f8bbd0;
+  }
+  .food-slot-title .slot-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    margin-left: auto;
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid #fce4ec;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .food-card:hover { border-color: #c2185b; box-shadow: 0 4px 12px rgba(194,24,91,0.1); }
+  .food-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .food-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .food-card-name .food-icon { color: #c2185b; margin-right: 4px; }
+  .food-card-rating {
+    font-size: 11px;
+    background: #fff8e1;
+    color: #e65100;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-card-desc strong { color: #c2185b; }
+  .food-card-addr {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .food-gmap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #c8e6c9;
+    margin-right: 6px;
+    transition: all 0.2s;
+  }
+  .food-gmap-link:hover { background: #2e7d32; color: white; }
+  .food-xhs-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f0f0f0;
+  }
+  .food-xhs-title {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .food-xhs-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .food-xhs-item a {
+    color: #fe2c55;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .food-xhs-item a:hover { text-decoration: underline; }
+  .food-xhs-item .xhs-meta {
+    font-size: 10px;
+    color: #999;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .food-card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .food-card-name { font-size: 14px; }
+  }
+
 </style>
 </head>
 <body>
@@ -410,6 +552,50 @@
   <p>• Malpensa Express 时刻表 malpensaexpress.it</p>
   <p style="margin-top:8px;color:#aaa;">整理于 2026年4月13日 · 支持在线编辑与批注</p>
 </div>
+</div>
+
+
+
+<!-- ===== 🍽️ Day10 美食推荐（小红书精选） ===== -->
+<div class="food-section">
+  <h2 class="section-title">🍽️ Day10 美食推荐 <span style="font-size:12px;font-weight:500;color:#888;">· 米兰机场最后一餐</span></h2>
+
+  <div class="food-intro">📕 Day10 MXP 回国日。如果航班下午起飞且<strong>酒店早餐差强人意</strong>，可以去机场附近或机场内补一顿像样的。</div>
+
+  <div class="food-slot-title">🌅 早午餐 · 机场内 / 附近 10 分钟圈 <span class="slot-time">值机前 2h</span></div>
+  
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🍕</span>Spontini · MXP T1</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 米兰连锁方块披萨</div>
+    </div>
+    <div class="food-card-desc">MXP <strong>T1 航站楼内</strong>的米兰本地连锁，<strong>厚底方块披萨</strong>（Margherita + Marinara）。<strong>一份 €6-8</strong>，值机后进去正好当早午餐。意大利告别餐里最不掉价的机场选择。</div>
+    <div class="food-card-addr">📍 Terminal 1, Aeroporto di Milano Malpensa</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Spontini+Malpensa+Terminal+1" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🧀</span>Obicà Mozzarella Bar · MXP</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 机场马苏里拉专门店</div>
+    </div>
+    <div class="food-card-desc">MXP <strong>T1 值机后区域</strong>，<strong>马苏里拉奶酪专门店</strong>，搭配帕尔玛火腿、番茄、橄榄油。一份奶酪拼盘 €18-25，体面告别意大利。</div>
+    <div class="food-card-addr">📍 Terminal 1, Aeroporto di Milano Malpensa</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Obica+Mozzarella+Bar+Malpensa" target="_blank">📍 Google Maps</a>
+    
+  </div>
+  <div class="food-card">
+    <div class="food-card-header">
+      <div class="food-card-name"><span class="food-icon">🌳</span>Ristorante Il Giardino · Somma Lombardo</div>
+      <div class="food-card-rating">⭐⭐⭐⭐ 机场外 5 分钟的地方菜</div>
+    </div>
+    <div class="food-card-desc">如果不急着进机场，Somma Lombardo 镇上这家<strong>家庭伦巴第餐馆</strong>能吃到正宗的 <strong>Risotto alla Milanese</strong> 和 <strong>Osso Buco（米兰炖小牛膝）</strong>。人均 €30-40，<strong>值机前最后一顿实在</strong>。</div>
+    <div class="food-card-addr">📍 Via Milano, 43, 21019 Somma Lombardo VA</div>
+    <a class="food-gmap-link" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Il+Giardino+Somma+Lombardo" target="_blank">📍 Google Maps</a>
+    
+  </div>
+
+  <div class="food-intro" style="margin-top:16px;margin-bottom:0;border-left-color:#c2185b;">💡 <strong>回国前最后 3 个提醒</strong>：① MXP <strong>T1 的免税退税要预留 1.5h</strong>（海关盖章 + 退款柜台两步）；② 机场餐厅<strong>普遍比市区贵 30%</strong>，但比其他欧洲机场良心；③ 带一瓶 <strong>橄榄油或 Amaro 香草酒</strong>（托运），是意大利告别礼物里最不踩雷的。</div>
 </div>
 
 <div class="footer">
